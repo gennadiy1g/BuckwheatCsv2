@@ -40,6 +40,10 @@
 		<Linker>
 			<Add option="`wx-config --libs`" />
 		</Linker>
+		<Unit filename="csv_document.cpp" />
+		<Unit filename="csv_document.hpp" />
+		<Unit filename="csv_view.cpp" />
+		<Unit filename="csv_view.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.hpp" />
 		<Extensions />

@@ -7,10 +7,12 @@
 #include <wx/wx.h>
 #endif
 
-// application class
-class App : public wxApp
+#include <wx/docview.h>
+
+class CsvDocument : public wxDocument
 {
 public:
-    // function called at the application initialization
-    virtual bool OnInit() override;
+    CsvDocument() : wxDocument() {};
+protected:
+    wxDECLARE_DYNAMIC_CLASS(CsvDocument);
 };

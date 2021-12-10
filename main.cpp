@@ -4,9 +4,12 @@
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
+
 #include <wx/docview.h>
 
 #include "main.hpp"
+#include "csv_document.hpp"
+#include "csv_view.hpp"
 
 wxIMPLEMENT_APP(App);
 
@@ -20,7 +23,7 @@ bool App::OnInit()
 
     // Create a template relating text documents to their views
     new wxDocTemplate(docManager, "Text", "*.txt;*.text", "", "txt;text", "Text Doc", "Text View",
-                      CLASSINFO(TextEditDocument), CLASSINFO(TextEditView));
+                      wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
     // Enter the application's main loop
     return true;
