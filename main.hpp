@@ -14,9 +14,4 @@ public:
     // function called at the application initialization
     virtual bool OnInit() override;
 
-    // event handler for button click
-    void OnClick(wxCommandEvent& event)
-    {
-        GetTopWindow()->Close();
-    }
 };

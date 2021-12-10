@@ -4,6 +4,7 @@
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
+#include <wx/docview.h>
 
 #include "main.hpp"
 
@@ -14,18 +15,13 @@ bool App::OnInit()
     if(!wxApp::OnInit())
         return false;
 
-    // create a new frame and set it as the top most application window
-    SetTopWindow(new wxFrame(NULL, -1, wxT(""), wxDefaultPosition, wxSize(100, 50)));
+    // Create a document manager
+    auto *docManager = new wxDocManager;
 
-    // create new button and assign it to the main frame
-    new wxButton(GetTopWindow(), wxID_EXIT, wxT("Click!"));
+    // Create a template relating text documents to their views
+    new wxDocTemplate(docManager, "Text", "*.txt;*.text", "", "txt;text", "Text Doc", "Text View",
+                      CLASSINFO(TextEditDocument), CLASSINFO(TextEditView));
 
-    // connect button click event with event handler
-    Connect(wxID_EXIT, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(App::OnClick));
-
-    // show main frame
-    GetTopWindow()->Show();
-
-    // enter the application's main loop
+    // Enter the application's main loop
     return true;
 }
