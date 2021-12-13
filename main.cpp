@@ -7,6 +7,7 @@
 
 #include <wx/docview.h>
 #include <wx/docmdi.h>
+#include <wx/config.h>
 
 #include "main.hpp"
 #include "csv_document.hpp"
@@ -37,6 +38,7 @@ bool App::OnInit()
     menuFile->Append(wxID_CLOSE);
     menuFile->Append(wxID_EXIT);
     docManager->FileHistoryUseMenu(menuFile);
+    docManager->FileHistoryLoad(*wxConfig::Get());
 
     auto *menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
