@@ -30,10 +30,8 @@ bool App::OnInit()
     new wxDocTemplate(docManager, "All files", "*.*", "", "", "Text Doc", "Text View",
                       wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
-    auto frame = new wxDocMDIParentFrame(docManager, NULL, wxID_ANY,
-                                         GetAppDisplayName(),
-                                         wxDefaultPosition,
-                                         wxSize(500, 400));
+    auto frame = new wxDocMDIParentFrame(docManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition, wxSize(500,
+                                         400));
 
     auto *menuFile = new wxMenu;
     menuFile->Append(wxID_OPEN);
