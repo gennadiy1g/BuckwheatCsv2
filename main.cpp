@@ -52,6 +52,8 @@ bool App::OnInit()
     menubar->Append(menuHelp, wxGetStockLabel(wxID_HELP));
 
     frame->SetMenuBar(menubar);
+    frame->CreateStatusBar();
+    frame->SetStatusText("");
     frame->SetIcon(wxICON(table));
     frame->Centre();
     frame->Show();
