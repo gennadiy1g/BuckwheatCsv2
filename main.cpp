@@ -1,10 +1,3 @@
-// For compilers that support precompilation, includes "wx/wx.h".
-#include <wx/wxprec.h>
-
-#ifndef WX_PRECOMP
-#include <wx/wx.h>
-#endif
-
 #include <wx/docview.h>
 #include <wx/docmdi.h>
 #include <wx/config.h>
