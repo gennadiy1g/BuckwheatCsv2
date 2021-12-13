@@ -31,8 +31,8 @@ bool App::OnInit()
                       wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
     // TODO (gennadiy#1#): Save position and size of the main frame at the exit and restore them here.
-    auto frame = new MainFrame(docManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
-                               wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
+    auto mainFrame = new MainFrame(docManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
+                                   wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
 
     auto *menuFile = new wxMenu;
     menuFile->Append(wxID_OPEN);
@@ -44,16 +44,16 @@ bool App::OnInit()
     auto *menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
 
-    auto *menubar = new wxMenuBar;
-    menubar->Append(menuFile, wxGetStockLabel(wxID_FILE));
-    menubar->Append(menuHelp, wxGetStockLabel(wxID_HELP));
+    auto *menuBar = new wxMenuBar;
+    menuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
+    menuBar->Append(menuHelp, wxGetStockLabel(wxID_HELP));
 
-    frame->SetMenuBar(menubar);
-    frame->CreateStatusBar();
-    frame->SetStatusText("");
-    frame->SetIcon(wxICON(table));
-    frame->Centre();
-    frame->Show();
+    mainFrame->SetMenuBar(menuBar);
+    mainFrame->CreateStatusBar();
+    mainFrame->SetStatusText("");
+    mainFrame->SetIcon(wxICON(table));
+    mainFrame->Centre();
+    mainFrame->Show();
 
     // Enter the application's main loop
     return true;
