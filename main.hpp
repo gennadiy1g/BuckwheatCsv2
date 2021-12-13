@@ -14,3 +14,14 @@ public:
     // function called at the application initialization
     virtual bool OnInit() override;
 };
+
+class MainFrame : public wxDocMDIParentFrame
+{
+public:
+    MainFrame(wxDocManager* manager, wxFrame* parent, wxWindowID id, const wxString& title,
+              const wxPoint& pos = wxDefaultPosition, const wxSize&  size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE,
+              const wxString& name = wxFrameNameStr)
+        : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name) {};
+    virtual ~MainFrame() = default;
+private:
+};
