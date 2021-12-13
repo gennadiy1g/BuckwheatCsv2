@@ -25,9 +25,9 @@ bool App::OnInit()
     auto *docManager = new wxDocManager;
 
     // Create a template relating text documents to their views
-    new wxDocTemplate(docManager, "Delimited files", "*.csv;*.txt;*.tab", "", "csv;txt;tab", "Text Doc", "Text View",
-                      wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
-    new wxDocTemplate(docManager, "All files", "*.*", "", "", "Text Doc", "Text View",
+    new wxDocTemplate(docManager, "Delimited text files", "*.csv;*.txt;*.tab", "", "csv;txt;tab", "Delimited Text Doc",
+                      "Delimited Text View", wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
+    new wxDocTemplate(docManager, "All files", "*.*", "", "", "Delimited Text Doc", "Delimited Text Doc",
                       wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
     auto frame = new wxDocMDIParentFrame(docManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition, wxSize(500,
