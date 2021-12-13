@@ -64,4 +64,4 @@ bool App::OnInit()
 
     // Enter the application's main loop
     return true;
-}
+};
