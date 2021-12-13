@@ -24,6 +24,10 @@ bool App::OnInit()
         return false;
     }
 
+    SetVendorName("gennadiy1g");
+    SetAppName("buckwheatcsv");
+    SetAppDisplayName("Buckwheat CSV");
+
     // Create a document manager
     auto *docManager = new wxDocManager;
 
