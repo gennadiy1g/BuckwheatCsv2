@@ -30,10 +30,6 @@ bool App::OnInit()
     new wxDocTemplate(docManager, "All files", "*.*", "", "", "Delimited Text Doc", "Delimited Text Doc",
                       wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
-    // TODO (gennadiy#1#): Save position and size of the main frame at the exit and restore them here.
-    auto mainFrame = new MainFrame(docManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
-                                   wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
-
     auto *menuFile = new wxMenu;
     menuFile->Append(wxID_OPEN);
     menuFile->Append(wxID_CLOSE);
@@ -48,6 +44,9 @@ bool App::OnInit()
     menuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
     menuBar->Append(menuHelp, wxGetStockLabel(wxID_HELP));
 
+    // TODO (gennadiy#1#): Save position and size of the main frame at the exit and restore them here.
+    auto mainFrame = new MainFrame(docManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
+                                   wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
     mainFrame->SetMenuBar(menuBar);
     mainFrame->CreateStatusBar();
     mainFrame->SetStatusText("");
