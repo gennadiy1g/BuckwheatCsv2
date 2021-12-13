@@ -16,8 +16,9 @@ wxIMPLEMENT_APP(App);
 
 bool App::OnInit()
 {
-    if(!wxApp::OnInit())
+    if (!wxApp::OnInit()) {
         return false;
+    }
 
     // Create a document manager
     auto *docManager = new wxDocManager;
