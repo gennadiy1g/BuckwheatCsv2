@@ -12,6 +12,9 @@
 #include "main.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
+#ifdef __WXGTK__
+#include "table.xpm"
+#endif
 
 wxIMPLEMENT_APP(App);
 
@@ -48,6 +51,7 @@ bool App::OnInit()
     menubar->Append(menuHelp, wxGetStockLabel(wxID_HELP));
 
     frame->SetMenuBar(menubar);
+    frame->SetIcon(wxICON(table));
     frame->Centre();
     frame->Show();
 
