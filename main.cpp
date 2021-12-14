@@ -57,3 +57,15 @@ bool App::OnInit()
     // Enter the application's main loop
     return true;
 };
+
+MainFrame::MainFrame(wxDocManager* manager, wxFrame* parent, wxWindowID id, const wxString& title, const wxPoint& pos,
+                     const wxSize&  size, long style, const wxString& name )
+    : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name)
+{
+    Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
+}
+
+void MainFrame::OnClose(wxCloseEvent& event)
+{
+    event.Skip(); // the default event handler does call Destroy()
+}
