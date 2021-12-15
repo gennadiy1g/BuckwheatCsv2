@@ -44,14 +44,11 @@ bool App::OnInit()
     pMenuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
     pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
-    // TODO (gennadiy#1#): Save position and size of the main frame at the exit and restore them here.
-    auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
-                                    wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
+    auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName());
     pMainFrame->SetMenuBar(pMenuBar);
     pMainFrame->CreateStatusBar();
     pMainFrame->SetStatusText("");
     pMainFrame->SetIcon(wxICON(table));
-    pMainFrame->Centre();
     pMainFrame->Show();
 
     // Enter the application's main loop
