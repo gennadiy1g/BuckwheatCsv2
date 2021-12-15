@@ -22,20 +22,20 @@ bool App::OnInit()
     SetAppDisplayName("Buckwheat CSV");
 
     // Create a document manager
-    auto *docManager = new wxDocManager;
+    auto *pDocManager = new wxDocManager;
 
     // Create a template relating text documents to their views
-    new wxDocTemplate(docManager, "Delimited text files", "*.csv;*.txt;*.tab", "", "csv;txt;tab", "Delimited Text Doc",
+    new wxDocTemplate(pDocManager, "Delimited text files", "*.csv;*.txt;*.tab", "", "csv;txt;tab", "Delimited Text Doc",
                       "Delimited Text View", wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
-    new wxDocTemplate(docManager, "All files", "*.*", "", "", "Delimited Text Doc", "Delimited Text Doc",
+    new wxDocTemplate(pDocManager, "All files", "*.*", "", "", "Delimited Text Doc", "Delimited Text Doc",
                       wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
     auto *menuFile = new wxMenu;
     menuFile->Append(wxID_OPEN);
     menuFile->Append(wxID_CLOSE);
     menuFile->Append(wxID_EXIT);
-    docManager->FileHistoryUseMenu(menuFile);
-    docManager->FileHistoryLoad(*wxConfig::Get());
+    pDocManager->FileHistoryUseMenu(menuFile);
+    pDocManager->FileHistoryLoad(*wxConfig::Get());
 
     auto *menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
@@ -45,7 +45,7 @@ bool App::OnInit()
     menuBar->Append(menuHelp, wxGetStockLabel(wxID_HELP));
 
     // TODO (gennadiy#1#): Save position and size of the main frame at the exit and restore them here.
-    auto mainFrame = new MainFrame(docManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
+    auto mainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
                                    wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
     mainFrame->SetMenuBar(menuBar);
     mainFrame->CreateStatusBar();
