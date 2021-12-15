@@ -22,7 +22,7 @@ bool App::OnInit()
     SetAppDisplayName("Buckwheat CSV");
 
     // Create a document manager
-    auto *pDocManager = new wxDocManager;
+    auto pDocManager = new wxDocManager;
 
     // Create a template relating text documents to their views
     new wxDocTemplate(pDocManager, "Delimited text files", "*.csv;*.txt;*.tab", "", "csv;txt;tab", "Delimited Text Doc",
@@ -30,17 +30,17 @@ bool App::OnInit()
     new wxDocTemplate(pDocManager, "All files", "*.*", "", "", "Delimited Text Doc", "Delimited Text Doc",
                       wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
-    auto *menuFile = new wxMenu;
+    auto menuFile = new wxMenu;
     menuFile->Append(wxID_OPEN);
     menuFile->Append(wxID_CLOSE);
     menuFile->Append(wxID_EXIT);
     pDocManager->FileHistoryUseMenu(menuFile);
     pDocManager->FileHistoryLoad(*wxConfig::Get());
 
-    auto *pMenuHelp = new wxMenu;
+    auto pMenuHelp = new wxMenu;
     pMenuHelp->Append(wxID_ABOUT);
 
-    auto *pMenuBar = new wxMenuBar;
+    auto pMenuBar = new wxMenuBar;
     pMenuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
     pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
