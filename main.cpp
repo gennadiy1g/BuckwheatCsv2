@@ -46,7 +46,7 @@ bool App::OnInit()
 
     // TODO (gennadiy#1#): Save position and size of the main frame at the exit and restore them here.
     auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
-                                   wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
+                                    wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
     pMainFrame->SetMenuBar(pMenuBar);
     pMainFrame->CreateStatusBar();
     pMainFrame->SetStatusText("");
