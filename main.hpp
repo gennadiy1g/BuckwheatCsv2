@@ -25,3 +25,13 @@ public:
     void OnClose(wxCloseEvent& event);
 private:
 };
+
+class AppGeometrySerializer: public wxTopLevelWindow::GeometrySerializer
+{
+//public:
+//    AppGeometrySerializer();
+//    ~AppGeometrySerializer();
+private:
+    virtual bool RestoreField(const wxString &name, int *value) override;
+    virtual bool SaveField(const wxString &name, int value) const override;
+};

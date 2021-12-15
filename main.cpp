@@ -63,9 +63,22 @@ MainFrame::MainFrame(wxDocManager* manager, wxFrame* parent, wxWindowID id, cons
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name)
 {
     Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
+    AppGeometrySerializer appGeometrySerializer;
+    RestoreToGeometry(appGeometrySerializer);
 };
 
 void MainFrame::OnClose(wxCloseEvent& event)
 {
+    AppGeometrySerializer appGeometrySerializer;
+    SaveGeometry(appGeometrySerializer);
     event.Skip(); // the default event handler does call Destroy()
+};
+
+bool AppGeometrySerializer::RestoreField(const wxString &name, int *value)
+{
+    return false;
+};
+bool AppGeometrySerializer::SaveField(const wxString &name, int value) const
+{
+    return false;
 };
