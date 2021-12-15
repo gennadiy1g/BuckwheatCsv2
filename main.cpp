@@ -63,9 +63,9 @@ MainFrame::MainFrame(wxDocManager* manager, wxFrame* parent, wxWindowID id, cons
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name)
 {
     Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
-}
+};
 
 void MainFrame::OnClose(wxCloseEvent& event)
 {
     event.Skip(); // the default event handler does call Destroy()
-}
+};
