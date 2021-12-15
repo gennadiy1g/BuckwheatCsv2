@@ -37,12 +37,12 @@ bool App::OnInit()
     pDocManager->FileHistoryUseMenu(menuFile);
     pDocManager->FileHistoryLoad(*wxConfig::Get());
 
-    auto *menuHelp = new wxMenu;
-    menuHelp->Append(wxID_ABOUT);
+    auto *pMenuHelp = new wxMenu;
+    pMenuHelp->Append(wxID_ABOUT);
 
     auto *menuBar = new wxMenuBar;
     menuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
-    menuBar->Append(menuHelp, wxGetStockLabel(wxID_HELP));
+    menuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
     // TODO (gennadiy#1#): Save position and size of the main frame at the exit and restore them here.
     auto mainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
