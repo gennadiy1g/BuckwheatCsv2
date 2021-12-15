@@ -76,9 +76,13 @@ void MainFrame::OnClose(wxCloseEvent& event)
 
 bool AppGeometrySerializer::RestoreField(const wxString &name, int *value)
 {
-    return false;
+    auto pConfig = wxConfigBase::Get();
+    auto result = pConfig->Read(name, value);
+    return result;
 };
 bool AppGeometrySerializer::SaveField(const wxString &name, int value) const
 {
-    return false;
+    auto pConfig = wxConfigBase::Get();
+    auto result = pConfig->Write(name, value);
+    return result;
 };
