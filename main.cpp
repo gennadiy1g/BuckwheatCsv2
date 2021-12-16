@@ -1,5 +1,4 @@
 #include <wx/config.h>
-#include <wx/docmdi.h>
 #include <wx/docview.h>
 
 #include "csv_document.hpp"
