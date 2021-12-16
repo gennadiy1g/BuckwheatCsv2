@@ -7,6 +7,8 @@
 #include <wx/wx.h>
 #endif
 
+#include <wx/docmdi.h>
+
 // application class
 class App : public wxApp
 {
