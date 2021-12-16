@@ -1,0 +1,62 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
+      "-I/usr/local/include/wx-3.1",
+      "-D_FILE_OFFSET_BITS=64",
+      "-D__WXGTK__",
+      "-pthread",
+      "-Wall",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/main.cpp",
+      "-o",
+      "obj/Debug/main.o"
+    ],
+    "directory": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv",
+    "file": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/main.cpp",
+    "output": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/obj/Debug/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
+      "-I/usr/local/include/wx-3.1",
+      "-D_FILE_OFFSET_BITS=64",
+      "-D__WXGTK__",
+      "-pthread",
+      "-Wall",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/csv_view.cpp",
+      "-o",
+      "obj/Debug/csv_view.o"
+    ],
+    "directory": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv",
+    "file": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/csv_view.cpp",
+    "output": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/obj/Debug/csv_view.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
+      "-I/usr/local/include/wx-3.1",
+      "-D_FILE_OFFSET_BITS=64",
+      "-D__WXGTK__",
+      "-pthread",
+      "-Wall",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/csv_document.cpp",
+      "-o",
+      "obj/Debug/csv_document.o"
+    ],
+    "directory": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv",
+    "file": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/csv_document.cpp",
+    "output": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/obj/Debug/csv_document.o"
+  }
+]
