@@ -57,6 +57,14 @@ bool App::OnInit() {
   return true;
 };
 
+int App::OnExit() {
+  auto *const manager = wxDocManager::GetDocumentManager();
+  manager->FileHistorySave(*wxConfig::Get());
+  delete manager;
+
+  return wxApp::OnExit();
+}
+
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id,
                      const wxString &title, const wxPoint &pos,
                      const wxSize &size, long style, const wxString &name)

@@ -14,6 +14,9 @@ class App : public wxApp {
 public:
   // function called at the application initialization
   virtual bool OnInit() override;
+
+  // processing which needs to be done as the application is about to exit
+  virtual int OnExit() override;
 };
 
 class MainFrame : public wxDocMDIParentFrame {
