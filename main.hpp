@@ -10,31 +10,31 @@
 #include <wx/docmdi.h>
 
 // application class
-class App : public wxApp
-{
+class App : public wxApp {
 public:
-    // function called at the application initialization
-    virtual bool OnInit() override;
+  // function called at the application initialization
+  virtual bool OnInit() override;
 };
 
-class MainFrame : public wxDocMDIParentFrame
-{
+class MainFrame : public wxDocMDIParentFrame {
 public:
-    MainFrame(wxDocManager* manager, wxFrame* parent, wxWindowID id, const wxString& title,
-              const wxPoint& pos = wxDefaultPosition, const wxSize&  size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE,
-              const wxString& name = wxFrameNameStr);
-    virtual ~MainFrame() = default;
-    void OnClose(wxCloseEvent& event);
+  MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id,
+            const wxString &title, const wxPoint &pos = wxDefaultPosition,
+            const wxSize &size = wxDefaultSize,
+            long style = wxDEFAULT_FRAME_STYLE,
+            const wxString &name = wxFrameNameStr);
+  virtual ~MainFrame() = default;
+  void OnClose(wxCloseEvent &event);
+
 private:
 };
 
-class AppGeometrySerializer: public wxTopLevelWindow::GeometrySerializer
-{
-//public:
-//    AppGeometrySerializer();
-//    ~AppGeometrySerializer();
+class AppGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
+  // public:
+  //    AppGeometrySerializer();
+  //    ~AppGeometrySerializer();
 private:
-    static inline const wxString path{"/Geometry"};
-    virtual bool RestoreField(const wxString &name, int *value) override;
-    virtual bool SaveField(const wxString &name, int value) const override;
+  static inline const wxString path{"/Geometry"};
+  virtual bool RestoreField(const wxString &name, int *value) override;
+  virtual bool SaveField(const wxString &name, int value) const override;
 };
