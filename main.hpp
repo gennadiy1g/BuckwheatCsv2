@@ -9,7 +9,7 @@
 
 #include <wx/docmdi.h>
 
-// application class
+// Application class
 class App : public wxApp {
 public:
   // function called at the application initialization
@@ -30,9 +30,6 @@ private:
 };
 
 class AppGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
-  // public:
-  //    AppGeometrySerializer();
-  //    ~AppGeometrySerializer();
 private:
   static inline const wxString path{"/Geometry"};
   virtual bool RestoreField(const wxString &name, int *value) override;
