@@ -1,6 +1,7 @@
 #include <wx/docview.h>
 #include <wx/docmdi.h>
 #include <wx/config.h>
+#include <wx/persist/toplevel.h>
 
 #include "main.hpp"
 #include "csv_document.hpp"
@@ -45,13 +46,11 @@ bool App::OnInit()
     pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
     // TODO (gennadiy#1#): Save position and size of the main frame at the exit and restore them here.
-    auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName(), wxDefaultPosition,
-                                    wxSize(wxWindow::FromDIP(wxSize(1000, 700), nullptr)));
+    auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName());
     pMainFrame->SetMenuBar(pMenuBar);
     pMainFrame->CreateStatusBar();
     pMainFrame->SetStatusText("");
     pMainFrame->SetIcon(wxICON(table));
-    pMainFrame->Centre();
     pMainFrame->Show();
 
     // Enter the application's main loop
@@ -63,6 +62,11 @@ MainFrame::MainFrame(wxDocManager* manager, wxFrame* parent, wxWindowID id, cons
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name)
 {
     Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
+
+    // Restore the previously saved geometry, if any, and register this frame
+    // for its geometry to be saved when it is closed using the given wxConfig
+    // key name.
+    wxPersistentRegisterAndRestore(this, "MainFrame");
 };
 
 void MainFrame::OnClose(wxCloseEvent& event)
