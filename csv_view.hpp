@@ -9,8 +9,7 @@
 
 #include <wx/docview.h>
 
-class CsvView : public wxView
-{
+class CsvView : public wxView {
 public:
     CsvView() : wxView() {};
     virtual void OnDraw(wxDC *dc) override {};
