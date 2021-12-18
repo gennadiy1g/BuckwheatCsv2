@@ -80,7 +80,8 @@ void MainFrame::OnClose(wxCloseEvent &event) {
   event.Skip(); // the default event handler does call Destroy()
 };
 
-bool AppGeometrySerializer::RestoreField(const wxString &name, int *value) {
+bool MainFrame::AppGeometrySerializer::RestoreField(const wxString &name,
+                                                    int *value) {
   auto pConfig = wxConfigBase::Get();
   auto oldPath = pConfig->GetPath();
   pConfig->SetPath(path);
@@ -89,7 +90,8 @@ bool AppGeometrySerializer::RestoreField(const wxString &name, int *value) {
   return result;
 };
 
-bool AppGeometrySerializer::SaveField(const wxString &name, int value) const {
+bool MainFrame::AppGeometrySerializer::SaveField(const wxString &name,
+                                                 int value) const {
   /* By some strange reason, if x and y are 0, the main frame is centered on the
    screen instead of being restored. By changing x from 0 to 1, we achieve that
    the main frame's geometry is almost restored (i.e., moved 1 pixel to the
