@@ -34,7 +34,7 @@ public:
   void OnClose(wxCloseEvent &event);
 
 private:
-  class AppGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
+  class MFGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
   private:
     static inline const wxString path{"/Geometry"};
     virtual bool RestoreField(const wxString &name, int *value) override;

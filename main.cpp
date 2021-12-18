@@ -70,18 +70,18 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id,
                      const wxSize &size, long style, const wxString &name)
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name) {
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
-  AppGeometrySerializer appGeometrySerializer;
+  MFGeometrySerializer appGeometrySerializer;
   RestoreToGeometry(appGeometrySerializer);
 };
 
 void MainFrame::OnClose(wxCloseEvent &event) {
-  AppGeometrySerializer appGeometrySerializer;
+  MFGeometrySerializer appGeometrySerializer;
   SaveGeometry(appGeometrySerializer);
   event.Skip(); // the default event handler does call Destroy()
 };
 
-bool MainFrame::AppGeometrySerializer::RestoreField(const wxString &name,
-                                                    int *value) {
+bool MainFrame::MFGeometrySerializer::RestoreField(const wxString &name,
+                                                   int *value) {
   auto pConfig = wxConfigBase::Get();
   auto oldPath = pConfig->GetPath();
   pConfig->SetPath(path);
@@ -90,8 +90,8 @@ bool MainFrame::AppGeometrySerializer::RestoreField(const wxString &name,
   return result;
 };
 
-bool MainFrame::AppGeometrySerializer::SaveField(const wxString &name,
-                                                 int value) const {
+bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name,
+                                                int value) const {
   /* By some strange reason, if x and y are 0, the main frame is centered on the
    screen instead of being restored. By changing x from 0 to 1, we achieve that
    the main frame's geometry is almost restored (i.e., moved 1 pixel to the
