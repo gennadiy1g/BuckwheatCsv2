@@ -19,6 +19,10 @@ public:
   virtual int OnExit() override;
 };
 
+// Create a forward declaration of the wxGetApp() function implemented by
+// wxIMPLEMENT_APP()
+wxDECLARE_APP(App);
+
 class MainFrame : public wxDocMDIParentFrame {
 public:
   MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id,
