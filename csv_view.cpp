@@ -1,3 +1,18 @@
+#include <wx/docmdi.h>
+
 #include "csv_view.hpp"
+#include "main.hpp"
 
 wxIMPLEMENT_DYNAMIC_CLASS(CsvView, wxView);
+
+bool CsvView::OnCreate(wxDocument *doc, long flags) {
+  if (!wxView::OnCreate(doc, flags))
+    return false;
+
+  auto pChildFrame = new wxDocMDIChildFrame(
+      doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
+      wxID_ANY, "Child Frame");
+  wxASSERT(pChildFrame == GetFrame());
+  pChildFrame->Show();
+  return true;
+};

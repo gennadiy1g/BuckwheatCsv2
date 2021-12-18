@@ -11,8 +11,10 @@
 
 class CsvView : public wxView {
 public:
-    CsvView() : wxView() {};
-    virtual void OnDraw(wxDC *dc) override {};
+  CsvView() : wxView(){};
+  virtual void OnDraw(wxDC *dc) override{};
+  virtual bool OnCreate(wxDocument *doc, long flags) override;
+
 private:
-    wxDECLARE_DYNAMIC_CLASS(CsvView);
+  wxDECLARE_DYNAMIC_CLASS(CsvView);
 };
