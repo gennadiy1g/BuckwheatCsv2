@@ -16,3 +16,10 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   pChildFrame->Show();
   return true;
 };
+
+bool CsvView::OnClose(bool deleteWindow = true) {
+  if (!wxView::OnClose(deleteWindow))
+    return false;
+
+  return true;
+}

@@ -14,6 +14,7 @@ public:
   CsvView() : wxView(){};
   virtual void OnDraw(wxDC *dc) override{};
   virtual bool OnCreate(wxDocument *doc, long flags) override;
+  virtual bool OnClose(bool deleteWindow) override;
 
 private:
   wxDECLARE_DYNAMIC_CLASS(CsvView);
