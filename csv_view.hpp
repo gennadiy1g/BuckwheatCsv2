@@ -8,6 +8,7 @@
 #endif
 
 #include <wx/docview.h>
+#include <wx/grid.h>
 
 class CsvView : public wxView {
 public:
@@ -17,5 +18,6 @@ public:
   virtual bool OnClose(bool deleteWindow) override;
 
 private:
+  wxGrid *mpGrid{nullptr};
   wxDECLARE_DYNAMIC_CLASS(CsvView);
 };

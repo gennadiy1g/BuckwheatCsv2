@@ -13,6 +13,8 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
       doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
       wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
+  mpGrid = new wxGrid(pChildFrame, wxID_ANY);
+  mpGrid->CreateGrid(100, 10);
   pChildFrame->Show();
   return true;
 };
