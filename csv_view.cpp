@@ -21,5 +21,12 @@ bool CsvView::OnClose(bool deleteWindow = true) {
   if (!wxView::OnClose(deleteWindow))
     return false;
 
+  Activate(false);
+
+  if (deleteWindow) {
+    GetFrame()->Destroy();
+    SetFrame(NULL);
+  }
+
   return true;
 }
