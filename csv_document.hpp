@@ -9,8 +9,7 @@
 
 #include <wx/docview.h>
 
-class CsvDocument : public wxDocument
-{
+class CsvDocument : public wxDocument {
 public:
     CsvDocument() : wxDocument() {};
 protected:
