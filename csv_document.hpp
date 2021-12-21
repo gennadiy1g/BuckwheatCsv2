@@ -11,7 +11,9 @@
 
 class CsvDocument : public wxDocument {
 public:
-    CsvDocument() : wxDocument() {};
+  CsvDocument() : wxDocument(){};
+
 protected:
-    wxDECLARE_DYNAMIC_CLASS(CsvDocument);
+  virtual bool DoOpenDocument(const wxString &filename) override;
+  wxDECLARE_DYNAMIC_CLASS(CsvDocument);
 };
