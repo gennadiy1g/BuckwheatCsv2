@@ -23,12 +23,9 @@ bool App::OnInit() {
   auto pDocManager = new wxDocManager;
 
   // Create a template relating text documents to their views
-  new wxDocTemplate(pDocManager, "Delimited text files", "*.csv;*.txt;*.tab",
-                    "", "csv;txt;tab", "Delimited Text Doc",
-                    "Delimited Text View", wxCLASSINFO(CsvDocument),
-                    wxCLASSINFO(CsvView));
-  new wxDocTemplate(pDocManager, "All files", "*.*", "", "",
-                    "Delimited Text Doc", "Delimited Text View",
+  new wxDocTemplate(pDocManager, "Delimited text files", "*.csv;*.txt;*.tab", "", "csv;txt;tab", "Delimited Text Doc",
+                    "Delimited Text View", wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
+  new wxDocTemplate(pDocManager, "All files", "*.*", "", "", "Delimited Text Doc", "Delimited Text View",
                     wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
   auto menuFile = new wxMenu;
@@ -45,8 +42,7 @@ bool App::OnInit() {
   pMenuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
-  auto pMainFrame =
-      new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName());
+  auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName());
   pMainFrame->SetMenuBar(pMenuBar);
   pMainFrame->CreateStatusBar();
   pMainFrame->SetStatusText("");
@@ -65,8 +61,7 @@ int App::OnExit() {
   return wxApp::OnExit();
 }
 
-MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id,
-                     const wxString &title, const wxPoint &pos,
+MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
                      const wxSize &size, long style, const wxString &name)
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name) {
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
@@ -80,8 +75,7 @@ void MainFrame::OnClose(wxCloseEvent &event) {
   event.Skip(); // the default event handler does call Destroy()
 };
 
-bool MainFrame::MFGeometrySerializer::RestoreField(const wxString &name,
-                                                   int *value) {
+bool MainFrame::MFGeometrySerializer::RestoreField(const wxString &name, int *value) {
   auto pConfig = wxConfigBase::Get();
   auto oldPath = pConfig->GetPath();
   pConfig->SetPath(path);
@@ -90,8 +84,7 @@ bool MainFrame::MFGeometrySerializer::RestoreField(const wxString &name,
   return result;
 };
 
-bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name,
-                                                int value) const {
+bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value) const {
   /* By some strange reason, if x and y are 0, the main frame is centered on the
    screen instead of being restored. By changing x from 0 to 1, we achieve that
    the main frame's geometry is almost restored (i.e., moved 1 pixel to the
