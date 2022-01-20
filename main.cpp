@@ -58,7 +58,7 @@ bool App::OnInit() {
 };
 
 int App::OnExit() {
-  auto *const manager = wxDocManager::GetDocumentManager();
+  auto const manager = wxDocManager::GetDocumentManager();
   manager->FileHistorySave(*wxConfig::Get());
   delete manager;
 
