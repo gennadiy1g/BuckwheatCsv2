@@ -28,7 +28,7 @@ bool App::OnInit() {
                     "Delimited Text View", wxCLASSINFO(CsvDocument),
                     wxCLASSINFO(CsvView));
   new wxDocTemplate(pDocManager, "All files", "*.*", "", "",
-                    "Delimited Text Doc", "Delimited Text Doc",
+                    "Delimited Text Doc", "Delimited Text View",
                     wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
   auto menuFile = new wxMenu;
