@@ -54,7 +54,7 @@ bool App::OnInit() {
 };
 
 int App::OnExit() {
-  auto const pDocManager = wxDocManager::GetDocumentManager();
+  const auto pDocManager = wxDocManager::GetDocumentManager();
   pDocManager->FileHistorySave(*wxConfig::Get());
   delete pDocManager;
 
@@ -76,10 +76,10 @@ void MainFrame::OnClose(wxCloseEvent &event) {
 };
 
 bool MainFrame::MFGeometrySerializer::RestoreField(const wxString &name, int *value) {
-  auto pConfig = wxConfigBase::Get();
-  auto oldPath = pConfig->GetPath();
+  const auto pConfig = wxConfigBase::Get();
+  const auto oldPath = pConfig->GetPath();
   pConfig->SetPath(path);
-  auto result = pConfig->Read(name, value);
+  const auto result = pConfig->Read(name, value);
   pConfig->SetPath(oldPath);
   return result;
 };
@@ -98,10 +98,10 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
     }
   };
 
-  auto pConfig = wxConfigBase::Get();
-  auto oldPath = pConfig->GetPath();
+  const auto pConfig = wxConfigBase::Get();
+  const auto oldPath = pConfig->GetPath();
   pConfig->SetPath(path);
-  auto result = pConfig->Write(name, value);
+  const auto result = pConfig->Write(name, value);
   pConfig->SetPath(oldPath);
   return result;
 };
