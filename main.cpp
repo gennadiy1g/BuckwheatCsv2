@@ -29,14 +29,14 @@ bool App::OnInit() {
                     wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
   auto menuFile = new wxMenu;
-  menuFile->Append(wxID_OPEN);
-  menuFile->Append(wxID_CLOSE);
-  menuFile->Append(wxID_EXIT);
+  menuFile->Append(wxID_OPEN, wxGetStockLabel(wxID_OPEN));
+  menuFile->Append(wxID_CLOSE, wxGetStockLabel(wxID_CLOSE));
+  menuFile->Append(wxID_EXIT, wxGetStockLabel(wxID_EXIT));
   pDocManager->FileHistoryUseMenu(menuFile);
   pDocManager->FileHistoryLoad(*wxConfig::Get());
 
   auto pMenuHelp = new wxMenu;
-  pMenuHelp->Append(wxID_ABOUT);
+  pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
 
   auto pMenuBar = new wxMenuBar;
   pMenuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
