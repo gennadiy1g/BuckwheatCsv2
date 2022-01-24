@@ -34,12 +34,22 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="`wx-config --cflags`" />
 			<Add option="-Wall" />
+			<Add option="`wx-config --cflags`" />
 		</Compiler>
 		<Linker>
 			<Add option="`wx-config --libs`" />
+			<Add library="/usr/local/lib/libboost_filesystem.a" />
+			<Add library="/usr/local/lib/libboost_locale.a" />
+			<Add library="/usr/local/lib/libboost_log_setup.a" />
+			<Add library="/usr/local/lib/libboost_log.a" />
+			<Add library="/usr/local/lib/libboost_thread.a" />
 		</Linker>
+		<Unit filename="CsvTable/CsvTable.cpp" />
+		<Unit filename="CsvTable/CsvTable.hpp" />
+		<Unit filename="CsvTable/log.hpp" />
+		<Unit filename="CsvTable/utilities.cpp" />
+		<Unit filename="CsvTable/utilities.hpp" />
 		<Unit filename="csv_document.cpp" />
 		<Unit filename="csv_document.hpp" />
 		<Unit filename="csv_view.cpp" />
