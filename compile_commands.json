@@ -2,12 +2,12 @@
   {
     "arguments": [
       "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-Wall",
       "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
       "-I/usr/local/include/wx-3.1",
       "-D_FILE_OFFSET_BITS=64",
       "-D__WXGTK__",
       "-pthread",
-      "-Wall",
       "-g",
       "-std=c++17",
       "-c",
@@ -22,12 +22,52 @@
   {
     "arguments": [
       "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-Wall",
       "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
       "-I/usr/local/include/wx-3.1",
       "-D_FILE_OFFSET_BITS=64",
       "-D__WXGTK__",
       "-pthread",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/CsvTable/utilities.cpp",
+      "-o",
+      "obj/Debug/CsvTable/utilities.o"
+    ],
+    "directory": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv",
+    "file": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/CsvTable/utilities.cpp",
+    "output": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/obj/Debug/CsvTable/utilities.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
       "-Wall",
+      "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
+      "-I/usr/local/include/wx-3.1",
+      "-D_FILE_OFFSET_BITS=64",
+      "-D__WXGTK__",
+      "-pthread",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/CsvTable/CsvTable.cpp",
+      "-o",
+      "obj/Debug/CsvTable/CsvTable.o"
+    ],
+    "directory": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv",
+    "file": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/CsvTable/CsvTable.cpp",
+    "output": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/obj/Debug/CsvTable/CsvTable.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-Wall",
+      "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
+      "-I/usr/local/include/wx-3.1",
+      "-D_FILE_OFFSET_BITS=64",
+      "-D__WXGTK__",
+      "-pthread",
       "-g",
       "-std=c++17",
       "-c",
@@ -42,12 +82,12 @@
   {
     "arguments": [
       "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-Wall",
       "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
       "-I/usr/local/include/wx-3.1",
       "-D_FILE_OFFSET_BITS=64",
       "-D__WXGTK__",
       "-pthread",
-      "-Wall",
       "-g",
       "-std=c++17",
       "-c",
