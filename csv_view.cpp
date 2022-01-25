@@ -31,3 +31,5 @@ bool CsvView::OnClose(bool deleteWindow = true) {
 
   return true;
 }
+
+void CsvView::OnProgress(std::size_t, int){};
