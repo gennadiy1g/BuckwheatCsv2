@@ -9,11 +9,19 @@
 
 #include <wx/docview.h>
 
+#include <memory>
+
+#include "CsvTable/CsvTable.hpp"
+
 class CsvDocument : public wxDocument {
 public:
   CsvDocument() : wxDocument(){};
 
 protected:
   virtual bool DoOpenDocument(const wxString &filename) override;
+
+private:
+  std::unique_ptr<TokenizedFileLines> mpTokenizedFileLines;
+
   wxDECLARE_DYNAMIC_CLASS(CsvDocument);
 };
