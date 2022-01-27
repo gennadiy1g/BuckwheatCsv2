@@ -22,6 +22,7 @@ protected:
 
 private:
   std::unique_ptr<TokenizedFileLines> mpTokenizedFileLines;
+  FileLines::OnProgress mOnProgress;
 
   wxDECLARE_DYNAMIC_CLASS(CsvDocument);
 };
