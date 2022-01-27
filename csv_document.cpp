@@ -17,3 +17,7 @@ bool CsvDocument::DoOpenDocument(const wxString &filename) {
 
   return true;
 }
+
+void CsvDocument::OnProgress(std::size_t numLines, int percent) {
+  return; //
+};

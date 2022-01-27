@@ -16,7 +16,6 @@ public:
   virtual void OnDraw(wxDC *dc) override{};
   virtual bool OnCreate(wxDocument *doc, long flags) override;
   virtual bool OnClose(bool deleteWindow) override;
-  void OnProgress(std::size_t, int);
 
 private:
   wxGrid *mpGrid{nullptr};
