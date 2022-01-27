@@ -1,6 +1,7 @@
 #include <boost/filesystem.hpp>
 
 #include "csv_document.hpp"
+#include "csv_view.hpp"
 
 wxIMPLEMENT_DYNAMIC_CLASS(CsvDocument, wxDocument);
 
@@ -19,5 +20,10 @@ bool CsvDocument::DoOpenDocument(const wxString &filename) {
 }
 
 void CsvDocument::OnProgress(std::size_t numLines, int percent) {
-  return; //
+  auto pCsvView = dynamic_cast<CsvView *>(GetFirstView());
+  assert(pCsvView);
+  wxThreadEvent event;
+  event.SetPayload(numLines);
+  event.SetInt(percent);
+  pCsvView->QueueEvent(event.Clone());
 };
