@@ -30,4 +30,4 @@ bool CsvView::OnClose(bool deleteWindow = true) {
   }
 
   return true;
-}
+};
