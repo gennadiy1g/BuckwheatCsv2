@@ -16,7 +16,7 @@ public:
   virtual void OnDraw(wxDC *dc) override{};
   virtual bool OnCreate(wxDocument *doc, long flags) override;
   virtual bool OnClose(bool deleteWindow) override;
-  void OnWorkerThread(const wxThreadEvent &event);
+  void OnThreadEvent(const wxThreadEvent &event);
 
 private:
   wxGrid *mpGrid{nullptr};

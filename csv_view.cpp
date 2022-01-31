@@ -10,7 +10,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   if (!wxView::OnCreate(doc, flags))
     return false;
 
-  Bind(wxEVT_THREAD, &CsvView::OnWorkerThread, this);
+  Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
 
   auto pChildFrame = new wxDocMDIChildFrame(doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
                                             wxID_ANY, "Child Frame");
@@ -35,7 +35,7 @@ bool CsvView::OnClose(bool deleteWindow = true) {
   return true;
 };
 
-void CsvView::OnWorkerThread(const wxThreadEvent &event) {
+void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   const std::size_t numLines = event.GetPayload<std::size_t>();
   const int percent = event.GetInt();
 };
