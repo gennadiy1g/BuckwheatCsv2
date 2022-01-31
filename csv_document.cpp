@@ -3,6 +3,8 @@
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 
+CsvTable::CsvTable(boost::filesystem::path filename) : wxGridTableBase(){};
+
 wxIMPLEMENT_DYNAMIC_CLASS(CsvDocument, wxDocument);
 
 bool CsvDocument::DoOpenDocument(const wxString &filename) {
