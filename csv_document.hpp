@@ -18,7 +18,7 @@
 
 class CsvTable : public wxGridTableBase {
 public:
-  CsvTable(boost::filesystem::path filename);
+  CsvTable(boost::filesystem::path file);
   virtual ~CsvTable() = default;
 
   CsvTable(const CsvTable &src) = delete;
@@ -33,7 +33,7 @@ public:
   CsvDocument() : wxDocument(){};
 
 protected:
-  virtual bool DoOpenDocument(const wxString &filename) override;
+  virtual bool DoOpenDocument(const wxString &file) override;
 
 private:
   std::unique_ptr<TokenizedFileLines> mpTokenizedFileLines;

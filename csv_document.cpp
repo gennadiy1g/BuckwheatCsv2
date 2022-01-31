@@ -3,17 +3,17 @@
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 
-CsvTable::CsvTable(boost::filesystem::path filename) : wxGridTableBase(){};
+CsvTable::CsvTable(boost::filesystem::path file) : wxGridTableBase(){};
 
 wxIMPLEMENT_DYNAMIC_CLASS(CsvDocument, wxDocument);
 
-bool CsvDocument::DoOpenDocument(const wxString &filename) {
+bool CsvDocument::DoOpenDocument(const wxString &file) {
   Modify(false);
 
   using namespace std::placeholders; // for _1, _2, _3...
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
   try {
-    mpTokenizedFileLines.reset(new TokenizedFileLines(boost::filesystem::path(filename), mOnProgress));
+    mpTokenizedFileLines.reset(new TokenizedFileLines(boost::filesystem::path(file), mOnProgress));
   } catch (std::runtime_error &) {
     return false;
   }
