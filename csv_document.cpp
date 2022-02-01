@@ -3,7 +3,8 @@
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 
-CsvGridTable::CsvGridTable(TokenizedFileLines *pTokenizedFileLines) : wxGridTableBase(){};
+CsvGridTable::CsvGridTable(TokenizedFileLines *pTokenizedFileLines)
+    : wxGridTableBase(), mpTokenizedFileLines(pTokenizedFileLines){};
 
 wxIMPLEMENT_DYNAMIC_CLASS(CsvDocument, wxDocument);
 
