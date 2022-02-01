@@ -15,6 +15,7 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
   try {
     mpTokenizedFileLines.reset(new TokenizedFileLines(boost::filesystem::path(file), mOnProgress));
+    assert(mpTokenizedFileLines);
   } catch (std::runtime_error &) {
     return false;
   }
