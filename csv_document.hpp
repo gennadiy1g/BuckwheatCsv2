@@ -16,16 +16,16 @@
 
 #include "CsvTable/CsvTable.hpp"
 
-class CsvTable : public wxGridTableBase {
+class CsvGridTable : public wxGridTableBase {
 public:
-  CsvTable(TokenizedFileLines *pTokenizedFileLines);
-  virtual ~CsvTable() = default;
+  CsvGridTable(TokenizedFileLines *pTokenizedFileLines);
+  virtual ~CsvGridTable() = default;
 
-  CsvTable(const CsvTable &src) = delete;
-  CsvTable &operator=(const CsvTable &rhs) = delete;
+  CsvGridTable(const CsvGridTable &src) = delete;
+  CsvGridTable &operator=(const CsvGridTable &rhs) = delete;
 
-  CsvTable(CsvTable &&src) = delete;
-  CsvTable &operator=(CsvTable &&rhs) = delete;
+  CsvGridTable(CsvGridTable &&src) = delete;
+  CsvGridTable &operator=(CsvGridTable &&rhs) = delete;
 
   virtual int GetNumberRows() override;
   virtual int GetNumberCols() override;
@@ -42,7 +42,7 @@ protected:
 
 private:
   std::unique_ptr<TokenizedFileLines> mpTokenizedFileLines;
-  std::unique_ptr<CsvTable> mpCsvTable;
+  std::unique_ptr<CsvGridTable> mpCsvGridTable;
   void OnProgress(std::size_t numLines, int percent);
   FileLines::OnProgress mOnProgress;
 
