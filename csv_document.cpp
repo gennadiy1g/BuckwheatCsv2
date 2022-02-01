@@ -6,6 +6,11 @@
 CsvGridTable::CsvGridTable(TokenizedFileLines *pTokenizedFileLines)
     : wxGridTableBase(), mpTokenizedFileLines(pTokenizedFileLines){};
 
+int CsvGridTable::GetNumberRows() { return 0; };
+int CsvGridTable::GetNumberCols() { return 0; };
+wxString CsvGridTable::GetValue(int row, int col) { return L""; };
+void CsvGridTable::SetValue(int row, int col, const wxString &value){};
+
 wxIMPLEMENT_DYNAMIC_CLASS(CsvDocument, wxDocument);
 
 bool CsvDocument::DoOpenDocument(const wxString &file) {
@@ -32,8 +37,3 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
   event.SetInt(percent);
   pCsvView->QueueEvent(event.Clone());
 };
-
-int CsvGridTable::GetNumberRows() { return 0; };
-int CsvGridTable::GetNumberCols() { return 0; };
-wxString CsvGridTable::GetValue(int row, int col) { return L""; };
-void CsvGridTable::SetValue(int row, int col, const wxString &value){};
