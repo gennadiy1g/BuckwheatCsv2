@@ -18,7 +18,7 @@
 
 class CsvTable : public wxGridTableBase {
 public:
-  CsvTable(boost::filesystem::path file);
+  CsvTable(TokenizedFileLines *pTokenizedFileLines);
   virtual ~CsvTable() = default;
 
   CsvTable(const CsvTable &src) = delete;
@@ -26,6 +26,11 @@ public:
 
   CsvTable(CsvTable &&src) = delete;
   CsvTable &operator=(CsvTable &&rhs) = delete;
+
+  virtual int GetNumberRows() override;
+  virtual int GetNumberCols() override;
+  virtual wxString GetValue(int row, int col) override;
+  virtual void SetValue(int row, int col, const wxString &value) override;
 };
 
 class CsvDocument : public wxDocument {
