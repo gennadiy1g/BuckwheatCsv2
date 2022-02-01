@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <wx/docmdi.h>
 
+#include "csv_document.hpp"
 #include "csv_view.hpp"
 #include "main.hpp"
 
@@ -15,8 +16,14 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   auto pChildFrame = new wxDocMDIChildFrame(doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
+
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
-  mpGrid->CreateGrid(100, 10);
+  auto pDocument = GetDocument();
+  assert(pDocument);
+  auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
+  assert(pCsvDocument);
+  mpGrid->SetTable(pCsvDocument->getGridTable(), false);
+
   pChildFrame->Show();
   return true;
 };

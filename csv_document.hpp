@@ -39,6 +39,7 @@ private:
 class CsvDocument : public wxDocument {
 public:
   CsvDocument() : wxDocument(){};
+  wxGridTableBase *getGridTable() { return mpCsvGridTable.get(); };
 
 protected:
   virtual bool DoOpenDocument(const wxString &file) override;
