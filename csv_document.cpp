@@ -15,7 +15,19 @@ int CsvGridTable::GetNumberCols() {
 };
 
 wxString CsvGridTable::GetValue(int row, int col) { return L""; };
-wxString CsvGridTable::GetColLabelValue(int col) { return L""; };
+
+wxString CsvGridTable::GetColLabelValue(int col) {
+  if (mNumLines) {
+    auto tokenizedLine = mpTokenizedFileLines->getTokenizedLine(0);
+    if (col < static_cast<int>(tokenizedLine->size())) {
+      return tokenizedLine->at(col);
+    } else {
+      return L".";
+    }
+  } else {
+    return L"";
+  }
+};
 
 bool CsvGridTable::AppendRows(size_t numRows) {
   mNumLines += numRows;
