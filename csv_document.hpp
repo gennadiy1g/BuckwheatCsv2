@@ -32,6 +32,7 @@ public:
   virtual wxString GetValue(int row, int col) override;
   virtual void SetValue(int row, int col, const wxString &value) override{};
   virtual wxString GetColLabelValue(int col) override;
+  virtual bool AppendRows(size_t numRows = 1) override;
 
 private:
   TokenizedFileLines *mpTokenizedFileLines{nullptr};
