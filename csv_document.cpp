@@ -6,7 +6,14 @@
 CsvGridTable::CsvGridTable(TokenizedFileLines *pTokenizedFileLines)
     : wxGridTableBase(), mpTokenizedFileLines(pTokenizedFileLines){};
 
-int CsvGridTable::GetNumberCols() { return 0; };
+int CsvGridTable::GetNumberCols() {
+  if (mNumLines) {
+    return mpTokenizedFileLines->numColumns();
+  } else {
+    return 0;
+  }
+};
+
 wxString CsvGridTable::GetValue(int row, int col) { return L""; };
 wxString CsvGridTable::GetColLabelValue(int col) { return L""; };
 
