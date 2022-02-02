@@ -31,6 +31,7 @@ public:
   virtual int GetNumberCols() override;
   virtual wxString GetValue(int row, int col) override;
   virtual void SetValue(int row, int col, const wxString &value) override;
+  virtual wxString GetColLabelValue(int col) override;
 
 private:
   TokenizedFileLines *mpTokenizedFileLines{nullptr};

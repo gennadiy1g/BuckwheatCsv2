@@ -10,6 +10,7 @@ int CsvGridTable::GetNumberRows() { return 0; };
 int CsvGridTable::GetNumberCols() { return 0; };
 wxString CsvGridTable::GetValue(int row, int col) { return L""; };
 void CsvGridTable::SetValue(int row, int col, const wxString &value){};
+wxString CsvGridTable::GetColLabelValue(int col) { return L""; };
 
 wxIMPLEMENT_DYNAMIC_CLASS(CsvDocument, wxDocument);
 
