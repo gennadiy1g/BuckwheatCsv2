@@ -43,6 +43,6 @@ bool CsvView::OnClose(bool deleteWindow = true) {
 };
 
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
-  __attribute__((unused)) const std::size_t numLines = event.GetPayload<std::size_t>();
-  __attribute__((unused)) const int percent = event.GetInt();
+  [[maybe_unused]] const std::size_t numLines = event.GetPayload<std::size_t>();
+  [[maybe_unused]] const int percent = event.GetInt();
 };
