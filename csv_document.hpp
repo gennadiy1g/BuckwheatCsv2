@@ -27,7 +27,7 @@ public:
   CsvGridTable(CsvGridTable &&src) = delete;
   CsvGridTable &operator=(CsvGridTable &&rhs) = delete;
 
-  virtual int GetNumberRows() override;
+  virtual int GetNumberRows() override { return mNumLines; };
   virtual int GetNumberCols() override;
   virtual wxString GetValue(int row, int col) override;
   virtual void SetValue(int row, int col, const wxString &value) override{};
@@ -35,6 +35,7 @@ public:
 
 private:
   TokenizedFileLines *mpTokenizedFileLines{nullptr};
+  std::size_t mNumLines{0};
 };
 
 class CsvDocument : public wxDocument {
