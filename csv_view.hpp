@@ -20,5 +20,6 @@ public:
 
 private:
   wxGrid *mpGrid{nullptr};
+  std::size_t mNumLines{0};
   wxDECLARE_DYNAMIC_CLASS(CsvView);
 };
