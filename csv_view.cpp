@@ -43,6 +43,12 @@ bool CsvView::OnClose(bool deleteWindow = true) {
 };
 
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
-  [[maybe_unused]] const decltype(mNumLines) numLines = event.GetPayload<std::size_t>();
+  const decltype(mNumLines) numLines = event.GetPayload<std::size_t>();
   [[maybe_unused]] const int percent = event.GetInt();
+
+  assert(numLines >= mNumLines);
+  if (numLines > mNumLines) {
+    mpGrid->AppendRows(numLines - mNumLines);
+    mNumLines = numLines;
+  }
 };
