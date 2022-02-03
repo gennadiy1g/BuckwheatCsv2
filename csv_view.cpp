@@ -8,8 +8,10 @@
 wxIMPLEMENT_DYNAMIC_CLASS(CsvView, wxView);
 
 bool CsvView::OnCreate(wxDocument *doc, long flags) {
-  if (!wxView::OnCreate(doc, flags))
+  if (!wxView::OnCreate(doc, flags)) {
     return false;
+  }
+
   auto pChildFrame = new wxDocMDIChildFrame(doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
@@ -29,8 +31,9 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
 };
 
 bool CsvView::OnClose(bool deleteWindow = true) {
-  if (!wxView::OnClose(deleteWindow))
+  if (!wxView::OnClose(deleteWindow)) {
     return false;
+  }
 
   Activate(false);
 
