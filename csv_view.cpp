@@ -21,7 +21,9 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   assert(pDocument);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
   assert(pCsvDocument);
-  mpGrid->SetTable(pCsvDocument->getGridTable(), false);
+  auto pCsvGridTable = pCsvDocument->getGridTable();
+  assert(pCsvGridTable);
+  mpGrid->SetTable(pCsvGridTable, false);
 
   pChildFrame->Show();
 
