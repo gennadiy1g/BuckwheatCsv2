@@ -30,7 +30,13 @@ wxString CsvGridTable::GetColLabelValue(int col) {
 };
 
 bool CsvGridTable::AppendRows(size_t numRows) {
-  mNumLines += numRows;
+  assert(numRows);
+  if (mNumLines) {
+    mNumLines += numRows;
+  } else {
+    // the 1st line contains columns' names, do not count the 1st line as a data row
+    mNumLines += numRows - 1;
+  }
   return true;
 }
 
