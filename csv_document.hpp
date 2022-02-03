@@ -34,6 +34,8 @@ public:
   virtual wxString GetColLabelValue(int col) override;
   virtual bool AppendRows(size_t numRows = 1) override;
 
+  wxString getValueAux(int row, int col);
+
 private:
   TokenizedFileLines *mpTokenizedFileLines{nullptr};
   std::size_t mNumLines{0};

@@ -16,26 +16,25 @@ int CsvGridTable::GetNumberCols() {
 
 wxString CsvGridTable::GetValue(int row, int col) {
   // the 1st line contains columns' names, the 2nd line is the 1st data row
-  auto tokenizedLine = mpTokenizedFileLines->getTokenizedLine(row + 1);
+  return getValueAux(row + 1, col);
+};
+
+wxString CsvGridTable::GetColLabelValue(int col) {
+  if (mNumLines) {
+    return getValueAux(0, col);
+  } else {
+    return L"";
+  }
+};
+
+wxString CsvGridTable::getValueAux(int row, int col) {
+  auto tokenizedLine = mpTokenizedFileLines->getTokenizedLine(row);
   if (col < static_cast<int>(tokenizedLine->size())) {
     return tokenizedLine->at(col);
   } else {
     return L".";
   }
-};
-
-wxString CsvGridTable::GetColLabelValue(int col) {
-  if (mNumLines) {
-    auto tokenizedLine = mpTokenizedFileLines->getTokenizedLine(0);
-    if (col < static_cast<int>(tokenizedLine->size())) {
-      return tokenizedLine->at(col);
-    } else {
-      return L".";
-    }
-  } else {
-    return L"";
-  }
-};
+}
 
 bool CsvGridTable::AppendRows(size_t numRows) {
   assert(numRows);
