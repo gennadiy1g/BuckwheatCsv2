@@ -17,6 +17,7 @@ public:
   virtual bool OnCreate(wxDocument *doc, long flags) override;
   virtual bool OnClose(bool deleteWindow) override;
   void OnThreadEvent(const wxThreadEvent &event);
+  wxGrid *getGrid() { return mpGrid; };
 
 private:
   wxGrid *mpGrid{nullptr};

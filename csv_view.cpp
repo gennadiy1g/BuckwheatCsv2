@@ -17,13 +17,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   wxASSERT(pChildFrame == GetFrame());
 
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
-  auto pDocument = GetDocument();
-  assert(pDocument);
-  auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
-  assert(pCsvDocument);
-  auto pCsvGridTable = new CsvGridTable(pCsvDocument);
-  assert(pCsvGridTable);
-  mpGrid->AssignTable(pCsvGridTable);
+  assert(!mpGrid->GetTable());
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
 
   pChildFrame->Show();
