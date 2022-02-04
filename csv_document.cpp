@@ -29,8 +29,6 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
   pCsvView->QueueEvent(event.Clone());
 };
 
-CsvGridTable::CsvGridTable(CsvDocument *pCsvDocument) : wxGridTableBase(), mpCsvDocument(pCsvDocument){};
-
 int CsvGridTable::GetNumberCols() {
   if (mNumLines) {
     return mpCsvDocument->getTokenizedFileLines()->numColumns();

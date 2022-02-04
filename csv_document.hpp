@@ -36,7 +36,7 @@ private:
 
 class CsvGridTable : public wxGridTableBase {
 public:
-  CsvGridTable(CsvDocument *pCsvDocument);
+  CsvGridTable(CsvDocument *pCsvDocument) : wxGridTableBase(), mpCsvDocument(pCsvDocument){};
   virtual ~CsvGridTable() = default;
 
   CsvGridTable(const CsvGridTable &src) = delete;
