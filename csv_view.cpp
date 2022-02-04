@@ -24,10 +24,9 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   auto pCsvGridTable = new CsvGridTable(pCsvDocument);
   assert(pCsvGridTable);
   mpGrid->AssignTable(pCsvGridTable);
+  Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
 
   pChildFrame->Show();
-
-  Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
 
   return true;
 };
