@@ -16,9 +16,27 @@
 
 #include "CsvTable/CsvTable.hpp"
 
+class CsvDocument : public wxDocument {
+public:
+  TokenizedFileLines *getTokenizedFileLines() {
+    assert(mpTokenizedFileLines);
+    return mpTokenizedFileLines.get();
+  };
+
+protected:
+  virtual bool DoOpenDocument(const wxString &file) override;
+
+private:
+  std::unique_ptr<TokenizedFileLines> mpTokenizedFileLines;
+  void OnProgress(std::size_t numLines, int percent);
+  FileLines::OnProgress mOnProgress;
+
+  wxDECLARE_DYNAMIC_CLASS(CsvDocument);
+};
+
 class CsvGridTable : public wxGridTableBase {
 public:
-  CsvGridTable(TokenizedFileLines *pTokenizedFileLines);
+  CsvGridTable(CsvDocument *pCsvDocument);
   virtual ~CsvGridTable() = default;
 
   CsvGridTable(const CsvGridTable &src) = delete;
@@ -37,23 +55,6 @@ public:
   wxString getValueAux(int row, int col);
 
 private:
-  TokenizedFileLines *mpTokenizedFileLines{nullptr};
+  CsvDocument *mpCsvDocument{nullptr};
   std::size_t mNumLines{0};
-};
-
-class CsvDocument : public wxDocument {
-public:
-  CsvDocument() : wxDocument(){};
-  wxGridTableBase *getGridTable() { return mpCsvGridTable.get(); };
-
-protected:
-  virtual bool DoOpenDocument(const wxString &file) override;
-
-private:
-  std::unique_ptr<TokenizedFileLines> mpTokenizedFileLines;
-  std::unique_ptr<CsvGridTable> mpCsvGridTable;
-  void OnProgress(std::size_t numLines, int percent);
-  FileLines::OnProgress mOnProgress;
-
-  wxDECLARE_DYNAMIC_CLASS(CsvDocument);
 };
