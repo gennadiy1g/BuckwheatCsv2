@@ -57,4 +57,5 @@ public:
 private:
   CsvDocument *mpCsvDocument{nullptr};
   std::size_t mNumLines{0};
+  bool mFirstLineCounted{false};
 };

@@ -61,11 +61,12 @@ wxString CsvGridTable::getValueAux(int row, int col) {
 
 bool CsvGridTable::AppendRows(size_t numRows) {
   assert(numRows);
-  if (mNumLines) {
+  if (mFirstLineCounted) {
     mNumLines += numRows;
   } else {
     // the 1st line contains columns' names, do not count the 1st line as a data row
     mNumLines += numRows - 1;
+    mFirstLineCounted = true;
   }
   return true;
 };
