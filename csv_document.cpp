@@ -23,9 +23,9 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
 void CsvDocument::OnProgress(std::size_t numLines, int percent) {
   auto pCsvView = dynamic_cast<CsvView *>(GetFirstView());
   assert(pCsvView);
-  if (!pCsvView->getGrid()) {
-    assert(mpTokenizedFileLines);
-    pCsvView->getGrid()->AssignTable(new CsvGridTable(this));
+  if (!pCsvView->gridTableIsSet()) {
+    pCsvView->setGridTable(new CsvGridTable(this));
+    assert(pCsvView->gridTableIsSet());
   }
   wxThreadEvent event;
   event.SetPayload(numLines);
