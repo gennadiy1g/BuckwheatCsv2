@@ -8,12 +8,17 @@
 #include "table.xpm"
 #endif
 
+#include "CsvTable/utilities.hpp"
+
 wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
   if (!wxApp::OnInit()) {
     return false;
   }
+
+  initLocalization();
+  initLogging();
 
   SetVendorName("gennadiy1g");
   SetAppName("buckwheatcsv");
