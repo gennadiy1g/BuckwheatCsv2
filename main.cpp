@@ -1,14 +1,22 @@
+#include <boost/locale/localization_backend.hpp>
+#include <numeric>
+
 #include <wx/config.h>
 #include <wx/docview.h>
 
+#include "CsvTable/log.hpp"
+#include "CsvTable/utilities.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 #include "main.hpp"
+
 #ifdef __WXGTK__
 #include "table.xpm"
 #endif
 
-#include "CsvTable/utilities.hpp"
+namespace blocale = boost::locale;
+
+using namespace std::literals::string_literals;
 
 wxIMPLEMENT_APP(App);
 
@@ -19,6 +27,13 @@ bool App::OnInit() {
 
   initLocalization();
   initLogging();
+
+  auto backends = blocale::localization_backend_manager::global().get_all_backends();
+  std::string backendsList =
+      std::accumulate(backends.cbegin(), backends.cend(), ""s,
+                      [](const std::string &a, const std::string &b) { return a + (a == "" ? "" : ", ") + b; });
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::debug) << " Localization backends: " << backendsList << '.';
 
   SetVendorName("gennadiy1g");
   SetAppName("buckwheatcsv");

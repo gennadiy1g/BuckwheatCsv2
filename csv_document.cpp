@@ -1,5 +1,6 @@
 #include <boost/filesystem.hpp>
 
+#include "CsvTable/log.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 
@@ -22,6 +23,10 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
 
 // This method is called on the worker thread
 void CsvDocument::OnProgress(std::size_t numLines, int percent) {
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
+
   auto pCsvView = dynamic_cast<CsvView *>(GetFirstView());
   if (pCsvView) {
     wxThreadEvent event;
