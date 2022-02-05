@@ -31,6 +31,11 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
   }
 };
 
+int CsvGridTable::GetNumberRows() {
+  // The 1st line contains columns' names, do not count the 1st line as a data row
+  return mNumLines ? mNumLines - 1 : 0;
+};
+
 int CsvGridTable::GetNumberCols() {
   if (mNumLines) {
     return mpCsvDocument->getTokenizedFileLines()->numColumns();
@@ -63,4 +68,9 @@ wxString CsvGridTable::getValueAux(int row, int col) {
   } else {
     return L".";
   }
+};
+
+void CsvGridTable::setNumberRows(std::size_t numRows) {
+  assert(numRows);
+  mNumLines = numRows;
 };
