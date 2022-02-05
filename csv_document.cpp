@@ -23,10 +23,6 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
 void CsvDocument::OnProgress(std::size_t numLines, int percent) {
   auto pCsvView = dynamic_cast<CsvView *>(GetFirstView());
   assert(pCsvView);
-  if (!pCsvView->gridTableIsSet()) {
-    pCsvView->setGridTable(new CsvGridTable(this));
-    assert(pCsvView->gridTableIsSet());
-  }
   wxThreadEvent event;
   event.SetPayload(numLines);
   event.SetInt(percent);
@@ -43,7 +39,11 @@ int CsvGridTable::GetNumberCols() {
 
 wxString CsvGridTable::GetValue(int row, int col) {
   // the 1st line contains columns' names, the 2nd line is the 1st data row
-  return getValueAux(row + 1, col);
+  if (mNumLines) {
+    return getValueAux(row + 1, col);
+  } else {
+    return L"";
+  }
 };
 
 wxString CsvGridTable::GetColLabelValue(int col) {
@@ -61,16 +61,4 @@ wxString CsvGridTable::getValueAux(int row, int col) {
   } else {
     return L".";
   }
-};
-
-bool CsvGridTable::AppendRows(size_t numRows) {
-  assert(numRows);
-  if (mFirstLineCounted) {
-    mNumLines += numRows;
-  } else {
-    // the 1st line contains columns' names, do not count the 1st line as a data row
-    mNumLines += numRows - 1;
-    mFirstLineCounted = true;
-  }
-  return true;
 };

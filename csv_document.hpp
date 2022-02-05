@@ -45,17 +45,22 @@ public:
   CsvGridTable(CsvGridTable &&src) = delete;
   CsvGridTable &operator=(CsvGridTable &&rhs) = delete;
 
-  virtual int GetNumberRows() override { return mNumLines; };
+  virtual int GetNumberRows() override {
+    // The 1st line contains columns' names, do not count the 1st line as a data row
+    return mNumLines ? mNumLines - 1 : 0;
+  };
   virtual int GetNumberCols() override;
   virtual wxString GetValue(int row, int col) override;
   virtual void SetValue(int row, int col, const wxString &value) override{};
   virtual wxString GetColLabelValue(int col) override;
-  virtual bool AppendRows(size_t numRows = 1) override;
 
   wxString getValueAux(int row, int col);
+  void setNumberRows(std::size_t numRows) {
+    assert(numRows);
+    mNumLines = numRows;
+  }
 
 private:
   CsvDocument *mpCsvDocument{nullptr};
   std::size_t mNumLines{0};
-  bool mFirstLineCounted{false};
 };

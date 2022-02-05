@@ -17,6 +17,15 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   wxASSERT(pChildFrame == GetFrame());
 
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
+
+  auto pDocument = GetDocument();
+  assert(pDocument);
+  auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
+  assert(pCsvDocument);
+  mpCsvGridTable = new CsvGridTable(pCsvDocument);
+  assert(mpCsvGridTable);
+  mpGrid->AssignTable(mpCsvGridTable);
+
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
 
   pChildFrame->Show();
@@ -42,17 +51,6 @@ bool CsvView::OnClose(bool deleteWindow = true) {
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   const decltype(mNumLines) numLines = event.GetPayload<std::size_t>();
   [[maybe_unused]] const int percent = event.GetInt();
-
-  assert(numLines >= mNumLines);
-  if (numLines > mNumLines) {
-    mpGrid->AppendRows(numLines - mNumLines);
-    mNumLines = numLines;
-  }
-};
-
-void CsvView::setGridTable(wxGridTableBase *table) {
-  if (!mGridTableIsSet) {
-    mpGrid->AssignTable(table);
-  }
-  mGridTableIsSet = true;
+  mpCsvGridTable->setNumberRows(numLines);
+  mpGrid->ForceRefresh();
 };
