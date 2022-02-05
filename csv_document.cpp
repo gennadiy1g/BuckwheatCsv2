@@ -20,6 +20,7 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   return true;
 };
 
+// This method is called on the worker thread
 void CsvDocument::OnProgress(std::size_t numLines, int percent) {
   auto pCsvView = dynamic_cast<CsvView *>(GetFirstView());
   assert(pCsvView);

@@ -48,6 +48,7 @@ bool CsvView::OnClose(bool deleteWindow = true) {
   return true;
 };
 
+// This method is called on the GUI thread
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   const decltype(mNumLines) numLines = event.GetPayload<std::size_t>();
   [[maybe_unused]] const int percent = event.GetInt();
