@@ -23,11 +23,12 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
 // This method is called on the worker thread
 void CsvDocument::OnProgress(std::size_t numLines, int percent) {
   auto pCsvView = dynamic_cast<CsvView *>(GetFirstView());
-  assert(pCsvView);
-  wxThreadEvent event;
-  event.SetPayload(numLines);
-  event.SetInt(percent);
-  pCsvView->QueueEvent(event.Clone());
+  if (pCsvView) {
+    wxThreadEvent event;
+    event.SetPayload(numLines);
+    event.SetInt(percent);
+    pCsvView->QueueEvent(event.Clone());
+  }
 };
 
 int CsvGridTable::GetNumberCols() {
