@@ -49,12 +49,14 @@ public:
     // The 1st line contains columns' names, do not count the 1st line as a data row
     return mNumLines ? mNumLines - 1 : 0;
   };
+  
   virtual int GetNumberCols() override;
   virtual wxString GetValue(int row, int col) override;
   virtual void SetValue(int row, int col, const wxString &value) override{};
   virtual wxString GetColLabelValue(int col) override;
 
   wxString getValueAux(int row, int col);
+
   void setNumberRows(std::size_t numRows) {
     assert(numRows);
     mNumLines = numRows;
