@@ -42,7 +42,11 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
 
 int CsvGridTable::GetNumberRows() {
   // The 1st line contains columns' names, do not count the 1st line as a data row
-  return mNumLines ? mNumLines - 1 : 0;
+  auto value = mNumLines ? mNumLines - 1 : 0;
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
+  return value;
 };
 
 int CsvGridTable::GetNumberCols() {
