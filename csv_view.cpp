@@ -16,24 +16,15 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   auto pChildFrame = new wxDocMDIChildFrame(doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
-
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
 
-  auto pDocument = GetDocument();
-  assert(pDocument);
-  auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
-  assert(pCsvDocument);
-  mpCsvGridTable = new CsvGridTable(pCsvDocument);
-  assert(mpCsvGridTable);
-  mpGrid->AssignTable(mpCsvGridTable);
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "called wxGrid::AssignTable";
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid";
 
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
-
   pChildFrame->Show();
-
+  
   return true;
 };
 
@@ -55,10 +46,26 @@ bool CsvView::OnClose(bool deleteWindow = true) {
 // This method is called on the GUI thread
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   const decltype(mNumLines) numLines = event.GetPayload<std::size_t>();
+  assert(numLines);
   [[maybe_unused]] const int percent = event.GetInt();
-  mpCsvGridTable->setNumberRows(numLines);
-  mpGrid->ForceRefresh();
+
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
+
+  if (!mpCsvGridTable) {
+    auto pDocument = GetDocument();
+    assert(pDocument);
+    auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
+    assert(pCsvDocument);
+    mpCsvGridTable = new CsvGridTable(pCsvDocument);
+    assert(mpCsvGridTable);
+    mpCsvGridTable->setNumberRows(numLines);
+    mpGrid->AssignTable(mpCsvGridTable);
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "called wxGrid::AssignTable";
+  } else {
+    mpCsvGridTable->setNumberRows(numLines);
+  }
+
+  // mpGrid->ForceRefresh();
 };
