@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <wx/docmdi.h>
 
+#include "CsvTable/log.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 #include "main.hpp"
@@ -54,4 +55,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   [[maybe_unused]] const int percent = event.GetInt();
   mpCsvGridTable->setNumberRows(numLines);
   mpGrid->ForceRefresh();
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
 };
