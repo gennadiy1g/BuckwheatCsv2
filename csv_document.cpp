@@ -73,11 +73,14 @@ wxString CsvGridTable::GetValue(int row, int col) {
 };
 
 wxString CsvGridTable::GetColLabelValue(int col) {
+  decltype(std::declval<CsvGridTable>().GetColLabelValue(0)) value{""};
   if (mNumLines) {
-    return getValueAux(0, col);
-  } else {
-    return L"";
+    value = getValueAux(0, col);
   }
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
+  return value;
 };
 
 wxString CsvGridTable::getValueAux(int row, int col) {
