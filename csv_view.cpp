@@ -26,6 +26,9 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   mpCsvGridTable = new CsvGridTable(pCsvDocument);
   assert(mpCsvGridTable);
   mpGrid->AssignTable(mpCsvGridTable);
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "called wxGrid::AssignTable";
 
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
 
