@@ -84,12 +84,15 @@ wxString CsvGridTable::GetColLabelValue(int col) {
 };
 
 wxString CsvGridTable::getValueAux(int row, int col) {
+  decltype(std::declval<CsvGridTable>().getValueAux(0, 0)) value{"."};
   auto tokenizedLine = mpCsvDocument->getTokenizedFileLines()->getTokenizedLine(row);
   if (col < static_cast<int>(tokenizedLine->size())) {
-    return tokenizedLine->at(col);
-  } else {
-    return L".";
+    value = tokenizedLine->at(col);
   }
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
+  return value;
 };
 
 void CsvGridTable::setNumberRows(std::size_t numRows) {
