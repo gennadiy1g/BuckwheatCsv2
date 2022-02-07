@@ -14,6 +14,9 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   try {
     mpTokenizedFileLines.reset(new TokenizedFileLines(boost::filesystem::path(file), mOnProgress));
     assert(mpTokenizedFileLines);
+    BOOST_LOG_FUNCTION();
+    auto &gLogger = GlobalLogger::get();
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
   } catch (std::runtime_error &) {
     return false;
   }
@@ -33,6 +36,7 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
     event.SetPayload(numLines);
     event.SetInt(percent);
     pCsvView->QueueEvent(event.Clone());
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "queued event";
   }
 };
 
