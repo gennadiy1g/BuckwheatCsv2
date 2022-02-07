@@ -50,11 +50,14 @@ int CsvGridTable::GetNumberRows() {
 };
 
 int CsvGridTable::GetNumberCols() {
+  decltype(std::declval<CsvGridTable>().GetNumberCols()) value{0};
   if (mNumLines) {
-    return mpCsvDocument->getTokenizedFileLines()->numColumns();
-  } else {
-    return 0;
+    value = mpCsvDocument->getTokenizedFileLines()->numColumns();
   }
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
+  return value;
 };
 
 wxString CsvGridTable::GetValue(int row, int col) {
