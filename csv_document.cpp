@@ -68,7 +68,7 @@ wxString CsvGridTable::GetValue(int row, int col) {
   }
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "row=" << row << ", col=" << col << "return value=" << value;
   return value;
 };
 
@@ -79,7 +79,7 @@ wxString CsvGridTable::GetColLabelValue(int col) {
   }
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "col=" << col << "return value=" << value;
   return value;
 };
 
@@ -91,7 +91,7 @@ wxString CsvGridTable::getValueAux(int row, int col) {
   }
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "row=" << row << ", col=" << col << ", return value=" << value;
   return value;
 };
 
