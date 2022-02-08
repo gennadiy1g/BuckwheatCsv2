@@ -10,6 +10,8 @@
 #include <wx/docview.h>
 #include <wx/grid.h>
 
+#include <memory>
+
 #include "csv_document.hpp"
 
 class CsvView : public wxView {
@@ -21,8 +23,7 @@ public:
   void OnThreadEvent(const wxThreadEvent &event);
 
 private:
-  wxGrid *mpGrid{nullptr}; //TODO use std::unique_ptr here
-  CsvGridTable *mpCsvGridTable{nullptr};
-  std::size_t mNumLines{0};
+  wxGrid *mpGrid{nullptr};
+  std::unique_ptr<CsvGridTable> mpCsvGridTable;
   wxDECLARE_DYNAMIC_CLASS(CsvView);
 };
