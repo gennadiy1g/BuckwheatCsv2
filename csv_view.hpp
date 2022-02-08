@@ -21,7 +21,7 @@ public:
   void OnThreadEvent(const wxThreadEvent &event);
 
 private:
-  wxGrid *mpGrid{nullptr};
+  wxGrid *mpGrid{nullptr}; //TODO use std::unique_ptr here
   CsvGridTable *mpCsvGridTable{nullptr};
   std::size_t mNumLines{0};
   wxDECLARE_DYNAMIC_CLASS(CsvView);

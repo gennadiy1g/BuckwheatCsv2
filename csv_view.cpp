@@ -24,7 +24,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
 
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
   pChildFrame->Show();
-  
+
   return true;
 };
 
@@ -61,11 +61,11 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
     mpCsvGridTable = new CsvGridTable(pCsvDocument);
     assert(mpCsvGridTable);
     mpCsvGridTable->setNumberRows(numLines);
-    mpGrid->AssignTable(mpCsvGridTable);
-    BOOST_LOG_SEV(gLogger, trivial::trace) << "called wxGrid::AssignTable";
   } else {
     mpCsvGridTable->setNumberRows(numLines);
   }
 
+  mpGrid->SetTable(mpCsvGridTable, false);
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "called wxGrid::SetTable";
   // mpGrid->ForceRefresh();
 };
