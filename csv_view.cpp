@@ -52,13 +52,13 @@ bool CsvView::OnClose(bool deleteWindow = true) {
 // This method is called on the GUI thread
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   const std::size_t numLines = event.GetPayload<std::size_t>();
-  assert(numLines);
   [[maybe_unused]] const int percent = event.GetInt();
 
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
 
+  assert(numLines);
   mpCsvGridTable->setNumberRows(numLines);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "calling wxGrid::SetTable";
   mpGrid->SetTable(mpCsvGridTable.get(), false);

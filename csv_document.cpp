@@ -41,8 +41,9 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
 };
 
 int CsvGridTable::GetNumberRows() {
+  assert(mNumLines);
   // The 1st line contains columns' names, do not count the 1st line as a data row
-  decltype(std::declval<CsvGridTable>().GetNumberRows()) value = mNumLines ? mNumLines - 1 : 0;
+  decltype(std::declval<CsvGridTable>().GetNumberRows()) value = mNumLines - 1;
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
@@ -50,10 +51,9 @@ int CsvGridTable::GetNumberRows() {
 };
 
 int CsvGridTable::GetNumberCols() {
+  assert(mNumLines);
   decltype(std::declval<CsvGridTable>().GetNumberCols()) value{0};
-  if (mNumLines) {
-    value = mpCsvDocument->getTokenizedFileLines()->numColumns();
-  }
+  value = mpCsvDocument->getTokenizedFileLines()->numColumns();
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
@@ -62,10 +62,9 @@ int CsvGridTable::GetNumberCols() {
 
 wxString CsvGridTable::GetValue(int row, int col) {
   // the 1st line contains columns' names, the 2nd line is the 1st data row
+  assert(mNumLines);
   decltype(std::declval<CsvGridTable>().GetValue(0, 0)) value{""};
-  if (mNumLines) {
-    value = getValueAux(row + 1, col);
-  }
+  value = getValueAux(row + 1, col);
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "row=" << row << ", col=" << col << "return value=" << value;
@@ -73,10 +72,9 @@ wxString CsvGridTable::GetValue(int row, int col) {
 };
 
 wxString CsvGridTable::GetColLabelValue(int col) {
+  assert(mNumLines);
   decltype(std::declval<CsvGridTable>().GetColLabelValue(0)) value{""};
-  if (mNumLines) {
-    value = getValueAux(0, col);
-  }
+  value = getValueAux(0, col);
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "col=" << col << "return value=" << value;
