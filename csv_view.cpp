@@ -1,4 +1,7 @@
 #include <cstddef>
+#include <sstream>
+
+#include <wx/app.h>
 #include <wx/docmdi.h>
 
 #include "CsvTable/log.hpp"
@@ -52,7 +55,18 @@ bool CsvView::OnClose(bool deleteWindow = true) {
 void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactiveView) {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "activate=" << activate << " " << GetDocument()->GetFilename();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "activate=" << activate
+                                         << ", GetFilename()=" << GetDocument()->GetFilename();
+
+  if (activate) {
+    auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+    assert(pTopFrame);
+    auto pStatusBar = pTopFrame->GetStatusBar();
+    assert(pStatusBar);
+    std::stringstream ss;
+    ss << mpCsvGridTable->GetNumberRows();
+    pStatusBar->SetStatusText(ss.str());
+  }
 };
 
 // This method is called on the GUI thread
