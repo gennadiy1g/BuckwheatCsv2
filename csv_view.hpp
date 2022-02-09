@@ -20,6 +20,7 @@ public:
   virtual void OnDraw(wxDC *dc) override{};
   virtual bool OnCreate(wxDocument *doc, long flags) override;
   virtual bool OnClose(bool deleteWindow) override;
+  virtual void OnActivateView(bool activate, wxView *activeView, wxView *deactiveView) override;
   void OnThreadEvent(const wxThreadEvent &event);
 
 private:

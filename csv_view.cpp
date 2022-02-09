@@ -49,6 +49,12 @@ bool CsvView::OnClose(bool deleteWindow = true) {
   return true;
 };
 
+void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactiveView) {
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "activate=" << activate << " " << GetDocument()->GetFilename();
+};
+
 // This method is called on the GUI thread
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   const std::size_t numLines = event.GetPayload<std::size_t>();
