@@ -57,7 +57,7 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "activate=" << activate
                                          << ", GetFilename()=" << GetDocument()->GetFilename();
-  if ((mIsActive = activate)) {
+  if (activate) {
     showStatus();
   }
 };
@@ -88,7 +88,5 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   BOOST_LOG_SEV(gLogger, trivial::trace) << "calling wxGrid::SetTable";
   mpGrid->SetTable(mpCsvGridTable.get(), false);
 
-  if ((mIsActive)) {
-    showStatus();
-  }
+  showStatus();
 };

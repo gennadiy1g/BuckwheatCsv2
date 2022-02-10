@@ -27,6 +27,5 @@ public:
 private:
   wxGrid *mpGrid{nullptr};
   std::unique_ptr<CsvGridTable> mpCsvGridTable;
-  bool mIsActive{false};
   wxDECLARE_DYNAMIC_CLASS(CsvView);
 };
