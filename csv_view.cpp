@@ -64,7 +64,11 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
     auto pStatusBar = pTopFrame->GetStatusBar();
     assert(pStatusBar);
     std::stringstream ss;
-    ss << mpCsvGridTable->GetNumberRows();
+    if (mpCsvGridTable->getNumLines()) {
+      ss << mpCsvGridTable->GetNumberRows();
+    } else {
+      ss << 0;
+    }
     pStatusBar->SetStatusText(ss.str());
   }
 };

@@ -53,6 +53,7 @@ public:
 
   wxString getValueAux(int row, int col);
   void setNumberRows(std::size_t numRows);
+  std::size_t getNumLines() { return mNumLines; };
 
 private:
   CsvDocument *mpCsvDocument{nullptr};
