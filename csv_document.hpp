@@ -53,9 +53,12 @@ public:
 
   wxString getValueAux(int row, int col);
   void setNumberRows(std::size_t numRows);
+  int getPercent() { return mPercent; };
+  void setPercent(int percent) { mPercent = percent; };
   std::size_t getNumLines() { return mNumLines; };
 
 private:
   CsvDocument *mpCsvDocument{nullptr};
   std::size_t mNumLines{0};
+  int mPercent{0};
 };

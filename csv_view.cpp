@@ -70,6 +70,9 @@ void CsvView::showStatus() {
   std::stringstream ss;
   if (mpCsvGridTable->getNumLines()) {
     ss << mpCsvGridTable->GetNumberRows() << " data records";
+    if (mpCsvGridTable->getPercent() < 100) {
+      ss << " (" << mpCsvGridTable->getPercent() << "%)";
+    }
   }
   pStatusBar->SetStatusText(ss.str());
 };
@@ -85,6 +88,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   assert(numLines);
   mpCsvGridTable->setNumberRows(numLines);
+  mpCsvGridTable->setPercent(percent);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "calling wxGrid::SetTable";
   mpGrid->SetTable(mpCsvGridTable.get(), false);
 
