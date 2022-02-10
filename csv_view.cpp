@@ -57,20 +57,21 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "activate=" << activate
                                          << ", GetFilename()=" << GetDocument()->GetFilename();
-
-  if (activate) {
-    auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
-    assert(pTopFrame);
-    auto pStatusBar = pTopFrame->GetStatusBar();
-    assert(pStatusBar);
-    std::stringstream ss;
-    if (mpCsvGridTable->getNumLines()) {
-      ss << mpCsvGridTable->GetNumberRows();
-    } else {
-      ss << 0;
-    }
-    pStatusBar->SetStatusText(ss.str());
+  if ((mIsActive = activate)) {
+    showStatus();
   }
+};
+
+void CsvView::showStatus() {
+  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+  assert(pTopFrame);
+  auto pStatusBar = pTopFrame->GetStatusBar();
+  assert(pStatusBar);
+  std::stringstream ss;
+  if (mpCsvGridTable->getNumLines()) {
+    ss << mpCsvGridTable->GetNumberRows() << " data records";
+  }
+  pStatusBar->SetStatusText(ss.str());
 };
 
 // This method is called on the GUI thread
@@ -86,4 +87,8 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   mpCsvGridTable->setNumberRows(numLines);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "calling wxGrid::SetTable";
   mpGrid->SetTable(mpCsvGridTable.get(), false);
+
+  if ((mIsActive)) {
+    showStatus();
+  }
 };

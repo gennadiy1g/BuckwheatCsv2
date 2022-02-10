@@ -22,9 +22,11 @@ public:
   virtual bool OnClose(bool deleteWindow) override;
   virtual void OnActivateView(bool activate, wxView *activeView, wxView *deactiveView) override;
   void OnThreadEvent(const wxThreadEvent &event);
+  void showStatus();
 
 private:
   wxGrid *mpGrid{nullptr};
   std::unique_ptr<CsvGridTable> mpCsvGridTable;
+  bool mIsActive{false};
   wxDECLARE_DYNAMIC_CLASS(CsvView);
 };
