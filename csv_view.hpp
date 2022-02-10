@@ -16,7 +16,7 @@
 
 class CsvView : public wxView {
 public:
-  CsvView() : wxView(){};
+  CsvView();
   virtual void OnDraw(wxDC *dc) override{};
   virtual bool OnCreate(wxDocument *doc, long flags) override;
   virtual bool OnClose(bool deleteWindow) override;
@@ -28,5 +28,12 @@ private:
   wxGrid *mpGrid{nullptr};
   std::unique_ptr<CsvGridTable> mpCsvGridTable;
   bool mIsActive{false};
+  static inline std::unique_ptr<std::locale> mpsThousandsSep{nullptr};
+
   wxDECLARE_DYNAMIC_CLASS(CsvView);
+};
+
+struct thousand_sep_numpunct : std::numpunct<char> {
+  char do_thousands_sep() const { return ','; }    // separate with comma
+  std::string do_grouping() const { return "\3"; } // groups of 3 digit
 };

@@ -11,6 +11,13 @@
 
 wxIMPLEMENT_DYNAMIC_CLASS(CsvView, wxView);
 
+CsvView::CsvView() : wxView() {
+  if (!mpsThousandsSep) {
+    // CsvView::msThousandsSep = std::make_unique<std::locale>(std::locale("C"), new thousand_sep_numpunct());
+    CsvView::mpsThousandsSep.reset(new std::locale(std::locale("C"), new thousand_sep_numpunct()));
+  }
+};
+
 bool CsvView::OnCreate(wxDocument *doc, long flags) {
   if (!wxView::OnCreate(doc, flags)) {
     return false;
@@ -69,6 +76,8 @@ void CsvView::showStatus() {
   assert(pStatusBar);
   std::stringstream ss;
   if (mpCsvGridTable->getNumLines()) {
+    assert(mpsThousandsSep);
+    ss.imbue(*mpsThousandsSep);
     ss << mpCsvGridTable->GetNumberRows() << " data records";
     if (mpCsvGridTable->getPercent() < 100) {
       ss << " (" << mpCsvGridTable->getPercent() << "%)";
