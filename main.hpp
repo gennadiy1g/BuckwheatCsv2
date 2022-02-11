@@ -8,6 +8,7 @@
 #endif
 
 #include <wx/docmdi.h>
+#include <wx/gauge.h>
 
 // Application class
 class App : public wxApp {
@@ -44,4 +45,7 @@ class StatusBar : public wxStatusBar {
 public:
   StatusBar(wxWindow *parent);
   virtual ~StatusBar() = default;
+
+private:
+  wxGauge *mpGauge;
 };
