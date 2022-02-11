@@ -39,3 +39,9 @@ private:
     virtual bool SaveField(const wxString &name, int value) const override;
   };
 };
+
+class StatusBar : public wxStatusBar {
+public:
+  StatusBar(wxWindow *parent);
+  virtual ~StatusBar() = default;
+};

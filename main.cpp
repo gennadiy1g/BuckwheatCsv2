@@ -125,3 +125,5 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
   pConfig->SetPath(oldPath);
   return result;
 };
+
+StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent){};
