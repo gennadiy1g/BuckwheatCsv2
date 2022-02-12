@@ -138,5 +138,6 @@ StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
   int gaugeHeight{0};
   mpGauge->GetSize(&gaugeWidth, &gaugeHeight);
   mpGauge->SetValue(50);
+  mpGauge->Move(statBarWidth - gaugeWidth - statBarHeight, (statBarHeight - gaugeHeight) / 2);
   // SetMinHeight(mpGauge->GetBestSize().GetHeight());
 };
