@@ -143,7 +143,7 @@ StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
   SetStatusWidths(5, widths);
   wxRect rect;
   if (GetFieldRect(std::size(widths) - 1, rect)) {
-    mpGauge->Move(rect.x, rect.y);
+    mpGauge->Move(rect.x + (rect.width - gaugeWidth) / 2, rect.y + (rect.height - gaugeHeight) / 2);
   }
 
   // mpGauge->Move(statBarWidth - gaugeWidth - statBarHeight, (statBarHeight - gaugeHeight) / 2);
