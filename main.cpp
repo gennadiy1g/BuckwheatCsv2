@@ -136,8 +136,14 @@ StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
   SetFieldsCount(fieldsCount);
   int widths[fieldsCount]{-1, -1, -1, -1, gaugeSize.x};
   SetStatusWidths(fieldsCount, widths);
+  Bind(wxEVT_SIZE, &StatusBar::OnSize, this);
+};
+
+void StatusBar::OnSize(wxSizeEvent &event) {
+  auto gaugeSize = mpGauge->GetSize();
   wxRect rect;
-  if (GetFieldRect(std::size(widths) - 1, rect)) {
+  if (GetFieldRect(GetFieldsCount() - 1, rect)) {
     mpGauge->Move(rect.x + (rect.width - gaugeSize.x) / 2, rect.y + (rect.height - gaugeSize.y) / 2);
   }
+  event.Skip();
 };

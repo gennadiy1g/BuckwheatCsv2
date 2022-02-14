@@ -45,6 +45,7 @@ class StatusBar : public wxStatusBar {
 public:
   StatusBar(wxWindow *parent);
   virtual ~StatusBar() = default;
+  void OnSize(wxSizeEvent &event);
 
 private:
   wxGauge *mpGauge;
