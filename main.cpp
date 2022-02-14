@@ -142,8 +142,8 @@ StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
 void StatusBar::OnSize(wxSizeEvent &event) {
   auto gaugeSize = mpGauge->GetSize();
   wxRect rect;
-  if (GetFieldRect(GetFieldsCount() - 1, rect)) {
-    mpGauge->Move(rect.x + (rect.width - gaugeSize.x) / 2, rect.y + (rect.height - gaugeSize.y) / 2);
-  }
+  auto val = GetFieldRect(GetFieldsCount() - 1, rect);
+  assert(val);
+  mpGauge->Move(rect.x + (rect.width - gaugeSize.x) / 2, rect.y + (rect.height - gaugeSize.y) / 2);
   event.Skip();
 };
