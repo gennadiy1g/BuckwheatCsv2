@@ -53,7 +53,7 @@ int CsvGridTable::GetNumberRows() {
 
 int CsvGridTable::GetNumberCols() {
   assert(mNumLines);
-  int value{0};
+  int value{};
   value = mpCsvDocument->getTokenizedFileLines()->numColumns();
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();

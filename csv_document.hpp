@@ -58,7 +58,7 @@ public:
   std::size_t getNumLines() { return mNumLines; };
 
 private:
-  CsvDocument *mpCsvDocument{nullptr};
-  std::size_t mNumLines{0};
-  int mPercent{0};
+  CsvDocument *mpCsvDocument{};
+  std::size_t mNumLines{};
+  int mPercent{};
 };

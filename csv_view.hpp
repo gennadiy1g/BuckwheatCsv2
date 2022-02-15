@@ -25,10 +25,10 @@ public:
   void showStatus();
 
 private:
-  wxGrid *mpGrid{nullptr};
+  wxGrid *mpGrid{};
   std::unique_ptr<CsvGridTable> mpCsvGridTable;
   bool mIsActive{false};
-  static inline std::unique_ptr<std::locale> mpsThousandsSep{nullptr};
+  static inline std::unique_ptr<std::locale> mpsThousandsSep{};
 
   wxDECLARE_DYNAMIC_CLASS(CsvView);
 };
