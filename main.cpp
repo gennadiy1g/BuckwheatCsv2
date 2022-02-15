@@ -129,7 +129,7 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
-  mpGauge = new wxGauge(this, wxID_ANY, 100);
+  mpGauge.reset(new wxGauge(this, wxID_ANY, 100));
   auto gaugeSize = mpGauge->GetSize();
   mpGauge->SetValue(50);
   constexpr auto fieldsCount{5};

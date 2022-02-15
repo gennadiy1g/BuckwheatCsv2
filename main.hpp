@@ -10,6 +10,8 @@
 #include <wx/docmdi.h>
 #include <wx/gauge.h>
 
+#include <memory>
+
 // Application class
 class App : public wxApp {
 public:
@@ -48,5 +50,5 @@ public:
   void OnSize(wxSizeEvent &event);
 
 private:
-  wxGauge *mpGauge;
+  std::unique_ptr<wxGauge> mpGauge;
 };
