@@ -74,16 +74,16 @@ void CsvView::showStatus() {
   assert(pTopFrame);
   auto pStatusBar = pTopFrame->GetStatusBar();
   assert(pStatusBar);
-  std::stringstream ss;
   if (mpCsvGridTable->getNumLines()) {
     assert(mpsThousandsSep);
+    std::stringstream ss;
     ss.imbue(*mpsThousandsSep);
     ss << mpCsvGridTable->GetNumberRows() << " data records";
     if (mpCsvGridTable->getPercent() < 100) {
       ss << " (" << mpCsvGridTable->getPercent() << "%)";
     }
+    pStatusBar->SetStatusText(ss.str());
   }
-  pStatusBar->SetStatusText(ss.str());
 };
 
 // This method is called on the GUI thread
