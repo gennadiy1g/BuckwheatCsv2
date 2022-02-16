@@ -141,7 +141,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   BOOST_LOG_SEV(gLogger, trivial::trace) << "calling wxGrid::SetTable";
   mpGrid->SetTable(mpCsvGridTable.get(), false);
 
-  if ((mIsActive)) {
+  if (mIsActive) {
     showStatus();
   }
 };
