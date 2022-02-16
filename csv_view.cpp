@@ -121,7 +121,7 @@ void CsvView::clearStatus() {
   auto pStatusBar = pTopFrame->GetStatusBar();
   assert(pStatusBar);
 
-  for (auto i = 0; i < pStatusBar->GetFieldsCount(); ++i) {
+  for (auto i = 0; i < pStatusBar->GetFieldsCount() - 1; ++i) { /* the last field is for the gauge */
     pStatusBar->SetStatusText("", i);
   }
 }
