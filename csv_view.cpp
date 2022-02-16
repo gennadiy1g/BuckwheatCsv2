@@ -66,6 +66,7 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
                                          << ", GetFilename()=" << GetDocument()->GetFilename();
   if ((mIsActive = activate)) {
     clearStatus();
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->hasData()=" << mpCsvGridTable->hasData();
     if (mpCsvGridTable->hasData()) {
       showStatus();
     }
@@ -73,6 +74,8 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
 };
 
 void CsvView::showStatus() {
+  assert(mpCsvGridTable->hasData());
+
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
   assert(pTopFrame);
   auto pStatusBar = pTopFrame->GetStatusBar();
