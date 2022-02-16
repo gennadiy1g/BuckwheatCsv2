@@ -74,15 +74,32 @@ void CsvView::showStatus() {
   assert(pTopFrame);
   auto pStatusBar = pTopFrame->GetStatusBar();
   assert(pStatusBar);
+
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->hasData()=" << mpCsvGridTable->hasData();
+
   if (mpCsvGridTable->hasData()) {
-    assert(mpsThousandsSep);
     std::stringstream ss;
+    assert(mpsThousandsSep);
     ss.imbue(*mpsThousandsSep);
+
     ss << mpCsvGridTable->GetNumberRows() << " data records";
     if (mpCsvGridTable->getPercent() < 100) {
       ss << " (" << mpCsvGridTable->getPercent() << "%)";
     }
-    pStatusBar->SetStatusText(ss.str());
+    pStatusBar->SetStatusText(ss.str(), 0);
+
+    if (pStatusBar->GetStatusText(1) == "") {
+      BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberCols()=" << mpCsvGridTable->GetNumberCols();
+      ss.str("");
+      ss << mpCsvGridTable->GetNumberCols() << " columns";
+      pStatusBar->SetStatusText(ss.str(), 1);
+    }
+  } else {
+    for (auto i = 0; i < pStatusBar->GetFieldsCount(); ++i) {
+      pStatusBar->SetStatusText("", i);
+    }
   }
 };
 
