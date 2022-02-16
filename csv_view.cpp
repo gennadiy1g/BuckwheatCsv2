@@ -65,7 +65,10 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
   BOOST_LOG_SEV(gLogger, trivial::trace) << "activate=" << activate
                                          << ", GetFilename()=" << GetDocument()->GetFilename();
   if ((mIsActive = activate)) {
-    showStatus();
+    clearStatus();
+    if (mpCsvGridTable->hasData()) {
+      showStatus();
+    }
   }
 };
 
@@ -75,33 +78,38 @@ void CsvView::showStatus() {
   auto pStatusBar = pTopFrame->GetStatusBar();
   assert(pStatusBar);
 
+  std::stringstream ss;
+  assert(mpsThousandsSep);
+  ss.imbue(*mpsThousandsSep);
+
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->hasData()=" << mpCsvGridTable->hasData();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
 
-  if (mpCsvGridTable->hasData()) {
-    std::stringstream ss;
-    assert(mpsThousandsSep);
-    ss.imbue(*mpsThousandsSep);
+  ss << mpCsvGridTable->GetNumberRows() << " data records";
+  if (mpCsvGridTable->getPercent() < 100) {
+    ss << " (" << mpCsvGridTable->getPercent() << "%)";
+  }
+  pStatusBar->SetStatusText(ss.str(), 0);
 
-    ss << mpCsvGridTable->GetNumberRows() << " data records";
-    if (mpCsvGridTable->getPercent() < 100) {
-      ss << " (" << mpCsvGridTable->getPercent() << "%)";
-    }
-    pStatusBar->SetStatusText(ss.str(), 0);
-
-    if (pStatusBar->GetStatusText(1) == "") {
-      BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberCols()=" << mpCsvGridTable->GetNumberCols();
-      ss.str("");
-      ss << mpCsvGridTable->GetNumberCols() << " columns";
-      pStatusBar->SetStatusText(ss.str(), 1);
-    }
-  } else {
-    for (auto i = 0; i < pStatusBar->GetFieldsCount(); ++i) {
-      pStatusBar->SetStatusText("", i);
-    }
+  if (pStatusBar->GetStatusText(1) == "") {
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberCols()=" << mpCsvGridTable->GetNumberCols();
+    ss.str("");
+    ss << mpCsvGridTable->GetNumberCols() << " columns";
+    pStatusBar->SetStatusText(ss.str(), 1);
   }
 };
+
+void CsvView::clearStatus() {
+  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+  assert(pTopFrame);
+  auto pStatusBar = pTopFrame->GetStatusBar();
+  assert(pStatusBar);
+
+  for (auto i = 0; i < pStatusBar->GetFieldsCount(); ++i) {
+    pStatusBar->SetStatusText("", i);
+  }
+}
 
 // This method is called on the GUI thread
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {

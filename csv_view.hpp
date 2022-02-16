@@ -23,6 +23,7 @@ public:
   virtual void OnActivateView(bool activate, wxView *activeView, wxView *deactiveView) override;
   void OnThreadEvent(const wxThreadEvent &event);
   void showStatus();
+  void clearStatus();
 
 private:
   wxGrid *mpGrid{};
