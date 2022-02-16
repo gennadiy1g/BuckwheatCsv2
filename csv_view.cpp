@@ -101,6 +101,18 @@ void CsvView::showStatus() {
     ss << mpCsvGridTable->GetNumberCols() << " columns";
     pStatusBar->SetStatusText(ss.str(), 1);
   }
+
+  if (pStatusBar->GetStatusText(2) == "") {
+    ss.str("");
+    ss << "separator: comma";
+    pStatusBar->SetStatusText(ss.str(), 2);
+  }
+
+  if (pStatusBar->GetStatusText(3) == "") {
+    ss.str("");
+    ss << "quote: double";
+    pStatusBar->SetStatusText(ss.str(), 3);
+  }
 };
 
 void CsvView::clearStatus() {
