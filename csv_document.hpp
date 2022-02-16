@@ -55,7 +55,7 @@ public:
   void setNumberRows(std::size_t numRows);
   int getPercent() { return mPercent; };
   void setPercent(int percent) { mPercent = percent; };
-  std::size_t getNumLines() { return mNumLines; };
+  bool hasData() { return mNumLines; };
 
 private:
   CsvDocument *mpCsvDocument{};

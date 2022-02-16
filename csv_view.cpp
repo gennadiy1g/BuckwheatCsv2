@@ -74,7 +74,7 @@ void CsvView::showStatus() {
   assert(pTopFrame);
   auto pStatusBar = pTopFrame->GetStatusBar();
   assert(pStatusBar);
-  if (mpCsvGridTable->getNumLines()) {
+  if (mpCsvGridTable->hasData()) {
     assert(mpsThousandsSep);
     std::stringstream ss;
     ss.imbue(*mpsThousandsSep);
