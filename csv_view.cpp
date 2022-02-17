@@ -121,6 +121,10 @@ void CsvView::clearStatus() {
   auto pStatusBar = pTopFrame->GetStatusBar();
   assert(pStatusBar);
 
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "pStatusBar->GetStatusText()=" << pStatusBar->GetStatusText();
+
   for (auto i = 0; i < pStatusBar->GetFieldsCount() - 1; ++i) { /* the last field is for the gauge */
     pStatusBar->SetStatusText("", i);
   }
@@ -138,7 +142,6 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   assert(numLines);
   mpCsvGridTable->setNumberRows(numLines);
   mpCsvGridTable->setPercent(percent);
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "calling wxGrid::SetTable";
   mpGrid->SetTable(mpCsvGridTable.get(), false);
 
   if (mIsActive) {
