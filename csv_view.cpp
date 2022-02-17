@@ -133,7 +133,7 @@ void CsvView::clearStatus() {
 // This method is called on the GUI thread
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   const std::size_t numLines = event.GetPayload<std::size_t>();
-  [[maybe_unused]] const int percent = event.GetInt();
+  int percent = event.GetInt();
 
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
