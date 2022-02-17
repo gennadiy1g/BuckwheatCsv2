@@ -92,12 +92,12 @@ void CsvView::showStatus() {
   ss << mpCsvGridTable->GetNumberRows() << " data records";
   if (mpCsvGridTable->getPercent() < 100) {
     ss << " (" << mpCsvGridTable->getPercent() << "%)";
-    pStatusBar->gauge()->SetValue(mpCsvGridTable->getPercent());
-    if (!pStatusBar->gauge()->IsShown()) {
-      pStatusBar->gauge()->Show(true);
+    pStatusBar->getGauge()->SetValue(mpCsvGridTable->getPercent());
+    if (!pStatusBar->getGauge()->IsShown()) {
+      pStatusBar->getGauge()->Show(true);
     }
   } else {
-    pStatusBar->gauge()->Show(false);
+    pStatusBar->getGauge()->Show(false);
   }
   pStatusBar->SetStatusText(ss.str(), 0);
 
