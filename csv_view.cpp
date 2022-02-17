@@ -78,7 +78,7 @@ void CsvView::showStatus() {
 
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
   assert(pTopFrame);
-  auto pStatusBar = pTopFrame->GetStatusBar();
+  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
   assert(pStatusBar);
 
   std::stringstream ss;
@@ -92,6 +92,12 @@ void CsvView::showStatus() {
   ss << mpCsvGridTable->GetNumberRows() << " data records";
   if (mpCsvGridTable->getPercent() < 100) {
     ss << " (" << mpCsvGridTable->getPercent() << "%)";
+    pStatusBar->gauge()->SetValue(mpCsvGridTable->getPercent());
+    if (!pStatusBar->gauge()->IsShown()) {
+      pStatusBar->gauge()->Show(true);
+    }
+  } else {
+    pStatusBar->gauge()->Show(false);
   }
   pStatusBar->SetStatusText(ss.str(), 0);
 

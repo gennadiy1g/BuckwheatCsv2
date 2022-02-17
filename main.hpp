@@ -48,6 +48,7 @@ public:
   StatusBar(wxWindow *parent);
   virtual ~StatusBar() = default;
   void OnSize(wxSizeEvent &event);
+  wxGauge *gauge() const { return mpGauge.get(); };
 
 private:
   std::unique_ptr<wxGauge> mpGauge;
