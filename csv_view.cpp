@@ -97,7 +97,7 @@ void CsvView::showStatus() {
       pStatusBar->getGauge()->Show(true);
     }
   } else {
-    pStatusBar->getGauge()->Show(false);
+    pStatusBar->getGauge()->Hide();
   }
   pStatusBar->SetStatusText(ss.str(), 0);
 
