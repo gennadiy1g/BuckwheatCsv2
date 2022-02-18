@@ -124,16 +124,17 @@ void CsvView::showStatus() {
 void CsvView::clearStatus() {
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
   assert(pTopFrame);
-  auto pStatusBar = pTopFrame->GetStatusBar();
+  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
   assert(pStatusBar);
 
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "pStatusBar->GetStatusText()=" << pStatusBar->GetStatusText();
-
+  pStatusBar->getGauge()->Hide();
+  pStatusBar->getGauge()->SetValue(0);
   for (auto i = 0; i < pStatusBar->GetFieldsCount() - 1; ++i) { /* the last field is for the gauge */
     pStatusBar->SetStatusText("", i);
   }
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "status bar cleared";
 }
 
 // This method is called on the GUI thread
