@@ -46,7 +46,7 @@ public:
   StatusBar(wxWindow *parent);
   virtual ~StatusBar() = default;
   void OnSize(wxSizeEvent &event);
-  wxGauge *getGauge() const { return mpGauge.get(); };
+  wxGauge *getGauge() const { return mpGauge; };
 
 private:
   wxGauge *mpGauge;
