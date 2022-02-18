@@ -10,8 +10,6 @@
 #include <wx/docmdi.h>
 #include <wx/gauge.h>
 
-#include <memory>
-
 // Application class
 class App : public wxApp {
 public:
@@ -51,5 +49,5 @@ public:
   wxGauge *getGauge() const { return mpGauge.get(); };
 
 private:
-  std::unique_ptr<wxGauge> mpGauge;
+  wxGauge *mpGauge;
 };
