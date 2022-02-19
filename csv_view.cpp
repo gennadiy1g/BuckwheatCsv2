@@ -49,7 +49,8 @@ bool CsvView::OnClose(bool deleteWindow = true) {
     return false;
   }
 
-  Activate(false);
+  // Activate(false);
+  clearStatus();
 
   if (deleteWindow) {
     GetFrame()->Destroy();
