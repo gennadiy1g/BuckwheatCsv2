@@ -91,12 +91,10 @@ void CsvView::showStatus() {
   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
 
   ss << mpCsvGridTable->GetNumberRows() << " data records";
+  pStatusBar->getGauge()->SetValue(mpCsvGridTable->getPercent());
   if (mpCsvGridTable->getPercent() < 100) {
     ss << " (" << mpCsvGridTable->getPercent() << "%)";
-    pStatusBar->getGauge()->SetValue(mpCsvGridTable->getPercent());
-    if (!pStatusBar->getGauge()->IsShown()) {
-      pStatusBar->getGauge()->Show(true);
-    }
+    pStatusBar->getGauge()->Show(true);
   } else {
     pStatusBar->getGauge()->Hide();
   }
