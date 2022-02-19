@@ -144,14 +144,14 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   mpCsvGridTable->setPercent(percent);
   mpGrid->SetTable(mpCsvGridTable.get(), false);
 
-  /* If the file is so small that its cells fit entirely inside of the grid (in other words, the last cell is
-     visible), the grid appears empty, and ForceRefresh() is necessary to display the cells. */
-  if ((numLines > 1) && (mpGrid->IsVisible(numLines - 2, mpCsvGridTable->GetNumberCols() - 1, false))) {
-    BOOST_LOG_SEV(gLogger, trivial::trace) << "mpGrid->ForceRefresh()";
-    mpGrid->ForceRefresh();
-  }
-
   if (mIsActive) {
+    /* If the file is so small that its cells fit entirely inside of the grid (in other words, the last cell is
+       visible), the grid appears empty, and ForceRefresh() is necessary to display the cells. */
+    if ((numLines > 1) && (mpGrid->IsVisible(numLines - 2, mpCsvGridTable->GetNumberCols() - 1, false))) {
+      BOOST_LOG_SEV(gLogger, trivial::trace) << "mpGrid->ForceRefresh()";
+      mpGrid->ForceRefresh();
+    }
+
     showStatus();
   }
 };
