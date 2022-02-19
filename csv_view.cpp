@@ -19,6 +19,8 @@ CsvView::CsvView() : wxView() {
 };
 
 bool CsvView::OnCreate(wxDocument *doc, long flags) {
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
   if (!wxView::OnCreate(doc, flags)) {
     return false;
   }
@@ -34,8 +36,6 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   mpCsvGridTable.reset(new CsvGridTable(pCsvDocument));
   assert(mpCsvGridTable);
 
-  BOOST_LOG_FUNCTION();
-  auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid & CsvGridTable";
 
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
@@ -75,16 +75,15 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
 };
 
 void CsvView::showStatus() {
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
   assert(mpCsvGridTable->hasData());
-
   auto pStatusBar = getStatusBar();
 
   std::stringstream ss;
   assert(mpsThousandsSep);
   ss.imbue(*mpsThousandsSep);
 
-  BOOST_LOG_FUNCTION();
-  auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
 
   ss << mpCsvGridTable->GetNumberRows() << " data records";
@@ -122,6 +121,7 @@ void CsvView::clearStatus() {
 
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
+
   pStatusBar->getGauge()->Hide();
   pStatusBar->getGauge()->SetValue(0);
   for (auto i = 0; i < pStatusBar->GetFieldsCount() - 1; ++i) { /* the last field is for the gauge */
@@ -132,11 +132,11 @@ void CsvView::clearStatus() {
 
 // This method is called on the GUI thread
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
   const std::size_t numLines = event.GetPayload<std::size_t>();
   int percent = event.GetInt();
 
-  BOOST_LOG_FUNCTION();
-  auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
 
   assert(numLines);
