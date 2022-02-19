@@ -51,3 +51,5 @@ public:
 private:
   wxGauge *mpGauge;
 };
+
+StatusBar *getStatusBar();

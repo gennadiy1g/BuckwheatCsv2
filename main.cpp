@@ -147,3 +147,11 @@ void StatusBar::OnSize(wxSizeEvent &event) {
   mpGauge->Move(rect.x + (rect.width - gaugeSize.x) / 2, rect.y + (rect.height - gaugeSize.y) / 2);
   event.Skip();
 };
+
+StatusBar *getStatusBar() {
+  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+  assert(pTopFrame);
+  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
+  assert(pStatusBar);
+  return pStatusBar;
+};

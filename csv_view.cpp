@@ -77,10 +77,7 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
 void CsvView::showStatus() {
   assert(mpCsvGridTable->hasData());
 
-  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
-  assert(pTopFrame);
-  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
-  assert(pStatusBar);
+  auto pStatusBar = getStatusBar();
 
   std::stringstream ss;
   assert(mpsThousandsSep);
@@ -121,10 +118,7 @@ void CsvView::showStatus() {
 };
 
 void CsvView::clearStatus() {
-  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
-  assert(pTopFrame);
-  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
-  assert(pStatusBar);
+  auto pStatusBar = getStatusBar();
 
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
