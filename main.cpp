@@ -129,23 +129,10 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
-  mpGauge = new wxGauge(this, wxID_ANY, 100);
-  auto gaugeSize = mpGauge->GetSize();
-  mpGauge->Hide();
-  constexpr auto fieldsCount{5};
+  constexpr auto fieldsCount{4};
   SetFieldsCount(fieldsCount);
-  int widths[fieldsCount]{-1, -1, -1, -1, gaugeSize.x};
+  int widths[fieldsCount]{-1, -1, -1, -1};
   SetStatusWidths(fieldsCount, widths);
-  Bind(wxEVT_SIZE, &StatusBar::OnSize, this);
-};
-
-void StatusBar::OnSize(wxSizeEvent &event) {
-  auto gaugeSize = mpGauge->GetSize();
-  wxRect rect;
-  auto val = GetFieldRect(GetFieldsCount() - 1, rect);
-  assert(val);
-  mpGauge->Move(rect.x + (rect.width - gaugeSize.x) / 2, rect.y + (rect.height - gaugeSize.y) / 2);
-  event.Skip();
 };
 
 StatusBar *getStatusBar() {

@@ -37,6 +37,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   assert(mpCsvGridTable);
 
   mpGauge = new wxGauge(mpGrid, wxID_ANY, 100);
+  mpGauge->Move(100, 50);
 
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid & CsvGridTable";
 
@@ -89,13 +90,10 @@ void CsvView::showStatus() {
   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
 
   ss << mpCsvGridTable->GetNumberRows() << " data records";
-  pStatusBar->getGauge()->SetValue(mpCsvGridTable->getPercent());
   mpGauge->SetValue(mpCsvGridTable->getPercent());
   if (mpCsvGridTable->getPercent() < 100) {
     ss << " (" << mpCsvGridTable->getPercent() << "%)";
-    pStatusBar->getGauge()->Show(true);
   } else {
-    pStatusBar->getGauge()->Hide();
   }
   pStatusBar->SetStatusText(ss.str(), 0);
 
@@ -125,9 +123,7 @@ void CsvView::clearStatus() {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
 
-  pStatusBar->getGauge()->Hide();
-  pStatusBar->getGauge()->SetValue(0);
-  for (auto i = 0; i < pStatusBar->GetFieldsCount() - 1; ++i) { /* the last field is for the gauge */
+  for (auto i = 0; i < pStatusBar->GetFieldsCount(); ++i) {
     pStatusBar->SetStatusText("", i);
   }
   BOOST_LOG_SEV(gLogger, trivial::trace) << "status bar cleared";
