@@ -29,6 +29,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   auto pChildFrame = new wxDocMDIChildFrame(doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
+  
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
   auto pDocument = GetDocument();
   assert(pDocument);
@@ -57,7 +58,6 @@ bool CsvView::OnClose(bool deleteWindow = true) {
     return false;
   }
 
-  // Activate(false);
   clearStatus();
 
   if (deleteWindow) {
