@@ -34,7 +34,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   assert(pDocument);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
   assert(pCsvDocument);
-  
+
   mpCsvGridTable.reset(new CsvGridTable(pCsvDocument));
   assert(mpCsvGridTable);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid & CsvGridTable";
@@ -99,7 +99,8 @@ void CsvView::showStatus() {
   if (mpCsvGridTable->getPercent() < 100) {
     ss << " (" << mpCsvGridTable->getPercent() << "%)";
   } else {
-    // TODO: hide gauge using sizer
+    GetFrame()->GetSizer()->Hide(mpGauge);
+    GetFrame()->GetSizer()->Layout();
   }
   pStatusBar->SetStatusText(ss.str(), 0);
 
