@@ -3,6 +3,7 @@
 
 #include <wx/app.h>
 #include <wx/docmdi.h>
+#include <wx/sizer.h>
 
 #include "CsvTable/log.hpp"
 #include "csv_document.hpp"
@@ -33,13 +34,17 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   assert(pDocument);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
   assert(pCsvDocument);
+  
   mpCsvGridTable.reset(new CsvGridTable(pCsvDocument));
   assert(mpCsvGridTable);
-
-  mpGauge = new wxGauge(mpGrid, wxID_ANY, 100);
-  mpGauge->Move(100, 50);
-
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid & CsvGridTable";
+
+  mpGauge = new wxGauge(pChildFrame, wxID_ANY, 100);
+
+  auto *vSizer = new wxBoxSizer(wxVERTICAL);
+  vSizer->Add(mpGrid, wxSizerFlags(1).Expand());
+  vSizer->Add(mpGauge, wxSizerFlags(0).Expand());
+  pChildFrame->SetSizerAndFit(vSizer);
 
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
   pChildFrame->Show();
@@ -94,6 +99,7 @@ void CsvView::showStatus() {
   if (mpCsvGridTable->getPercent() < 100) {
     ss << " (" << mpCsvGridTable->getPercent() << "%)";
   } else {
+    // TODO: hide gauge using sizer
   }
   pStatusBar->SetStatusText(ss.str(), 0);
 
