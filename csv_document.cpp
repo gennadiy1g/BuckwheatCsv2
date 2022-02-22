@@ -7,6 +7,11 @@
 
 wxIMPLEMENT_DYNAMIC_CLASS(CsvDocument, wxDocument);
 
+bool CsvDocument::DeleteContents() {
+  // The return value of this method is currently ignored (docs.wxwidgets.org/3.1.5/classwx_document.html)
+  return true;
+};
+
 bool CsvDocument::DoOpenDocument(const wxString &file) {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();

@@ -23,6 +23,8 @@ public:
     return mpTokenizedFileLines.get();
   };
 
+  virtual bool DeleteContents() override;
+
 protected:
   virtual bool DoOpenDocument(const wxString &file) override;
 
