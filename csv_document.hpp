@@ -51,11 +51,11 @@ public:
   virtual void SetValue(int row, int col, const wxString &value) override{};
   virtual wxString GetColLabelValue(int col) override;
 
-  wxString getValueAux(int row, int col);
+  wxString getValueAux(int row, int col) const;
   void setNumberRows(std::size_t numRows);
-  int getPercent() { return mPercent; };
+  int getPercent() const { return mPercent; };
   void setPercent(int percent) { mPercent = percent; };
-  bool hasData() { return mNumLines; };
+  bool hasData() const { return mNumLines; };
 
 private:
   CsvDocument *mpCsvDocument{};

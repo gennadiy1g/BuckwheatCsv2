@@ -82,7 +82,7 @@ wxString CsvGridTable::GetColLabelValue(int col) {
   return value;
 };
 
-wxString CsvGridTable::getValueAux(int row, int col) {
+wxString CsvGridTable::getValueAux(int row, int col) const {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   wxString value{"."};
