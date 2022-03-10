@@ -1,5 +1,4 @@
 #include <boost/filesystem.hpp>
-#include <wx/string.h>
 
 #include "CsvTable/log.hpp"
 #include "csv_document.hpp"
