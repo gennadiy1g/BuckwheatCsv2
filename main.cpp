@@ -51,7 +51,6 @@ bool App::OnInit() {
   auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName());
   // pMainFrame->CreateStatusBar();
   // pMainFrame->SetStatusText("");
-  pMainFrame->SetIcon(wxICON(table));
   pMainFrame->Show();
 
   // Enter the application's main loop
@@ -87,6 +86,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
   SetMenuBar(pMenuBar);
+  SetIcon(wxICON(table));
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   MFGeometrySerializer appGeometrySerializer;
