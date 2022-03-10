@@ -49,8 +49,6 @@ bool App::OnInit() {
                     wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
   auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName());
-  // pMainFrame->CreateStatusBar();
-  // pMainFrame->SetStatusText("");
   pMainFrame->Show();
 
   // Enter the application's main loop
