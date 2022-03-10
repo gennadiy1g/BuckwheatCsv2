@@ -48,22 +48,7 @@ bool App::OnInit() {
   new wxDocTemplate(pDocManager, "All files", "*.*", "", "", "Delimited Text Doc", "Delimited Text View",
                     wxCLASSINFO(CsvDocument), wxCLASSINFO(CsvView));
 
-  auto menuFile = new wxMenu;
-  menuFile->Append(wxID_OPEN, wxGetStockLabel(wxID_OPEN));
-  menuFile->Append(wxID_CLOSE, wxGetStockLabel(wxID_CLOSE));
-  menuFile->Append(wxID_EXIT, wxGetStockLabel(wxID_EXIT));
-  pDocManager->FileHistoryUseMenu(menuFile);
-  pDocManager->FileHistoryLoad(*wxConfig::Get());
-
-  auto pMenuHelp = new wxMenu;
-  pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
-
-  auto pMenuBar = new wxMenuBar;
-  pMenuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
-  pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
-
   auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName());
-  pMainFrame->SetMenuBar(pMenuBar);
   // pMainFrame->CreateStatusBar();
   // pMainFrame->SetStatusText("");
   pMainFrame->SetIcon(wxICON(table));
@@ -84,6 +69,25 @@ int App::OnExit() {
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
                      const wxSize &size, long style, const wxString &name)
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name) {
+
+  auto menuFile = new wxMenu;
+  menuFile->Append(wxID_OPEN, wxGetStockLabel(wxID_OPEN));
+  menuFile->Append(wxID_CLOSE, wxGetStockLabel(wxID_CLOSE));
+  menuFile->Append(wxID_EXIT, wxGetStockLabel(wxID_EXIT));
+
+  const auto pDocManager = wxDocManager::GetDocumentManager();
+  pDocManager->FileHistoryUseMenu(menuFile);
+  pDocManager->FileHistoryLoad(*wxConfig::Get());
+
+  auto pMenuHelp = new wxMenu;
+  pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
+
+  auto pMenuBar = new wxMenuBar;
+  pMenuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
+  pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
+
+  SetMenuBar(pMenuBar);
+
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   MFGeometrySerializer appGeometrySerializer;
   RestoreToGeometry(appGeometrySerializer);
