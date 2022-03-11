@@ -102,7 +102,8 @@ wxString CsvGridTable::getValueAux(int row, int col) const {
   return value;
 };
 
-void CsvGridTable::setNumberRows(std::size_t numRows) {
+void CsvGridTable::setNumberRows(std::size_t numRows, int percent) {
   assert(numRows);
   mNumLines = numRows;
+  mPercent = percent;
 };

@@ -145,8 +145,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
 
   assert(numLines);
-  mpCsvGridTable->setNumberRows(numLines);
-  mpCsvGridTable->setPercent(percent);
+  mpCsvGridTable->setNumberRows(numLines, percent);
   mpGrid->SetTable(mpCsvGridTable.get(), false);
 
   if (mIsActive) {

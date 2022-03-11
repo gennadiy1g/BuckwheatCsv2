@@ -54,9 +54,8 @@ public:
   virtual wxString GetColLabelValue(int col) override;
 
   wxString getValueAux(int row, int col) const;
-  void setNumberRows(std::size_t numRows);
   int getPercent() const { return mPercent; };
-  void setPercent(int percent) { mPercent = percent; };
+  void setNumberRows(std::size_t numRows, int percent);
   bool hasData() const { return mNumLines; };
 
 private:
