@@ -28,7 +28,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   auto pChildFrame = new wxDocMDIChildFrame(doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
-  
+
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
   assert(doc);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
@@ -93,9 +93,10 @@ void CsvView::showStatus() {
   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
 
   ss << mpCsvGridTable->GetNumberRows() << " data records";
-  mpGauge->SetValue(mpCsvGridTable->getPercent());
-  if (mpCsvGridTable->getPercent() < 100) {
-    ss << " (" << mpCsvGridTable->getPercent() << "%)";
+  const auto percent = mpCsvGridTable->getPercent();
+  mpGauge->SetValue(percent);
+  if (percent < 100) {
+    ss << " (" << percent << "%)";
   } else {
     GetFrame()->GetSizer()->Hide(mpGauge);
     GetFrame()->GetSizer()->Layout();
