@@ -139,8 +139,8 @@ void CsvView::clearStatus() {
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  const std::size_t numLines = event.GetPayload<std::size_t>();
-  int percent = event.GetInt();
+  const auto numLines = event.GetPayload<std::size_t>();
+  const auto percent = event.GetInt();
 
   BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
 
