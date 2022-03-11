@@ -30,9 +30,8 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   wxASSERT(pChildFrame == GetFrame());
   
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
-  auto pDocument = GetDocument();
-  assert(pDocument);
-  auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
+  assert(doc);
+  auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
   assert(pCsvDocument);
 
   mpCsvGridTable.reset(new CsvGridTable(pCsvDocument));
