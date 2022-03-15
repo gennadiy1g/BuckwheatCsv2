@@ -1,6 +1,7 @@
 #include <boost/filesystem.hpp>
 
 #include "CsvTable/log.hpp"
+#include "CsvTable/utilities.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 
@@ -22,15 +23,21 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
 
   using namespace std::placeholders; // for _1, _2, _3...
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
+  bool retVal{false};
   try {
-    mpTokenizedFileLines.reset(new TokenizedFileLines(boost::filesystem::path(file), mOnProgress));
-    assert(mpTokenizedFileLines);
-    BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
-  } catch (std::runtime_error &) {
-    return false;
+    bfs::path path(file);
+    auto [separator, quote] = detectSeparatorAndQuote(path);
+    if (separator) {
+      mpTokenizedFileLines.reset(new TokenizedFileLines(path, mOnProgress));
+      assert(mpTokenizedFileLines);
+      BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
+      mpTokenizedFileLines->setTokenFuncParams(L'\0', separator.value(), quote.value_or(L'\"'));
+      retVal = true;
+    }
+  } catch (const std::runtime_error &) {
   }
 
-  return true;
+  return retVal;
 };
 
 // This method is called on the worker thread
