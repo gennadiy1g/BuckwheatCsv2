@@ -86,17 +86,17 @@ void CsvView::showStatus() {
   assert(mpCsvGridTable->hasData());
   auto pStatusBar = getStatusBar();
 
-  std::stringstream ss;
+  std::wstringstream ss;
   assert(mpsThousandsSep);
   ss.imbue(*mpsThousandsSep);
 
   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
 
-  ss << mpCsvGridTable->GetNumberRows() << " data records";
+  ss << mpCsvGridTable->GetNumberRows() << L" data records";
   const auto percent = mpCsvGridTable->getPercent();
   mpGauge->SetValue(percent);
   if (percent < 100) {
-    ss << " (" << percent << "%)";
+    ss << L" (" << percent << L"%)";
   } else {
     GetFrame()->GetSizer()->Hide(mpGauge);
     GetFrame()->GetSizer()->Layout();
@@ -105,20 +105,20 @@ void CsvView::showStatus() {
 
   if (pStatusBar->GetStatusText(1) == "") {
     BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberCols()=" << mpCsvGridTable->GetNumberCols();
-    ss.str("");
-    ss << mpCsvGridTable->GetNumberCols() << " columns";
+    ss.str(L"");
+    ss << mpCsvGridTable->GetNumberCols() << L" columns";
     pStatusBar->SetStatusText(ss.str(), 1);
   }
 
   if (pStatusBar->GetStatusText(2) == "") {
-    ss.str("");
-    ss << "separator: comma";
+    ss.str(L"");
+    ss << L"separator: comma";
     pStatusBar->SetStatusText(ss.str(), 2);
   }
 
   if (pStatusBar->GetStatusText(3) == "") {
-    ss.str("");
-    ss << "quote: double";
+    ss.str(L"");
+    ss << L"quote: double";
     pStatusBar->SetStatusText(ss.str(), 3);
   }
 };
