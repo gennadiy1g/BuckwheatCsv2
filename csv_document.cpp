@@ -11,7 +11,9 @@ bool CsvDocument::DeleteContents() {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "calling TokenizedFileLines::stopReading()";
-  mpTokenizedFileLines->stopReading();
+  if (mpTokenizedFileLines) {
+    mpTokenizedFileLines->stopReading();
+  }
   BOOST_LOG_SEV(gLogger, trivial::trace) << "returned from TokenizedFileLines::stopReading()";
   return true; // The return value of this method is currently ignored (docs.wxwidgets.org/3.1.5/classwx_document.html)
 };
