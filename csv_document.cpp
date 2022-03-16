@@ -23,7 +23,6 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
 
   using namespace std::placeholders; // for _1, _2, _3...
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
-  bool retVal{false};
   try {
     bfs::path path(file);
     auto [separator, quote] = detectSeparatorAndQuote(path);
@@ -32,12 +31,13 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
       assert(mpTokenizedFileLines);
       BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
       mpTokenizedFileLines->setTokenFuncParams(L'\0', separator.value(), quote.value_or(L'\"'));
-      retVal = true;
+    } else {
+      wxMessageBox("Cannot detect the separator character!", "Warning");
     }
   } catch (const std::runtime_error &) {
   }
 
-  return retVal;
+  return true; // if this method returns false, the application terminates
 };
 
 // This method is called on the worker thread
