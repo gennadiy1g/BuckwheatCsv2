@@ -6,6 +6,7 @@
 #include <wx/sizer.h>
 
 #include "CsvTable/log.hpp"
+#include "CsvTable/utilities.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 #include "main.hpp"
@@ -110,9 +111,35 @@ void CsvView::showStatus() {
     pStatusBar->SetStatusText(ss.str(), 1);
   }
 
+  auto pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
+  assert(pCsvDocument);
+
   if (pStatusBar->GetStatusText(2) == "") {
     ss.str(L"");
-    ss << L"separator: comma";
+    auto separator = pCsvDocument->getSeparator();
+    if (separator) {
+      ss << L"separator: ";
+      switch (separator.value()) {
+      case kTab:
+        ss << L"Tab";
+        break;
+      case kPipe:
+        ss << L"Pipe";
+        break;
+      case kSemicolon:
+        ss << L"Semicolon";
+        break;
+      case kComma:
+        ss << L"Comma";
+        break;
+      case kSpace:
+        ss << L"Space";
+        break;
+      default:
+        ss << separator.value();
+        break;
+      };
+    }
     pStatusBar->SetStatusText(ss.str(), 2);
   }
 
