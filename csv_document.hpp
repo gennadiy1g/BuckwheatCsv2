@@ -13,6 +13,7 @@
 #include <boost/filesystem.hpp>
 
 #include <memory>
+#include <optional>
 
 #include "CsvTable/CsvTable.hpp"
 
@@ -32,6 +33,9 @@ private:
   std::unique_ptr<TokenizedFileLines> mpTokenizedFileLines;
   void OnProgress(std::size_t numLines, int percent);
   FileLines::OnProgress mOnProgress;
+  std::optional<wchar_t> mSeparator;
+  std::optional<wchar_t> mQuote;
+  std::optional<wchar_t> mEscape;
 
   wxDECLARE_DYNAMIC_CLASS(CsvDocument);
 };

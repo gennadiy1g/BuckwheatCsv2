@@ -27,12 +27,12 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
   try {
     bfs::path path(file);
-    auto [separator, quote] = detectSeparatorAndQuote(path);
-    if (separator) {
+    detectSeparatorAndQuote(path, mSeparator, mQuote);
+    if (mSeparator) {
       mpTokenizedFileLines.reset(new TokenizedFileLines(path, mOnProgress));
       assert(mpTokenizedFileLines);
       BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
-      mpTokenizedFileLines->setTokenFuncParams(L'\0', separator.value(), quote.value_or(L'\"'));
+      mpTokenizedFileLines->setTokenFuncParams(L'\0', mSeparator.value(), mQuote.value_or(L'\"'));
     } else {
       wxMessageBox("Cannot detect the separator character!", "Warning");
     }
