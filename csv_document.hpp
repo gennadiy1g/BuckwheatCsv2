@@ -25,6 +25,9 @@ public:
   };
 
   virtual bool DeleteContents() override;
+  std::optional<wchar_t> getSeparator() const { return mSeparator; };
+  std::optional<wchar_t> getQuote() const { return mQuote; };
+  std::optional<wchar_t> getEscape() const { return mEscape; };
 
 protected:
   virtual bool DoOpenDocument(const wxString &file) override;
