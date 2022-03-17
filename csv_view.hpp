@@ -36,6 +36,6 @@ private:
 };
 
 struct thousand_sep_numpunct : std::numpunct<char> {
-  char do_thousands_sep() const { return ','; }    // separate with comma
-  std::string do_grouping() const { return "\3"; } // groups of 3 digit
+  virtual char do_thousands_sep() const override { return ','; }    // separate with comma
+  virtual std::string do_grouping() const override { return "\3"; } // groups of 3 digit
 };
