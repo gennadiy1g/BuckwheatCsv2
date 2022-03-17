@@ -23,11 +23,19 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   auto &gLogger = GlobalLogger::get();
   Modify(false);
 
-  using namespace std::placeholders; // for _1, _2, _3...
-  mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
+  bool canReadFile{true};
+  bfs::path path(file);
   try {
-    bfs::path path(file);
     detectSeparatorAndQuote(path, mSeparator, mQuote);
+  } catch (const std::runtime_error &e) {
+    wxMessageBox(e.what(), "Warning");
+    canReadFile = false;
+  }
+
+  if (canReadFile) {
+    using namespace std::placeholders; // for _1, _2, _3...
+    mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
+
     if (mSeparator) {
       mpTokenizedFileLines.reset(new TokenizedFileLines(path, mOnProgress));
       assert(mpTokenizedFileLines);
@@ -36,7 +44,6 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
     } else {
       wxMessageBox("Cannot detect the separator character!", "Warning");
     }
-  } catch (const std::runtime_error &) {
   }
 
   return true; // if this method returns false, the application terminates
