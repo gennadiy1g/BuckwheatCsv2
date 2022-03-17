@@ -1,4 +1,3 @@
-#include <cstddef>
 #include <sstream>
 
 #include <wx/app.h>
