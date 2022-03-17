@@ -14,6 +14,7 @@ wxIMPLEMENT_DYNAMIC_CLASS(CsvView, wxView);
 
 CsvView::CsvView() : wxView() {
   if (!mpsThousandsSep) {
+    // "C" locale is essential here!
     CsvView::mpsThousandsSep.reset(new std::locale(std::locale("C"), new thousand_sep_numpunct()));
   }
 };
