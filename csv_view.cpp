@@ -111,11 +111,10 @@ void CsvView::showStatus() {
     pStatusBar->SetStatusText(ss.str(), 1);
   }
 
-  auto pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
-  assert(pCsvDocument);
-
   if (pStatusBar->GetStatusText(2) == "") {
     ss.str(L"");
+    auto pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
+    assert(pCsvDocument);
     auto separator = pCsvDocument->getSeparator();
     if (separator) {
       ss << L"separator: ";
