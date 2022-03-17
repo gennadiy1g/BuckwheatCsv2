@@ -86,17 +86,17 @@ void CsvView::showStatus() {
   assert(mpCsvGridTable->hasData());
   auto pStatusBar = getStatusBar();
 
-  std::wstringstream ss;
+  std::stringstream ss;
   assert(mpsThousandsSep);
   ss.imbue(*mpsThousandsSep);
 
   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
 
-  ss << mpCsvGridTable->GetNumberRows() << L" data records";
+  ss << mpCsvGridTable->GetNumberRows() << " data records";
   const auto percent = mpCsvGridTable->getPercent();
   mpGauge->SetValue(percent);
   if (percent < 100) {
-    ss << L" (" << percent << L"%)";
+    ss << " (" << percent << "%)";
   } else {
     GetFrame()->GetSizer()->Hide(mpGauge);
     GetFrame()->GetSizer()->Layout();
@@ -105,46 +105,43 @@ void CsvView::showStatus() {
 
   if (pStatusBar->GetStatusText(1) == "") {
     BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberCols()=" << mpCsvGridTable->GetNumberCols();
-    ss.str(L"");
-    ss << mpCsvGridTable->GetNumberCols() << L" columns";
+    ss.str("");
+    ss << mpCsvGridTable->GetNumberCols() << " columns";
     pStatusBar->SetStatusText(ss.str(), 1);
   }
 
   if (pStatusBar->GetStatusText(2) == "") {
-    ss.str(L"");
+    std::wstring str;
     auto pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
     assert(pCsvDocument);
     auto separator = pCsvDocument->getSeparator();
     if (separator) {
-      ss << L"separator: ";
       switch (separator.value()) {
       case kTab:
-        ss << L"Tab";
+        str = L"Tab";
         break;
       case kPipe:
-        ss << L"Pipe";
+        str = L"Pipe";
         break;
       case kSemicolon:
-        ss << L"Semicolon";
+        str = L"Semicolon";
         break;
       case kComma:
-        ss << L"Comma";
+        str = L"Comma";
         break;
       case kSpace:
-        ss << L"Space";
+        str = L"Space";
         break;
       default:
-        ss << separator.value();
+        str = separator.value();
         break;
       };
     }
-    pStatusBar->SetStatusText(ss.str(), 2);
+    pStatusBar->SetStatusText(L"separator: " + str, 2);
   }
 
   if (pStatusBar->GetStatusText(3) == "") {
-    ss.str(L"");
-    ss << L"quote: double";
-    pStatusBar->SetStatusText(ss.str(), 3);
+    pStatusBar->SetStatusText(L"quote: double", 3);
   }
 };
 
