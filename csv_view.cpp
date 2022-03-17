@@ -112,33 +112,33 @@ void CsvView::showStatus() {
   }
 
   if (pStatusBar->GetStatusText(2) == "") {
-    std::wstring str;
+    std::wstring statusText;
     auto pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
     assert(pCsvDocument);
     auto separator = pCsvDocument->getSeparator();
     if (separator) {
       switch (separator.value()) {
       case kTab:
-        str = L"Tab";
+        statusText = L"Tab";
         break;
       case kPipe:
-        str = L"Pipe";
+        statusText = L"Pipe";
         break;
       case kSemicolon:
-        str = L"Semicolon";
+        statusText = L"Semicolon";
         break;
       case kComma:
-        str = L"Comma";
+        statusText = L"Comma";
         break;
       case kSpace:
-        str = L"Space";
+        statusText = L"Space";
         break;
       default:
-        str = separator.value();
+        statusText = separator.value();
         break;
       };
     }
-    pStatusBar->SetStatusText(L"separator: " + str, 2);
+    pStatusBar->SetStatusText(L"separator: " + statusText, 2);
   }
 
   if (pStatusBar->GetStatusText(3) == "") {
