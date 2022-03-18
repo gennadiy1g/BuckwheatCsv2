@@ -19,7 +19,7 @@
 
 class CsvDocument : public wxDocument {
 public:
-  TokenizedFileLines *getTokenizedFileLines() {
+  TokenizedFileLines *tokenizedFileLines() {
     assert(mpTokenizedFileLines);
     return mpTokenizedFileLines.get();
   };

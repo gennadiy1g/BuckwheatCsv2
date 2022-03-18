@@ -80,7 +80,7 @@ int CsvGridTable::GetNumberCols() {
   auto &gLogger = GlobalLogger::get();
   assert(mNumLines);
   int value{};
-  value = mpCsvDocument->getTokenizedFileLines()->numColumns();
+  value = mpCsvDocument->tokenizedFileLines()->numColumns();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
   return value;
 };
@@ -110,7 +110,7 @@ wxString CsvGridTable::getValueAux(int row, int col) const {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   wxString value{"."};
-  auto tokenizedLine = mpCsvDocument->getTokenizedFileLines()->getTokenizedLine(row);
+  auto tokenizedLine = mpCsvDocument->tokenizedFileLines()->getTokenizedLine(row);
   if (col < static_cast<int>(tokenizedLine->size())) {
     value = tokenizedLine->at(col);
   }
