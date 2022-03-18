@@ -115,7 +115,7 @@ void CsvView::showStatus() {
     std::wstring statusText;
     auto pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
     assert(pCsvDocument);
-    auto separator = pCsvDocument->getSeparator();
+    auto separator = pCsvDocument->separator();
     if (separator) {
       switch (separator.value()) {
       case kTab:
