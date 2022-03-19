@@ -3,6 +3,7 @@
 
 //(*Headers(SeparatorDialog)
 #include <wx/dialog.h>
+#include <wx/sizer.h>
 //*)
 
 class SeparatorDialog: public wxDialog
