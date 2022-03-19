@@ -49,7 +49,7 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
     mpTokenizedFileLines.reset(new TokenizedFileLines(bfs::path(file), mOnProgress));
     assert(mpTokenizedFileLines);
     BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
-    mpTokenizedFileLines->setTokenFuncParams(L'\0', mSeparator.value(), mQuote.value_or(L'\"'));
+    mpTokenizedFileLines->setTokenFuncParams(L'\0', mSeparator.value(), mQuote.value_or(kDoubleQuote));
   } else {
     wxMessageBox("Cannot detect the separator character!", "Warning");
   }
