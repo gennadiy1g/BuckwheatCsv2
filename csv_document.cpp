@@ -31,7 +31,7 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
     return false;
   } catch (const std::runtime_error &e) {
     // Insufficient permissions
-    wxMessageBox(e.what(), "Warning");
+    wxMessageBox(e.what(), "Attention!");
     return false;
   }
   return wxDocument::OnCreate(path, flags);
