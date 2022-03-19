@@ -1,5 +1,6 @@
 #include <boost/filesystem.hpp>
 
+#include "CsvTable/SepChars.hpp"
 #include "CsvTable/log.hpp"
 #include "CsvTable/utilities.hpp"
 #include "csv_document.hpp"
@@ -49,7 +50,7 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
     mpTokenizedFileLines.reset(new TokenizedFileLines(bfs::path(file), mOnProgress));
     assert(mpTokenizedFileLines);
     BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
-    mpTokenizedFileLines->setTokenFuncParams(L'\0', mSeparator.value(), mQuote.value_or(kDoubleQuote));
+    mpTokenizedFileLines->setTokenFuncParams(kNull, mSeparator.value(), mQuote.value_or(kDoubleQuote));
   } else {
     wxMessageBox("Cannot detect the separator character!", "Warning");
   }
