@@ -7,6 +7,56 @@
 			<object class="sizeritem">
 				<object class="wxStaticBoxSizer" variable="mStaticBoxSizerSeparator" member="no">
 					<label>Separator character</label>
+					<object class="sizeritem">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON1" variable="mRadioButtonComma" member="yes">
+							<label>Comma</label>
+						</object>
+						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON2" variable="mRadioButtonTab" member="yes">
+							<label>Tab</label>
+						</object>
+						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON3" variable="mRadioButtonSemicolon" member="yes">
+							<label>Semicolon</label>
+						</object>
+						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON4" variable="mRadioButtonVerticalBar" member="yes">
+							<label>Vertical bar</label>
+						</object>
+						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON5" variable="mRadioButtonSpace" member="yes">
+							<label>Space</label>
+						</object>
+						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON6" variable="mRadioButtonOther" member="yes">
+							<label>Other</label>
+						</object>
+						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="mTextCtrlOtherSeparator" member="yes">
+							<maxlength>1</maxlength>
+							<enabled>0</enabled>
+						</object>
+						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+					</object>
 				</object>
 				<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 				<border>5</border>
