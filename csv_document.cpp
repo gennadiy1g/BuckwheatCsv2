@@ -18,32 +18,36 @@ bool CsvDocument::DeleteContents() {
   return true; // The return value of this method is currently ignored (docs.wxwidgets.org/3.1.5/classwx_document.html)
 };
 
+bool CsvDocument::OnCreate(const wxString &path, long flags) {
+  try {
+    detectSeparatorAndQuote(bfs::path(path), mSeparator, mQuote);
+  } catch (const std::ios_base::failure &e) {
+    // Binary file
+    wxMessageBox(e.what(), "Warning");
+    return false;
+  } catch (const std::runtime_error &e) {
+    // Insufficient permissions
+    wxMessageBox(e.what(), "Warning");
+    return false;
+  }
+  return wxDocument::OnCreate(path, flags);
+};
+
 bool CsvDocument::DoOpenDocument(const wxString &file) {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   Modify(false);
 
-  bool canReadFile{true};
-  bfs::path path(file);
-  try {
-    detectSeparatorAndQuote(path, mSeparator, mQuote);
-  } catch (const std::runtime_error &e) {
-    wxMessageBox(e.what(), "Warning");
-    canReadFile = false;
-  }
+  using namespace std::placeholders; // for _1, _2, _3...
+  mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
 
-  if (canReadFile) {
-    using namespace std::placeholders; // for _1, _2, _3...
-    mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
-
-    if (mSeparator) {
-      mpTokenizedFileLines.reset(new TokenizedFileLines(path, mOnProgress));
-      assert(mpTokenizedFileLines);
-      BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
-      mpTokenizedFileLines->setTokenFuncParams(L'\0', mSeparator.value(), mQuote.value_or(L'\"'));
-    } else {
-      wxMessageBox("Cannot detect the separator character!", "Warning");
-    }
+  if (mSeparator) {
+    mpTokenizedFileLines.reset(new TokenizedFileLines(bfs::path(file), mOnProgress));
+    assert(mpTokenizedFileLines);
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
+    mpTokenizedFileLines->setTokenFuncParams(L'\0', mSeparator.value(), mQuote.value_or(L'\"'));
+  } else {
+    wxMessageBox("Cannot detect the separator character!", "Warning");
   }
 
   return true; // if this method returns false, the application terminates

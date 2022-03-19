@@ -25,6 +25,7 @@ public:
   };
 
   virtual bool DeleteContents() override;
+  virtual bool OnCreate(const wxString &path, long flags) override;
 
   std::optional<wchar_t> separator() const { return mSeparator; };
   std::optional<wchar_t> quote() const { return mQuote; };
