@@ -23,7 +23,11 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
     detectSeparatorAndQuote(bfs::path(path), mSeparator, mQuote);
   } catch (const std::ios_base::failure &e) {
     // Binary file
-    wxMessageBox(e.what(), "Warning");
+    wxMessageBox("Cannot understand the content of file \"" + path +
+                     "\"!\n\nOne possible reason is that this file is not a UTF-8 encoded text file.\n\nInternal error "
+                     "message: " +
+                     e.what(),
+                 "Attention!");
     return false;
   } catch (const std::runtime_error &e) {
     // Insufficient permissions
