@@ -47,6 +47,7 @@
 		</Linker>
 		<Unit filename="CsvTable/CsvTable.cpp" />
 		<Unit filename="CsvTable/CsvTable.hpp" />
+		<Unit filename="CsvTable/SepChars.hpp" />
 		<Unit filename="CsvTable/log.hpp" />
 		<Unit filename="CsvTable/utilities.cpp" />
 		<Unit filename="CsvTable/utilities.hpp" />
