@@ -11,6 +11,7 @@
 					<object class="sizeritem">
 						<object class="wxRadioButton" name="ID_RADIOBUTTON1" variable="mRadioButtonComma" member="yes">
 							<label>Comma</label>
+							<style>wxRB_GROUP</style>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
@@ -70,6 +71,7 @@
 							<object class="sizeritem">
 								<object class="wxRadioButton" name="ID_RADIOBUTTON7" variable="mRadioButtonDouble" member="yes">
 									<label>Double</label>
+									<style>wxRB_GROUP</style>
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
@@ -92,6 +94,7 @@
 							<object class="sizeritem">
 								<object class="wxRadioButton" name="ID_RADIOBUTTON10" variable="mRadioButtonNoEscape" member="yes">
 									<label>No Escape character</label>
+									<style>wxRB_GROUP</style>
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
