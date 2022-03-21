@@ -11,6 +11,26 @@
       "-g",
       "-std=c++17",
       "-c",
+      "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/SeparatorDialog.cpp",
+      "-o",
+      "obj/Debug/SeparatorDialog.o"
+    ],
+    "directory": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv",
+    "file": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/SeparatorDialog.cpp",
+    "output": "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/obj/Debug/SeparatorDialog.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-Wall",
+      "-I/usr/local/lib/wx/include/gtk3-unicode-static-3.1",
+      "-I/usr/local/include/wx-3.1",
+      "-D_FILE_OFFSET_BITS=64",
+      "-D__WXGTK__",
+      "-pthread",
+      "-g",
+      "-std=c++17",
+      "-c",
       "/home/gennadiy/Projects/BuckwheatCsv2/BuckwheatCsv/main.cpp",
       "-o",
       "obj/Debug/main.o"
