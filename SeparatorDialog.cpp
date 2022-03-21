@@ -36,7 +36,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	wxStaticBoxSizer* mStaticBoxSizerSeparator;
 	wxStdDialogButtonSizer* mStdDialogButtonSizer;
 
-	Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
+	Create(parent, wxID_ANY, _("Separator, Quote, Escape"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 	mBoxSizerMain = new wxBoxSizer(wxVERTICAL);
 	mStaticBoxSizerSeparator = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Separator character"));
 	mRadioButtonComma = new wxRadioButton(this, ID_RADIOBUTTON1, _("Comma"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON1"));
