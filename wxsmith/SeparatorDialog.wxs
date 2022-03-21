@@ -66,6 +66,20 @@
 					<object class="sizeritem">
 						<object class="wxStaticBoxSizer" variable="mStaticBoxSizerQuote" member="no">
 							<label>Quote character</label>
+							<object class="sizeritem">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON7" variable="mRadioButtonDouble" member="yes">
+									<label>Double</label>
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON8" variable="mRadioButtonSingle" member="yes">
+									<label>Single</label>
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+							</object>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
@@ -74,6 +88,27 @@
 					<object class="sizeritem">
 						<object class="wxStaticBoxSizer" variable="mStaticBoxSizerEscape" member="no">
 							<label>Escape character</label>
+							<object class="sizeritem">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON10" variable="mRadioButtonNoEscape" member="yes">
+									<label>No Escape character</label>
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON9" variable="mRadioButtonOtherEscape" member="yes">
+									<label>Other</label>
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+							</object>
+							<object class="sizeritem">
+								<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="mTextCtrlOtherEscape" member="yes">
+									<enabled>0</enabled>
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+							</object>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>

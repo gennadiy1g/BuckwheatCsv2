@@ -14,6 +14,11 @@ const long SeparatorDialog::ID_RADIOBUTTON4 = wxNewId();
 const long SeparatorDialog::ID_RADIOBUTTON5 = wxNewId();
 const long SeparatorDialog::ID_RADIOBUTTON6 = wxNewId();
 const long SeparatorDialog::ID_TEXTCTRL1 = wxNewId();
+const long SeparatorDialog::ID_RADIOBUTTON7 = wxNewId();
+const long SeparatorDialog::ID_RADIOBUTTON8 = wxNewId();
+const long SeparatorDialog::ID_RADIOBUTTON10 = wxNewId();
+const long SeparatorDialog::ID_RADIOBUTTON9 = wxNewId();
+const long SeparatorDialog::ID_TEXTCTRL2 = wxNewId();
 //*)
 
 BEGIN_EVENT_TABLE(SeparatorDialog,wxDialog)
@@ -53,8 +58,19 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mBoxSizerMain->Add(mStaticBoxSizerSeparator, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mBoxSizerQuoteEscape = new wxBoxSizer(wxHORIZONTAL);
 	mStaticBoxSizerQuote = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Quote character"));
+	mRadioButtonDouble = new wxRadioButton(this, ID_RADIOBUTTON7, _("Double"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON7"));
+	mStaticBoxSizerQuote->Add(mRadioButtonDouble, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	mRadioButtonSingle = new wxRadioButton(this, ID_RADIOBUTTON8, _("Single"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON8"));
+	mStaticBoxSizerQuote->Add(mRadioButtonSingle, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mBoxSizerQuoteEscape->Add(mStaticBoxSizerQuote, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mStaticBoxSizerEscape = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Escape character"));
+	mRadioButtonNoEscape = new wxRadioButton(this, ID_RADIOBUTTON10, _("No Escape character"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON10"));
+	mStaticBoxSizerEscape->Add(mRadioButtonNoEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	mRadioButtonOtherEscape = new wxRadioButton(this, ID_RADIOBUTTON9, _("Other"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON9"));
+	mStaticBoxSizerEscape->Add(mRadioButtonOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	mTextCtrlOtherEscape = new wxTextCtrl(this, ID_TEXTCTRL2, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL2"));
+	mTextCtrlOtherEscape->Disable();
+	mStaticBoxSizerEscape->Add(mTextCtrlOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mBoxSizerQuoteEscape->Add(mStaticBoxSizerEscape, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mBoxSizerMain->Add(mBoxSizerQuoteEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mStdDialogButtonSizer = new wxStdDialogButtonSizer();
