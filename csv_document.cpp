@@ -3,6 +3,7 @@
 #include "CsvTable/SepChars.hpp"
 #include "CsvTable/log.hpp"
 #include "CsvTable/utilities.hpp"
+#include "SeparatorDialog.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 
@@ -52,7 +53,8 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
     BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
     mpTokenizedFileLines->setTokenFuncParams(kNull, mSeparator.value(), mQuote.value_or(kDoubleQuote));
   } else {
-    wxMessageBox("Cannot detect the separator character!", "Warning");
+    SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
+    sepDlg.ShowModal();
   }
 
   return true; // if this method returns false, the application terminates
