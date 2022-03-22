@@ -36,7 +36,13 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
     wxMessageBox(e.what(), "Attention!");
     return false;
   }
-  return wxDocument::OnCreate(path, flags);
+
+  if (!mSeparator) {
+    SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
+    sepDlg.ShowModal();
+  }
+
+  return mSeparator && wxDocument::OnCreate(path, flags);
 };
 
 bool CsvDocument::DoOpenDocument(const wxString &file) {
@@ -47,15 +53,11 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   using namespace std::placeholders; // for _1, _2, _3...
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
 
-  if (mSeparator) {
-    mpTokenizedFileLines.reset(new TokenizedFileLines(bfs::path(file), mOnProgress));
-    assert(mpTokenizedFileLines);
-    BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
-    mpTokenizedFileLines->setTokenFuncParams(kNull, mSeparator.value(), mQuote.value_or(kDoubleQuote));
-  } else {
-    SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
-    sepDlg.ShowModal();
-  }
+  assert(mSeparator);
+  mpTokenizedFileLines.reset(new TokenizedFileLines(bfs::path(file), mOnProgress));
+  assert(mpTokenizedFileLines);
+  BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
+  mpTokenizedFileLines->setTokenFuncParams(mEscape.value_or(kNull), mSeparator.value(), mQuote.value_or(kDoubleQuote));
 
   return true; // if this method returns false, the application terminates
 };
