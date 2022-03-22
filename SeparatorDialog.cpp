@@ -6,6 +6,8 @@
 #include <wx/string.h>
 //*)
 
+#include <wx/valtext.h>
+
 //(*IdInit(SeparatorDialog)
 const long SeparatorDialog::ID_RADIOBUTTON1 = wxNewId();
 const long SeparatorDialog::ID_RADIOBUTTON2 = wxNewId();
@@ -51,7 +53,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mStaticBoxSizerSeparator->Add(mRadioButtonSpace, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mRadioButtonOther = new wxRadioButton(this, ID_RADIOBUTTON6, _("Other"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON6"));
 	mStaticBoxSizerSeparator->Add(mRadioButtonOther, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	mTextCtrlOtherSeparator = new wxTextCtrl(this, ID_TEXTCTRL1, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
+	mTextCtrlOtherSeparator = new wxTextCtrl(this, ID_TEXTCTRL1, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_EMPTY), _T("ID_TEXTCTRL1"));
 	mTextCtrlOtherSeparator->SetMaxLength(1);
 	mTextCtrlOtherSeparator->Disable();
 	mStaticBoxSizerSeparator->Add(mTextCtrlOtherSeparator, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
@@ -68,7 +70,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mStaticBoxSizerEscape->Add(mRadioButtonNoEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mRadioButtonOtherEscape = new wxRadioButton(this, ID_RADIOBUTTON9, _("Other"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON9"));
 	mStaticBoxSizerEscape->Add(mRadioButtonOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	mTextCtrlOtherEscape = new wxTextCtrl(this, ID_TEXTCTRL2, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_TEXTCTRL2"));
+	mTextCtrlOtherEscape = new wxTextCtrl(this, ID_TEXTCTRL2, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_EMPTY), _T("ID_TEXTCTRL2"));
 	mTextCtrlOtherEscape->Disable();
 	mStaticBoxSizerEscape->Add(mTextCtrlOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mBoxSizerQuoteEscape->Add(mStaticBoxSizerEscape, 0, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
