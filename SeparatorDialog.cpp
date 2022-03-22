@@ -58,7 +58,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mTextCtrlOtherSeparator->SetMaxLength(1);
 	mTextCtrlOtherSeparator->Disable();
 	mStaticBoxSizerSeparator->Add(mTextCtrlOtherSeparator, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	mBoxSizerMain->Add(mStaticBoxSizerSeparator, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	mBoxSizerMain->Add(mStaticBoxSizerSeparator, 0, wxALL|wxEXPAND, 5);
 	mBoxSizerQuoteEscape = new wxBoxSizer(wxHORIZONTAL);
 	mStaticBoxSizerQuote = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Quote character"));
 	mRadioButtonDouble = new wxRadioButton(this, ID_RADIOBUTTON7, _("Double"), wxDefaultPosition, wxDefaultSize, wxRB_GROUP, wxDefaultValidator, _T("ID_RADIOBUTTON7"));
@@ -78,7 +78,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mTextCtrlOtherEscape->Disable();
 	mStaticBoxSizerEscape->Add(mTextCtrlOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mBoxSizerQuoteEscape->Add(mStaticBoxSizerEscape, 0, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	mBoxSizerMain->Add(mBoxSizerQuoteEscape, 0, wxALL|wxEXPAND, 5);
+	mBoxSizerMain->Add(mBoxSizerQuoteEscape, 0, wxALL, 5);
 	mStdDialogButtonSizer = new wxStdDialogButtonSizer();
 	mStdDialogButtonSizer->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
 	mStdDialogButtonSizer->AddButton(new wxButton(this, wxID_CANCEL, wxEmptyString));

@@ -61,7 +61,7 @@
 						<border>5</border>
 					</object>
 				</object>
-				<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+				<flag>wxALL|wxEXPAND</flag>
 				<border>5</border>
 			</object>
 			<object class="sizeritem">
@@ -128,7 +128,7 @@
 						<border>5</border>
 					</object>
 				</object>
-				<flag>wxALL|wxEXPAND</flag>
+				<flag>wxALL</flag>
 				<border>5</border>
 			</object>
 			<object class="sizeritem">
