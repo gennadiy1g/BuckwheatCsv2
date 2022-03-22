@@ -16,6 +16,7 @@ class SeparatorDialog: public wxDialog
 		virtual ~SeparatorDialog();
 
 		//(*Declarations(SeparatorDialog)
+		wxRadioButton* mRadioButtonBackslash;
 		wxRadioButton* mRadioButtonComma;
 		wxRadioButton* mRadioButtonDouble;
 		wxRadioButton* mRadioButtonNoEscape;
@@ -43,6 +44,7 @@ class SeparatorDialog: public wxDialog
 		static const long ID_RADIOBUTTON7;
 		static const long ID_RADIOBUTTON8;
 		static const long ID_RADIOBUTTON10;
+		static const long ID_RADIOBUTTON11;
 		static const long ID_RADIOBUTTON9;
 		static const long ID_TEXTCTRL2;
 		//*)

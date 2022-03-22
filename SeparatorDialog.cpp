@@ -19,6 +19,7 @@ const long SeparatorDialog::ID_TEXTCTRL1 = wxNewId();
 const long SeparatorDialog::ID_RADIOBUTTON7 = wxNewId();
 const long SeparatorDialog::ID_RADIOBUTTON8 = wxNewId();
 const long SeparatorDialog::ID_RADIOBUTTON10 = wxNewId();
+const long SeparatorDialog::ID_RADIOBUTTON11 = wxNewId();
 const long SeparatorDialog::ID_RADIOBUTTON9 = wxNewId();
 const long SeparatorDialog::ID_TEXTCTRL2 = wxNewId();
 //*)
@@ -68,6 +69,8 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mStaticBoxSizerEscape = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Escape character"));
 	mRadioButtonNoEscape = new wxRadioButton(this, ID_RADIOBUTTON10, _("No Escape character"), wxDefaultPosition, wxDefaultSize, wxRB_GROUP, wxDefaultValidator, _T("ID_RADIOBUTTON10"));
 	mStaticBoxSizerEscape->Add(mRadioButtonNoEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+	mRadioButtonBackslash = new wxRadioButton(this, ID_RADIOBUTTON11, _("Backslash"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON11"));
+	mStaticBoxSizerEscape->Add(mRadioButtonBackslash, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mRadioButtonOtherEscape = new wxRadioButton(this, ID_RADIOBUTTON9, _("Other"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON9"));
 	mStaticBoxSizerEscape->Add(mRadioButtonOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mTextCtrlOtherEscape = new wxTextCtrl(this, ID_TEXTCTRL2, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_EMPTY), _T("ID_TEXTCTRL2"));
