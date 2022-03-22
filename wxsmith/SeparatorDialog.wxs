@@ -109,6 +109,7 @@
 							</object>
 							<object class="sizeritem">
 								<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="mTextCtrlOtherEscape" member="yes">
+									<maxlength>1</maxlength>
 									<validator>wxTextValidator(wxFILTER__EMPTY)</validator>
 									<enabled>0</enabled>
 								</object>
