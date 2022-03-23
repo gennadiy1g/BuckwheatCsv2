@@ -20,8 +20,8 @@ class SeparatorDialog: public wxDialog
 		wxRadioButton* RadioButtonComma;
 		wxRadioButton* RadioButtonDouble;
 		wxRadioButton* RadioButtonNoEscape;
-		wxRadioButton* RadioButtonOther;
 		wxRadioButton* RadioButtonOtherEscape;
+		wxRadioButton* RadioButtonOtherSeparator;
 		wxRadioButton* RadioButtonSemicolon;
 		wxRadioButton* RadioButtonSingle;
 		wxRadioButton* RadioButtonSpace;
