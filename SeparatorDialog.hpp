@@ -31,6 +31,9 @@ class SeparatorDialog: public wxDialog
 		wxTextCtrl* TextCtrlOtherSeparator;
 		//*)
 
+		wchar_t separator() const;
+		void separator(wchar_t ch);
+
 	protected:
 
 		//(*Identifiers(SeparatorDialog)

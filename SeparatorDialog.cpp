@@ -1,4 +1,5 @@
 #include "SeparatorDialog.hpp"
+#include "CsvTable/SepChars.hpp"
 
 //(*InternalHeaders(SeparatorDialog)
 #include <wx/button.h>
@@ -117,3 +118,44 @@ void SeparatorDialog::OnRadioButtonEscapeSelect(wxCommandEvent& event)
 {
     TextCtrlOtherEscape->Enable(RadioButtonOtherEscape->GetValue());
 }
+
+wchar_t SeparatorDialog::separator() const {
+  if (RadioButtonTab->GetValue()) {
+    return kTab;
+  } else if (RadioButtonVerticalBar->GetValue()) {
+    return kPipe;
+  } else if (RadioButtonSemicolon->GetValue()) {
+    return kSemicolon;
+  } else if (RadioButtonComma->GetValue()) {
+    return kComma;
+  } else if (RadioButtonSpace->GetValue()) {
+    return kSpace;
+  } else {
+    assert(RadioButtonOtherSeparator->GetValue());
+    return TextCtrlOtherSeparator->GetValue()[0];
+  }
+};
+
+void SeparatorDialog::separator(wchar_t ch) {
+  switch (ch) {
+  case kTab:
+    RadioButtonTab->SetValue(true);
+    break;
+  case kPipe:
+    RadioButtonVerticalBar->SetValue(true);
+    break;
+  case kSemicolon:
+    RadioButtonSemicolon->SetValue(true);
+    break;
+  case kComma:
+    RadioButtonComma->SetValue(true);
+    break;
+  case kSpace:
+    RadioButtonSpace->SetValue(true);
+    break;
+  default:
+    RadioButtonOtherSeparator->SetValue(true);
+    TextCtrlOtherSeparator->Enable(true);
+    TextCtrlOtherSeparator->SetValue(ch);
+  }
+};
