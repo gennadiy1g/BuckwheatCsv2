@@ -65,7 +65,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mStaticBoxSizerQuote->Add(mRadioButtonDouble, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mRadioButtonSingle = new wxRadioButton(this, ID_RADIOBUTTON8, _("Single"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON8"));
 	mStaticBoxSizerQuote->Add(mRadioButtonSingle, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	mBoxSizerQuoteEscape->Add(mStaticBoxSizerQuote, 1, wxTOP|wxBOTTOM|wxRIGHT|wxEXPAND, 5);
+	mBoxSizerQuoteEscape->Add(mStaticBoxSizerQuote, 0, wxTOP|wxBOTTOM|wxRIGHT|wxEXPAND, 5);
 	mStaticBoxSizerEscape = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Escape character"));
 	mRadioButtonNoEscape = new wxRadioButton(this, ID_RADIOBUTTON10, _("No Escape character"), wxDefaultPosition, wxDefaultSize, wxRB_GROUP, wxDefaultValidator, _T("ID_RADIOBUTTON10"));
 	mStaticBoxSizerEscape->Add(mRadioButtonNoEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
@@ -77,8 +77,8 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mTextCtrlOtherEscape->SetMaxLength(1);
 	mTextCtrlOtherEscape->Disable();
 	mStaticBoxSizerEscape->Add(mTextCtrlOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	mBoxSizerQuoteEscape->Add(mStaticBoxSizerEscape, 0, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	mBoxSizerMain->Add(mBoxSizerQuoteEscape, 0, wxALL, 5);
+	mBoxSizerQuoteEscape->Add(mStaticBoxSizerEscape, 0, wxTOP|wxBOTTOM|wxLEFT|wxEXPAND, 5);
+	mBoxSizerMain->Add(mBoxSizerQuoteEscape, 0, wxALL|wxEXPAND, 5);
 	mStdDialogButtonSizer = new wxStdDialogButtonSizer();
 	mStdDialogButtonSizer->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
 	mStdDialogButtonSizer->AddButton(new wxButton(this, wxID_CANCEL, wxEmptyString));
