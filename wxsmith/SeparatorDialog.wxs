@@ -105,6 +105,7 @@
 								<object class="wxRadioButton" name="ID_RADIOBUTTON10" variable="RadioButtonNoEscape" member="yes">
 									<label>No Escape character</label>
 									<style>wxRB_GROUP</style>
+									<handler function="OnRadioButtonEscapeSelect" entry="EVT_RADIOBUTTON" />
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
@@ -112,6 +113,7 @@
 							<object class="sizeritem">
 								<object class="wxRadioButton" name="ID_RADIOBUTTON11" variable="RadioButtonBackslash" member="yes">
 									<label>Backslash</label>
+									<handler function="OnRadioButtonEscapeSelect" entry="EVT_RADIOBUTTON" />
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
@@ -119,6 +121,7 @@
 							<object class="sizeritem">
 								<object class="wxRadioButton" name="ID_RADIOBUTTON9" variable="RadioButtonOtherEscape" member="yes">
 									<label>Other</label>
+									<handler function="OnRadioButtonEscapeSelect" entry="EVT_RADIOBUTTON" />
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>

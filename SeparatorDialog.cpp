@@ -95,6 +95,9 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	Connect(ID_RADIOBUTTON4,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
 	Connect(ID_RADIOBUTTON5,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
 	Connect(ID_RADIOBUTTON6,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
+	Connect(ID_RADIOBUTTON10,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonEscapeSelect);
+	Connect(ID_RADIOBUTTON11,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonEscapeSelect);
+	Connect(ID_RADIOBUTTON9,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonEscapeSelect);
 	//*)
 }
 
@@ -108,4 +111,9 @@ SeparatorDialog::~SeparatorDialog()
 void SeparatorDialog::OnRadioButtonSeparatorSelect(wxCommandEvent& event)
 {
     TextCtrlOtherSeparator->Enable(RadioButtonOtherSeparator->GetValue());
+}
+
+void SeparatorDialog::OnRadioButtonEscapeSelect(wxCommandEvent& event)
+{
+    TextCtrlOtherEscape->Enable(RadioButtonOtherEscape->GetValue());
 }
