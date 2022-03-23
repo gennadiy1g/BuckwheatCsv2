@@ -66,6 +66,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	mRadioButtonSingle = new wxRadioButton(this, ID_RADIOBUTTON8, _("Single"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON8"));
 	mStaticBoxSizerQuote->Add(mRadioButtonSingle, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	mBoxSizerQuoteEscape->Add(mStaticBoxSizerQuote, 0, wxTOP|wxBOTTOM|wxRIGHT|wxEXPAND, 5);
+	mBoxSizerQuoteEscape->Add(0,0,1, wxALL|wxEXPAND, 0);
 	mStaticBoxSizerEscape = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Escape character"));
 	mRadioButtonNoEscape = new wxRadioButton(this, ID_RADIOBUTTON10, _("No Escape character"), wxDefaultPosition, wxDefaultSize, wxRB_GROUP, wxDefaultValidator, _T("ID_RADIOBUTTON10"));
 	mStaticBoxSizerEscape->Add(mRadioButtonNoEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);

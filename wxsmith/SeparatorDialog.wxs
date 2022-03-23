@@ -88,6 +88,10 @@
 						<flag>wxTOP|wxBOTTOM|wxRIGHT|wxEXPAND</flag>
 						<border>5</border>
 					</object>
+					<object class="spacer">
+						<flag>wxALL|wxEXPAND</flag>
+						<option>1</option>
+					</object>
 					<object class="sizeritem">
 						<object class="wxStaticBoxSizer" variable="mStaticBoxSizerEscape" member="no">
 							<label>Escape character</label>
