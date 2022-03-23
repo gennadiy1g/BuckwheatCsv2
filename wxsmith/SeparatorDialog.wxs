@@ -60,6 +60,7 @@
 					<object class="sizeritem">
 						<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="TextCtrlOtherSeparator" member="yes">
 							<maxlength>1</maxlength>
+							<size>34,-1</size>
 							<validator>wxTextValidator(wxFILTER__EMPTY)</validator>
 							<enabled>0</enabled>
 						</object>
@@ -129,6 +130,7 @@
 							<object class="sizeritem">
 								<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="TextCtrlOtherEscape" member="yes">
 									<maxlength>1</maxlength>
+									<size>34,-1</size>
 									<validator>wxTextValidator(wxFILTER__EMPTY)</validator>
 									<enabled>0</enabled>
 								</object>

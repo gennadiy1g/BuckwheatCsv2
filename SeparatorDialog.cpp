@@ -54,7 +54,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	StaticBoxSizerSeparator->Add(RadioButtonSpace, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	RadioButtonOtherSeparator = new wxRadioButton(this, ID_RADIOBUTTON6, _("Other"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON6"));
 	StaticBoxSizerSeparator->Add(RadioButtonOtherSeparator, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	TextCtrlOtherSeparator = new wxTextCtrl(this, ID_TEXTCTRL1, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_EMPTY), _T("ID_TEXTCTRL1"));
+	TextCtrlOtherSeparator = new wxTextCtrl(this, ID_TEXTCTRL1, wxEmptyString, wxDefaultPosition, wxSize(34,-1), 0, wxTextValidator(wxFILTER_EMPTY), _T("ID_TEXTCTRL1"));
 	TextCtrlOtherSeparator->SetMaxLength(1);
 	TextCtrlOtherSeparator->Disable();
 	StaticBoxSizerSeparator->Add(TextCtrlOtherSeparator, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
@@ -74,7 +74,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	StaticBoxSizerEscape->Add(RadioButtonBackslash, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	RadioButtonOtherEscape = new wxRadioButton(this, ID_RADIOBUTTON9, _("Other"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON9"));
 	StaticBoxSizerEscape->Add(RadioButtonOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	TextCtrlOtherEscape = new wxTextCtrl(this, ID_TEXTCTRL2, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxTextValidator(wxFILTER_EMPTY), _T("ID_TEXTCTRL2"));
+	TextCtrlOtherEscape = new wxTextCtrl(this, ID_TEXTCTRL2, wxEmptyString, wxDefaultPosition, wxSize(34,-1), 0, wxTextValidator(wxFILTER_EMPTY), _T("ID_TEXTCTRL2"));
 	TextCtrlOtherEscape->SetMaxLength(1);
 	TextCtrlOtherEscape->Disable();
 	StaticBoxSizerEscape->Add(TextCtrlOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
