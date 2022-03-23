@@ -12,6 +12,7 @@
 						<object class="wxRadioButton" name="ID_RADIOBUTTON1" variable="RadioButtonComma" member="yes">
 							<label>Comma</label>
 							<style>wxRB_GROUP</style>
+							<handler function="OnRadioButtonSeparatorSelect" entry="EVT_RADIOBUTTON" />
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
@@ -19,6 +20,7 @@
 					<object class="sizeritem">
 						<object class="wxRadioButton" name="ID_RADIOBUTTON2" variable="RadioButtonTab" member="yes">
 							<label>Tab</label>
+							<handler function="OnRadioButtonSeparatorSelect" entry="EVT_RADIOBUTTON" />
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
@@ -26,6 +28,7 @@
 					<object class="sizeritem">
 						<object class="wxRadioButton" name="ID_RADIOBUTTON3" variable="RadioButtonSemicolon" member="yes">
 							<label>Semicolon</label>
+							<handler function="OnRadioButtonSeparatorSelect" entry="EVT_RADIOBUTTON" />
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
@@ -33,6 +36,7 @@
 					<object class="sizeritem">
 						<object class="wxRadioButton" name="ID_RADIOBUTTON4" variable="RadioButtonVerticalBar" member="yes">
 							<label>Vertical bar</label>
+							<handler function="OnRadioButtonSeparatorSelect" entry="EVT_RADIOBUTTON" />
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
@@ -40,6 +44,7 @@
 					<object class="sizeritem">
 						<object class="wxRadioButton" name="ID_RADIOBUTTON5" variable="RadioButtonSpace" member="yes">
 							<label>Space</label>
+							<handler function="OnRadioButtonSeparatorSelect" entry="EVT_RADIOBUTTON" />
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
@@ -47,6 +52,7 @@
 					<object class="sizeritem">
 						<object class="wxRadioButton" name="ID_RADIOBUTTON6" variable="RadioButtonOtherSeparator" member="yes">
 							<label>Other</label>
+							<handler function="OnRadioButtonSeparatorSelect" entry="EVT_RADIOBUTTON" />
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>

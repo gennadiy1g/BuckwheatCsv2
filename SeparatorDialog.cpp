@@ -88,6 +88,13 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	SetSizer(BoxSizerMain);
 	BoxSizerMain->Fit(this);
 	BoxSizerMain->SetSizeHints(this);
+
+	Connect(ID_RADIOBUTTON1,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
+	Connect(ID_RADIOBUTTON2,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
+	Connect(ID_RADIOBUTTON3,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
+	Connect(ID_RADIOBUTTON4,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
+	Connect(ID_RADIOBUTTON5,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
+	Connect(ID_RADIOBUTTON6,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonSeparatorSelect);
 	//*)
 }
 
@@ -97,3 +104,8 @@ SeparatorDialog::~SeparatorDialog()
 	//*)
 }
 
+
+void SeparatorDialog::OnRadioButtonSeparatorSelect(wxCommandEvent& event)
+{
+    TextCtrlOtherSeparator->Enable(RadioButtonOtherSeparator->GetValue());
+}

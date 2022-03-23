@@ -52,6 +52,7 @@ class SeparatorDialog: public wxDialog
 	private:
 
 		//(*Handlers(SeparatorDialog)
+		void OnRadioButtonSeparatorSelect(wxCommandEvent& event);
 		//*)
 
 		DECLARE_EVENT_TABLE()
