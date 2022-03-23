@@ -16,19 +16,19 @@ class SeparatorDialog: public wxDialog
 		virtual ~SeparatorDialog();
 
 		//(*Declarations(SeparatorDialog)
-		wxRadioButton* mRadioButtonBackslash;
-		wxRadioButton* mRadioButtonComma;
-		wxRadioButton* mRadioButtonDouble;
-		wxRadioButton* mRadioButtonNoEscape;
-		wxRadioButton* mRadioButtonOther;
-		wxRadioButton* mRadioButtonOtherEscape;
-		wxRadioButton* mRadioButtonSemicolon;
-		wxRadioButton* mRadioButtonSingle;
-		wxRadioButton* mRadioButtonSpace;
-		wxRadioButton* mRadioButtonTab;
-		wxRadioButton* mRadioButtonVerticalBar;
-		wxTextCtrl* mTextCtrlOtherEscape;
-		wxTextCtrl* mTextCtrlOtherSeparator;
+		wxRadioButton* RadioButtonBackslash;
+		wxRadioButton* RadioButtonComma;
+		wxRadioButton* RadioButtonDouble;
+		wxRadioButton* RadioButtonNoEscape;
+		wxRadioButton* RadioButtonOther;
+		wxRadioButton* RadioButtonOtherEscape;
+		wxRadioButton* RadioButtonSemicolon;
+		wxRadioButton* RadioButtonSingle;
+		wxRadioButton* RadioButtonSpace;
+		wxRadioButton* RadioButtonTab;
+		wxRadioButton* RadioButtonVerticalBar;
+		wxTextCtrl* TextCtrlOtherEscape;
+		wxTextCtrl* TextCtrlOtherSeparator;
 		//*)
 
 	protected:

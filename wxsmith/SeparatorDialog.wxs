@@ -3,13 +3,13 @@
 	<object class="wxDialog" name="SeparatorDialog">
 		<title>Separator, Quote, Escape</title>
 		<id_arg>0</id_arg>
-		<object class="wxBoxSizer" variable="mBoxSizerMain" member="no">
+		<object class="wxBoxSizer" variable="BoxSizerMain" member="no">
 			<orient>wxVERTICAL</orient>
 			<object class="sizeritem">
-				<object class="wxStaticBoxSizer" variable="mStaticBoxSizerSeparator" member="no">
+				<object class="wxStaticBoxSizer" variable="StaticBoxSizerSeparator" member="no">
 					<label>Separator character</label>
 					<object class="sizeritem">
-						<object class="wxRadioButton" name="ID_RADIOBUTTON1" variable="mRadioButtonComma" member="yes">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON1" variable="RadioButtonComma" member="yes">
 							<label>Comma</label>
 							<style>wxRB_GROUP</style>
 						</object>
@@ -17,42 +17,42 @@
 						<border>5</border>
 					</object>
 					<object class="sizeritem">
-						<object class="wxRadioButton" name="ID_RADIOBUTTON2" variable="mRadioButtonTab" member="yes">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON2" variable="RadioButtonTab" member="yes">
 							<label>Tab</label>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
 					</object>
 					<object class="sizeritem">
-						<object class="wxRadioButton" name="ID_RADIOBUTTON3" variable="mRadioButtonSemicolon" member="yes">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON3" variable="RadioButtonSemicolon" member="yes">
 							<label>Semicolon</label>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
 					</object>
 					<object class="sizeritem">
-						<object class="wxRadioButton" name="ID_RADIOBUTTON4" variable="mRadioButtonVerticalBar" member="yes">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON4" variable="RadioButtonVerticalBar" member="yes">
 							<label>Vertical bar</label>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
 					</object>
 					<object class="sizeritem">
-						<object class="wxRadioButton" name="ID_RADIOBUTTON5" variable="mRadioButtonSpace" member="yes">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON5" variable="RadioButtonSpace" member="yes">
 							<label>Space</label>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
 					</object>
 					<object class="sizeritem">
-						<object class="wxRadioButton" name="ID_RADIOBUTTON6" variable="mRadioButtonOther" member="yes">
+						<object class="wxRadioButton" name="ID_RADIOBUTTON6" variable="RadioButtonOther" member="yes">
 							<label>Other</label>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
 					</object>
 					<object class="sizeritem">
-						<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="mTextCtrlOtherSeparator" member="yes">
+						<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="TextCtrlOtherSeparator" member="yes">
 							<maxlength>1</maxlength>
 							<validator>wxTextValidator(wxFILTER__EMPTY)</validator>
 							<enabled>0</enabled>
@@ -70,7 +70,7 @@
 						<object class="wxStaticBoxSizer" variable="mStaticBoxSizerQuote" member="no">
 							<label>Quote character</label>
 							<object class="sizeritem">
-								<object class="wxRadioButton" name="ID_RADIOBUTTON7" variable="mRadioButtonDouble" member="yes">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON7" variable="RadioButtonDouble" member="yes">
 									<label>Double</label>
 									<style>wxRB_GROUP</style>
 								</object>
@@ -78,7 +78,7 @@
 								<border>5</border>
 							</object>
 							<object class="sizeritem">
-								<object class="wxRadioButton" name="ID_RADIOBUTTON8" variable="mRadioButtonSingle" member="yes">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON8" variable="RadioButtonSingle" member="yes">
 									<label>Single</label>
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
@@ -93,10 +93,10 @@
 						<option>1</option>
 					</object>
 					<object class="sizeritem">
-						<object class="wxStaticBoxSizer" variable="mStaticBoxSizerEscape" member="no">
+						<object class="wxStaticBoxSizer" variable="StaticBoxSizerEscape" member="no">
 							<label>Escape character</label>
 							<object class="sizeritem">
-								<object class="wxRadioButton" name="ID_RADIOBUTTON10" variable="mRadioButtonNoEscape" member="yes">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON10" variable="RadioButtonNoEscape" member="yes">
 									<label>No Escape character</label>
 									<style>wxRB_GROUP</style>
 								</object>
@@ -104,21 +104,21 @@
 								<border>5</border>
 							</object>
 							<object class="sizeritem">
-								<object class="wxRadioButton" name="ID_RADIOBUTTON11" variable="mRadioButtonBackslash" member="yes">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON11" variable="RadioButtonBackslash" member="yes">
 									<label>Backslash</label>
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
 							</object>
 							<object class="sizeritem">
-								<object class="wxRadioButton" name="ID_RADIOBUTTON9" variable="mRadioButtonOtherEscape" member="yes">
+								<object class="wxRadioButton" name="ID_RADIOBUTTON9" variable="RadioButtonOtherEscape" member="yes">
 									<label>Other</label>
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
 							</object>
 							<object class="sizeritem">
-								<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="mTextCtrlOtherEscape" member="yes">
+								<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="TextCtrlOtherEscape" member="yes">
 									<maxlength>1</maxlength>
 									<validator>wxTextValidator(wxFILTER__EMPTY)</validator>
 									<enabled>0</enabled>
@@ -135,7 +135,7 @@
 				<border>5</border>
 			</object>
 			<object class="sizeritem">
-				<object class="wxStdDialogButtonSizer" variable="mStdDialogButtonSizer" member="no">
+				<object class="wxStdDialogButtonSizer" variable="StdDialogButtonSizer" member="no">
 					<object class="button">
 						<object class="wxButton" name="wxID_OK">
 							<label></label>
