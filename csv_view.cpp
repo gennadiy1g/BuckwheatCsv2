@@ -111,10 +111,14 @@ void CsvView::showStatus() {
     pStatusBar->SetStatusText(ss.str(), 1);
   }
 
+  CsvDocument *pCsvDocument{};
+
   if (pStatusBar->GetStatusText(2) == "") {
-    std::wstring statusText;
-    auto pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
-    wxASSERT(pCsvDocument);
+    std::wstring statusText{};
+    if (!pCsvDocument) {
+      pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
+      wxASSERT(pCsvDocument);
+    }
     auto separator = pCsvDocument->separator();
     if (separator) {
       switch (separator.value()) {
