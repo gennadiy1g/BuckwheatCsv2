@@ -40,7 +40,10 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
   if (!mSeparator) {
     SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
     sepDlg.separator(kComma);
-    sepDlg.ShowModal();
+    if (sepDlg.ShowModal() == wxID_OK) {
+      mSeparator = sepDlg.separator();
+      //TODO Assign quote & escape
+    }
   }
 
   return mSeparator && wxDocument::OnCreate(path, flags);
