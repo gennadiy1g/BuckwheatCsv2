@@ -1,6 +1,7 @@
 #include <sstream>
 
 #include <wx/app.h>
+#include <wx/debug.h>
 #include <wx/docmdi.h>
 #include <wx/sizer.h>
 
@@ -144,7 +145,24 @@ void CsvView::showStatus() {
   }
 
   if (pStatusBar->GetStatusText(3) == "") {
-    pStatusBar->SetStatusText(L"quote: double", 3);
+    std::wstring statusText{};
+    if (!pCsvDocument) {
+      pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
+      wxASSERT(pCsvDocument);
+    }
+    auto quote = pCsvDocument->quote();
+    switch (quote) {
+    case kDoubleQuote:
+      statusText = L"Double";
+      break;
+    case kSingleQuote:
+      statusText = L"Single";
+      break;
+    default:
+      wxASSERT(false);
+      break;
+    }
+    pStatusBar->SetStatusText(L"quote: " + statusText, 3);
   }
 };
 
