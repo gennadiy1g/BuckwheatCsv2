@@ -16,6 +16,7 @@
 #include <optional>
 
 #include "CsvTable/CsvTable.hpp"
+#include "CsvTable/SepChars.hpp"
 
 class CsvDocument : public wxDocument {
 public:
@@ -40,7 +41,7 @@ private:
   FileLines::OnProgress mOnProgress;
   std::optional<wchar_t> mSeparator;
   std::optional<wchar_t> mQuote;
-  std::optional<wchar_t> mEscape;
+  std::optional<wchar_t> mEscape{kNull};
 
   wxDECLARE_DYNAMIC_CLASS(CsvDocument);
 };

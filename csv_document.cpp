@@ -1,6 +1,5 @@
 #include <boost/filesystem.hpp>
 
-#include "CsvTable/SepChars.hpp"
 #include "CsvTable/log.hpp"
 #include "CsvTable/utilities.hpp"
 #include "SeparatorDialog.hpp"
@@ -37,12 +36,16 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
     return false;
   }
 
+  if (!mQuote) {
+    mQuote = kDoubleQuote;
+  }
+
   if (!mSeparator) {
     SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
     sepDlg.separator(kComma);
     if (sepDlg.ShowModal() == wxID_OK) {
       mSeparator = sepDlg.separator();
-      //TODO Assign quote & escape
+      // TODO Assign quote & escape
     }
   }
 
@@ -57,11 +60,11 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   using namespace std::placeholders; // for _1, _2, _3...
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
 
-  assert(mSeparator);
+  assert(mSeparator && mQuote && mEscape);
   mpTokenizedFileLines.reset(new TokenizedFileLines(bfs::path(file), mOnProgress));
   assert(mpTokenizedFileLines);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
-  mpTokenizedFileLines->setTokenFuncParams(mEscape.value_or(kNull), mSeparator.value(), mQuote.value_or(kDoubleQuote));
+  mpTokenizedFileLines->setTokenFuncParams(mEscape.value(), mSeparator.value(), mQuote.value());
 
   return true; // if this method returns false, the application terminates
 };
