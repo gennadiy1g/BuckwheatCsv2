@@ -46,7 +46,7 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
     if (sepDlg.ShowModal() == wxID_OK) {
       mSeparator = sepDlg.separator();
       mEscape = sepDlg.escape();
-      // TODO Assign quote
+      mQuote = sepDlg.quote();
     }
   }
 

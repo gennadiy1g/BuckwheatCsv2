@@ -186,3 +186,25 @@ void SeparatorDialog::escape(wchar_t ch) {
     TextCtrlOtherEscape->SetValue(ch);
   }
 };
+
+wchar_t SeparatorDialog::quote() const {
+  if (RadioButtonDouble->GetValue()) {
+    return kDoubleQuote;
+  } else {
+    assert(RadioButtonSingle->GetValue());
+    return kSingleQuote;
+  }
+};
+
+void SeparatorDialog::quote(wchar_t ch) {
+  switch (ch) {
+  case kDoubleQuote:
+    RadioButtonDouble->SetValue(true);
+    break;
+  case kSingleQuote:
+    RadioButtonSingle->SetValue(true);
+    break;
+  default:
+    assert(false);
+  }
+};

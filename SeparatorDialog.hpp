@@ -35,6 +35,8 @@ class SeparatorDialog: public wxDialog
 		void separator(wchar_t ch);
 		wchar_t escape() const;
 		void escape(wchar_t ch);
+		wchar_t quote() const;
+		void quote(wchar_t ch);
 
 	protected:
 
