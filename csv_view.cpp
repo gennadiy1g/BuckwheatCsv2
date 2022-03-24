@@ -122,7 +122,7 @@ void CsvView::showStatus() {
         statusText = L"Tab";
         break;
       case kPipe:
-        statusText = L"Pipe";
+        statusText = L"Vertical bar";
         break;
       case kSemicolon:
         statusText = L"Semicolon";
