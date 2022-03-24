@@ -120,28 +120,26 @@ void CsvView::showStatus() {
       wxASSERT(pCsvDocument);
     }
     auto separator = pCsvDocument->separator();
-    if (separator) {
-      switch (separator.value()) {
-      case kTab:
-        statusText = L"Tab";
-        break;
-      case kPipe:
-        statusText = L"Vertical bar";
-        break;
-      case kSemicolon:
-        statusText = L"Semicolon";
-        break;
-      case kComma:
-        statusText = L"Comma";
-        break;
-      case kSpace:
-        statusText = L"Space";
-        break;
-      default:
-        statusText = separator.value();
-        break;
-      };
-    }
+    switch (separator) {
+    case kTab:
+      statusText = L"Tab";
+      break;
+    case kPipe:
+      statusText = L"Vertical bar";
+      break;
+    case kSemicolon:
+      statusText = L"Semicolon";
+      break;
+    case kComma:
+      statusText = L"Comma";
+      break;
+    case kSpace:
+      statusText = L"Space";
+      break;
+    default:
+      statusText = separator;
+      break;
+    };
     pStatusBar->SetStatusText(L"separator: " + statusText, 2);
   }
 

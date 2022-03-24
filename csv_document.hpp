@@ -1,6 +1,7 @@
 #pragma once
 
 // For compilers that support precompilation, includes "wx/wx.h".
+#include <wx/debug.h>
 #include <wx/wxprec.h>
 
 #ifndef WX_PRECOMP
@@ -28,9 +29,18 @@ public:
   virtual bool DeleteContents() override;
   virtual bool OnCreate(const wxString &path, long flags) override;
 
-  std::optional<wchar_t> separator() const { return mSeparator; };
-  std::optional<wchar_t> quote() const { return mQuote; };
-  std::optional<wchar_t> escape() const { return mEscape; };
+  wchar_t separator() const {
+    wxASSERT(mSeparator);
+    return mSeparator.value();
+  };
+  wchar_t quote() const {
+    wxASSERT(mQuote);
+    return mQuote.value();
+  };
+  wchar_t escape() const {
+    wxASSERT(mEscape);
+    return mEscape.value();
+  };
 
 protected:
   virtual bool DoOpenDocument(const wxString &file) override;
