@@ -131,10 +131,9 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
-  constexpr auto fieldsCount{4};
-  SetFieldsCount(fieldsCount);
-  int widths[fieldsCount]{-1, -1, -1, -1};
-  SetStatusWidths(fieldsCount, widths);
+  constexpr auto fieldsCount{5};
+  int widths[fieldsCount]{-1, -1, -1, -1, -1}; // rows, columns, separator, quote, escape
+  SetFieldsCount(fieldsCount, widths);
 };
 
 StatusBar *getStatusBar() {
