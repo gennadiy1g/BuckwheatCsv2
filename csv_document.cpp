@@ -1,5 +1,7 @@
 #include <boost/filesystem.hpp>
+#include <wx/debug.h>
 
+#include "CsvTable/SepChars.hpp"
 #include "CsvTable/log.hpp"
 #include "CsvTable/utilities.hpp"
 #include "SeparatorDialog.hpp"
@@ -43,6 +45,9 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
   if (!mSeparator) {
     SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
     sepDlg.separator(kComma);
+    wxASSERT(mQuote && mEscape);
+    sepDlg.quote(mQuote.value());
+    sepDlg.escape(mEscape.value());
     if (sepDlg.ShowModal() == wxID_OK) {
       mSeparator = sepDlg.separator();
       mEscape = sepDlg.escape();
