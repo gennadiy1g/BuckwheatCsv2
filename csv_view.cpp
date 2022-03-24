@@ -31,12 +31,12 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   wxASSERT(pChildFrame == GetFrame());
 
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
-  assert(doc);
+  wxASSERT(doc);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
-  assert(pCsvDocument);
+  wxASSERT(pCsvDocument);
 
   mpCsvGridTable.reset(new CsvGridTable(pCsvDocument));
-  assert(mpCsvGridTable);
+  wxASSERT(mpCsvGridTable);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid & CsvGridTable";
 
   mpGauge = new wxGauge(pChildFrame, wxID_ANY, 100);
@@ -84,11 +84,11 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
 void CsvView::showStatus() {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  assert(mpCsvGridTable->hasData());
+  wxASSERT(mpCsvGridTable->hasData());
   auto pStatusBar = getStatusBar();
 
   std::stringstream ss;
-  assert(mpsThousandsSep);
+  wxASSERT(mpsThousandsSep);
   ss.imbue(*mpsThousandsSep);
 
   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
@@ -114,7 +114,7 @@ void CsvView::showStatus() {
   if (pStatusBar->GetStatusText(2) == "") {
     std::wstring statusText;
     auto pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
-    assert(pCsvDocument);
+    wxASSERT(pCsvDocument);
     auto separator = pCsvDocument->separator();
     if (separator) {
       switch (separator.value()) {
@@ -167,7 +167,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
 
-  assert(numLines);
+  wxASSERT(numLines);
   mpCsvGridTable->setNumberRows(numLines, percent);
   mpGrid->SetTable(mpCsvGridTable.get(), false);
 

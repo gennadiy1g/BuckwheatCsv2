@@ -61,9 +61,9 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   using namespace std::placeholders; // for _1, _2, _3...
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
 
-  assert(mSeparator && mQuote && mEscape);
+  wxASSERT(mSeparator && mQuote && mEscape);
   mpTokenizedFileLines.reset(new TokenizedFileLines(bfs::path(file), mOnProgress));
-  assert(mpTokenizedFileLines);
+  wxASSERT(mpTokenizedFileLines);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
   mpTokenizedFileLines->setTokenFuncParams(mEscape.value(), mSeparator.value(), mQuote.value());
 
@@ -89,7 +89,7 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
 int CsvGridTable::GetNumberRows() {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  assert(mNumLines);
+  wxASSERT(mNumLines);
   // The 1st line contains columns' names, do not count the 1st line as a data row
   int value = mNumLines - 1;
   BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
@@ -99,7 +99,7 @@ int CsvGridTable::GetNumberRows() {
 int CsvGridTable::GetNumberCols() {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  assert(mNumLines);
+  wxASSERT(mNumLines);
   int value{};
   value = mpCsvDocument->tokenizedFileLines()->numColumns();
   BOOST_LOG_SEV(gLogger, trivial::trace) << "return value=" << value;
@@ -110,7 +110,7 @@ wxString CsvGridTable::GetValue(int row, int col) {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   // the 1st line contains columns' names, the 2nd line is the 1st data row
-  assert(mNumLines);
+  wxASSERT(mNumLines);
   wxString value{""};
   value = getValueAux(row + 1, col);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "row=" << row << ", col=" << col << "return value=" << value;
@@ -120,7 +120,7 @@ wxString CsvGridTable::GetValue(int row, int col) {
 wxString CsvGridTable::GetColLabelValue(int col) {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  assert(mNumLines);
+  wxASSERT(mNumLines);
   wxString value{""};
   value = getValueAux(0, col);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "col=" << col << "return value=" << value;
@@ -140,7 +140,7 @@ wxString CsvGridTable::getValueAux(int row, int col) const {
 };
 
 void CsvGridTable::setNumberRows(std::size_t numRows, int percent) {
-  assert(numRows);
+  wxASSERT(numRows);
   mNumLines = numRows;
   mPercent = percent;
 };

@@ -131,7 +131,7 @@ wchar_t SeparatorDialog::separator() const {
   } else if (RadioButtonSpace->GetValue()) {
     return kSpace;
   } else {
-    assert(RadioButtonOtherSeparator->GetValue());
+    wxASSERT(RadioButtonOtherSeparator->GetValue());
     return TextCtrlOtherSeparator->GetValue()[0];
   }
 };
@@ -167,7 +167,7 @@ wchar_t SeparatorDialog::escape() const {
   } else if (RadioButtonBackslash->GetValue()) {
     return kBackslash;
   } else {
-    assert(RadioButtonOtherEscape->GetValue());
+    wxASSERT(RadioButtonOtherEscape->GetValue());
     return TextCtrlOtherEscape->GetValue()[0];
   }
 };
@@ -191,7 +191,7 @@ wchar_t SeparatorDialog::quote() const {
   if (RadioButtonDouble->GetValue()) {
     return kDoubleQuote;
   } else {
-    assert(RadioButtonSingle->GetValue());
+    wxASSERT(RadioButtonSingle->GetValue());
     return kSingleQuote;
   }
 };
@@ -205,6 +205,6 @@ void SeparatorDialog::quote(wchar_t ch) {
     RadioButtonSingle->SetValue(true);
     break;
   default:
-    assert(false);
+    wxASSERT(false);
   }
 };

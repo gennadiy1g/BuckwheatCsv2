@@ -139,8 +139,8 @@ StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
 
 StatusBar *getStatusBar() {
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
-  assert(pTopFrame);
+  wxASSERT(pTopFrame);
   auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
-  assert(pStatusBar);
+  wxASSERT(pStatusBar);
   return pStatusBar;
 };

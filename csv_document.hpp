@@ -21,7 +21,7 @@
 class CsvDocument : public wxDocument {
 public:
   TokenizedFileLines *tokenizedFileLines() {
-    assert(mpTokenizedFileLines);
+    wxASSERT(mpTokenizedFileLines);
     return mpTokenizedFileLines.get();
   };
 
