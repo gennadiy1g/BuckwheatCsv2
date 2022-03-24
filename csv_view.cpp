@@ -164,6 +164,27 @@ void CsvView::showStatus() {
     }
     pStatusBar->SetStatusText(L"quote: " + statusText, 3);
   }
+
+  if (pStatusBar->GetStatusText(4) == "") {
+    std::wstring statusText{};
+    if (!pCsvDocument) {
+      pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
+      wxASSERT(pCsvDocument);
+    }
+    auto escape = pCsvDocument->escape();
+    switch (escape) {
+    case kBackslash:
+      statusText = L"Backslash";
+      break;
+    case kNull:
+      statusText = L"None";
+      break;
+    default:
+      statusText = escape;
+      break;
+    };
+    pStatusBar->SetStatusText(L"escape: " + statusText, 4);
+  }
 };
 
 void CsvView::clearStatus() {
