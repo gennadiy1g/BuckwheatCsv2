@@ -159,3 +159,30 @@ void SeparatorDialog::separator(wchar_t ch) {
     TextCtrlOtherSeparator->SetValue(ch);
   }
 };
+
+wchar_t SeparatorDialog::escape() const {
+
+  if (RadioButtonNoEscape->GetValue()) {
+    return kNull;
+  } else if (RadioButtonBackslash->GetValue()) {
+    return kBackslash;
+  } else {
+    assert(RadioButtonOtherEscape->GetValue());
+    return TextCtrlOtherEscape->GetValue()[0];
+  }
+};
+
+void SeparatorDialog::escape(wchar_t ch) {
+  switch (ch) {
+  case kNull:
+    RadioButtonNoEscape->SetValue(true);
+    break;
+  case kBackslash:
+    RadioButtonBackslash->SetValue(true);
+    break;
+  default:
+    RadioButtonOtherEscape->SetValue(true);
+    TextCtrlOtherEscape->Enable(true);
+    TextCtrlOtherEscape->SetValue(ch);
+  }
+};

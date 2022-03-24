@@ -45,7 +45,8 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
     sepDlg.separator(kComma);
     if (sepDlg.ShowModal() == wxID_OK) {
       mSeparator = sepDlg.separator();
-      // TODO Assign quote & escape
+      mEscape = sepDlg.escape();
+      // TODO Assign quote
     }
   }
 
