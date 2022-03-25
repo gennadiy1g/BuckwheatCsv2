@@ -31,6 +31,24 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
 
+  auto menuFile = new wxMenu;
+  menuFile->Append(wxID_OPEN, wxGetStockLabel(wxID_OPEN));
+  menuFile->Append(wxID_CLOSE, wxGetStockLabel(wxID_CLOSE));
+  menuFile->Append(wxID_EXIT, wxGetStockLabel(wxID_EXIT));
+
+  const auto pDocManager = wxDocManager::GetDocumentManager();
+  pDocManager->FileHistoryUseMenu(menuFile);
+  pDocManager->FileHistoryAddFilesToMenu(menuFile);
+
+  auto pMenuHelp = new wxMenu;
+  pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
+
+  auto pMenuBar = new wxMenuBar;
+  pMenuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
+  pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
+
+  pChildFrame->SetMenuBar(pMenuBar);
+
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
   wxASSERT(doc);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
