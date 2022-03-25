@@ -94,17 +94,14 @@
 						</object>
 						<flag>wxTOP|wxBOTTOM|wxRIGHT|wxEXPAND</flag>
 						<border>5</border>
-					</object>
-					<object class="spacer">
-						<flag>wxALL|wxEXPAND</flag>
-						<option>1</option>
+						<option>4</option>
 					</object>
 					<object class="sizeritem">
 						<object class="wxStaticBoxSizer" variable="StaticBoxSizerEscape" member="no">
 							<label>Escape character</label>
 							<object class="sizeritem">
 								<object class="wxRadioButton" name="ID_RADIOBUTTON10" variable="RadioButtonNoEscape" member="yes">
-									<label>No Escape character</label>
+									<label>None</label>
 									<style>wxRB_GROUP</style>
 									<handler function="OnRadioButtonEscapeSelect" entry="EVT_RADIOBUTTON" />
 								</object>
@@ -140,6 +137,7 @@
 						</object>
 						<flag>wxTOP|wxBOTTOM|wxLEFT|wxEXPAND</flag>
 						<border>5</border>
+						<option>6</option>
 					</object>
 				</object>
 				<flag>wxALL|wxEXPAND</flag>

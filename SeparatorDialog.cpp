@@ -66,10 +66,9 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	StaticBoxSizerQuote->Add(RadioButtonDouble, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	RadioButtonSingle = new wxRadioButton(this, ID_RADIOBUTTON8, _("Single"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON8"));
 	StaticBoxSizerQuote->Add(RadioButtonSingle, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	BoxSizerQuoteEscape->Add(StaticBoxSizerQuote, 0, wxTOP|wxBOTTOM|wxRIGHT|wxEXPAND, 5);
-	BoxSizerQuoteEscape->Add(-1,-1,1, wxALL|wxEXPAND, 0);
+	BoxSizerQuoteEscape->Add(StaticBoxSizerQuote, 4, wxTOP|wxBOTTOM|wxRIGHT|wxEXPAND, 5);
 	StaticBoxSizerEscape = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Escape character"));
-	RadioButtonNoEscape = new wxRadioButton(this, ID_RADIOBUTTON10, _("No Escape character"), wxDefaultPosition, wxDefaultSize, wxRB_GROUP, wxDefaultValidator, _T("ID_RADIOBUTTON10"));
+	RadioButtonNoEscape = new wxRadioButton(this, ID_RADIOBUTTON10, _("None"), wxDefaultPosition, wxDefaultSize, wxRB_GROUP, wxDefaultValidator, _T("ID_RADIOBUTTON10"));
 	StaticBoxSizerEscape->Add(RadioButtonNoEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	RadioButtonBackslash = new wxRadioButton(this, ID_RADIOBUTTON11, _("Backslash"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON11"));
 	StaticBoxSizerEscape->Add(RadioButtonBackslash, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
@@ -79,7 +78,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	TextCtrlOtherEscape->SetMaxLength(1);
 	TextCtrlOtherEscape->Disable();
 	StaticBoxSizerEscape->Add(TextCtrlOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-	BoxSizerQuoteEscape->Add(StaticBoxSizerEscape, 0, wxTOP|wxBOTTOM|wxLEFT|wxEXPAND, 5);
+	BoxSizerQuoteEscape->Add(StaticBoxSizerEscape, 6, wxTOP|wxBOTTOM|wxLEFT|wxEXPAND, 5);
 	BoxSizerMain->Add(BoxSizerQuoteEscape, 0, wxALL|wxEXPAND, 5);
 	StdDialogButtonSizer = new wxStdDialogButtonSizer();
 	StdDialogButtonSizer->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
