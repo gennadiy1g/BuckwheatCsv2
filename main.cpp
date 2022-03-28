@@ -2,6 +2,7 @@
 #include <numeric>
 
 #include <wx/config.h>
+#include <wx/debug.h>
 #include <wx/docview.h>
 
 #include "CsvTable/log.hpp"
@@ -69,6 +70,14 @@ StatusBar *App::statusBar() {
   auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
   wxASSERT(pStatusBar);
   return pStatusBar;
+};
+
+wxMenuBar *App::menuBar() {
+  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+  wxASSERT(pTopFrame);
+  auto pMenuBar = pTopFrame->GetMenuBar();
+  wxASSERT(pMenuBar);
+  return pMenuBar;
 };
 
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,

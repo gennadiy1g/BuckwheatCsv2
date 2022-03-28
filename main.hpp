@@ -24,6 +24,7 @@ public:
   virtual int OnExit() override;
 
   static StatusBar *statusBar();
+  static wxMenuBar *menuBar();
 };
 
 // Create a forward declaration of the wxGetApp() function implemented by
