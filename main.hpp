@@ -12,6 +12,8 @@
 
 enum EventID { ID_SEPARATOR_DIALOG = wxID_HIGHEST + 1 };
 
+class StatusBar;
+
 // Application class
 class App : public wxApp {
 public:
@@ -20,6 +22,8 @@ public:
 
   // processing which needs to be done as the application is about to exit
   virtual int OnExit() override;
+
+  static StatusBar *statusBar();
 };
 
 // Create a forward declaration of the wxGetApp() function implemented by

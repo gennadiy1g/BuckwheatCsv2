@@ -63,6 +63,14 @@ int App::OnExit() {
   return wxApp::OnExit();
 }
 
+StatusBar *App::statusBar() {
+  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+  wxASSERT(pTopFrame);
+  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
+  wxASSERT(pStatusBar);
+  return pStatusBar;
+};
+
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
                      const wxSize &size, long style, const wxString &name)
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name) {
