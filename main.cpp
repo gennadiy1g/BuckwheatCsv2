@@ -67,20 +67,20 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
                      const wxSize &size, long style, const wxString &name)
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name) {
 
-  auto menuFile = new wxMenu;
-  menuFile->Append(wxID_OPEN, wxGetStockLabel(wxID_OPEN));
-  menuFile->Append(wxID_CLOSE, wxGetStockLabel(wxID_CLOSE));
-  menuFile->Append(wxID_EXIT, wxGetStockLabel(wxID_EXIT));
+  auto pMenuFile = new wxMenu;
+  pMenuFile->Append(wxID_OPEN, wxGetStockLabel(wxID_OPEN));
+  pMenuFile->Append(wxID_CLOSE, wxGetStockLabel(wxID_CLOSE));
+  pMenuFile->Append(wxID_EXIT, wxGetStockLabel(wxID_EXIT));
 
   const auto pDocManager = wxDocManager::GetDocumentManager();
-  pDocManager->FileHistoryUseMenu(menuFile);
+  pDocManager->FileHistoryUseMenu(pMenuFile);
   pDocManager->FileHistoryLoad(*wxConfig::Get());
 
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
 
   auto pMenuBar = new wxMenuBar;
-  pMenuBar->Append(menuFile, wxGetStockLabel(wxID_FILE));
+  pMenuBar->Append(pMenuFile, wxGetStockLabel(wxID_FILE));
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
   SetMenuBar(pMenuBar);
