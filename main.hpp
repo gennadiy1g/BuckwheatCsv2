@@ -52,5 +52,3 @@ public:
   StatusBar(wxWindow *parent);
   virtual ~StatusBar() = default;
 };
-
-StatusBar *getStatusBar();

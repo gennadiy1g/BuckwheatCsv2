@@ -148,11 +148,3 @@ StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
   int widths[fieldsCount]{-1, -1, -1, -1, -1}; // rows, columns, separator, quote, escape
   SetFieldsCount(fieldsCount, widths);
 };
-
-StatusBar *getStatusBar() {
-  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
-  wxASSERT(pTopFrame);
-  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
-  wxASSERT(pStatusBar);
-  return pStatusBar;
-};

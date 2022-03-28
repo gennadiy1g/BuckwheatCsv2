@@ -86,7 +86,7 @@ void CsvView::showStatus() {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   wxASSERT(mpCsvGridTable->hasData());
-  auto pStatusBar = getStatusBar();
+  auto pStatusBar = App::statusBar();
 
   std::stringstream ss;
   wxASSERT(mpsThousandsSep);
@@ -188,7 +188,7 @@ void CsvView::showStatus() {
 };
 
 void CsvView::clearStatus() {
-  auto pStatusBar = getStatusBar();
+  auto pStatusBar = App::statusBar();
 
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
