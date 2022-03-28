@@ -10,6 +10,8 @@
 #include <wx/docmdi.h>
 #include <wx/gauge.h>
 
+enum EventID { ID_SEPARATOR_DIALOG = wxID_HIGHEST + 1 };
+
 // Application class
 class App : public wxApp {
 public:

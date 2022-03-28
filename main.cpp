@@ -76,11 +76,15 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pDocManager->FileHistoryUseMenu(pMenuFile);
   pDocManager->FileHistoryLoad(*wxConfig::Get());
 
+  auto pMenuView = new wxMenu;
+  pMenuView->Append(ID_SEPARATOR_DIALOG, "Separator/Quote/Escape character...");
+
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
 
   auto pMenuBar = new wxMenuBar;
   pMenuBar->Append(pMenuFile, wxGetStockLabel(wxID_FILE));
+  pMenuBar->Append(pMenuView, "View");
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
   SetMenuBar(pMenuBar);
