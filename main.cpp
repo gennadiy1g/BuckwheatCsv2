@@ -88,6 +88,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
   SetMenuBar(pMenuBar);
+  pMenuBar->EnableTop(1, false); // disable View submenu
   SetIcon(wxICON(table));
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
