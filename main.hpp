@@ -25,6 +25,9 @@ public:
 
   static StatusBar *statusBar();
   static wxMenuBar *menuBar();
+
+  // Disable the View submenu if no documents are open, otherwise enable the View submenu
+  static void toggleViewMenu();
 };
 
 // Create a forward declaration of the wxGetApp() function implemented by
