@@ -81,7 +81,7 @@ wxMenuBar *App::menuBar() {
 };
 
 void App::toggleViewMenu() {
-  App::menuBar()->EnableTop(1, wxDocManager::GetDocumentManager()->GetDocuments().GetCount());
+  App::menuBar()->EnableTop(1, wxDocManager::GetDocumentManager()->GetDocumentsVector().size());
 };
 
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
