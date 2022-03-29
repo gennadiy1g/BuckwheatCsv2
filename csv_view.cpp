@@ -66,6 +66,7 @@ bool CsvView::OnClose(bool deleteWindow = true) {
     SetFrame(NULL);
   }
 
+  App::toggleViewMenu();
   return true;
 };
 
