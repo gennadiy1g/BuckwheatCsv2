@@ -80,8 +80,8 @@ wxMenuBar *App::menuBar() {
   return pMenuBar;
 };
 
-void App::toggleViewMenu() {
-  App::menuBar()->EnableTop(1, wxDocManager::GetDocumentManager()->GetDocumentsVector().size());
+void App::toggleViewMenu(bool onViewCreate) {
+  App::menuBar()->EnableTop(1, onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1);
 };
 
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
