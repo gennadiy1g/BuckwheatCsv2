@@ -50,6 +50,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
   pChildFrame->Show();
 
+  wxGetApp().toggleViewMenu();
   return true;
 };
 
