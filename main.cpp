@@ -65,10 +65,6 @@ int App::OnExit() {
   return wxApp::OnExit();
 }
 
-void App::toggleViewMenu(bool onViewCreate) {
-  MainFrame::menuBar()->EnableTop(1, onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1);
-};
-
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
                      const wxSize &size, long style, const wxString &name)
     : wxDocMDIParentFrame(manager, parent, id, title, pos, size, style, name) {
@@ -162,6 +158,11 @@ wxMenuBar *MainFrame::menuBar() {
   auto pMenuBar = pTopFrame->GetMenuBar();
   wxASSERT(pMenuBar);
   return pMenuBar;
+};
+
+void MainFrame::toggleViewMenu(bool onViewCreate) {
+  MainFrame::menuBar()->EnableTop(1,
+                                  onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1);
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {

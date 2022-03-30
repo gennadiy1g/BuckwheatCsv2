@@ -50,7 +50,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
   pChildFrame->Show();
 
-  App::toggleViewMenu(true);
+  MainFrame::toggleViewMenu(true);
   return true;
 };
 
@@ -66,7 +66,7 @@ bool CsvView::OnClose(bool deleteWindow = true) {
     SetFrame(NULL);
   }
 
-  App::toggleViewMenu(false);
+  MainFrame::toggleViewMenu(false);
   return true;
 };
 
