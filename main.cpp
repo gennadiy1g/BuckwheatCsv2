@@ -105,7 +105,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
 
   auto pMenuBar = new wxMenuBar;
   pMenuBar->Append(pMenuFile, wxGetStockLabel(wxID_FILE));
-  pMenuBar->Append(pMenuView, "View");
+  pMenuBar->Append(pMenuView, "&View");
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
   SetMenuBar(pMenuBar);
