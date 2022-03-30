@@ -65,24 +65,8 @@ int App::OnExit() {
   return wxApp::OnExit();
 }
 
-StatusBar *App::statusBar() {
-  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
-  wxASSERT(pTopFrame);
-  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
-  wxASSERT(pStatusBar);
-  return pStatusBar;
-};
-
-wxMenuBar *App::menuBar() {
-  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
-  wxASSERT(pTopFrame);
-  auto pMenuBar = pTopFrame->GetMenuBar();
-  wxASSERT(pMenuBar);
-  return pMenuBar;
-};
-
 void App::toggleViewMenu(bool onViewCreate) {
-  App::menuBar()->EnableTop(1, onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1);
+  MainFrame::menuBar()->EnableTop(1, onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1);
 };
 
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
@@ -162,6 +146,22 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
   if (sepDlg.ShowModal() == wxID_OK) {
   }
+};
+
+StatusBar *MainFrame::statusBar() {
+  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+  wxASSERT(pTopFrame);
+  auto pStatusBar = dynamic_cast<StatusBar *>(pTopFrame->GetStatusBar());
+  wxASSERT(pStatusBar);
+  return pStatusBar;
+};
+
+wxMenuBar *MainFrame::menuBar() {
+  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+  wxASSERT(pTopFrame);
+  auto pMenuBar = pTopFrame->GetMenuBar();
+  wxASSERT(pMenuBar);
+  return pMenuBar;
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {

@@ -23,9 +23,6 @@ public:
   // processing which needs to be done as the application is about to exit
   virtual int OnExit() override;
 
-  static StatusBar *statusBar();
-  static wxMenuBar *menuBar();
-
   // Disable the View submenu if no documents are open, otherwise enable the View submenu
   static void toggleViewMenu(bool onViewCreate);
 };
@@ -41,6 +38,9 @@ public:
             long style = wxDEFAULT_FRAME_STYLE, const wxString &name = wxFrameNameStr);
   virtual ~MainFrame() = default;
   void OnClose(wxCloseEvent &event);
+
+  static StatusBar *statusBar();
+  static wxMenuBar *menuBar();
 
 private:
   void onSeparatorDialog(wxCommandEvent &event);
