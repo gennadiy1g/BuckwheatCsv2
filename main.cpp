@@ -113,6 +113,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetIcon(wxICON(table));
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
+  Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
   MFGeometrySerializer appGeometrySerializer;
   RestoreToGeometry(appGeometrySerializer);
 
@@ -155,6 +156,8 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
   pConfig->SetPath(oldPath);
   return result;
 };
+
+void MainFrame::onSeparatorDialog(wxCommandEvent &event){};
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
   constexpr auto fieldsCount{5};

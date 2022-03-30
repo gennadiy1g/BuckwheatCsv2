@@ -43,6 +43,8 @@ public:
   void OnClose(wxCloseEvent &event);
 
 private:
+  void onSeparatorDialog(wxCommandEvent &event);
+
   class MFGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
   private:
     static inline const wxString path{"/Geometry"};
