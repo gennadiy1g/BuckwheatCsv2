@@ -7,6 +7,7 @@
 
 #include "CsvTable/log.hpp"
 #include "CsvTable/utilities.hpp"
+#include "SeparatorDialog.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
 #include "main.hpp"
@@ -157,7 +158,11 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
   return result;
 };
 
-void MainFrame::onSeparatorDialog(wxCommandEvent &event){};
+void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
+  SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
+  if (sepDlg.ShowModal() == wxID_OK) {
+  }
+};
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
   constexpr auto fieldsCount{5};
