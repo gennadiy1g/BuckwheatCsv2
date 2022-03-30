@@ -45,9 +45,9 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
   if (!mSeparator) {
     SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
     sepDlg.separator(kComma);
-    wxASSERT(mQuote && mEscape);
+    wxASSERT(mQuote);
     sepDlg.quote(mQuote.value());
-    sepDlg.escape(mEscape.value());
+    sepDlg.escape(mEscape);
     if (sepDlg.ShowModal() == wxID_OK) {
       mSeparator = sepDlg.separator();
       mEscape = sepDlg.escape();
@@ -66,11 +66,11 @@ bool CsvDocument::DoOpenDocument(const wxString &file) {
   using namespace std::placeholders; // for _1, _2, _3...
   mOnProgress = std::bind(&CsvDocument::OnProgress, this, _1, _2);
 
-  wxASSERT(mSeparator && mQuote && mEscape);
+  wxASSERT(mSeparator && mQuote);
   mpTokenizedFileLines.reset(new TokenizedFileLines(bfs::path(file), mOnProgress));
   wxASSERT(mpTokenizedFileLines);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created TokenizedFileLines";
-  mpTokenizedFileLines->setTokenFuncParams(mEscape.value(), mSeparator.value(), mQuote.value());
+  mpTokenizedFileLines->setTokenFuncParams(mEscape, mSeparator.value(), mQuote.value());
 
   return true; // if this method returns false, the application terminates
 };

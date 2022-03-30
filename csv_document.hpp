@@ -38,8 +38,7 @@ public:
     return mQuote.value();
   };
   wchar_t escape() const {
-    wxASSERT(mEscape);
-    return mEscape.value();
+    return mEscape;
   };
 
 protected:
@@ -51,7 +50,7 @@ private:
   FileLines::OnProgress mOnProgress;
   std::optional<wchar_t> mSeparator;
   std::optional<wchar_t> mQuote;
-  std::optional<wchar_t> mEscape{kNull};
+  wchar_t mEscape{kNull};
 
   wxDECLARE_DYNAMIC_CLASS(CsvDocument);
 };
