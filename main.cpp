@@ -98,7 +98,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pDocManager->FileHistoryLoad(*wxConfig::Get());
 
   auto pMenuView = new wxMenu;
-  pMenuView->Append(ID_SEPARATOR_DIALOG, "Separator, Quote, Escape...\tCTRL+,");
+  pMenuView->Append(ID_SEPARATOR_DIALOG, "Separator, Quote, Escape...\tCTRL+,", "Change separator, quote, escape");
 
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
