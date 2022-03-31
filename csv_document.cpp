@@ -43,15 +43,15 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
   }
 
   if (!mSeparator) {
-    SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
-    sepDlg.separator(kComma);
+    SeparatorDialog separatorDialog{wxTheApp->GetTopWindow()};
+    separatorDialog.separator(kComma);
     wxASSERT(mQuote);
-    sepDlg.quote(mQuote.value());
-    sepDlg.escape(mEscape);
-    if (sepDlg.ShowModal() == wxID_OK) {
-      mSeparator = sepDlg.separator();
-      mEscape = sepDlg.escape();
-      mQuote = sepDlg.quote();
+    separatorDialog.quote(mQuote.value());
+    separatorDialog.escape(mEscape);
+    if (separatorDialog.ShowModal() == wxID_OK) {
+      mSeparator = separatorDialog.separator();
+      mEscape = separatorDialog.escape();
+      mQuote = separatorDialog.quote();
     }
   }
 

@@ -143,9 +143,9 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   wxASSERT(pDocument);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
   wxASSERT(pCsvDocument);
-
-  SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
-  if (sepDlg.ShowModal() == wxID_OK) {
+  SeparatorDialog separatorDialog{wxTheApp->GetTopWindow()};
+  
+  if (separatorDialog.ShowModal() == wxID_OK) {
   }
 };
 
