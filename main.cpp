@@ -90,6 +90,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
 
   SetMenuBar(pMenuBar);
   pMenuBar->EnableTop(1, false); // disable View submenu
+  pMenuBar->Enable(ID_SEPARATOR_DIALOG, false);
   SetIcon(wxICON(table));
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
@@ -160,8 +161,9 @@ wxMenuBar *MainFrame::menuBar() {
 };
 
 void MainFrame::toggleViewMenu(bool onViewCreate) {
-  MainFrame::menuBar()->EnableTop(1,
-                                  onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1);
+  auto enable = onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1;
+  MainFrame::menuBar()->EnableTop(1, enable);
+  MainFrame::menuBar()->Enable(ID_SEPARATOR_DIALOG, enable);
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
