@@ -139,6 +139,11 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
 };
 
 void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
+  auto pDocument = wxDocManager::GetDocumentManager()->GetCurrentDocument();
+  wxASSERT(pDocument);
+  auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
+  wxASSERT(pCsvDocument);
+
   SeparatorDialog sepDlg{wxTheApp->GetTopWindow()};
   if (sepDlg.ShowModal() == wxID_OK) {
   }
