@@ -92,9 +92,7 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
 };
 
 void CsvDocument::escapeSeparatorQuote(wchar_t escape, wchar_t separator, wchar_t quote) {
-  if (separator != mSeparator || quote != mQuote || escape != mEscape) {
-    mpTokenizedFileLines->setTokenFuncParams(escape, separator, quote);
-  }
+  mpTokenizedFileLines->setTokenFuncParams(escape, separator, quote);
   mEscape = escape;
   mSeparator = separator;
   mQuote = quote;
