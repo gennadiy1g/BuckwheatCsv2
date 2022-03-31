@@ -92,7 +92,17 @@ void CsvDocument::OnProgress(std::size_t numLines, int percent) {
 };
 
 void CsvDocument::escapeSeparatorQuote(wchar_t escape, wchar_t separator, wchar_t quote) {
+  BOOST_LOG_FUNCTION();
+  auto &gLogger = GlobalLogger::get();
+
   mpTokenizedFileLines->setTokenFuncParams(escape, separator, quote);
+  
+  wxASSERT(mSeparator && mQuote);
+  if (escape != mEscape || separator != mSeparator.value() || quote != mQuote.value()) {
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "UpdateAllViews()";
+    UpdateAllViews();
+  }
+
   mEscape = escape;
   mSeparator = separator;
   mQuote = quote;
