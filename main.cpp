@@ -149,10 +149,6 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   separatorDialog.escape(pCsvDocument->escape());
   if (separatorDialog.ShowModal() == wxID_OK) {
     pCsvDocument->escapeSeparatorQuote(separatorDialog.escape(), separatorDialog.separator(), separatorDialog.quote());
-    auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
-    wxASSERT(pView);
-    auto pCsvView = dynamic_cast<CsvView *>(pView);
-    wxASSERT(pCsvView);
   }
 };
 
