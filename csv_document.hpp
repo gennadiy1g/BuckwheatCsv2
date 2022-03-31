@@ -33,13 +33,13 @@ public:
     wxASSERT(mSeparator);
     return mSeparator.value();
   };
+
   wchar_t quote() const {
     wxASSERT(mQuote);
     return mQuote.value();
   };
-  wchar_t escape() const {
-    return mEscape;
-  };
+
+  wchar_t escape() const { return mEscape; };
 
 protected:
   virtual bool DoOpenDocument(const wxString &file) override;
