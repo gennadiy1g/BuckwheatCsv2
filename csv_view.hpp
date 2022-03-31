@@ -21,6 +21,7 @@ public:
   virtual bool OnCreate(wxDocument *doc, long flags) override;
   virtual bool OnClose(bool deleteWindow) override;
   virtual void OnActivateView(bool activate, wxView *activeView, wxView *deactiveView) override;
+  virtual void OnUpdate(wxView *sender, wxObject *hint = 0) override { mpGrid->ForceRefresh(); };
   void OnThreadEvent(const wxThreadEvent &event);
   void showStatus();
   void clearStatus();
