@@ -41,6 +41,8 @@ public:
 
   wchar_t escape() const { return mEscape; };
 
+  void escapeSeparatorQuote(wchar_t escape, wchar_t separator, wchar_t quote);
+
 protected:
   virtual bool DoOpenDocument(const wxString &file) override;
 
