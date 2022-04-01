@@ -96,16 +96,21 @@ void CsvDocument::escapeSeparatorQuote(wchar_t escape, wchar_t separator, wchar_
   auto &gLogger = GlobalLogger::get();
 
   mpTokenizedFileLines->setTokenFuncParams(escape, separator, quote);
-  
+
   wxASSERT(mSeparator && mQuote);
+  bool updateView{false};
   if (escape != mEscape || separator != mSeparator.value() || quote != mQuote.value()) {
-    BOOST_LOG_SEV(gLogger, trivial::trace) << "UpdateAllViews()";
-    UpdateAllViews();
+    updateView = true;
   }
 
   mEscape = escape;
   mSeparator = separator;
   mQuote = quote;
+
+  if (updateView) {
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "UpdateAllViews()";
+    UpdateAllViews();
+  }
 };
 
 int CsvGridTable::GetNumberRows() {
