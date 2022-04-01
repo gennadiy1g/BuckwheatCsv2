@@ -138,7 +138,7 @@ wxString CsvGridTable::GetValue(int row, int col) {
   auto &gLogger = GlobalLogger::get();
   // the 1st line contains columns' names, the 2nd line is the 1st data row
   wxASSERT(mNumLines);
-  wxString value{""};
+  wxString value{};
   value = getValueAux(row + 1, col);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "row=" << row << ", col=" << col << "return value=" << value;
   return value;
@@ -148,7 +148,7 @@ wxString CsvGridTable::GetColLabelValue(int col) {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
   wxASSERT(mNumLines);
-  wxString value{""};
+  wxString value{};
   value = getValueAux(0, col);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "col=" << col << "return value=" << value;
   return value;
