@@ -157,7 +157,7 @@ wxString CsvGridTable::GetColLabelValue(int col) {
 wxString CsvGridTable::getValueAux(int row, int col) const {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  wxString value{"."};
+  wxString value{};
   auto tokenizedLine = mpCsvDocument->tokenizedFileLines()->getTokenizedLine(row);
   if (col < static_cast<int>(tokenizedLine->size())) {
     value = tokenizedLine->at(col);
