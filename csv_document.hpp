@@ -21,13 +21,13 @@
 
 class CsvDocument : public wxDocument {
 public:
+  virtual bool DeleteContents() override;
+  virtual bool OnCreate(const wxString &path, long flags) override;
+
   TokenizedFileLines *tokenizedFileLines() {
     wxASSERT(mpTokenizedFileLines);
     return mpTokenizedFileLines.get();
   };
-
-  virtual bool DeleteContents() override;
-  virtual bool OnCreate(const wxString &path, long flags) override;
 
   wchar_t separator() const {
     wxASSERT(mSeparator);
