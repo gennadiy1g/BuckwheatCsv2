@@ -87,31 +87,34 @@ void CsvView::OnActivateView(bool activate, wxView *activeView, wxView *deactive
 void CsvView::showStatus() {
   BOOST_LOG_FUNCTION();
   auto &gLogger = GlobalLogger::get();
-  wxASSERT(mpCsvGridTable->hasData());
+
   auto pStatusBar = MainFrame::statusBar();
 
-  std::stringstream ss;
-  wxASSERT(mpsThousandsSep);
-  ss.imbue(*mpsThousandsSep);
+  if (mpCsvGridTable->hasData()) {
 
-  BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
+    std::stringstream ss;
+    wxASSERT(mpsThousandsSep);
+    ss.imbue(*mpsThousandsSep);
 
-  ss << mpCsvGridTable->GetNumberRows() << " data records";
-  const auto percent = mpCsvGridTable->getPercent();
-  mpGauge->SetValue(percent);
-  if (percent < 100) {
-    ss << " (" << percent << "%)";
-  } else {
-    GetFrame()->GetSizer()->Hide(mpGauge);
-    GetFrame()->GetSizer()->Layout();
-  }
-  pStatusBar->SetStatusText(ss.str(), 0);
+    BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberRows()=" << mpCsvGridTable->GetNumberRows();
 
-  if (pStatusBar->GetStatusText(1) == "") {
-    BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberCols()=" << mpCsvGridTable->GetNumberCols();
-    ss.str("");
-    ss << mpCsvGridTable->GetNumberCols() << " columns";
-    pStatusBar->SetStatusText(ss.str(), 1);
+    ss << mpCsvGridTable->GetNumberRows() << " data records";
+    const auto percent = mpCsvGridTable->getPercent();
+    mpGauge->SetValue(percent);
+    if (percent < 100) {
+      ss << " (" << percent << "%)";
+    } else {
+      GetFrame()->GetSizer()->Hide(mpGauge);
+      GetFrame()->GetSizer()->Layout();
+    }
+    pStatusBar->SetStatusText(ss.str(), 0);
+
+    if (pStatusBar->GetStatusText(1) == "") {
+      BOOST_LOG_SEV(gLogger, trivial::trace) << "mpCsvGridTable->GetNumberCols()=" << mpCsvGridTable->GetNumberCols();
+      ss.str("");
+      ss << mpCsvGridTable->GetNumberCols() << " columns";
+      pStatusBar->SetStatusText(ss.str(), 1);
+    }
   }
 
   CsvDocument *pCsvDocument{};
