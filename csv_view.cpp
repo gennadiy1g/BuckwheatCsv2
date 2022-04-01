@@ -202,7 +202,9 @@ void CsvView::clearStatus() {
 }
 
 void CsvView::OnUpdate(wxView *sender, wxObject *hint) {
-  mpGrid->ForceRefresh();
+  if (mpCsvGridTable->hasData()) {
+    mpGrid->SetTable(mpCsvGridTable.get(), false);
+  }
   clearStatus();
   showStatus();
 };
