@@ -32,6 +32,8 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   wxASSERT(pChildFrame == GetFrame());
 
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
+  mpGrid->EnableEditing(false);
+
   wxASSERT(doc);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
   wxASSERT(pCsvDocument);
