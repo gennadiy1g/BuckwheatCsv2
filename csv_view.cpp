@@ -201,6 +201,12 @@ void CsvView::clearStatus() {
   BOOST_LOG_SEV(gLogger, trivial::trace) << "status bar cleared";
 }
 
+void CsvView::OnUpdate(wxView *sender, wxObject *hint) {
+  mpGrid->ForceRefresh();
+  clearStatus();
+  showStatus();
+};
+
 // This method is called on the GUI thread
 void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   BOOST_LOG_FUNCTION();
