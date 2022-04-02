@@ -4,6 +4,7 @@
 #include <wx/colour.h>
 #include <wx/debug.h>
 #include <wx/docmdi.h>
+#include <wx/settings.h>
 #include <wx/sizer.h>
 
 #include "CsvTable/log.hpp"
@@ -34,7 +35,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
 
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
   mpGrid->EnableEditing(false);
-  mpGrid->SetCellHighlightColour(*wxBLACK);
+  mpGrid->SetCellHighlightColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
 
   wxASSERT(doc);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
