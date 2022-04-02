@@ -36,6 +36,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
   mpGrid->EnableEditing(false);
   mpGrid->SetCellHighlightColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
+  mpGrid->DisableDragRowSize();
 
   wxASSERT(doc);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
