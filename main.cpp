@@ -79,6 +79,10 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
 
   auto pMenuView = new wxMenu;
   pMenuView->Append(ID_SEPARATOR_DIALOG, "&Separator, Quote, Escape...\tALT+S");
+  pMenuView->AppendSeparator();
+  pMenuView->AppendRadioItem(ID_COLS_WIDTHS_DEFAULT, "&Default widths of columns\tALT+D");
+  pMenuView->AppendRadioItem(ID_COLS_WIDTHS_FIT, "&Fit widths of columns\tALT+F",
+                             "Adjust widths to fit labels and contents");
 
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
@@ -91,6 +95,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetMenuBar(pMenuBar);
   pMenuBar->EnableTop(1, false); // disable View submenu
   pMenuBar->Enable(ID_SEPARATOR_DIALOG, false);
+  pMenuBar->Enable(ID_COLS_WIDTHS_DEFAULT, false);
+  pMenuBar->Enable(ID_COLS_WIDTHS_FIT, false);
   SetIcon(wxICON(table));
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
@@ -172,6 +178,8 @@ void MainFrame::toggleViewMenu(bool onViewCreate) {
   auto enable = onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1;
   MainFrame::menuBar()->EnableTop(1, enable);
   MainFrame::menuBar()->Enable(ID_SEPARATOR_DIALOG, enable);
+  MainFrame::menuBar()->Enable(ID_COLS_WIDTHS_DEFAULT, enable);
+  MainFrame::menuBar()->Enable(ID_COLS_WIDTHS_FIT, enable);
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
