@@ -1,6 +1,7 @@
 #include <sstream>
 
 #include <wx/app.h>
+#include <wx/colour.h>
 #include <wx/debug.h>
 #include <wx/docmdi.h>
 #include <wx/sizer.h>
@@ -33,6 +34,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
 
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
   mpGrid->EnableEditing(false);
+  mpGrid->SetCellHighlightColour(*wxBLACK);
 
   wxASSERT(doc);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
