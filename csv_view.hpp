@@ -25,6 +25,8 @@ public:
   void OnThreadEvent(const wxThreadEvent &event);
   void showStatus();
   void clearStatus();
+  void defaultColumnsWidths();
+  void fitColumnsWidths();
 
 private:
   wxGrid *mpGrid{};

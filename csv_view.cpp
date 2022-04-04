@@ -239,3 +239,17 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
     showStatus();
   }
 };
+
+void CsvView::defaultColumnsWidths(){};
+
+void CsvView::fitColumnsWidths() {
+  wxGridUpdateLocker noUpdates(mpGrid);
+  mpGrid->AutoSizeColumns(); // Automatically size all columns to fit their contents
+  for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
+    auto contentSize = mpGrid->GetColSize(i);
+    mpGrid->AutoSizeColLabelSize(i); // Automatically adjust width of the column to fit its label
+    if (mpGrid->GetColSize(i) < contentSize) {
+      mpGrid->SetColSize(i, contentSize);
+    }
+  }
+};
