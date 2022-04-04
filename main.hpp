@@ -44,6 +44,8 @@ public:
 
 private:
   void onSeparatorDialog(wxCommandEvent &event);
+  void onDefaultColumnsWidths(wxCommandEvent &event);
+  void onFitColumnsWidths(wxCommandEvent &event);
 
   class MFGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
   private:

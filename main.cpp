@@ -101,6 +101,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
+  Bind(wxEVT_MENU, &MainFrame::onDefaultColumnsWidths, this, ID_COLS_WIDTHS_DEFAULT);
+  Bind(wxEVT_MENU, &MainFrame::onFitColumnsWidths, this, ID_COLS_WIDTHS_FIT);
   MFGeometrySerializer appGeometrySerializer;
   RestoreToGeometry(appGeometrySerializer);
 
@@ -156,6 +158,22 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   if (separatorDialog.ShowModal() == wxID_OK) {
     pCsvDocument->escapeSeparatorQuote(separatorDialog.escape(), separatorDialog.separator(), separatorDialog.quote());
   }
+};
+
+void MainFrame::onDefaultColumnsWidths(wxCommandEvent &event) {
+  auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
+  wxASSERT(pView);
+  auto pCsvView = dynamic_cast<CsvView *>(pView);
+  wxASSERT(pCsvView);
+  pCsvView->defaultColumnsWidths();
+};
+
+void MainFrame::onFitColumnsWidths(wxCommandEvent &event) {
+  auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
+  wxASSERT(pView);
+  auto pCsvView = dynamic_cast<CsvView *>(pView);
+  wxASSERT(pCsvView);
+  pCsvView->fitColumnsWidths();
 };
 
 StatusBar *MainFrame::statusBar() {
