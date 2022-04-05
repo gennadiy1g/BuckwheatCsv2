@@ -81,7 +81,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pMenuView->Append(ID_SEPARATOR_DIALOG, "&Separator, Quote, Escape...\tALT+S");
   pMenuView->AppendSeparator();
   pMenuView->Append(ID_DEFAULT_COL_SIZE, "Set &default widths of columns\tALT+D");
-  pMenuView->Append(ID_AUTOSIZE_COL_LABEL_SIZE, "Adjust widths of columns to fit &labels\tALT+A",
+  pMenuView->Append(ID_AUTOSIZE_COL_LABEL_SIZE, "Adjust widths of columns to fit &labels\tALT+L",
                     "Automatically adjust widths of the columns to fit their labels. ");
 
   auto pMenuHelp = new wxMenu;
