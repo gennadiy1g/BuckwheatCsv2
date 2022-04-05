@@ -101,8 +101,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
-  Bind(wxEVT_MENU, &MainFrame::onDefaultColumnsWidths, this, ID_DEFAULT_COL_SIZE);
-  Bind(wxEVT_MENU, &MainFrame::onFitColumnsWidths, this, ID_AUTOSIZE_COL_LABEL_SIZE);
+  Bind(wxEVT_MENU, &MainFrame::onDefaultColSize, this, ID_DEFAULT_COL_SIZE);
+  Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
   MFGeometrySerializer appGeometrySerializer;
   RestoreToGeometry(appGeometrySerializer);
 
@@ -160,7 +160,7 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   }
 };
 
-void MainFrame::onDefaultColumnsWidths(wxCommandEvent &event) {
+void MainFrame::onDefaultColSize(wxCommandEvent &event) {
   auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
   wxASSERT(pView);
   auto pCsvView = dynamic_cast<CsvView *>(pView);
@@ -168,7 +168,7 @@ void MainFrame::onDefaultColumnsWidths(wxCommandEvent &event) {
   pCsvView->defaultColumnsWidths();
 };
 
-void MainFrame::onFitColumnsWidths(wxCommandEvent &event) {
+void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) {
   auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
   wxASSERT(pView);
   auto pCsvView = dynamic_cast<CsvView *>(pView);
