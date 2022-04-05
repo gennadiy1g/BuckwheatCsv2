@@ -240,9 +240,9 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   }
 };
 
-void CsvView::defaultColumnsWidths(){};
+void CsvView::defaultColSize(){};
 
-void CsvView::fitColumnsWidths() {
+void CsvView::autoSizeColLabelSize() {
   wxGridUpdateLocker noUpdates(mpGrid);
   mpGrid->AutoSizeColumns(); // Automatically size all columns to fit their contents
   for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {

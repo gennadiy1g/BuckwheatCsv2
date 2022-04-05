@@ -165,7 +165,7 @@ void MainFrame::onDefaultColSize(wxCommandEvent &event) {
   wxASSERT(pView);
   auto pCsvView = dynamic_cast<CsvView *>(pView);
   wxASSERT(pCsvView);
-  pCsvView->defaultColumnsWidths();
+  pCsvView->defaultColSize();
 };
 
 void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) {
@@ -173,7 +173,7 @@ void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) {
   wxASSERT(pView);
   auto pCsvView = dynamic_cast<CsvView *>(pView);
   wxASSERT(pCsvView);
-  pCsvView->fitColumnsWidths();
+  pCsvView->autoSizeColLabelSize();
 };
 
 StatusBar *MainFrame::statusBar() {
