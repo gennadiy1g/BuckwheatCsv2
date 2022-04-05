@@ -3,6 +3,7 @@
 
 //(*Headers(FindColumnDialog)
 #include <wx/dialog.h>
+#include <wx/sizer.h>
 //*)
 
 class FindColumnDialog: public wxDialog

@@ -3,5 +3,8 @@
 	<object class="wxDialog" name="FindColumnDialog">
 		<pos_arg>1</pos_arg>
 		<size_arg>1</size_arg>
+		<object class="wxBoxSizer" variable="BoxSizerMain" member="no">
+			<orient>wxVERTICAL</orient>
+		</object>
 	</object>
 </wxsmith>
