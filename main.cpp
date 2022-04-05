@@ -80,9 +80,9 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   auto pMenuView = new wxMenu;
   pMenuView->Append(ID_SEPARATOR_DIALOG, "&Separator, Quote, Escape...\tALT+S");
   pMenuView->AppendSeparator();
-  pMenuView->AppendRadioItem(ID_DEFAULT_COL_SIZE, "&Default widths of columns\tALT+D");
-  pMenuView->AppendRadioItem(ID_AUTOSIZE_COL_LABEL_SIZE, "&Fit widths of columns\tALT+F",
-                             "Adjust widths to fit labels and contents");
+  pMenuView->Append(ID_DEFAULT_COL_SIZE, "Set &default widths of columns\tALT+D");
+  pMenuView->Append(ID_AUTOSIZE_COL_LABEL_SIZE, "Adjust widths of columns to fit &labels\tALT+A",
+                    "Automatically adjust widths of the columns to fit their labels. ");
 
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
