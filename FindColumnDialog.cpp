@@ -16,7 +16,7 @@ BEGIN_EVENT_TABLE(FindColumnDialog,wxDialog)
 	//*)
 END_EVENT_TABLE()
 
-FindColumnDialog::FindColumnDialog(wxWindow* parent)
+FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* gridTable)
 {
 	//(*Initialize(FindColumnDialog)
 	wxBoxSizer* BoxSizerMain;
@@ -38,6 +38,8 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent)
 	BoxSizerMain->Fit(this);
 	BoxSizerMain->SetSizeHints(this);
 	//*)
+
+	mpGridTable = gridTable;
 }
 
 FindColumnDialog::~FindColumnDialog()

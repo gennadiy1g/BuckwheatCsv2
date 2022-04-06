@@ -169,7 +169,11 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
 };
 
 void MainFrame::onFindColumnDialog(wxCommandEvent &event) {
-  FindColumnDialog findColumnDialog{wxTheApp->GetTopWindow()};
+  auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
+  wxASSERT(pView);
+  auto pCsvView = dynamic_cast<CsvView *>(pView);
+  wxASSERT(pCsvView);
+  FindColumnDialog findColumnDialog{wxTheApp->GetTopWindow(), pCsvView->gridTable()};
   if (findColumnDialog.ShowModal() == wxID_OK) {
   }
 };

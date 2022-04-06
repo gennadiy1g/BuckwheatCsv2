@@ -8,13 +8,15 @@
 #include <wx/srchctrl.h>
 //*)
 
+#include <wx/grid.h>
+
 class wxColumnsListView;
 
 class FindColumnDialog: public wxDialog
 {
 	public:
 
-		FindColumnDialog(wxWindow* parent);
+		FindColumnDialog(wxWindow* parent, wxGridTableBase* gridTable);
 		virtual ~FindColumnDialog();
 
 		//(*Declarations(FindColumnDialog)
@@ -33,6 +35,7 @@ class FindColumnDialog: public wxDialog
 
 		//(*Handlers(FindColumnDialog)
 		//*)
+		wxGridTableBase* mpGridTable{};
 
 		DECLARE_EVENT_TABLE()
 };
