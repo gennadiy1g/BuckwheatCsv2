@@ -40,6 +40,12 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* gridTable)
 	//*)
 
 	mpGridTable = gridTable;
+	
+	ListView->AppendColumn("#");
+	ListView->SetColumnWidth(0, wxLIST_AUTOSIZE);
+	
+	ListView->AppendColumn("Name");
+	ListView->SetColumnWidth(1, wxLIST_AUTOSIZE);
 }
 
 FindColumnDialog::~FindColumnDialog()
@@ -47,4 +53,3 @@ FindColumnDialog::~FindColumnDialog()
 	//(*Destroy(FindColumnDialog)
 	//*)
 }
-
