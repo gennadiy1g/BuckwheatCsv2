@@ -14,7 +14,7 @@ class FindColumnDialog: public wxDialog
 {
 	public:
 
-		FindColumnDialog(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize& size);
+		FindColumnDialog(wxWindow* parent);
 		virtual ~FindColumnDialog();
 
 		//(*Declarations(FindColumnDialog)

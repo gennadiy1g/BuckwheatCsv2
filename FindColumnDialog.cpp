@@ -16,7 +16,7 @@ BEGIN_EVENT_TABLE(FindColumnDialog,wxDialog)
 	//*)
 END_EVENT_TABLE()
 
-FindColumnDialog::FindColumnDialog(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize& size)
+FindColumnDialog::FindColumnDialog(wxWindow* parent)
 {
 	//(*Initialize(FindColumnDialog)
 	wxBoxSizer* BoxSizerMain;
