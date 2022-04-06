@@ -3,8 +3,25 @@
 	<object class="wxDialog" name="FindColumnDialog">
 		<pos_arg>1</pos_arg>
 		<size_arg>1</size_arg>
+		<style>wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER</style>
 		<object class="wxBoxSizer" variable="BoxSizerMain" member="no">
 			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<object class="wxSearchCtrl" name="ID_SEARCHCTRL1" variable="SearchCtrl" member="yes">
+					<cancel_button>1</cancel_button>
+					<size>400,29</size>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxListView" name="ID_LISTVIEW1" variable="ListView" member="yes">
+					<style>wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL</style>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<option>1</option>
+			</object>
 		</object>
 	</object>
 </wxsmith>

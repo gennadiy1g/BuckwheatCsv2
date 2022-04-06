@@ -3,7 +3,9 @@
 
 //(*Headers(FindColumnDialog)
 #include <wx/dialog.h>
+#include <wx/listctrl.h>
 #include <wx/sizer.h>
+#include <wx/srchctrl.h>
 //*)
 
 class FindColumnDialog: public wxDialog
@@ -14,11 +16,15 @@ class FindColumnDialog: public wxDialog
 		virtual ~FindColumnDialog();
 
 		//(*Declarations(FindColumnDialog)
+		wxListView* ListView;
+		wxSearchCtrl* SearchCtrl;
 		//*)
 
 	protected:
 
 		//(*Identifiers(FindColumnDialog)
+		static const long ID_SEARCHCTRL1;
+		static const long ID_LISTVIEW1;
 		//*)
 
 	private:
