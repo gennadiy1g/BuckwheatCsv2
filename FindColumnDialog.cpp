@@ -1,6 +1,7 @@
 #include "FindColumnDialog.h"
 
 //(*InternalHeaders(FindColumnDialog)
+#include <wx/button.h>
 #include <wx/intl.h>
 #include <wx/string.h>
 //*)
@@ -19,6 +20,7 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent,wxWindowID id,const wxPoint&
 {
 	//(*Initialize(FindColumnDialog)
 	wxBoxSizer* BoxSizerMain;
+	wxStdDialogButtonSizer* StdDialogButtonSizer;
 
 	Create(parent, wxID_ANY, _("Find Column"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("wxID_ANY"));
 	BoxSizerMain = new wxBoxSizer(wxVERTICAL);
@@ -27,6 +29,11 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent,wxWindowID id,const wxPoint&
 	BoxSizerMain->Add(SearchCtrl, 0, wxALL|wxEXPAND, 5);
 	ListView = new wxListView(this, ID_LISTVIEW1, wxDefaultPosition, wxDefaultSize, wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL, wxDefaultValidator, _T("ID_LISTVIEW1"));
 	BoxSizerMain->Add(ListView, 1, wxALL|wxEXPAND, 5);
+	StdDialogButtonSizer = new wxStdDialogButtonSizer();
+	StdDialogButtonSizer->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
+	StdDialogButtonSizer->AddButton(new wxButton(this, wxID_CANCEL, wxEmptyString));
+	StdDialogButtonSizer->Realize();
+	BoxSizerMain->Add(StdDialogButtonSizer, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	SetSizer(BoxSizerMain);
 	BoxSizerMain->Fit(this);
 	BoxSizerMain->SetSizeHints(this);
