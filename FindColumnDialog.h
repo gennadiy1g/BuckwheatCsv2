@@ -8,6 +8,8 @@
 #include <wx/srchctrl.h>
 //*)
 
+class wxColumnsListView;
+
 class FindColumnDialog: public wxDialog
 {
 	public:
@@ -16,7 +18,7 @@ class FindColumnDialog: public wxDialog
 		virtual ~FindColumnDialog();
 
 		//(*Declarations(FindColumnDialog)
-		wxListView* ListView;
+		wxColumnsListView* ListView;
 		wxSearchCtrl* SearchCtrl;
 		//*)
 
@@ -33,6 +35,15 @@ class FindColumnDialog: public wxDialog
 		//*)
 
 		DECLARE_EVENT_TABLE()
+};
+
+class wxColumnsListView : public wxListView {
+public:
+  wxColumnsListView(wxWindow *parent, wxWindowID winid = wxID_ANY, const wxPoint &pos = wxDefaultPosition,
+                    const wxSize &size = wxDefaultSize, long style = wxLC_REPORT,
+                    const wxValidator &validator = wxDefaultValidator, const wxString &name = wxListCtrlNameStr)
+      : wxListView(parent, winid, pos, size, style, validator, name){};
+  virtual ~wxColumnsListView(){};
 };
 
 #endif

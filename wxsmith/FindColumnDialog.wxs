@@ -15,7 +15,7 @@
 				<border>5</border>
 			</object>
 			<object class="sizeritem">
-				<object class="wxListView" name="ID_LISTVIEW1" variable="ListView" member="yes">
+				<object class="wxListView" name="ID_LISTVIEW1" subclass="wxColumnsListView" variable="ListView" member="yes">
 					<style>wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL</style>
 				</object>
 				<flag>wxALL|wxEXPAND</flag>
