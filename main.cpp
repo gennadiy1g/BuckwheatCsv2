@@ -7,6 +7,7 @@
 
 #include "CsvTable/log.hpp"
 #include "CsvTable/utilities.hpp"
+#include "FindColumnDialog.h"
 #include "SeparatorDialog.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"
@@ -167,7 +168,11 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   }
 };
 
-void MainFrame::onFindColumnDialog(wxCommandEvent &event){};
+void MainFrame::onFindColumnDialog(wxCommandEvent &event) {
+  FindColumnDialog findColumnDialog{wxTheApp->GetTopWindow()};
+  if (findColumnDialog.ShowModal() == wxID_OK) {
+  }
+};
 
 void MainFrame::onDefaultColSize(wxCommandEvent &event) {
   auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
