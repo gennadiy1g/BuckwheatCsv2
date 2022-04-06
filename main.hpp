@@ -10,7 +10,12 @@
 #include <wx/docmdi.h>
 #include <wx/gauge.h>
 
-enum EventID { ID_SEPARATOR_DIALOG = wxID_HIGHEST + 1, ID_DEFAULT_COL_SIZE, ID_AUTOSIZE_COL_LABEL_SIZE };
+enum EventID {
+  ID_SEPARATOR_DIALOG = wxID_HIGHEST + 1,
+  ID_DEFAULT_COL_SIZE,
+  ID_AUTOSIZE_COL_LABEL_SIZE,
+  ID_FIND_COL_DIALOG
+};
 
 class StatusBar;
 
@@ -44,6 +49,7 @@ public:
 
 private:
   void onSeparatorDialog(wxCommandEvent &event);
+  void onFindColumnDialog(wxCommandEvent &event);
   void onDefaultColSize(wxCommandEvent &event);
   void onAutoSizeColLabelSize(wxCommandEvent &event);
 

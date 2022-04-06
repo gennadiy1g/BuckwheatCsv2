@@ -84,23 +84,30 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pMenuView->Append(ID_AUTOSIZE_COL_LABEL_SIZE, "Adjust widths of columns to fit &labels\tALT+L",
                     "Automatically adjust widths of the columns to fit their labels. ");
 
+  auto pMenuGoTo = new wxMenu;
+  pMenuGoTo->Append(ID_FIND_COL_DIALOG, "Find &Column...\tALT+C");
+
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
 
   auto pMenuBar = new wxMenuBar;
   pMenuBar->Append(pMenuFile, wxGetStockLabel(wxID_FILE));
   pMenuBar->Append(pMenuView, "&View");
+  pMenuBar->Append(pMenuGoTo, "&GoTo");
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
   SetMenuBar(pMenuBar);
   pMenuBar->EnableTop(1, false); // disable View submenu
+  pMenuBar->EnableTop(2, false); // disable GoTo submenu
   pMenuBar->Enable(ID_SEPARATOR_DIALOG, false);
   pMenuBar->Enable(ID_DEFAULT_COL_SIZE, false);
   pMenuBar->Enable(ID_AUTOSIZE_COL_LABEL_SIZE, false);
+  pMenuBar->Enable(ID_FIND_COL_DIALOG, false);
   SetIcon(wxICON(table));
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
+  Bind(wxEVT_MENU, &MainFrame::onFindColumnDialog, this, ID_FIND_COL_DIALOG);
   Bind(wxEVT_MENU, &MainFrame::onDefaultColSize, this, ID_DEFAULT_COL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
   MFGeometrySerializer appGeometrySerializer;
@@ -160,6 +167,8 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   }
 };
 
+void MainFrame::onFindColumnDialog(wxCommandEvent &event){};
+
 void MainFrame::onDefaultColSize(wxCommandEvent &event) {
   auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
   wxASSERT(pView);
@@ -194,10 +203,12 @@ wxMenuBar *MainFrame::menuBar() {
 
 void MainFrame::toggleViewMenu(bool onViewCreate) {
   auto enable = onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1;
-  MainFrame::menuBar()->EnableTop(1, enable);
+  MainFrame::menuBar()->EnableTop(1, enable); // View submenu
+  MainFrame::menuBar()->EnableTop(2, enable); // GoTo submenu
   MainFrame::menuBar()->Enable(ID_SEPARATOR_DIALOG, enable);
   MainFrame::menuBar()->Enable(ID_DEFAULT_COL_SIZE, enable);
   MainFrame::menuBar()->Enable(ID_AUTOSIZE_COL_LABEL_SIZE, enable);
+  MainFrame::menuBar()->Enable(ID_FIND_COL_DIALOG, enable);
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
