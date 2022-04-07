@@ -9,6 +9,7 @@
 //*)
 
 #include <wx/grid.h>
+#include <wx/string.h>
 
 class wxColumnsListView;
 
@@ -47,6 +48,7 @@ public:
       : wxListView(parent, winid, pos, size, style, validator, name){};
   virtual ~wxColumnsListView(){};
   void gridTable(wxGridTableBase *pGridTable) { mpGridTable = pGridTable; };
+  int countItems(const wxString &str); // same return type as in virtual int wxGridTableBase::GetNumberCols()
 
 private:
   wxGridTableBase *mpGridTable{};

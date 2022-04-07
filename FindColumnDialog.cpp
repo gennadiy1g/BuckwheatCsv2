@@ -40,12 +40,11 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	//*)
 
 	ListView->gridTable(pGridTable);
-	
 	ListView->AppendColumn("#");
 	ListView->SetColumnWidth(0, wxLIST_AUTOSIZE);
-	
 	ListView->AppendColumn("Name");
 	ListView->SetColumnWidth(1, wxLIST_AUTOSIZE);
+	ListView->SetItemCount(ListView->countItems(""));
 }
 
 FindColumnDialog::~FindColumnDialog()
@@ -53,3 +52,11 @@ FindColumnDialog::~FindColumnDialog()
 	//(*Destroy(FindColumnDialog)
 	//*)
 }
+
+int wxColumnsListView::countItems(const wxString &str) {
+  if (str.IsEmpty()) {
+    return mpGridTable->GetNumberCols();
+  }
+  // TODO Count how many column names contain str
+  return 0;
+};
