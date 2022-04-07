@@ -41,9 +41,9 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 
 	ListView->gridTable(pGridTable);
 	ListView->AppendColumn("#", wxLIST_FORMAT_RIGHT);
-	ListView->SetColumnWidth(0, wxLIST_AUTOSIZE);
+	ListView->SetColumnWidth(0, 50);
 	ListView->AppendColumn("Name");
-	ListView->SetColumnWidth(1, wxLIST_AUTOSIZE);
+	ListView->SetColumnWidth(1, 300);
 	ListView->SetItemCount(ListView->countItems(""));
 }
 
