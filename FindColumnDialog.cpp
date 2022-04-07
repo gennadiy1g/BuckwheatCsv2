@@ -60,3 +60,17 @@ int wxColumnsListView::countItems(const wxString &str) {
   // TODO Count how many column names contain str
   return 0;
 };
+
+wxString wxColumnsListView::OnGetItemText(long item, long column) const {
+  if (GetItemCount() == mpGridTable->GetNumberCols()) {
+    if (column) {
+      return mpGridTable->GetColLabelValue(item);
+    } else {
+      return std::to_string(item + 1);
+    }
+  } else {
+    // TODO Return column name/number
+  }
+
+  return "";
+};

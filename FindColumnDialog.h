@@ -50,6 +50,9 @@ public:
   void gridTable(wxGridTableBase *pGridTable) { mpGridTable = pGridTable; };
   int countItems(const wxString &str); // same return type as in virtual int wxGridTableBase::GetNumberCols()
 
+protected:
+  virtual wxString OnGetItemText(long item, long column) const override;
+
 private:
   wxGridTableBase *mpGridTable{};
 };
