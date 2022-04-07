@@ -16,7 +16,7 @@ class FindColumnDialog: public wxDialog
 {
 	public:
 
-		FindColumnDialog(wxWindow* parent, wxGridTableBase* gridTable);
+		FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable);
 		virtual ~FindColumnDialog();
 
 		//(*Declarations(FindColumnDialog)
@@ -35,7 +35,6 @@ class FindColumnDialog: public wxDialog
 
 		//(*Handlers(FindColumnDialog)
 		//*)
-		wxGridTableBase* mpGridTable{};
 
 		DECLARE_EVENT_TABLE()
 };
@@ -47,6 +46,10 @@ public:
                     const wxValidator &validator = wxDefaultValidator, const wxString &name = wxListCtrlNameStr)
       : wxListView(parent, winid, pos, size, style, validator, name){};
   virtual ~wxColumnsListView(){};
+  void gridTable(wxGridTableBase *pGridTable) { mpGridTable = pGridTable; };
+
+private:
+  wxGridTableBase *mpGridTable{};
 };
 
 #endif

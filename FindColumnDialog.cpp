@@ -16,7 +16,7 @@ BEGIN_EVENT_TABLE(FindColumnDialog,wxDialog)
 	//*)
 END_EVENT_TABLE()
 
-FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* gridTable)
+FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable)
 {
 	//(*Initialize(FindColumnDialog)
 	wxBoxSizer* BoxSizerMain;
@@ -39,7 +39,7 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* gridTable)
 	BoxSizerMain->SetSizeHints(this);
 	//*)
 
-	mpGridTable = gridTable;
+	ListView->gridTable(pGridTable);
 	
 	ListView->AppendColumn("#");
 	ListView->SetColumnWidth(0, wxLIST_AUTOSIZE);
