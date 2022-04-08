@@ -64,7 +64,7 @@ wxString wxColumnsListView::OnGetItemText(long item, long column) const {
     if (column) {
       return mpGridTable->GetColLabelValue(item);
     } else {
-      return std::to_string(item + 1);
+      return std::to_wstring(item + 1);
     }
   } else {
     // TODO Return column name/number
