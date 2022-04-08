@@ -24,7 +24,7 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 
 	Create(parent, wxID_ANY, _("Find Column"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("wxID_ANY"));
 	BoxSizerMain = new wxBoxSizer(wxVERTICAL);
-	SearchCtrl = new wxSearchCtrl(this, ID_SEARCHCTRL1, wxEmptyString, wxDefaultPosition, wxSize(400,29), 0, wxDefaultValidator, _T("ID_SEARCHCTRL1"));
+	SearchCtrl = new wxSearchCtrl(this, ID_SEARCHCTRL1, wxEmptyString, wxDefaultPosition, wxSize(400,29), wxTE_PROCESS_ENTER, wxDefaultValidator, _T("ID_SEARCHCTRL1"));
 	SearchCtrl->ShowCancelButton(true);
 	BoxSizerMain->Add(SearchCtrl, 0, wxALL|wxEXPAND, 5);
 	ListView = new wxColumnsListView(this, ID_LISTVIEW1, wxDefaultPosition, wxSize(400,400), wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL, wxDefaultValidator, _T("ID_LISTVIEW1"));
@@ -37,6 +37,9 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	SetSizer(BoxSizerMain);
 	BoxSizerMain->Fit(this);
 	BoxSizerMain->SetSizeHints(this);
+
+	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_TEXT_ENTER,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlSearchClicked);
+	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlSearchClicked);
 	//*)
 
 	ListView->gridTable(pGridTable);
@@ -72,3 +75,8 @@ wxString wxColumnsListView::OnGetItemText(long item, long column) const {
 
   return "";
 };
+
+void FindColumnDialog::OnSearchCtrlSearchClicked(wxCommandEvent &event) {
+  ListView->SetItemCount(ListView->countItems(SearchCtrl->GetValue()));
+  ListView->Refresh();
+}

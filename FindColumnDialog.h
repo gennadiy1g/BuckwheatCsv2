@@ -35,6 +35,7 @@ class FindColumnDialog: public wxDialog
 	private:
 
 		//(*Handlers(FindColumnDialog)
+		void OnSearchCtrlSearchClicked(wxCommandEvent& event);
 		//*)
 
 		DECLARE_EVENT_TABLE()
