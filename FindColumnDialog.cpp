@@ -108,7 +108,10 @@ void FindColumnDialog::OnSearchCtrlCancelClicked(wxCommandEvent &event) {
   ListView->Refresh();
 }
 
-void FindColumnDialog::OnTimerTrigger(wxTimerEvent &event) {}
+void FindColumnDialog::OnTimerTrigger(wxTimerEvent &event) {
+  ListView->SetItemCount(ListView->countItems(SearchCtrl->GetValue()));
+  ListView->Refresh();
+}
 
 void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
   Timer.Stop();
