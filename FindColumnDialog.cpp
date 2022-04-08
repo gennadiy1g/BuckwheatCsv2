@@ -1,3 +1,5 @@
+#include <string>
+
 #include <boost/algorithm/string/predicate.hpp>
 
 #include "FindColumnDialog.h"
@@ -62,9 +64,10 @@ long wxColumnsListView::countItems(const wxString &str) {
   }
 
   // Find all columns with names that contain str
+  std::wstring stdStr = str.ToStdWstring();
   mColumnNumber.clear();
   for (int i = 0; i < mpGridTable->GetNumberCols(); ++i) {
-    if (boost::icontains(mpGridTable->GetColLabelValue(i), str)) {
+    if (boost::icontains(mpGridTable->GetColLabelValue(i).ToStdWstring(), stdStr)) {
       mColumnNumber.push_back(i);
     }
   }
