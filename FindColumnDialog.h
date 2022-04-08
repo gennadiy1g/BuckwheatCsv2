@@ -48,7 +48,7 @@ public:
       : wxListView(parent, winid, pos, size, style, validator, name){};
   virtual ~wxColumnsListView(){};
   void gridTable(wxGridTableBase *pGridTable) { mpGridTable = pGridTable; };
-  int countItems(const wxString &str); // same return type as in virtual int wxGridTableBase::GetNumberCols()
+  long countItems(const wxString &str); // the same return type as parameter type in void wxListCtrl::SetItemCount(long count)
 
 protected:
   virtual wxString OnGetItemText(long item, long column) const override;

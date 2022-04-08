@@ -51,7 +51,7 @@ FindColumnDialog::~FindColumnDialog()
 	//*)
 }
 
-int wxColumnsListView::countItems(const wxString &str) {
+long wxColumnsListView::countItems(const wxString &str) {
   if (str.IsEmpty()) {
     return mpGridTable->GetNumberCols();
   }
