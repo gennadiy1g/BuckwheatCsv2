@@ -8,6 +8,8 @@
 #include <wx/srchctrl.h>
 //*)
 
+#include <vector>
+
 #include <wx/grid.h>
 #include <wx/string.h>
 
@@ -53,6 +55,7 @@ public:
 
 protected:
   virtual wxString OnGetItemText(long item, long column) const override;
+  std::vector<int> mColumnNumber;
 
 private:
   wxGridTableBase *mpGridTable{};
