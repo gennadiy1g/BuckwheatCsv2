@@ -16,6 +16,7 @@
 			</object>
 			<object class="sizeritem">
 				<object class="wxListView" name="ID_LISTVIEW1" subclass="wxColumnsListView" variable="ListView" member="yes">
+					<size>400,400</size>
 					<style>wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL</style>
 				</object>
 				<flag>wxALL|wxEXPAND</flag>

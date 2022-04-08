@@ -27,7 +27,7 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	SearchCtrl = new wxSearchCtrl(this, ID_SEARCHCTRL1, wxEmptyString, wxDefaultPosition, wxSize(400,29), 0, wxDefaultValidator, _T("ID_SEARCHCTRL1"));
 	SearchCtrl->ShowCancelButton(true);
 	BoxSizerMain->Add(SearchCtrl, 0, wxALL|wxEXPAND, 5);
-	ListView = new wxColumnsListView(this, ID_LISTVIEW1, wxDefaultPosition, wxDefaultSize, wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL, wxDefaultValidator, _T("ID_LISTVIEW1"));
+	ListView = new wxColumnsListView(this, ID_LISTVIEW1, wxDefaultPosition, wxSize(400,400), wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL, wxDefaultValidator, _T("ID_LISTVIEW1"));
 	BoxSizerMain->Add(ListView, 1, wxALL|wxEXPAND, 5);
 	StdDialogButtonSizer = new wxStdDialogButtonSizer();
 	StdDialogButtonSizer->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
