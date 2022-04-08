@@ -44,5 +44,8 @@
 				<border>5</border>
 			</object>
 		</object>
+		<object class="wxTimer" name="ID_TIMER1" variable="Timer" member="yes">
+			<handler function="OnTimerTrigger" entry="EVT_TIMER" />
+		</object>
 	</object>
 </wxsmith>

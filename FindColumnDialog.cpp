@@ -13,6 +13,7 @@
 //(*IdInit(FindColumnDialog)
 const long FindColumnDialog::ID_SEARCHCTRL1 = wxNewId();
 const long FindColumnDialog::ID_LISTVIEW1 = wxNewId();
+const long FindColumnDialog::ID_TIMER1 = wxNewId();
 //*)
 
 BEGIN_EVENT_TABLE(FindColumnDialog,wxDialog)
@@ -39,12 +40,14 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	StdDialogButtonSizer->Realize();
 	BoxSizerMain->Add(StdDialogButtonSizer, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	SetSizer(BoxSizerMain);
+	Timer.SetOwner(this, ID_TIMER1);
 	BoxSizerMain->Fit(this);
 	BoxSizerMain->SetSizeHints(this);
 
 	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_TEXT_ENTER,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlSearchClicked);
 	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlSearchClicked);
 	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlCancelClicked);
+	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&FindColumnDialog::OnTimerTrigger);
 	//*)
 
 	ListView->gridTable(pGridTable);
@@ -102,4 +105,8 @@ void FindColumnDialog::OnSearchCtrlSearchClicked(wxCommandEvent &event) {
 void FindColumnDialog::OnSearchCtrlCancelClicked(wxCommandEvent &event) {
   ListView->SetItemCount(ListView->countItems(""));
   ListView->Refresh();
+}
+
+void FindColumnDialog::OnTimerTrigger(wxTimerEvent& event)
+{
 }

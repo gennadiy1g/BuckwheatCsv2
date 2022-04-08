@@ -6,6 +6,7 @@
 #include <wx/listctrl.h>
 #include <wx/sizer.h>
 #include <wx/srchctrl.h>
+#include <wx/timer.h>
 //*)
 
 #include <vector>
@@ -25,6 +26,7 @@ class FindColumnDialog: public wxDialog
 		//(*Declarations(FindColumnDialog)
 		wxColumnsListView* ListView;
 		wxSearchCtrl* SearchCtrl;
+		wxTimer Timer;
 		//*)
 
 	protected:
@@ -32,6 +34,7 @@ class FindColumnDialog: public wxDialog
 		//(*Identifiers(FindColumnDialog)
 		static const long ID_SEARCHCTRL1;
 		static const long ID_LISTVIEW1;
+		static const long ID_TIMER1;
 		//*)
 
 	private:
@@ -39,6 +42,7 @@ class FindColumnDialog: public wxDialog
 		//(*Handlers(FindColumnDialog)
 		void OnSearchCtrlSearchClicked(wxCommandEvent& event);
 		void OnSearchCtrlCancelClicked(wxCommandEvent& event);
+		void OnTimerTrigger(wxTimerEvent& event);
 		//*)
 
 		DECLARE_EVENT_TABLE()
