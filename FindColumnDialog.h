@@ -43,6 +43,7 @@ class FindColumnDialog: public wxDialog
 		void OnSearchCtrlSearchClicked(wxCommandEvent& event);
 		void OnSearchCtrlCancelClicked(wxCommandEvent& event);
 		void OnTimerTrigger(wxTimerEvent& event);
+		void OnSearchCtrlText(wxCommandEvent& event);
 		//*)
 
 		DECLARE_EVENT_TABLE()

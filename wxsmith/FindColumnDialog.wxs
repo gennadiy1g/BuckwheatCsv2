@@ -11,6 +11,7 @@
 					<cancel_button>1</cancel_button>
 					<size>400,29</size>
 					<style>wxTE_PROCESS_ENTER</style>
+					<handler function="OnSearchCtrlText" entry="EVT_TEXT" />
 					<handler function="OnSearchCtrlSearchClicked" entry="EVT_TEXT_ENTER" />
 					<handler function="OnSearchCtrlSearchClicked" entry="EVT_SEARCHCTRL_SEARCH_BTN" />
 					<handler function="OnSearchCtrlCancelClicked" entry="EVT_SEARCHCTRL_CANCEL_BTN" />
