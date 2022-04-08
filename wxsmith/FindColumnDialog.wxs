@@ -13,6 +13,7 @@
 					<style>wxTE_PROCESS_ENTER</style>
 					<handler function="OnSearchCtrlSearchClicked" entry="EVT_TEXT_ENTER" />
 					<handler function="OnSearchCtrlSearchClicked" entry="EVT_SEARCHCTRL_SEARCH_BTN" />
+					<handler function="OnSearchCtrlCancelClicked" entry="EVT_SEARCHCTRL_CANCEL_BTN" />
 				</object>
 				<flag>wxALL|wxEXPAND</flag>
 				<border>5</border>

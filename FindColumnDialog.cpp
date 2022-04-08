@@ -44,6 +44,7 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 
 	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_TEXT_ENTER,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlSearchClicked);
 	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlSearchClicked);
+	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlCancelClicked);
 	//*)
 
 	ListView->gridTable(pGridTable);
@@ -95,5 +96,10 @@ wxString wxColumnsListView::OnGetItemText(long item, long column) const {
 
 void FindColumnDialog::OnSearchCtrlSearchClicked(wxCommandEvent &event) {
   ListView->SetItemCount(ListView->countItems(SearchCtrl->GetValue()));
+  ListView->Refresh();
+}
+
+void FindColumnDialog::OnSearchCtrlCancelClicked(wxCommandEvent &event) {
+  ListView->SetItemCount(ListView->countItems(""));
   ListView->Refresh();
 }
