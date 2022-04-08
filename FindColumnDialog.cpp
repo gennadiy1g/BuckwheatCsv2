@@ -80,10 +80,14 @@ wxString wxColumnsListView::OnGetItemText(long item, long column) const {
       return std::to_wstring(item + 1);
     }
   } else {
-    // TODO Return column name/number
+    wxASSERT(static_cast<decltype(mColumnNumber)::size_type>(item) < mColumnNumber.size());
+    auto columnNumber = mColumnNumber.at(item);
+    if (column) {
+      return mpGridTable->GetColLabelValue(columnNumber);
+    } else {
+      return std::to_wstring(columnNumber + 1);
+    }
   }
-
-  return "";
 };
 
 void FindColumnDialog::OnSearchCtrlSearchClicked(wxCommandEvent &event) {
