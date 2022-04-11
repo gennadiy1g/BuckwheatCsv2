@@ -14,6 +14,7 @@ enum EventID {
   ID_SEPARATOR_DIALOG = wxID_HIGHEST + 1,
   ID_DEFAULT_COL_SIZE,
   ID_AUTOSIZE_COL_LABEL_SIZE,
+  ID_GOTO_ROW_DIALOG,
   ID_GOTO_COL_DIALOG
 };
 
@@ -49,6 +50,7 @@ public:
 
 private:
   void onSeparatorDialog(wxCommandEvent &event);
+  void onGoToRowDialog(wxCommandEvent &event);
   void onFindColumnDialog(wxCommandEvent &event);
   void onDefaultColSize(wxCommandEvent &event);
   void onAutoSizeColLabelSize(wxCommandEvent &event);
