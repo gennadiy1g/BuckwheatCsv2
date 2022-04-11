@@ -86,7 +86,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
                     "Automatically adjust widths of the columns to fit their labels. ");
 
   auto pMenuGoTo = new wxMenu;
-  pMenuGoTo->Append(ID_FIND_COL_DIALOG, "Find &Column...\tALT+C");
+  pMenuGoTo->Append(ID_FIND_COL_DIALOG, "Go to &Column...\tALT+C");
 
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
@@ -94,7 +94,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   auto pMenuBar = new wxMenuBar;
   pMenuBar->Append(pMenuFile, wxGetStockLabel(wxID_FILE));
   pMenuBar->Append(pMenuView, "&View");
-  pMenuBar->Append(pMenuGoTo, "&GoTo");
+  pMenuBar->Append(pMenuGoTo, "&Go to");
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
 
   SetMenuBar(pMenuBar);
