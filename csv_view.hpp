@@ -28,6 +28,7 @@ public:
   void defaultColSize();
   void autoSizeColLabelSize();
   wxGridTableBase *gridTable() { return mpGrid->GetTable(); };
+  void selectCol(int col);
 
 private:
   wxGrid *mpGrid{};

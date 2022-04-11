@@ -29,7 +29,9 @@ class FindColumnDialog: public wxDialog
 		wxTimer Timer;
 		//*)
 
-	protected:
+		int selectedCol() const;
+
+    protected:
 
 		//(*Identifiers(FindColumnDialog)
 		static const long ID_SEARCHCTRL1;
@@ -60,6 +62,7 @@ public:
   void gridTable(wxGridTableBase *pGridTable) { mpGridTable = pGridTable; };
   // The same return type as parameter type in void wxListCtrl::SetItemCount(long count)
   long countItems(const wxString &str);
+  long GetFirstSelected() const;
 
 protected:
   virtual wxString OnGetItemText(long item, long column) const override;

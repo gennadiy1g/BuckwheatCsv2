@@ -254,3 +254,9 @@ void CsvView::autoSizeColLabelSize() {
     mpGrid->AutoSizeColLabelSize(i);
   }
 };
+
+void CsvView::selectCol(int col) {
+  wxASSERT(col < mpGrid->GetNumberCols());
+  mpGrid->MakeCellVisible(mpGrid->GetGridCursorRow(), col);
+  mpGrid->SelectCol(col);
+};

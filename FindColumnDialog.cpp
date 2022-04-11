@@ -99,6 +99,16 @@ wxString wxColumnsListView::OnGetItemText(long item, long column) const {
   }
 };
 
+long wxColumnsListView::GetFirstSelected() const {
+  if (GetItemCount() == mpGridTable->GetNumberCols()) {
+    return wxListView::GetFirstSelected();
+  } else {
+    return mColumnNumber.at(wxListView::GetFirstSelected());
+  }
+};
+
+int FindColumnDialog::selectedCol() const { return ListView->GetFirstSelected(); };
+
 void FindColumnDialog::OnSearchCtrlSearchClicked(wxCommandEvent &event) {
   ListView->SetItemCount(ListView->countItems(SearchCtrl->GetValue()));
   ListView->Refresh();

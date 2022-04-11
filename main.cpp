@@ -175,6 +175,10 @@ void MainFrame::onFindColumnDialog(wxCommandEvent &event) {
   wxASSERT(pCsvView);
   FindColumnDialog findColumnDialog{wxTheApp->GetTopWindow(), pCsvView->gridTable()};
   if (findColumnDialog.ShowModal() == wxID_OK) {
+    auto selectedCol = findColumnDialog.selectedCol();
+    if (selectedCol >= 0) { // selectedCol contains first selected column, if any, -1 otherwise
+      pCsvView->selectCol(selectedCol);
+    }
   }
 };
 
