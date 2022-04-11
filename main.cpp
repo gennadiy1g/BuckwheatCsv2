@@ -111,7 +111,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
   Bind(wxEVT_MENU, &MainFrame::onGoToRowDialog, this, ID_GOTO_ROW_DIALOG);
-  Bind(wxEVT_MENU, &MainFrame::onFindColumnDialog, this, ID_GOTO_COL_DIALOG);
+  Bind(wxEVT_MENU, &MainFrame::onGoToColumnDialog, this, ID_GOTO_COL_DIALOG);
   Bind(wxEVT_MENU, &MainFrame::onDefaultColSize, this, ID_DEFAULT_COL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
   MFGeometrySerializer appGeometrySerializer;
@@ -173,7 +173,7 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
 
 void MainFrame::onGoToRowDialog(wxCommandEvent &event){};
 
-void MainFrame::onFindColumnDialog(wxCommandEvent &event) {
+void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
   auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
   wxASSERT(pView);
   auto pCsvView = dynamic_cast<CsvView *>(pView);

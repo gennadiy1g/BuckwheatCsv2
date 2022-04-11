@@ -51,7 +51,7 @@ public:
 private:
   void onSeparatorDialog(wxCommandEvent &event);
   void onGoToRowDialog(wxCommandEvent &event);
-  void onFindColumnDialog(wxCommandEvent &event);
+  void onGoToColumnDialog(wxCommandEvent &event);
   void onDefaultColSize(wxCommandEvent &event);
   void onAutoSizeColLabelSize(wxCommandEvent &event);
 
