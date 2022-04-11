@@ -48,6 +48,7 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_TEXT_ENTER,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlSearchClicked);
 	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlSearchClicked);
 	Connect(ID_SEARCHCTRL1,wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN,(wxObjectEventFunction)&FindColumnDialog::OnSearchCtrlCancelClicked);
+	Connect(ID_LISTVIEW1,wxEVT_COMMAND_LIST_ITEM_ACTIVATED,(wxObjectEventFunction)&FindColumnDialog::OnListViewItemActivated);
 	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&FindColumnDialog::OnTimerTrigger);
 	//*)
 
@@ -117,3 +118,5 @@ void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
   Timer.Stop();
   Timer.StartOnce(500);
 }
+
+void FindColumnDialog::OnListViewItemActivated(wxListEvent &event) { EndModal(wxID_OK); }
