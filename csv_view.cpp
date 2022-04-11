@@ -259,4 +259,12 @@ void CsvView::selectCol(int col) {
   wxASSERT(col < mpGrid->GetNumberCols());
   mpGrid->MakeCellVisible(mpGrid->GetGridCursorRow(), col);
   mpGrid->SelectCol(col);
+
+  auto sizeBefore = mpGrid->GetColSize(col);
+  wxGridUpdateLocker updateLocker(mpGrid);
+  mpGrid->AutoSizeColLabelSize(col);
+  auto sizeAfter = mpGrid->GetColSize(col);
+  if (sizeBefore > sizeAfter) {
+    mpGrid->SetColSize(col, sizeBefore);
+  }
 };
