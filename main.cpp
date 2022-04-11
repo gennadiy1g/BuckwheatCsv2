@@ -86,7 +86,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
                     "Automatically adjust widths of the columns to fit their labels. ");
 
   auto pMenuGoTo = new wxMenu;
-  pMenuGoTo->Append(ID_FIND_COL_DIALOG, "Go to &Column...\tALT+C");
+  pMenuGoTo->Append(ID_GOTO_COL_DIALOG, "Go to &Column...\tALT+C");
 
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
@@ -103,12 +103,12 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pMenuBar->Enable(ID_SEPARATOR_DIALOG, false);
   pMenuBar->Enable(ID_DEFAULT_COL_SIZE, false);
   pMenuBar->Enable(ID_AUTOSIZE_COL_LABEL_SIZE, false);
-  pMenuBar->Enable(ID_FIND_COL_DIALOG, false);
+  pMenuBar->Enable(ID_GOTO_COL_DIALOG, false);
   SetIcon(wxICON(table));
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
-  Bind(wxEVT_MENU, &MainFrame::onFindColumnDialog, this, ID_FIND_COL_DIALOG);
+  Bind(wxEVT_MENU, &MainFrame::onFindColumnDialog, this, ID_GOTO_COL_DIALOG);
   Bind(wxEVT_MENU, &MainFrame::onDefaultColSize, this, ID_DEFAULT_COL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
   MFGeometrySerializer appGeometrySerializer;
@@ -221,7 +221,7 @@ void MainFrame::toggleViewMenu(bool onViewCreate) {
   MainFrame::menuBar()->Enable(ID_SEPARATOR_DIALOG, enable);
   MainFrame::menuBar()->Enable(ID_DEFAULT_COL_SIZE, enable);
   MainFrame::menuBar()->Enable(ID_AUTOSIZE_COL_LABEL_SIZE, enable);
-  MainFrame::menuBar()->Enable(ID_FIND_COL_DIALOG, enable);
+  MainFrame::menuBar()->Enable(ID_GOTO_COL_DIALOG, enable);
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
