@@ -10,6 +10,8 @@
 #include <wx/docmdi.h>
 #include <wx/gauge.h>
 
+#include "csv_view.hpp"
+
 enum EventID {
   ID_SEPARATOR_DIALOG = wxID_HIGHEST + 1,
   ID_DEFAULT_COL_SIZE,
@@ -47,6 +49,7 @@ public:
 
   // Disable the View submenu if no documents are open, otherwise enable the View submenu
   static void toggleViewMenu(bool onViewCreate);
+  CsvView *currentView();
 
 private:
   void onSeparatorDialog(wxCommandEvent &event);

@@ -171,13 +171,18 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   }
 };
 
-void MainFrame::onGoToRowDialog(wxCommandEvent &event){};
-
-void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
+CsvView *MainFrame::currentView() {
   auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
   wxASSERT(pView);
   auto pCsvView = dynamic_cast<CsvView *>(pView);
   wxASSERT(pCsvView);
+  return pCsvView;
+};
+
+void MainFrame::onGoToRowDialog(wxCommandEvent &event){};
+
+void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
+  auto pCsvView = currentView();
   FindColumnDialog findColumnDialog{wxTheApp->GetTopWindow(), pCsvView->gridTable()};
   if (findColumnDialog.ShowModal() == wxID_OK) {
     auto selectedCol = findColumnDialog.selectedCol();
@@ -188,18 +193,12 @@ void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
 };
 
 void MainFrame::onDefaultColSize(wxCommandEvent &event) {
-  auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
-  wxASSERT(pView);
-  auto pCsvView = dynamic_cast<CsvView *>(pView);
-  wxASSERT(pCsvView);
+  auto pCsvView = currentView();
   pCsvView->defaultColSize();
 };
 
 void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) {
-  auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
-  wxASSERT(pView);
-  auto pCsvView = dynamic_cast<CsvView *>(pView);
-  wxASSERT(pCsvView);
+  auto pCsvView = currentView();
   pCsvView->autoSizeColLabelSize();
 };
 
