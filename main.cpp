@@ -182,9 +182,11 @@ CsvView *MainFrame::currentView() {
 };
 
 void MainFrame::onGoToRowDialog(wxCommandEvent &event) {
-  auto row = wxGetNumberFromUser("", "Row number:", "Go to Row", 1, 1, currentView()->gridTable()->GetNumberRows(),
-                                 wxTheApp->GetTopWindow());
-  currentView()->selectRow(row);
+  auto numberRows = currentView()->gridTable()->GetNumberRows();
+  if (numberRows > 0) {
+    auto row = wxGetNumberFromUser("", "Row number:", "Go to Row", 1, 1, numberRows, wxTheApp->GetTopWindow());
+    currentView()->selectRow(row);
+  }
 };
 
 void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
