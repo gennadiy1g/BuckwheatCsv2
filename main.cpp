@@ -198,15 +198,9 @@ void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
   }
 };
 
-void MainFrame::onDefaultColSize(wxCommandEvent &event) {
-  auto pCsvView = currentView();
-  pCsvView->defaultColSize();
-};
+void MainFrame::onDefaultColSize(wxCommandEvent &event) { currentView()->defaultColSize(); };
 
-void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) {
-  auto pCsvView = currentView();
-  pCsvView->autoSizeColLabelSize();
-};
+void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) { currentView()->autoSizeColLabelSize(); };
 
 StatusBar *MainFrame::statusBar() {
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
