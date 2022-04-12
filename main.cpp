@@ -1,9 +1,11 @@
 #include <boost/locale/localization_backend.hpp>
 #include <numeric>
 
+#include <wx/app.h>
 #include <wx/config.h>
 #include <wx/debug.h>
 #include <wx/docview.h>
+#include <wx/numdlg.h>
 
 #include "CsvTable/log.hpp"
 #include "CsvTable/utilities.hpp"
@@ -179,7 +181,11 @@ CsvView *MainFrame::currentView() {
   return pCsvView;
 };
 
-void MainFrame::onGoToRowDialog(wxCommandEvent &event){};
+void MainFrame::onGoToRowDialog(wxCommandEvent &event) {
+  auto row = wxGetNumberFromUser("", "Row number:", "Go to Row", 1, 1, currentView()->gridTable()->GetNumberRows(),
+                                 wxTheApp->GetTopWindow());
+  currentView()->selectRow(row);
+};
 
 void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
   auto pCsvView = currentView();
