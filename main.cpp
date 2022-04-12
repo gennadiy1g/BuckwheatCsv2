@@ -9,7 +9,7 @@
 
 #include "CsvTable/log.hpp"
 #include "CsvTable/utilities.hpp"
-#include "FindColumnDialog.h"
+#include "FindColumnDialog.hpp"
 #include "SeparatorDialog.hpp"
 #include "csv_document.hpp"
 #include "csv_view.hpp"

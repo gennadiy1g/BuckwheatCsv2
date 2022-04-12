@@ -2,7 +2,7 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
-#include "FindColumnDialog.h"
+#include "FindColumnDialog.hpp"
 
 //(*InternalHeaders(FindColumnDialog)
 #include <wx/button.h>

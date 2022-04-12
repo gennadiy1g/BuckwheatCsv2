@@ -52,7 +52,7 @@
 		<Unit filename="CsvTable/utilities.cpp" />
 		<Unit filename="CsvTable/utilities.hpp" />
 		<Unit filename="FindColumnDialog.cpp" />
-		<Unit filename="FindColumnDialog.h" />
+		<Unit filename="FindColumnDialog.hpp" />
 		<Unit filename="SeparatorDialog.cpp" />
 		<Unit filename="SeparatorDialog.hpp" />
 		<Unit filename="csv_document.cpp" />
