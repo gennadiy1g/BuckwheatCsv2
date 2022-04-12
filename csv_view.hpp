@@ -29,6 +29,7 @@ public:
   void autoSizeColLabelSize();
   CsvGridTable *gridTable();
   void selectCol(int col);
+  void selectRow(int row);
 
 private:
   wxGrid *mpGrid{};
