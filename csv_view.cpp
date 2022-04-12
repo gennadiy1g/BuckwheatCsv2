@@ -255,6 +255,11 @@ void CsvView::autoSizeColLabelSize() {
   }
 };
 
+CsvGridTable *CsvView::gridTable() {
+  wxASSERT(mpCsvGridTable);
+  return mpCsvGridTable.get();
+};
+
 void CsvView::selectCol(int col) {
   wxASSERT(col < mpGrid->GetNumberCols());
   mpGrid->MakeCellVisible(mpGrid->GetGridCursorRow(), col);
