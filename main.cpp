@@ -16,7 +16,7 @@
 #include "main.hpp"
 
 #ifdef __WXGTK__
-#include "table.xpm"
+#include "bitmaps/table.xpm"
 #endif
 
 namespace blocale = boost::locale;
