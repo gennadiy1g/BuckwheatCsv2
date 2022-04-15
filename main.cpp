@@ -16,6 +16,7 @@
 #include "main.hpp"
 
 #ifdef __WXGTK__
+#include "bitmaps/open.xpm"
 #include "bitmaps/table.xpm"
 #endif
 
@@ -102,8 +103,13 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetMenuBar(pMenuBar);
 
   SetStatusBar(new StatusBar(this));
-  
+
   SetIcon(wxICON(table));
+
+  auto toolBar = CreateToolBar();
+  toolBar->AddTool(wxID_OPEN, "Open", wxBITMAP(open), wxNullBitmap, wxITEM_NORMAL, "Open file",
+                   "Open a UTF-8 encoded delimited file");
+  toolBar->Realize();
 
   pMenuBar->EnableTop(1, false); // disable View submenu
   pMenuBar->EnableTop(2, false); // disable GoTo submenu
