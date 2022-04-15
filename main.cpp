@@ -16,7 +16,7 @@
 #include "main.hpp"
 
 #ifdef __WXGTK__
-#include "bitmaps/open.xpm"
+#include "bitmaps/folder_table.xpm"
 #include "bitmaps/table.xpm"
 #endif
 
@@ -107,7 +107,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetIcon(wxICON(table));
 
   auto toolBar = CreateToolBar();
-  toolBar->AddTool(wxID_OPEN, "Open", wxBITMAP(open), wxNullBitmap, wxITEM_NORMAL, "Open file",
+  toolBar->AddTool(wxID_OPEN, "Open", wxBITMAP(folder_table), wxNullBitmap, wxITEM_NORMAL, "Open file",
                    "Open a UTF-8 encoded delimited file");
   toolBar->Realize();
 
