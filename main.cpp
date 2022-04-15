@@ -99,8 +99,12 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pMenuBar->Append(pMenuView, "&View");
   pMenuBar->Append(pMenuGoTo, "&Go to");
   pMenuBar->Append(pMenuHelp, wxGetStockLabel(wxID_HELP));
-
   SetMenuBar(pMenuBar);
+
+  SetStatusBar(new StatusBar(this));
+  
+  SetIcon(wxICON(table));
+
   pMenuBar->EnableTop(1, false); // disable View submenu
   pMenuBar->EnableTop(2, false); // disable GoTo submenu
   pMenuBar->Enable(ID_SEPARATOR_DIALOG, false);
@@ -108,7 +112,6 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pMenuBar->Enable(ID_AUTOSIZE_COL_LABEL_SIZE, false);
   pMenuBar->Enable(ID_GOTO_ROW_DIALOG, false);
   pMenuBar->Enable(ID_GOTO_COL_DIALOG, false);
-  SetIcon(wxICON(table));
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
@@ -116,10 +119,9 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   Bind(wxEVT_MENU, &MainFrame::onGoToColumnDialog, this, ID_GOTO_COL_DIALOG);
   Bind(wxEVT_MENU, &MainFrame::onDefaultColSize, this, ID_DEFAULT_COL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
+
   MFGeometrySerializer appGeometrySerializer;
   RestoreToGeometry(appGeometrySerializer);
-
-  SetStatusBar(new StatusBar(this));
 };
 
 void MainFrame::OnClose(wxCloseEvent &event) {
