@@ -102,7 +102,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetMenuBar(pMenuBar);
 
   SetStatusBar(new StatusBar(this));
-  
+
   SetIcon(wxICON(table));
 
   pMenuBar->EnableTop(1, false); // disable View submenu
@@ -187,7 +187,9 @@ void MainFrame::onGoToRowDialog(wxCommandEvent &event) {
   auto numberRows = currentView()->gridTable()->GetNumberRows();
   if (numberRows > 0) {
     auto row = wxGetNumberFromUser("", "Row number:", "Go to Row", 1, 1, numberRows, wxTheApp->GetTopWindow());
-    currentView()->selectRow(row);
+    if (row != -1) { // If the user cancels the dialog, the function returns -1
+      currentView()->selectRow(row);
+    }
   }
 };
 
