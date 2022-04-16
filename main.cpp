@@ -107,8 +107,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetIcon(wxICON(table));
 
   auto toolBar = CreateToolBar();
-  toolBar->AddTool(wxID_OPEN, "Open", wxBITMAP(folder_table), wxNullBitmap, wxITEM_NORMAL, "Open file",
-                   "Open a UTF-8 encoded delimited file");
+  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP(folder_table), wxNullBitmap, wxITEM_NORMAL,
+                   "Open file", "Open a UTF-8 encoded delimited file");
   toolBar->Realize();
 
   pMenuBar->EnableTop(1, false); // disable View submenu
