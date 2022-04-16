@@ -230,6 +230,14 @@ wxMenuBar *MainFrame::menuBar() {
   return pMenuBar;
 };
 
+wxToolBar *MainFrame::toolBar() {
+  auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
+  wxASSERT(pTopFrame);
+  auto pToolBar = pTopFrame->GetToolBar();
+  wxASSERT(pToolBar);
+  return pToolBar;
+};
+
 void MainFrame::toggleViewMenu(bool onViewCreate) {
   auto enable = onViewCreate || wxDocManager::GetDocumentManager()->GetDocumentsVector().size() > 1;
   MainFrame::menuBar()->EnableTop(1, enable); // View submenu
