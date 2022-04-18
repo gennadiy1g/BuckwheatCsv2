@@ -18,8 +18,8 @@
 #ifdef __WXGTK__
 #include "bitmaps/folder_table.xpm"
 #include "bitmaps/table.xpm"
-#include "bitmaps/table_select_row.xpm"
 #include "bitmaps/table_select_column.xpm"
+#include "bitmaps/table_select_row.xpm"
 #endif
 
 namespace blocale = boost::locale;
