@@ -19,6 +19,7 @@
 #include "bitmaps/folder_table.xpm"
 #include "bitmaps/table.xpm"
 #include "bitmaps/table_select_row.xpm"
+#include "bitmaps/table_select_column.xpm"
 #endif
 
 namespace blocale = boost::locale;
@@ -112,6 +113,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
                    "Open file", "Open a UTF-8 encoded delimited file");
   toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP(table_select_row), wxNullBitmap, wxITEM_NORMAL, "Go to Row",
                    "Go to Row");
+  toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP(table_select_column), wxNullBitmap, wxITEM_NORMAL,
+                   "Go to Column", "Go to Column");
   toolBar->Realize();
 
   pMenuBar->EnableTop(1, false); // disable View submenu
@@ -123,6 +126,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   pMenuBar->Enable(ID_GOTO_COL_DIALOG, false);
 
   toolBar->EnableTool(ID_GOTO_ROW_DIALOG, false);
+  toolBar->EnableTool(ID_GOTO_COL_DIALOG, false);
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
@@ -254,6 +258,7 @@ void MainFrame::toggleViewMenu(bool onViewCreate) {
   MainFrame::menuBar()->Enable(ID_GOTO_COL_DIALOG, enable);
 
   MainFrame::toolBar()->EnableTool(ID_GOTO_ROW_DIALOG, enable);
+  MainFrame::toolBar()->EnableTool(ID_GOTO_COL_DIALOG, enable);
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
