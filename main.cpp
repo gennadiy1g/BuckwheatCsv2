@@ -109,12 +109,9 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetIcon(wxICON(table));
 
   auto toolBar = CreateToolBar();
-  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP(folder_table), wxNullBitmap, wxITEM_NORMAL,
-                   "Open file", "Open a UTF-8 encoded delimited file");
-  toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP(table_select_row), wxNullBitmap, wxITEM_NORMAL, "Go to Row",
-                   "Go to Row");
-  toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP(table_select_column), wxNullBitmap, wxITEM_NORMAL,
-                   "Go to Column", "Go to Column");
+  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP(folder_table), "Open file");
+  toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP(table_select_row), "Go to Row");
+  toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP(table_select_column), "Go to Column");
   toolBar->Realize();
 
   pMenuBar->EnableTop(1, false); // disable View submenu
