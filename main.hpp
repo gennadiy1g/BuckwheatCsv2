@@ -50,7 +50,7 @@ public:
 
   // Disable the View submenu if no documents are open, otherwise enable the View submenu
   static void toggleViewMenu(bool onViewCreate);
-  CsvView *currentView();
+  static CsvView *currentView();
 
 private:
   void onSeparatorDialog(wxCommandEvent &event);
