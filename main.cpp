@@ -199,7 +199,7 @@ void MainFrame::onGoToRowDialog(wxCommandEvent &event) {
   if (numberRows > 0) {
     auto row = wxGetNumberFromUser("", "Row number:", "Go to Row", 1, 1, numberRows, wxTheApp->GetTopWindow());
     if (row != -1) { // If the user cancels the dialog, the function returns -1
-      currentView()->selectRow(row);
+      currentView()->goToRow(row);
     }
   }
 };
