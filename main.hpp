@@ -46,6 +46,7 @@ public:
 
   static StatusBar *statusBar();
   static wxMenuBar *menuBar();
+  static wxToolBar *toolBar();
 
   // Disable the View submenu if no documents are open, otherwise enable the View submenu
   static void toggleViewMenu(bool onViewCreate);
