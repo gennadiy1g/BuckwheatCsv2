@@ -277,6 +277,6 @@ void CsvView::selectCol(int col) {
 void CsvView::selectRow(int row) {
   wxASSERT(row >= 1 && row <= mpGrid->GetNumberRows());
   --row;
-  mpGrid->MakeCellVisible(row, mpGrid->GetGridCursorCol());
+  mpGrid->GoToCell(row, mpGrid->GetGridCursorCol());
   mpGrid->SelectRow(row);
 };
