@@ -28,7 +28,7 @@ public:
   void defaultColSize();
   void autoSizeColLabelSize();
   CsvGridTable *gridTable();
-  void selectCol(int col);
+  void goToCol(int col);
   void goToRow(int row);
 
 private:

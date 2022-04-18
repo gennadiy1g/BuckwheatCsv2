@@ -210,7 +210,7 @@ void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
   if (findColumnDialog.ShowModal() == wxID_OK) {
     auto selectedCol = findColumnDialog.selectedCol();
     if (selectedCol >= 0) { // selectedCol contains first selected column, if any, -1 otherwise
-      pCsvView->selectCol(selectedCol);
+      pCsvView->goToCol(selectedCol);
     }
   }
 };

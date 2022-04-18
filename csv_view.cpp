@@ -260,7 +260,7 @@ CsvGridTable *CsvView::gridTable() {
   return mpCsvGridTable.get();
 };
 
-void CsvView::selectCol(int col) {
+void CsvView::goToCol(int col) {
   wxASSERT(col < mpGrid->GetNumberCols());
   mpGrid->MakeCellVisible(mpGrid->GetGridCursorRow(), col);
   mpGrid->SelectCol(col);
