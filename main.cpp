@@ -111,14 +111,13 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetIcon(wxICON(table));
 
   auto toolBar = CreateToolBar();
-  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP(folder_table), "Open file");
+  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP(folder_table), "Open File");
   toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP(table_select_row), "Go to Row");
   toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP(table_select_column), "Go to Column");
-  toolBar->AddTool(ID_AUTOSIZE_COL_LABEL_SIZE, "Adjust widths of columns to fit labels", wxBITMAP(column_wight),
+  toolBar->AddTool(ID_AUTOSIZE_COL_LABEL_SIZE, "Fit widths", wxBITMAP(column_wight),
                    "Adjust widths of columns to fit labels");
-  toolBar->AddTool(ID_DEFAULT_COL_SIZE, "Set default widths of columns", wxBITMAP(text_columns),
-                   "Set default widths of columns");
-  toolBar->AddTool(ID_SEPARATOR_DIALOG, "Separator, Quote, Escape", wxBITMAP(table_gear), "Separator, Quote, Escape");
+  toolBar->AddTool(ID_DEFAULT_COL_SIZE, "Default widths", wxBITMAP(text_columns), "Set default widths of columns");
+  toolBar->AddTool(ID_SEPARATOR_DIALOG, "Delimiters", wxBITMAP(table_gear), "Separator, Quote, Escape");
   toolBar->Realize();
 
   pMenuBar->EnableTop(1, false); // disable View submenu
