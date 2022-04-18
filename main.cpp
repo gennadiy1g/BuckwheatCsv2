@@ -21,6 +21,7 @@
 #include "bitmaps/table.xpm"
 #include "bitmaps/table_select_column.xpm"
 #include "bitmaps/table_select_row.xpm"
+#include "bitmaps/text_columns.xpm"
 #endif
 
 namespace blocale = boost::locale;
@@ -115,6 +116,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP(table_select_column), "Go to Column");
   toolBar->AddTool(ID_AUTOSIZE_COL_LABEL_SIZE, "Adjust widths of columns to fit labels", wxBITMAP(column_wight),
                    "Adjust widths of columns to fit labels");
+  toolBar->AddTool(ID_DEFAULT_COL_SIZE, "Set default widths of columns", wxBITMAP(text_columns),
+                   "Set default widths of columns");
   toolBar->Realize();
 
   pMenuBar->EnableTop(1, false); // disable View submenu
@@ -128,6 +131,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   toolBar->EnableTool(ID_GOTO_ROW_DIALOG, false);
   toolBar->EnableTool(ID_GOTO_COL_DIALOG, false);
   toolBar->EnableTool(ID_AUTOSIZE_COL_LABEL_SIZE, false);
+  toolBar->EnableTool(ID_DEFAULT_COL_SIZE, false);
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
@@ -261,6 +265,7 @@ void MainFrame::toggleViewMenu(bool onViewCreate) {
   MainFrame::toolBar()->EnableTool(ID_GOTO_ROW_DIALOG, enable);
   MainFrame::toolBar()->EnableTool(ID_GOTO_COL_DIALOG, enable);
   MainFrame::toolBar()->EnableTool(ID_AUTOSIZE_COL_LABEL_SIZE, enable);
+  MainFrame::toolBar()->EnableTool(ID_DEFAULT_COL_SIZE, enable);
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
