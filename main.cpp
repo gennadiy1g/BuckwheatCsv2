@@ -16,6 +16,7 @@
 #include "main.hpp"
 
 #ifdef __WXGTK__
+#include "bitmaps/column_wight.xpm" // yes, this is spelling mistake; the original file's name is column_wight.png
 #include "bitmaps/folder_table.xpm"
 #include "bitmaps/table.xpm"
 #include "bitmaps/table_select_column.xpm"
@@ -112,6 +113,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP(folder_table), "Open file");
   toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP(table_select_row), "Go to Row");
   toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP(table_select_column), "Go to Column");
+  toolBar->AddTool(ID_AUTOSIZE_COL_LABEL_SIZE, "Adjust widths of columns to fit labels", wxBITMAP(column_wight),
+                   "Adjust widths of columns to fit labels");
   toolBar->Realize();
 
   pMenuBar->EnableTop(1, false); // disable View submenu
@@ -124,6 +127,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
 
   toolBar->EnableTool(ID_GOTO_ROW_DIALOG, false);
   toolBar->EnableTool(ID_GOTO_COL_DIALOG, false);
+  toolBar->EnableTool(ID_AUTOSIZE_COL_LABEL_SIZE, false);
 
   Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
   Bind(wxEVT_MENU, &MainFrame::onSeparatorDialog, this, ID_SEPARATOR_DIALOG);
@@ -256,6 +260,7 @@ void MainFrame::toggleViewMenu(bool onViewCreate) {
 
   MainFrame::toolBar()->EnableTool(ID_GOTO_ROW_DIALOG, enable);
   MainFrame::toolBar()->EnableTool(ID_GOTO_COL_DIALOG, enable);
+  MainFrame::toolBar()->EnableTool(ID_AUTOSIZE_COL_LABEL_SIZE, enable);
 };
 
 StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
