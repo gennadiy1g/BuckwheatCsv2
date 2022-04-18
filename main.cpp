@@ -93,8 +93,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
                     "Automatically adjust widths of the columns to fit their labels. ");
 
   auto pMenuGoTo = new wxMenu;
-  pMenuGoTo->Append(ID_GOTO_ROW_DIALOG, "Go to &Row...\tALT+R");
-  pMenuGoTo->Append(ID_GOTO_COL_DIALOG, "Go to &Column...\tALT+C");
+  pMenuGoTo->Append(ID_GOTO_ROW_DIALOG, "Go to &Row...\tCTRL+G");
+  pMenuGoTo->Append(ID_GOTO_COL_DIALOG, "Go to &Column...\tCTRL+SHIFT+G");
 
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
