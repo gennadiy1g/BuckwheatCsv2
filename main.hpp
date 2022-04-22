@@ -7,7 +7,7 @@
 #include <wx/wx.h>
 #endif
 
-#include <wx/docmdi.h>
+#include <wx/aui/tabmdi.h>
 #include <wx/gauge.h>
 
 #include "csv_view.hpp"
@@ -36,7 +36,9 @@ public:
 // wxIMPLEMENT_APP()
 wxDECLARE_APP(App);
 
-class MainFrame : public wxDocMDIParentFrame {
+static_assert(wxUSE_AUI);
+
+class MainFrame : public wxDocParentFrameAny<wxAuiMDIParentFrame> {
 public:
   MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title,
             const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize,

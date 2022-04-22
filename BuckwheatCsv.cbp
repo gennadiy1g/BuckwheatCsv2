@@ -38,7 +38,7 @@
 			<Add option="`wx-config --cflags`" />
 		</Compiler>
 		<Linker>
-			<Add option="`wx-config --libs`" />
+			<Add option="`wx-config --libs std,aui`" />
 			<Add library="/usr/local/lib/libboost_filesystem.a" />
 			<Add library="/usr/local/lib/libboost_locale.a" />
 			<Add library="/usr/local/lib/libboost_log_setup.a" />

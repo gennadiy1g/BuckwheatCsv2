@@ -3,7 +3,7 @@
 #include <wx/app.h>
 #include <wx/colour.h>
 #include <wx/debug.h>
-#include <wx/docmdi.h>
+#include <wx/aui/tabmdi.h>
 #include <wx/settings.h>
 #include <wx/sizer.h>
 
@@ -29,7 +29,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
     return false;
   }
 
-  auto pChildFrame = new wxDocMDIChildFrame(doc, this, dynamic_cast<wxDocMDIParentFrame *>(wxGetApp().GetTopWindow()),
+  auto pChildFrame = new wxDocChildFrameAny<wxAuiMDIChildFrame, wxAuiMDIParentFrame>(doc, this, wxStaticCast(wxGetApp().GetTopWindow(), wxAuiMDIParentFrame),
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
 
