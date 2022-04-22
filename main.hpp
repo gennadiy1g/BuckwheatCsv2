@@ -37,6 +37,7 @@ public:
 wxDECLARE_APP(App);
 
 static_assert(wxUSE_AUI);
+static_assert(wxUSE_DOC_VIEW_ARCHITECTURE);
 
 class MainFrame : public wxDocParentFrameAny<wxAuiMDIParentFrame> {
 public:
