@@ -60,10 +60,12 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   return true;
 };
 
-bool CsvView::OnClose(bool deleteWindow = true) {
+bool CsvView::OnClose(bool deleteWindow) {
   if (!wxView::OnClose(deleteWindow)) {
     return false;
   }
+
+  // Activate(false);
 
   clearStatus();
 
