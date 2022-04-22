@@ -74,9 +74,8 @@ int App::OnExit() {
   return wxApp::OnExit();
 }
 
-MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
-                     const wxSize &size, long style, const wxString &name)
-    : wxDocParentFrameAny<wxAuiMDIParentFrame>(manager, parent, id, title, pos, size, style, name) {
+MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title)
+    : wxDocParentFrameAny<wxAuiMDIParentFrame>(manager, parent, id, title) {
   auto pMenuFile = new wxMenu;
   pMenuFile->Append(wxID_OPEN, wxGetStockLabel(wxID_OPEN));
   pMenuFile->Append(wxID_CLOSE, wxGetStockLabel(wxID_CLOSE));
