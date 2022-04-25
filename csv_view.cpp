@@ -29,7 +29,9 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
     return false;
   }
 
-  auto pChildFrame = new wxDocChildFrameAny<wxAuiMDIChildFrame, wxAuiMDIParentFrame>(doc, this, wxStaticCast(wxGetApp().GetTopWindow(), wxAuiMDIParentFrame),
+  using AuiChildFrame = wxDocChildFrameAny<wxAuiMDIChildFrame, wxAuiMDIParentFrame>;
+
+  auto pChildFrame = new AuiChildFrame(doc, this, wxStaticCast(wxGetApp().GetTopWindow(), wxAuiMDIParentFrame),
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
 

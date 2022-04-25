@@ -75,7 +75,7 @@ int App::OnExit() {
 }
 
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title)
-    : wxDocParentFrameAny<wxAuiMDIParentFrame>(manager, parent, id, title) {
+    : AuiMainFrame(manager, parent, id, title) {
   auto pMenuFile = new wxMenu;
   pMenuFile->Append(wxID_OPEN, wxGetStockLabel(wxID_OPEN));
   pMenuFile->Append(wxID_CLOSE, wxGetStockLabel(wxID_CLOSE));

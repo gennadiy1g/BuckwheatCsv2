@@ -39,7 +39,9 @@ wxDECLARE_APP(App);
 static_assert(wxUSE_AUI);
 static_assert(wxUSE_DOC_VIEW_ARCHITECTURE);
 
-class MainFrame : public wxDocParentFrameAny<wxAuiMDIParentFrame> {
+using AuiMainFrame = wxDocParentFrameAny<wxAuiMDIParentFrame>;
+
+class MainFrame : public AuiMainFrame {
 public:
   MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title);
   virtual ~MainFrame() = default;
