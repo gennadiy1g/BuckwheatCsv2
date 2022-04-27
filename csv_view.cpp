@@ -45,7 +45,6 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   wxASSERT(pCsvDocument);
 
   mpCsvGridTable = new CsvGridTable(pCsvDocument);
-  wxASSERT(mpCsvGridTable);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid & CsvGridTable";
 
   mpGauge = new wxGauge(pChildFrame, wxID_ANY, 100);
