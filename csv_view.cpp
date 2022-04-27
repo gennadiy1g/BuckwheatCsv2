@@ -44,7 +44,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
   wxASSERT(pCsvDocument);
 
-  mpCsvGridTable.reset(new CsvGridTable(pCsvDocument));
+  mpCsvGridTable = new CsvGridTable(pCsvDocument);
   wxASSERT(mpCsvGridTable);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid & CsvGridTable";
 
@@ -230,6 +230,9 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   wxASSERT(numLines);
   mpCsvGridTable->setNumberRows(numLines, percent);
+  if (!mpGrid->GetTable()) {
+    mpGrid->AssignTable(mpCsvGridTable);
+  }
   // mpGrid->SetTable(mpCsvGridTable.get(), false);
 
   if (mIsActive) {
@@ -261,7 +264,7 @@ void CsvView::autoSizeColLabelSize() {
 
 CsvGridTable *CsvView::gridTable() {
   wxASSERT(mpCsvGridTable);
-  return mpCsvGridTable.get();
+  return mpCsvGridTable;
 };
 
 void CsvView::goToCol(int col) {
