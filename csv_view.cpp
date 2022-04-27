@@ -35,10 +35,10 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
                                             wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
 
-  mpGrid = new wxGrid(pChildFrame, wxID_ANY);
-  mpGrid->EnableEditing(false);
-  mpGrid->SetCellHighlightColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT)); // it is white by default
-  mpGrid->DisableDragRowSize();
+  // mpGrid = new wxGrid(pChildFrame, wxID_ANY);
+  // mpGrid->EnableEditing(false);
+  // mpGrid->SetCellHighlightColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT)); // it is white by default
+  // mpGrid->DisableDragRowSize();
 
   wxASSERT(doc);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
@@ -51,7 +51,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   mpGauge = new wxGauge(pChildFrame, wxID_ANY, 100);
 
   auto *vSizer = new wxBoxSizer(wxVERTICAL);
-  vSizer->Add(mpGrid, wxSizerFlags(1).Expand());
+  // vSizer->Add(mpGrid, wxSizerFlags(1).Expand());
   vSizer->Add(mpGauge, wxSizerFlags(0).Expand());
   pChildFrame->SetSizerAndFit(vSizer);
 
@@ -213,7 +213,7 @@ void CsvView::clearStatus() {
 
 void CsvView::OnUpdate(wxView *sender, wxObject *hint) {
   if (mpCsvGridTable->hasData()) {
-    mpGrid->SetTable(mpCsvGridTable.get(), false);
+    // mpGrid->SetTable(mpCsvGridTable.get(), false);
   }
   clearStatus();
   showStatus();
@@ -230,33 +230,33 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   wxASSERT(numLines);
   mpCsvGridTable->setNumberRows(numLines, percent);
-  mpGrid->SetTable(mpCsvGridTable.get(), false);
+  // mpGrid->SetTable(mpCsvGridTable.get(), false);
 
   if (mIsActive) {
     /* If the file is so small that its cells fit entirely inside the grid (in other words, the last cell is
        visible), the grid appears empty, and ForceRefresh() is necessary to display the cells. */
-    if ((numLines > 1) && (mpGrid->IsVisible(numLines - 2, mpCsvGridTable->GetNumberCols() - 1, false))) {
-      BOOST_LOG_SEV(gLogger, trivial::trace) << "mpGrid->ForceRefresh()";
-      mpGrid->ForceRefresh();
-    }
+    // if ((numLines > 1) && (mpGrid->IsVisible(numLines - 2, mpCsvGridTable->GetNumberCols() - 1, false))) {
+    //   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpGrid->ForceRefresh()";
+    //   mpGrid->ForceRefresh();
+    // }
 
     showStatus();
   }
 };
 
 void CsvView::defaultColSize() {
-  auto defaultWidth = mpGrid->GetDefaultColSize();
-  wxGridUpdateLocker updateLocker(mpGrid);
-  for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
-    mpGrid->SetColSize(i, defaultWidth);
-  }
+  // auto defaultWidth = mpGrid->GetDefaultColSize();
+  // wxGridUpdateLocker updateLocker(mpGrid);
+  // for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
+  //   mpGrid->SetColSize(i, defaultWidth);
+  // }
 };
 
 void CsvView::autoSizeColLabelSize() {
-  wxGridUpdateLocker updateLocker(mpGrid);
-  for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
-    mpGrid->AutoSizeColLabelSize(i);
-  }
+  // wxGridUpdateLocker updateLocker(mpGrid);
+  // for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
+  //   mpGrid->AutoSizeColLabelSize(i);
+  // }
 };
 
 CsvGridTable *CsvView::gridTable() {
@@ -265,22 +265,22 @@ CsvGridTable *CsvView::gridTable() {
 };
 
 void CsvView::goToCol(int col) {
-  wxASSERT(col < mpGrid->GetNumberCols());
-  mpGrid->GoToCell(mpGrid->GetGridCursorRow(), col);
-  mpGrid->SelectCol(col);
+  // wxASSERT(col < mpGrid->GetNumberCols());
+  // mpGrid->GoToCell(mpGrid->GetGridCursorRow(), col);
+  // mpGrid->SelectCol(col);
 
-  auto sizeBefore = mpGrid->GetColSize(col);
-  wxGridUpdateLocker updateLocker(mpGrid);
-  mpGrid->AutoSizeColLabelSize(col);
-  auto sizeAfter = mpGrid->GetColSize(col);
-  if (sizeBefore > sizeAfter) {
-    mpGrid->SetColSize(col, sizeBefore);
-  }
+  // auto sizeBefore = mpGrid->GetColSize(col);
+  // wxGridUpdateLocker updateLocker(mpGrid);
+  // mpGrid->AutoSizeColLabelSize(col);
+  // auto sizeAfter = mpGrid->GetColSize(col);
+  // if (sizeBefore > sizeAfter) {
+  //   mpGrid->SetColSize(col, sizeBefore);
+  // }
 };
 
 void CsvView::goToRow(int row) {
-  wxASSERT(row >= 1 && row <= mpGrid->GetNumberRows());
-  --row;
-  mpGrid->GoToCell(row, mpGrid->GetGridCursorCol());
-  mpGrid->SelectRow(row);
+  // wxASSERT(row >= 1 && row <= mpGrid->GetNumberRows());
+  // --row;
+  // mpGrid->GoToCell(row, mpGrid->GetGridCursorCol());
+  // mpGrid->SelectRow(row);
 };

@@ -32,7 +32,7 @@ public:
   void goToRow(int row);
 
 private:
-  wxGrid *mpGrid{};
+  // wxGrid *mpGrid{};
   wxGauge *mpGauge{};
   std::unique_ptr<CsvGridTable> mpCsvGridTable;
   bool mIsActive{false};
