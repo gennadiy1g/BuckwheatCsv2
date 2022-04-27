@@ -229,10 +229,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   wxASSERT(numLines);
   mpCsvGridTable->setNumberRows(numLines, percent);
-  if (!mpGrid->GetTable()) {
-    mpGrid->AssignTable(mpCsvGridTable);
-  }
-  // mpGrid->SetTable(mpCsvGridTable.get(), false);
+  mpGrid->SetTable(mpCsvGridTable);
 
   if (mIsActive) {
     /* If the file is so small that its cells fit entirely inside the grid (in other words, the last cell is
