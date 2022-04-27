@@ -245,11 +245,11 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 };
 
 void CsvView::defaultColSize() {
-  // auto defaultWidth = mpGrid->GetDefaultColSize();
-  // wxGridUpdateLocker updateLocker(mpGrid);
-  // for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
-  //   mpGrid->SetColSize(i, defaultWidth);
-  // }
+  auto defaultWidth = mpGrid->GetDefaultColSize();
+  wxGridUpdateLocker updateLocker(mpGrid);
+  for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
+    mpGrid->SetColSize(i, defaultWidth);
+  }
 };
 
 void CsvView::autoSizeColLabelSize() {
