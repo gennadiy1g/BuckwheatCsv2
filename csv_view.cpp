@@ -214,7 +214,8 @@ void CsvView::clearStatus() {
 
 void CsvView::OnUpdate(wxView *sender, wxObject *hint) {
   if (mpCsvGridTable->hasData()) {
-    // mpGrid->SetTable(mpCsvGridTable.get(), false);
+    wxASSERT_MSG(false, "The next statement is never executed!");
+    mpGrid->SetTable(mpCsvGridTable); // TODO This statement is never executed, delete it
   }
   clearStatus();
   showStatus();
@@ -236,10 +237,10 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   if (mIsActive) {
     /* If the file is so small that its cells fit entirely inside the grid (in other words, the last cell is
        visible), the grid appears empty, and ForceRefresh() is necessary to display the cells. */
-    // if ((numLines > 1) && (mpGrid->IsVisible(numLines - 2, mpCsvGridTable->GetNumberCols() - 1, false))) {
-    //   BOOST_LOG_SEV(gLogger, trivial::trace) << "mpGrid->ForceRefresh()";
-    //   mpGrid->ForceRefresh();
-    // }
+    if ((numLines > 1) && (mpGrid->IsVisible(numLines - 2, mpCsvGridTable->GetNumberCols() - 1, false))) {
+      BOOST_LOG_SEV(gLogger, trivial::trace) << "mpGrid->ForceRefresh()";
+      mpGrid->ForceRefresh();
+    }
 
     showStatus();
   }
