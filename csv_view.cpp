@@ -265,17 +265,17 @@ CsvGridTable *CsvView::gridTable() {
 };
 
 void CsvView::goToCol(int col) {
-  // wxASSERT(col < mpGrid->GetNumberCols());
-  // mpGrid->GoToCell(mpGrid->GetGridCursorRow(), col);
-  // mpGrid->SelectCol(col);
+  wxASSERT(col < mpGrid->GetNumberCols());
+  mpGrid->GoToCell(mpGrid->GetGridCursorRow(), col);
+  mpGrid->SelectCol(col);
 
-  // auto sizeBefore = mpGrid->GetColSize(col);
-  // wxGridUpdateLocker updateLocker(mpGrid);
-  // mpGrid->AutoSizeColLabelSize(col);
-  // auto sizeAfter = mpGrid->GetColSize(col);
-  // if (sizeBefore > sizeAfter) {
-  //   mpGrid->SetColSize(col, sizeBefore);
-  // }
+  auto sizeBefore = mpGrid->GetColSize(col);
+  wxGridUpdateLocker updateLocker(mpGrid);
+  mpGrid->AutoSizeColLabelSize(col);
+  auto sizeAfter = mpGrid->GetColSize(col);
+  if (sizeBefore > sizeAfter) {
+    mpGrid->SetColSize(col, sizeBefore);
+  }
 };
 
 void CsvView::goToRow(int row) {
