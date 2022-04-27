@@ -62,7 +62,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
 };
 
 bool CsvView::OnClose(bool deleteWindow) {
-  mpGrid->SetTable(mpCsvGridTable, true);
+  mpGrid->SetTable(mpCsvGridTable, true); // Very important!
 
   if (!wxView::OnClose(deleteWindow)) {
     return false;
