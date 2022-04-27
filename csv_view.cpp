@@ -253,10 +253,10 @@ void CsvView::defaultColSize() {
 };
 
 void CsvView::autoSizeColLabelSize() {
-  // wxGridUpdateLocker updateLocker(mpGrid);
-  // for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
-  //   mpGrid->AutoSizeColLabelSize(i);
-  // }
+  wxGridUpdateLocker updateLocker(mpGrid);
+  for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
+    mpGrid->AutoSizeColLabelSize(i);
+  }
 };
 
 CsvGridTable *CsvView::gridTable() {
