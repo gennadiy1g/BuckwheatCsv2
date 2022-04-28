@@ -32,7 +32,7 @@ public:
 private:
   wxGrid *mpGrid{};
   wxGauge *mpGauge{};
-  CsvGridTable* mpCsvGridTable{};
+  CsvGridTable *mpCsvGridTable{};
   bool mIsActive{false};
   static inline std::unique_ptr<std::locale> mpsThousandsSep{};
 

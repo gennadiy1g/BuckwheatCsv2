@@ -1,9 +1,9 @@
 #include <sstream>
 
 #include <wx/app.h>
+#include <wx/aui/tabmdi.h>
 #include <wx/colour.h>
 #include <wx/debug.h>
-#include <wx/aui/tabmdi.h>
 #include <wx/settings.h>
 #include <wx/sizer.h>
 
@@ -32,7 +32,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   using AuiChildFrame = wxDocChildFrameAny<wxAuiMDIChildFrame, wxAuiMDIParentFrame>;
 
   auto pChildFrame = new AuiChildFrame(doc, this, wxStaticCast(wxGetApp().GetTopWindow(), wxAuiMDIParentFrame),
-                                            wxID_ANY, "Child Frame");
+                                       wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
 
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
