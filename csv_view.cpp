@@ -213,10 +213,6 @@ void CsvView::clearStatus() {
 }
 
 void CsvView::OnUpdate(wxView *sender, wxObject *hint) {
-  if (mpCsvGridTable->hasData()) {
-    wxASSERT_MSG(false, "The next statement is never executed!");
-    mpGrid->SetTable(mpCsvGridTable); // TODO This statement is never executed, delete it
-  }
   clearStatus();
   showStatus();
 };
