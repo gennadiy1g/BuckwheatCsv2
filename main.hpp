@@ -31,6 +31,9 @@ public:
 
   // processing which needs to be done as the application is about to exit
   virtual int OnExit() override;
+
+  virtual void OnInitCmdLine(wxCmdLineParser &parser) override;
+  virtual bool OnCmdLineParsed(wxCmdLineParser &parser) override;
 };
 
 // Create a forward declaration of the wxGetApp() function implemented by

@@ -74,6 +74,9 @@ int App::OnExit() {
   return wxApp::OnExit();
 }
 
+void App::OnInitCmdLine(wxCmdLineParser &parser) { wxApp::OnInitCmdLine(parser); };
+bool App::OnCmdLineParsed(wxCmdLineParser &parser) { return wxApp::OnCmdLineParsed(parser); };
+
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title)
     : AuiMainFrame(manager, parent, id, title) {
   auto pMenuFile = new wxMenu;
