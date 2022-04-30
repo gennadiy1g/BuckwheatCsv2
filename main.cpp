@@ -80,7 +80,14 @@ void App::OnInitCmdLine(wxCmdLineParser &parser) {
   wxApp::OnInitCmdLine(parser);
 };
 
-bool App::OnCmdLineParsed(wxCmdLineParser &parser) { return wxApp::OnCmdLineParsed(parser); };
+bool App::OnCmdLineParsed(wxCmdLineParser &parser) {
+  // save any files given on the command line: we'll open them in OnInit()
+  // later, after creating the frame
+  for (size_t i = 0; i < parser.GetParamCount(); ++i)
+    m_filesFromCmdLine.push_back(parser.GetParam(i));
+
+  return wxApp::OnCmdLineParsed(parser);
+};
 
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title)
     : AuiMainFrame(manager, parent, id, title) {

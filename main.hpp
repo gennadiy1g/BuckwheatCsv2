@@ -34,6 +34,10 @@ public:
 
   virtual void OnInitCmdLine(wxCmdLineParser &parser) override;
   virtual bool OnCmdLineParsed(wxCmdLineParser &parser) override;
+
+private:
+  // contains the file names given on the command line, possibly empty
+  wxVector<wxString> m_filesFromCmdLine;
 };
 
 // Create a forward declaration of the wxGetApp() function implemented by
