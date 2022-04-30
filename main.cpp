@@ -63,8 +63,8 @@ bool App::OnInit() {
   auto pMainFrame = new MainFrame(pDocManager, NULL, wxID_ANY, GetAppDisplayName());
   pMainFrame->Show();
 
-  for (size_t i = 0; i < m_filesFromCmdLine.size(); ++i) {
-    pDocManager->CreateDocument(m_filesFromCmdLine[i], wxDOC_SILENT);
+  for (size_t i = 0; i < mFilesFromCmdLine.size(); ++i) {
+    pDocManager->CreateDocument(mFilesFromCmdLine[i], wxDOC_SILENT);
   }
 
   // Enter the application's main loop
@@ -88,7 +88,7 @@ bool App::OnCmdLineParsed(wxCmdLineParser &parser) {
   // save any files given on the command line: we'll open them in OnInit()
   // later, after creating the frame
   for (size_t i = 0; i < parser.GetParamCount(); ++i)
-    m_filesFromCmdLine.push_back(parser.GetParam(i));
+    mFilesFromCmdLine.push_back(parser.GetParam(i));
 
   return wxApp::OnCmdLineParsed(parser);
 };

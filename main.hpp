@@ -37,7 +37,7 @@ public:
 
 private:
   // contains the file names given on the command line, possibly empty
-  wxVector<wxString> m_filesFromCmdLine;
+  wxVector<wxString> mFilesFromCmdLine;
 };
 
 // Create a forward declaration of the wxGetApp() function implemented by
