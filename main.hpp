@@ -79,5 +79,5 @@ public:
 
 class DnDFile : public wxFileDropTarget {
 public:
-  virtual bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString &filenames) override;
+  virtual bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString &fileNames) override;
 };

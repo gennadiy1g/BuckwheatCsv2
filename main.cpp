@@ -140,6 +140,8 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   Bind(wxEVT_MENU, &MainFrame::onDefaultColSize, this, ID_DEFAULT_COL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
 
+  SetDropTarget(new DnDFile());
+
   MFGeometrySerializer appGeometrySerializer;
   RestoreToGeometry(appGeometrySerializer);
 };
@@ -275,4 +277,9 @@ StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
   SetFieldsCount(fieldsCount, widths);
 };
 
-bool DnDFile::OnDropFiles(wxCoord x, wxCoord y, const wxArrayString &filenames) { return true; };
+bool DnDFile::OnDropFiles(wxCoord x, wxCoord y, const wxArrayString &fileNames) {
+  for (size_t i = 0; i < fileNames.GetCount(); ++i) {
+    wxDocManager::GetDocumentManager()->CreateDocument(fileNames[i], wxDOC_SILENT);
+  }
+  return true;
+};
