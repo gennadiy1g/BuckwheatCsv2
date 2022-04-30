@@ -274,3 +274,5 @@ StatusBar::StatusBar(wxWindow *parent) : wxStatusBar(parent) {
   int widths[fieldsCount]{-1, -1, -1, -1, -1}; // rows, columns, separator, quote, escape
   SetFieldsCount(fieldsCount, widths);
 };
+
+bool DnDFile::OnDropFiles(wxCoord x, wxCoord y, const wxArrayString &filenames) { return true; };

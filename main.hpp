@@ -8,6 +8,7 @@
 #endif
 
 #include <wx/aui/tabmdi.h>
+#include <wx/dnd.h>
 #include <wx/gauge.h>
 
 #include "csv_view.hpp"
@@ -74,4 +75,9 @@ class StatusBar : public wxStatusBar {
 public:
   StatusBar(wxWindow *parent);
   virtual ~StatusBar() = default;
+};
+
+class DnDFile : public wxFileDropTarget {
+public:
+  virtual bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString &filenames) override;
 };
