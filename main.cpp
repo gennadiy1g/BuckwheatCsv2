@@ -2,6 +2,7 @@
 #include <numeric>
 
 #include <wx/app.h>
+#include <wx/cmdline.h>
 #include <wx/config.h>
 #include <wx/debug.h>
 #include <wx/docview.h>
@@ -74,7 +75,11 @@ int App::OnExit() {
   return wxApp::OnExit();
 }
 
-void App::OnInitCmdLine(wxCmdLineParser &parser) { wxApp::OnInitCmdLine(parser); };
+void App::OnInitCmdLine(wxCmdLineParser &parser) {
+  parser.AddParam("document-file", wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE | wxCMD_LINE_PARAM_OPTIONAL);
+  wxApp::OnInitCmdLine(parser);
+};
+
 bool App::OnCmdLineParsed(wxCmdLineParser &parser) { return wxApp::OnCmdLineParsed(parser); };
 
 MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, const wxString &title)
