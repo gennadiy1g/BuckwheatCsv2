@@ -6,6 +6,8 @@
 #include <wx/config.h>
 #include <wx/debug.h>
 #include <wx/docview.h>
+#include <wx/filefn.h>
+#include <wx/msgdlg.h>
 #include <wx/numdlg.h>
 
 #include "CsvTable/log.hpp"
@@ -64,7 +66,11 @@ bool App::OnInit() {
   pMainFrame->Show();
 
   for (size_t i = 0; i < mFilesFromCmdLine.size(); ++i) {
-    pDocManager->CreateDocument(mFilesFromCmdLine[i], wxDOC_SILENT);
+    if (wxFileExists(mFilesFromCmdLine[i])) {
+      pDocManager->CreateDocument(mFilesFromCmdLine[i], wxDOC_SILENT);
+    } else {
+      wxMessageBox("File \"" + mFilesFromCmdLine[i] + "\" does not exist!", "Attention", wxOK, pMainFrame);
+    }
   }
 
   // Enter the application's main loop
