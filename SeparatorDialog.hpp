@@ -13,7 +13,7 @@ class SeparatorDialog: public wxDialog
 {
 	public:
 
-		SeparatorDialog(wxWindow* parent);
+		SeparatorDialog(wxWindow* parent, const wxString &path);
 		virtual ~SeparatorDialog();
 
 		//(*Declarations(SeparatorDialog)

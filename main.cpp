@@ -213,7 +213,7 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
   wxASSERT(pDocument);
   auto pCsvDocument = dynamic_cast<CsvDocument *>(pDocument);
   wxASSERT(pCsvDocument);
-  SeparatorDialog separatorDialog{wxTheApp->GetTopWindow()};
+  SeparatorDialog separatorDialog{wxTheApp->GetTopWindow(), pCsvDocument->documentFile()};
   separatorDialog.separator(pCsvDocument->separator());
   separatorDialog.quote(pCsvDocument->quote());
   separatorDialog.escape(pCsvDocument->escape());

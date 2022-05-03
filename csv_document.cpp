@@ -43,7 +43,7 @@ bool CsvDocument::OnCreate(const wxString &path, long flags) {
   }
 
   if (!mSeparator) {
-    SeparatorDialog separatorDialog{wxTheApp->GetTopWindow()};
+    SeparatorDialog separatorDialog{wxTheApp->GetTopWindow(), path};
     separatorDialog.separator(kComma);
     wxASSERT(mQuote);
     separatorDialog.quote(mQuote.value());

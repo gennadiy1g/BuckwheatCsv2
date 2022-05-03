@@ -31,7 +31,7 @@ BEGIN_EVENT_TABLE(SeparatorDialog,wxDialog)
 	//*)
 END_EVENT_TABLE()
 
-SeparatorDialog::SeparatorDialog(wxWindow* parent)
+SeparatorDialog::SeparatorDialog(wxWindow* parent, const wxString &path)
 {
 	//(*Initialize(SeparatorDialog)
 	wxBoxSizer* BoxSizerMain;
@@ -102,6 +102,8 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 	Connect(ID_RADIOBUTTON11,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonEscapeSelect);
 	Connect(ID_RADIOBUTTON9,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonEscapeSelect);
 	//*)
+
+  StaticTextFullPathName->SetLabel(path);
 }
 
 SeparatorDialog::~SeparatorDialog()
