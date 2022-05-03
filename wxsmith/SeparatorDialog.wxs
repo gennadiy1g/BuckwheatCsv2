@@ -7,7 +7,7 @@
 			<orient>wxVERTICAL</orient>
 			<object class="sizeritem">
 				<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticTextFullPathName" member="yes">
-					<label>Label</label>
+					<label>Full path &amp; name of the file should be here</label>
 				</object>
 				<flag>wxALL|wxEXPAND</flag>
 				<border>5</border>
