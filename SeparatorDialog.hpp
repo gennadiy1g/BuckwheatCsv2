@@ -28,7 +28,7 @@ class SeparatorDialog: public wxDialog
 		wxRadioButton* RadioButtonSpace;
 		wxRadioButton* RadioButtonTab;
 		wxRadioButton* RadioButtonVerticalBar;
-		wxStaticText* StaticText1;
+		wxStaticText* StaticTextFullPathName;
 		wxTextCtrl* TextCtrlOtherEscape;
 		wxTextCtrl* TextCtrlOtherSeparator;
 		//*)

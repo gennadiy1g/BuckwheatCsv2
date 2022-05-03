@@ -43,8 +43,8 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent)
 
 	Create(parent, wxID_ANY, _("Separator, Quote, Escape"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 	BoxSizerMain = new wxBoxSizer(wxVERTICAL);
-	StaticText1 = new wxStaticText(this, ID_STATICTEXT1, _("Label"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
-	BoxSizerMain->Add(StaticText1, 0, wxALL|wxEXPAND, 5);
+	StaticTextFullPathName = new wxStaticText(this, ID_STATICTEXT1, _("Label"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
+	BoxSizerMain->Add(StaticTextFullPathName, 0, wxALL|wxEXPAND, 5);
 	StaticBoxSizerSeparator = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Separator character"));
 	RadioButtonComma = new wxRadioButton(this, ID_RADIOBUTTON1, _("Comma"), wxDefaultPosition, wxDefaultSize, wxRB_GROUP, wxDefaultValidator, _T("ID_RADIOBUTTON1"));
 	StaticBoxSizerSeparator->Add(RadioButtonComma, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);

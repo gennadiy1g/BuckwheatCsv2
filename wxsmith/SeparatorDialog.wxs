@@ -6,7 +6,7 @@
 		<object class="wxBoxSizer" variable="BoxSizerMain" member="no">
 			<orient>wxVERTICAL</orient>
 			<object class="sizeritem">
-				<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText1" member="yes">
+				<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticTextFullPathName" member="yes">
 					<label>Label</label>
 				</object>
 				<flag>wxALL|wxEXPAND</flag>
