@@ -43,7 +43,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent, const wxString &path)
 
 	Create(parent, wxID_ANY, _("Separator, Quote, Escape"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
 	BoxSizerMain = new wxBoxSizer(wxVERTICAL);
-	StaticTextFullPathName = new wxStaticText(this, ID_STATICTEXT1, _("Full path & name of the file should be here"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
+	StaticTextFullPathName = new wxStaticText(this, ID_STATICTEXT1, _("Full path & name of the file should be here"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE, _T("ID_STATICTEXT1"));
 	BoxSizerMain->Add(StaticTextFullPathName, 0, wxALL|wxEXPAND, 5);
 	StaticBoxSizerSeparator = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Separator character"));
 	RadioButtonComma = new wxRadioButton(this, ID_RADIOBUTTON1, _("Comma"), wxDefaultPosition, wxDefaultSize, wxRB_GROUP, wxDefaultValidator, _T("ID_RADIOBUTTON1"));

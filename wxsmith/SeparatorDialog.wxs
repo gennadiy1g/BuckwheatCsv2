@@ -8,6 +8,7 @@
 			<object class="sizeritem">
 				<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticTextFullPathName" member="yes">
 					<label>Full path &amp; name of the file should be here</label>
+					<style>wxST_NO_AUTORESIZE</style>
 				</object>
 				<flag>wxALL|wxEXPAND</flag>
 				<border>5</border>
