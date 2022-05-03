@@ -43,6 +43,8 @@ public:
 
   void escapeSeparatorQuote(wchar_t escape, wchar_t separator, wchar_t quote);
 
+  wxString documentFile() { return m_documentFile; };
+
 protected:
   virtual bool DoOpenDocument(const wxString &file) override;
 
