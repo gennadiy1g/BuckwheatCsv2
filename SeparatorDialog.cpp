@@ -8,6 +8,7 @@
 //*)
 
 #include <wx/valtext.h>
+#include <wx/dcclient.h>
 
 //(*IdInit(SeparatorDialog)
 const long SeparatorDialog::ID_STATICTEXT1 = wxNewId();
@@ -103,7 +104,8 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent, const wxString &path)
 	Connect(ID_RADIOBUTTON9,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&SeparatorDialog::OnRadioButtonEscapeSelect);
 	//*)
 
-  StaticTextFullPathName->SetLabel(path);
+  wxClientDC dc(this);
+  StaticTextFullPathName->SetLabel(wxControl::Ellipsize(path, dc, wxELLIPSIZE_START, StaticTextFullPathName->GetSize().x));
 }
 
 SeparatorDialog::~SeparatorDialog()
