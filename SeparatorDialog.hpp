@@ -5,6 +5,7 @@
 #include <wx/dialog.h>
 #include <wx/radiobut.h>
 #include <wx/sizer.h>
+#include <wx/stattext.h>
 #include <wx/textctrl.h>
 //*)
 
@@ -27,6 +28,7 @@ class SeparatorDialog: public wxDialog
 		wxRadioButton* RadioButtonSpace;
 		wxRadioButton* RadioButtonTab;
 		wxRadioButton* RadioButtonVerticalBar;
+		wxStaticText* StaticText1;
 		wxTextCtrl* TextCtrlOtherEscape;
 		wxTextCtrl* TextCtrlOtherSeparator;
 		//*)
@@ -41,6 +43,7 @@ class SeparatorDialog: public wxDialog
 	protected:
 
 		//(*Identifiers(SeparatorDialog)
+		static const long ID_STATICTEXT1;
 		static const long ID_RADIOBUTTON1;
 		static const long ID_RADIOBUTTON2;
 		static const long ID_RADIOBUTTON3;

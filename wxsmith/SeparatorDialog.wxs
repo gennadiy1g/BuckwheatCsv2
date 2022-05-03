@@ -6,6 +6,14 @@
 		<object class="wxBoxSizer" variable="BoxSizerMain" member="no">
 			<orient>wxVERTICAL</orient>
 			<object class="sizeritem">
+				<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText1" member="yes">
+					<label>Label</label>
+				</object>
+				<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+				<border>5</border>
+				<option>1</option>
+			</object>
+			<object class="sizeritem">
 				<object class="wxStaticBoxSizer" variable="StaticBoxSizerSeparator" member="no">
 					<label>Separator character</label>
 					<object class="sizeritem">
