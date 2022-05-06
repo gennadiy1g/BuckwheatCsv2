@@ -69,7 +69,7 @@ bool App::OnInit() {
     if (wxFileExists(mFilesFromCmdLine[i])) {
       pDocManager->CreateDocument(mFilesFromCmdLine[i], wxDOC_SILENT);
     } else {
-      wxMessageBox("File \"" + mFilesFromCmdLine[i] + "\" does not exist!", "Attention", wxOK, pMainFrame);
+      wxMessageBox("The file \'" + mFilesFromCmdLine[i] + "\' does not exist!", "Attention", wxOK, pMainFrame);
     }
   }
 
