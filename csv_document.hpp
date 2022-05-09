@@ -81,6 +81,11 @@ public:
   void setNumberRows(std::size_t numRows, int percent);
   bool hasData() const { return mNumLines; };
 
+  /* Default implementation of this function makes the application very slow: it takes a long time to jump between
+    the first and the last rows of the grid using Ctrl-Up/Ctrl-Down keyboard shorcuts. The implementation below makes
+    the application very fast, but it does not allow the applicaiton to search for empty cells. */
+  bool IsEmptyCell(int, int) override { return false; };
+
 private:
   CsvDocument *mpCsvDocument{};
   std::size_t mNumLines{};
