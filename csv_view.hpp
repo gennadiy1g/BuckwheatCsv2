@@ -9,6 +9,7 @@
 
 #include <wx/docview.h>
 #include <wx/grid.h>
+#include <wx/infobar.h>
 
 #include "csv_document.hpp"
 
@@ -30,6 +31,7 @@ public:
   void goToRow(int row);
 
 private:
+  wxInfoBar *mInfoBar{};
   wxGrid *mpGrid{};
   wxGauge *mpGauge{};
   CsvGridTable *mpCsvGridTable{};

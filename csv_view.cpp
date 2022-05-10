@@ -35,6 +35,8 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
                                        wxID_ANY, "Child Frame");
   wxASSERT(pChildFrame == GetFrame());
 
+  mInfoBar = new wxInfoBar(pChildFrame);
+
   mpGrid = new wxGrid(pChildFrame, wxID_ANY);
   mpGrid->EnableEditing(false);
   mpGrid->SetCellHighlightColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT)); // it is white by default
@@ -49,6 +51,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   mpGauge = new wxGauge(pChildFrame, wxID_ANY, 100);
 
   auto *vSizer = new wxBoxSizer(wxVERTICAL);
+  vSizer->Add(mInfoBar, wxSizerFlags().Expand());
   vSizer->Add(mpGrid, wxSizerFlags(1).Expand());
   vSizer->Add(mpGauge, wxSizerFlags(0).Expand());
   pChildFrame->SetSizerAndFit(vSizer);
