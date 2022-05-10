@@ -40,10 +40,10 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   mpGrid->SetCellHighlightColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT)); // it is white by default
 
   wxASSERT(doc);
-  auto pCsvDocument = dynamic_cast<CsvDocument *>(doc);
-  wxASSERT(pCsvDocument);
+  mpCsvDocument = dynamic_cast<CsvDocument *>(doc);
+  wxASSERT(mpCsvDocument);
 
-  mpCsvGridTable = new CsvGridTable(pCsvDocument);
+  mpCsvGridTable = new CsvGridTable(mpCsvDocument);
   BOOST_LOG_SEV(gLogger, trivial::trace) << "created wxGrid & CsvGridTable";
 
   mpGauge = new wxGauge(pChildFrame, wxID_ANY, 100);
@@ -124,15 +124,11 @@ void CsvView::showStatus() {
     }
   }
 
-  CsvDocument *pCsvDocument{};
+  wxASSERT(mpCsvDocument);
 
   if (pStatusBar->GetStatusText(2) == "") {
     std::wstring statusText{};
-    if (!pCsvDocument) {
-      pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
-      wxASSERT(pCsvDocument);
-    }
-    auto separator = pCsvDocument->separator();
+    auto separator = mpCsvDocument->separator();
     switch (separator) {
     case kTab:
       statusText = L"Tab";
@@ -158,11 +154,7 @@ void CsvView::showStatus() {
 
   if (pStatusBar->GetStatusText(3) == "") {
     std::wstring statusText{};
-    if (!pCsvDocument) {
-      pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
-      wxASSERT(pCsvDocument);
-    }
-    auto quote = pCsvDocument->quote();
+    auto quote = mpCsvDocument->quote();
     switch (quote) {
     case kDoubleQuote:
       statusText = L"Double";
@@ -179,11 +171,7 @@ void CsvView::showStatus() {
 
   if (pStatusBar->GetStatusText(4) == "") {
     std::wstring statusText{};
-    if (!pCsvDocument) {
-      pCsvDocument = dynamic_cast<CsvDocument *>(GetDocument());
-      wxASSERT(pCsvDocument);
-    }
-    auto escape = pCsvDocument->escape();
+    auto escape = mpCsvDocument->escape();
     switch (escape) {
     case kBackslash:
       statusText = L"Backslash";

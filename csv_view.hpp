@@ -35,6 +35,7 @@ private:
   CsvGridTable *mpCsvGridTable{};
   bool mIsActive{false};
   static inline std::unique_ptr<std::locale> mpsThousandsSep{};
+  CsvDocument *mpCsvDocument{};
 
   wxDECLARE_DYNAMIC_CLASS(CsvView);
 };
