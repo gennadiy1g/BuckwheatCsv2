@@ -40,10 +40,13 @@ public:
   };
 
   wchar_t escape() const { return mEscape; };
-
   void escapeSeparatorQuote(wchar_t escape, wchar_t separator, wchar_t quote);
-
   wxString documentFile() { return m_documentFile; };
+
+  bool isNumLinesLimitReached() const {
+    wxASSERT(mpTokenizedFileLines);
+    return mpTokenizedFileLines->isNumLinesLimitReached();
+  }
 
 protected:
   virtual bool DoOpenDocument(const wxString &file) override;
