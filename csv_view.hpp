@@ -32,6 +32,7 @@ public:
 
 private:
   wxInfoBar *mInfoBar{};
+  bool mInfoBarShown{false};
   wxGrid *mpGrid{};
   wxGauge *mpGauge{};
   CsvGridTable *mpCsvGridTable{};
