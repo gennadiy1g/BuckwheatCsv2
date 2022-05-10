@@ -128,6 +128,9 @@ void CsvView::showStatus() {
   }
 
   wxASSERT(mpCsvDocument);
+  if (mpCsvDocument->isNumLinesLimitReached()) {
+    mInfoBar->ShowMessage("Limit on number of records has been reached!", wxICON_WARNING);
+  }
 
   if (pStatusBar->GetStatusText(2) == "") {
     std::wstring statusText{};
