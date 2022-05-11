@@ -1,6 +1,7 @@
 #include <boost/locale/localization_backend.hpp>
 #include <numeric>
 
+#include <wx/aboutdlg.h>
 #include <wx/app.h>
 #include <wx/cmdline.h>
 #include <wx/config.h>
@@ -169,6 +170,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   Bind(wxEVT_MENU, &MainFrame::onGoToColumnDialog, this, ID_GOTO_COL_DIALOG);
   Bind(wxEVT_MENU, &MainFrame::onDefaultColSize, this, ID_DEFAULT_COL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
+  Bind(wxEVT_MENU, &MainFrame::onAbout, this, wxID_ABOUT);
 
   SetDropTarget(new DnDFile());
 
@@ -259,6 +261,17 @@ void MainFrame::onGoToColumnDialog(wxCommandEvent &event) {
 void MainFrame::onDefaultColSize(wxCommandEvent &event) { currentView()->defaultColSize(); };
 
 void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) { currentView()->autoSizeColLabelSize(); };
+
+void MainFrame::onAbout(wxCommandEvent &event) {
+  wxAboutDialogInfo aboutInfo;
+  aboutInfo.SetName(wxTheApp->GetAppDisplayName());
+  aboutInfo.SetVersion("2.0");
+  aboutInfo.SetDescription("Viewer for CSV files");
+  aboutInfo.SetCopyright("(C) 2019-2022 gennadiy1g");
+  aboutInfo.SetWebSite("https://github.com/gennadiy1g/BuckwheatCsv2/releases");
+
+  wxAboutBox(aboutInfo, this);
+}
 
 StatusBar *MainFrame::statusBar() {
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
