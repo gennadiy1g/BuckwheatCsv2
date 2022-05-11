@@ -135,13 +135,18 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetIcon(wxICON(table));
 
   auto toolBar = CreateToolBar();
-  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP(folder_table), "Open File");
-  toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP(table_select_row), "Go to Row");
-  toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP(table_select_column), "Go to Column");
-  toolBar->AddTool(ID_AUTOSIZE_COL_LABEL_SIZE, "Fit widths", wxBITMAP(column_wight),
-                   "Adjust widths of columns to fit labels");
-  toolBar->AddTool(ID_DEFAULT_COL_SIZE, "Default widths", wxBITMAP(text_columns), "Set default widths of columns");
-  toolBar->AddTool(ID_SEPARATOR_DIALOG, "Delimiters", wxBITMAP(table_gear), "Separator, Quote, Escape");
+  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP(folder_table), wxNullBitmap, wxITEM_NORMAL,
+                   "Open File", "Open File");
+  toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP(table_select_row), wxNullBitmap, wxITEM_NORMAL, "Go to Row",
+                   "Go to Row");
+  toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP(table_select_column), wxNullBitmap, wxITEM_NORMAL,
+                   "Go to Column", "Go to Column");
+  toolBar->AddTool(ID_AUTOSIZE_COL_LABEL_SIZE, "Fit widths", wxBITMAP(column_wight), wxNullBitmap, wxITEM_NORMAL,
+                   "Adjust widths of columns to fit labels", "Adjust widths of columns to fit labels");
+  toolBar->AddTool(ID_DEFAULT_COL_SIZE, "Default widths", wxBITMAP(text_columns), wxNullBitmap, wxITEM_NORMAL,
+                   "Set default widths of columns", "Set default widths of columns");
+  toolBar->AddTool(ID_SEPARATOR_DIALOG, "Delimiters", wxBITMAP(table_gear), wxNullBitmap, wxITEM_NORMAL,
+                   "Separator, Quote, Escape", "Separator, Quote, Escape");
   toolBar->Realize();
 
   pMenuBar->EnableTop(1, false); // disable View submenu
