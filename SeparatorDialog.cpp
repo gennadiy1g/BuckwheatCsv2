@@ -81,6 +81,7 @@ SeparatorDialog::SeparatorDialog(wxWindow* parent, const wxString &path)
 	TextCtrlOtherEscape = new wxTextCtrl(this, ID_TEXTCTRL2, wxEmptyString, wxDefaultPosition, wxSize(34,-1), 0, wxTextValidator(wxFILTER_EMPTY), _T("ID_TEXTCTRL2"));
 	TextCtrlOtherEscape->SetMaxLength(1);
 	TextCtrlOtherEscape->Disable();
+	TextCtrlOtherEscape->SetToolTip(_("Only three escape sequences are supported:\n\nEscape Sequence\tResult\n-----------------------\t----------\nescape quote\t\tquote\nescape n\t\t\tnewline\nescape escape\tescape\n"));
 	StaticBoxSizerEscape->Add(TextCtrlOtherEscape, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	BoxSizerQuoteEscape->Add(StaticBoxSizerEscape, 6, wxTOP|wxBOTTOM|wxLEFT|wxEXPAND, 5);
 	BoxSizerMain->Add(BoxSizerQuoteEscape, 0, wxALL|wxEXPAND, 5);
