@@ -18,7 +18,8 @@ enum EventID {
   ID_DEFAULT_COL_SIZE,
   ID_AUTOSIZE_COL_LABEL_SIZE,
   ID_GOTO_ROW_DIALOG,
-  ID_GOTO_COL_DIALOG
+  ID_GOTO_COL_DIALOG,
+  wxID_DONATE
 };
 
 class StatusBar;
@@ -70,6 +71,7 @@ private:
   void onDefaultColSize(wxCommandEvent &event);
   void onAutoSizeColLabelSize(wxCommandEvent &event);
   void onAbout(wxCommandEvent &event);
+  void onDonate(wxCommandEvent &event);
 
   class MFGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
   private:

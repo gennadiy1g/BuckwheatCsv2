@@ -1,5 +1,6 @@
 #include <boost/locale/localization_backend.hpp>
 #include <numeric>
+#include <sstream>
 
 #include <wx/aboutdlg.h>
 #include <wx/app.h>
@@ -129,6 +130,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
 
   auto pMenuHelp = new wxMenu;
   pMenuHelp->Append(wxID_ABOUT, wxGetStockLabel(wxID_ABOUT));
+  pMenuHelp->Append(wxID_DONATE, "Donate!", "buymeacoffee.com");
 
   auto pMenuBar = new wxMenuBar;
   pMenuBar->Append(pMenuFile, wxGetStockLabel(wxID_FILE));
@@ -177,6 +179,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   Bind(wxEVT_MENU, &MainFrame::onDefaultColSize, this, ID_DEFAULT_COL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAbout, this, wxID_ABOUT);
+  Bind(wxEVT_MENU, &MainFrame::onDonate, this, wxID_DONATE);
 
   SetDropTarget(new DnDFile());
 
@@ -278,6 +281,17 @@ void MainFrame::onAbout(wxCommandEvent &event) {
   aboutInfo.SetWebSite("https://github.com/gennadiy1g/BuckwheatCsv2/releases");
 
   wxAboutBox(aboutInfo, this);
+};
+
+void MainFrame::onDonate(wxCommandEvent &event) {
+  int arr[] = {-103, -114, -113, -108, -110, -52, -40, -39, -110, -109, -108, -34, -85,
+               -103, -106, -93,  -84,  -79,  -80, -91, -81, -80,  -78,  -77,  -21, -73,
+               -84,  -81,  -18,  -73,  -70,  -78, -77, -63, -65,  -69,  -84,  -11, -64};
+  std::stringstream ss;
+  for (std::size_t i = 0; i < std::size(arr); ++i) {
+    ss << static_cast<char>(i + 1 - arr[i]);
+  }
+  wxLaunchDefaultBrowser(ss.str());
 };
 
 StatusBar *MainFrame::statusBar() {
