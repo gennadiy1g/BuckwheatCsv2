@@ -264,6 +264,7 @@ void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) { currentView()->a
 
 void MainFrame::onAbout(wxCommandEvent &event) {
   wxAboutDialogInfo aboutInfo;
+  aboutInfo.SetIcon(wxICON(table));
   aboutInfo.SetName(wxTheApp->GetAppDisplayName());
   aboutInfo.SetVersion("2.0");
   aboutInfo.SetDescription("Viewer for CSV files");
