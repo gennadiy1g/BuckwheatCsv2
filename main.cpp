@@ -40,6 +40,9 @@ bool App::OnInit() {
     return false;
   }
 
+  // By some reason, cursor changes to "busy/waiting" after clicking on the URL in the about dialog
+  wxSetCursor(*wxSTANDARD_CURSOR); // restore the standard cursor
+
   initLocalization();
   initLogging();
 
@@ -82,6 +85,9 @@ int App::OnExit() {
   const auto pDocManager = wxDocManager::GetDocumentManager();
   pDocManager->FileHistorySave(*wxConfig::Get());
   delete pDocManager;
+
+  // By some reason, cursor changes to "busy/waiting" after clicking on the URL in the about dialog
+  wxSetCursor(*wxSTANDARD_CURSOR); // restore the standard cursor
 
   return wxApp::OnExit();
 }
