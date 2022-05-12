@@ -278,7 +278,7 @@ void MainFrame::onAbout(wxCommandEvent &event) {
   aboutInfo.SetWebSite("https://github.com/gennadiy1g/BuckwheatCsv2/releases");
 
   wxAboutBox(aboutInfo, this);
-}
+};
 
 StatusBar *MainFrame::statusBar() {
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
