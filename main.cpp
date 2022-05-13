@@ -292,7 +292,7 @@ void MainFrame::onDonate(wxCommandEvent &event) {
   for (std::size_t i = 0; i < std::size(arr); ++i) {
     ss << static_cast<char>(i + 1 - arr[i]);
   }
-  wxLaunchDefaultBrowser(ss.str());
+  wxLaunchDefaultBrowser(ss.str(), wxBROWSER_NOBUSYCURSOR);
 };
 
 StatusBar *MainFrame::statusBar() {
