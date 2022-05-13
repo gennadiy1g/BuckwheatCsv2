@@ -24,6 +24,7 @@
 #include "bitmaps/column_wight.xpm" // yes, this is spelling mistake; the original file's name is column_wight.png
 #include "bitmaps/folder_table.xpm"
 #include "bitmaps/table.xpm"
+#include "bitmaps/table_32x32.xpm"
 #include "bitmaps/table_gear.xpm"
 #include "bitmaps/table_select_column.xpm"
 #include "bitmaps/table_select_row.xpm"
@@ -273,7 +274,7 @@ void MainFrame::onAutoSizeColLabelSize(wxCommandEvent &event) { currentView()->a
 
 void MainFrame::onAbout(wxCommandEvent &event) {
   wxAboutDialogInfo aboutInfo;
-  aboutInfo.SetIcon(wxICON(table));
+  aboutInfo.SetIcon(wxICON(table_32x32));
   aboutInfo.SetName(wxTheApp->GetAppDisplayName());
   aboutInfo.SetVersion("2.0");
   aboutInfo.SetDescription("Viewer for CSV files");
