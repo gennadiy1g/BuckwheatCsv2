@@ -37,6 +37,11 @@
 					<Add library="libwxzlib.a" />
 					<Add library="libwxregexu.a" />
 					<Add library="libwxexpat.a" />
+					<Add library="libboost_log.a" />
+					<Add library="libboost_log_setup.a" />
+					<Add library="libboost_filesystem.a" />
+					<Add library="libboost_locale.a" />
+					<Add library="libboost_thread.a" />
 					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib" />
 					<Add directory="C:/MinGW/lib" />
 				</Linker>
@@ -73,6 +78,11 @@
 					<Add library="libwxzlib.a" />
 					<Add library="libwxregexu.a" />
 					<Add library="libwxexpat.a" />
+					<Add library="libboost_log.a" />
+					<Add library="libboost_log_setup.a" />
+					<Add library="libboost_filesystem.a" />
+					<Add library="libboost_locale.a" />
+					<Add library="libboost_thread.a" />
 					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib" />
 					<Add directory="C:/MinGW/lib" />
 				</Linker>
