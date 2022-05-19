@@ -130,6 +130,8 @@
 		<Unit filename="csv_view.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.hpp" />
+		<Unit filename="wxsmith/FindColumnDialog.wxs" />
+		<Unit filename="wxsmith/SeparatorDialog.wxs" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
