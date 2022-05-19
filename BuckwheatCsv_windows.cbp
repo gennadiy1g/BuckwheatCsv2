@@ -114,6 +114,22 @@
 			<Add library="liboleacc.a" />
 			<Add library="libuxtheme.a" />
 		</Linker>
+		<Unit filename="CsvTable/CsvTable.cpp" />
+		<Unit filename="CsvTable/CsvTable.hpp" />
+		<Unit filename="CsvTable/SepChars.hpp" />
+		<Unit filename="CsvTable/log.hpp" />
+		<Unit filename="CsvTable/utilities.cpp" />
+		<Unit filename="CsvTable/utilities.hpp" />
+		<Unit filename="FindColumnDialog.cpp" />
+		<Unit filename="FindColumnDialog.hpp" />
+		<Unit filename="SeparatorDialog.cpp" />
+		<Unit filename="SeparatorDialog.hpp" />
+		<Unit filename="csv_document.cpp" />
+		<Unit filename="csv_document.hpp" />
+		<Unit filename="csv_view.cpp" />
+		<Unit filename="csv_view.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.hpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
