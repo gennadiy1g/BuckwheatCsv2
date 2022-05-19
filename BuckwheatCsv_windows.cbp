@@ -59,12 +59,9 @@
 					<Add library="libwxmsw31u_richtext.a" />
 					<Add library="libwxmsw31u_xrc.a" />
 					<Add library="libwxmsw31u_aui.a" />
-					<Add library="libwxmsw31u_dbgrid.a" />
-					<Add library="libwxbase31u_odbc.a" />
 					<Add library="libwxmsw31u_media.a" />
 					<Add library="libwxbase31u_net.a" />
 					<Add library="libwxmsw31u_gl.a" />
-					<Add library="libwxmsw31u_qa.a" />
 					<Add library="libwxbase31u_xml.a" />
 					<Add library="libwxmsw31u_adv.a" />
 					<Add library="libwxmsw31u_html.a" />
