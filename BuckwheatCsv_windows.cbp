@@ -38,6 +38,7 @@
 					<Add library="libwxregexu.a" />
 					<Add library="libwxexpat.a" />
 					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib" />
+					<Add directory="C:/MinGW/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -76,6 +77,7 @@
 					<Add library="libwxregexu.a" />
 					<Add library="libwxexpat.a" />
 					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib" />
+					<Add directory="C:/MinGW/lib" />
 				</Linker>
 			</Target>
 		</Build>
