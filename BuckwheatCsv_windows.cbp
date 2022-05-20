@@ -145,7 +145,7 @@
 			<wxsmith version="1">
 				<resources>
 					<wxDialog wxs="wxsmith/SeparatorDialog.wxs" src="SeparatorDialog.cpp" hdr="SeparatorDialog.hpp" fwddecl="0" i18n="1" name="SeparatorDialog" language="CPP" />
-					<wxDialog wxs="wxsmith/FindColumnDialog.wxs" src="FindColumnDialog.cpp" hdr="FindColumnDialog.h" fwddecl="0" i18n="1" name="FindColumnDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/FindColumnDialog.wxs" src="FindColumnDialog.cpp" hdr="FindColumnDialog.hpp" fwddecl="0" i18n="1" name="FindColumnDialog" language="CPP" />
 				</resources>
 			</wxsmith>
 		</Extensions>
