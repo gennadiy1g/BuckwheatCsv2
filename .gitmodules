@@ -1,3 +1,6 @@
 [submodule "CsvTable"]
 	path = CsvTable
 	url = ../CsvTable/
+[submodule "bitmaps"]
+	path = bitmaps
+	url = ../bitmaps
