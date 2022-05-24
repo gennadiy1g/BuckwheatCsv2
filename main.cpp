@@ -4,6 +4,7 @@
 
 #include <wx/aboutdlg.h>
 #include <wx/app.h>
+#include <wx/bmpbndl.h>
 #include <wx/cmdline.h>
 #include <wx/config.h>
 #include <wx/debug.h>
@@ -23,14 +24,22 @@
 #include "main.hpp"
 
 #ifdef __WXGTK__
-#include "bitmaps/column_wight.png.h" // yes, this is spelling mistake; the original file's name is column_wight.png
-#include "bitmaps/folder_table.png.h"
 #include "bitmaps/table.xpm"
 #include "bitmaps/table_32x32.xpm"
+
+#include "bitmaps/column_wight.png.h" // yes, this is spelling mistake; the original file's name is column_wight.png
+#include "bitmaps/folder_table.png.h"
 #include "bitmaps/table_gear.png.h"
 #include "bitmaps/table_select_column.png.h"
 #include "bitmaps/table_select_row.png.h"
 #include "bitmaps/text_columns.png.h"
+
+#include "bitmaps/column_wight_2x.png.h" // yes, this is spelling mistake; the original file's name is column_wight.png
+#include "bitmaps/folder_table_2x.png.h"
+#include "bitmaps/table_gear_2x.png.h"
+#include "bitmaps/table_select_column_2x.png.h"
+#include "bitmaps/table_select_row_2x.png.h"
+#include "bitmaps/text_columns_2x.png.h"
 #endif
 
 namespace blocale = boost::locale;
@@ -150,17 +159,17 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   SetIcon(wxICON(table));
 
   auto toolBar = CreateToolBar();
-  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP_PNG(folder_table), wxNullBitmap, wxITEM_NORMAL,
+  toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP_BUNDLE_2(folder_table), wxNullBitmap, wxITEM_NORMAL,
                    "Open File", "Open File");
-  toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP_PNG(table_select_row), wxNullBitmap, wxITEM_NORMAL, "Go to Row",
-                   "Go to Row");
-  toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP_PNG(table_select_column), wxNullBitmap, wxITEM_NORMAL,
+  toolBar->AddTool(ID_GOTO_ROW_DIALOG, "Row", wxBITMAP_BUNDLE_2(table_select_row), wxNullBitmap, wxITEM_NORMAL,
+                   "Go to Row", "Go to Row");
+  toolBar->AddTool(ID_GOTO_COL_DIALOG, "Column", wxBITMAP_BUNDLE_2(table_select_column), wxNullBitmap, wxITEM_NORMAL,
                    "Go to Column", "Go to Column");
-  toolBar->AddTool(ID_AUTOSIZE_COL_LABEL_SIZE, "Fit widths", wxBITMAP_PNG(column_wight), wxNullBitmap, wxITEM_NORMAL,
-                   "Adjust widths of columns to fit labels", "Adjust widths of columns to fit labels");
-  toolBar->AddTool(ID_DEFAULT_COL_SIZE, "Default widths", wxBITMAP_PNG(text_columns), wxNullBitmap, wxITEM_NORMAL,
+  toolBar->AddTool(ID_AUTOSIZE_COL_LABEL_SIZE, "Fit widths", wxBITMAP_BUNDLE_2(column_wight), wxNullBitmap,
+                   wxITEM_NORMAL, "Adjust widths of columns to fit labels", "Adjust widths of columns to fit labels");
+  toolBar->AddTool(ID_DEFAULT_COL_SIZE, "Default widths", wxBITMAP_BUNDLE_2(text_columns), wxNullBitmap, wxITEM_NORMAL,
                    "Set default widths of columns", "Set default widths of columns");
-  toolBar->AddTool(ID_SEPARATOR_DIALOG, "Delimiters", wxBITMAP_PNG(table_gear), wxNullBitmap, wxITEM_NORMAL,
+  toolBar->AddTool(ID_SEPARATOR_DIALOG, "Delimiters", wxBITMAP_BUNDLE_2(table_gear), wxNullBitmap, wxITEM_NORMAL,
                    "Separator, Quote, Escape", "Separator, Quote, Escape");
   toolBar->Realize();
 
