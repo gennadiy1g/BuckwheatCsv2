@@ -10,6 +10,7 @@
 #include <wx/docview.h>
 #include <wx/filefn.h>
 #include <wx/gdicmn.h>
+#include <wx/imagpng.h>
 #include <wx/msgdlg.h>
 #include <wx/numdlg.h>
 
@@ -48,6 +49,9 @@ bool App::OnInit() {
 
   initLocalization();
   initLogging();
+
+  // Register PNG image handler to be able to load bitmaps from PNG data
+  wxImage::AddHandler(new wxPNGHandler);
 
   auto backends = blocale::localization_backend_manager::global().get_all_backends();
   std::string backendsList =
