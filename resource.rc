@@ -1,3 +1,24 @@
-aaaa ICON "wx/msw/std.ico"
+aaaa                    ICON    "bitmaps/table.ico"
+
+table                   ICON    "bitmaps/table.ico"
+table_32x32             ICON    "bitmaps/table_32x32.ico"
+
+folder_table            RCDATA  "bitmaps/folder_table.png"
+folder_table_2x         RCDATA  "bitmaps/folder_table_2x.png"
+
+table_select_row        RCDATA  "bitmaps/table_select_row.png"
+table_select_row_2x     RCDATA  "bitmaps/table_select_row_2x.png"
+
+table_select_column     RCDATA  "bitmaps/table_select_column.png"
+table_select_column_2x  RCDATA  "bitmaps/table_select_column_2x.png"
+
+column_wight            RCDATA  "bitmaps/column_wight.png"
+column_wight_2x         RCDATA  "bitmaps/column_wight_2x.png"
+
+text_columns            RCDATA  "bitmaps/text_columns.png"
+text_columns_2x         RCDATA  "bitmaps/text_columns_2x.png"
+
+table_gear              RCDATA  "bitmaps/table_gear.png"
+table_gear_2x           RCDATA  "bitmaps/table_gear_2x.png"
 
 #include "wx/msw/wx.rc"
