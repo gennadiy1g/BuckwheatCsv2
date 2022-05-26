@@ -1,6 +1,5 @@
-aaaa                    ICON    "bitmaps/table.ico"
+aaaa                    ICON    "bitmaps/table_32x32.ico"
 
-table                   ICON    "bitmaps/table.ico"
 table_32x32             ICON    "bitmaps/table_32x32.ico"
 
 folder_table            RCDATA  "bitmaps/folder_table.png"
