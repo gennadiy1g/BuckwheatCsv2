@@ -156,7 +156,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
 
   SetStatusBar(new StatusBar(this));
 
-  SetIcon(wxICON(table));
+  SetIcon(wxICON(table_32x32));
 
   auto toolBar = CreateToolBar();
   toolBar->AddTool(wxID_OPEN, wxGetStockLabel(wxID_OPEN), wxBITMAP_BUNDLE_2(folder_table), wxNullBitmap, wxITEM_NORMAL,
