@@ -1,8 +1,8 @@
 /bin
 /obj
 /CppCheckResults.xml
-/BuckwheatCsv.depend
-/BuckwheatCsv.layout.save
+/*.depend
+/*.save
 /*.save
 /.cccc
 /*.bmarks
