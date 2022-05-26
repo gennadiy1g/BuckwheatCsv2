@@ -54,6 +54,7 @@
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
 					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib/mswu" />
 				</Compiler>
 				<ResourceCompiler>
