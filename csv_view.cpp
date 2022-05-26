@@ -32,7 +32,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   using AuiChildFrame = wxDocChildFrameAny<wxAuiMDIChildFrame, wxAuiMDIParentFrame>;
 
   auto pChildFrame = new AuiChildFrame(doc, this, wxStaticCast(wxGetApp().GetTopWindow(), wxAuiMDIParentFrame),
-                                       wxID_ANY, "Child Frame");
+                                       wxID_ANY, doc->GetUserReadableName());
   wxASSERT(pChildFrame == GetFrame());
 
   mInfoBar = new wxInfoBar(pChildFrame);
