@@ -24,7 +24,6 @@
 #include "main.hpp"
 
 #ifdef __WXGTK__
-#include "bitmaps/table.xpm"
 #include "bitmaps/table_32x32.xpm"
 
 #include "bitmaps/column_wight.png.h" // yes, this is spelling mistake; the original file's name is column_wight.png
