@@ -309,9 +309,7 @@ void MainFrame::onDonate(wxCommandEvent &event) {
   wxLaunchDefaultBrowser(ss.str(), wxBROWSER_NOBUSYCURSOR);
 };
 
-void MainFrame::onMaximize(wxMaximizeEvent &event){
-
-};
+void MainFrame::onMaximize(wxMaximizeEvent &event) { currentView()->forceRefresh(); };
 
 StatusBar *MainFrame::statusBar() {
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());
