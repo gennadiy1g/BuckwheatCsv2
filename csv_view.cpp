@@ -270,3 +270,8 @@ void CsvView::goToRow(int row) {
   mpGrid->GoToCell(row, mpGrid->GetGridCursorCol());
   mpGrid->SelectRow(row);
 };
+
+void CsvView::forceRefresh() {
+  wxASSERT(mpGrid);
+  mpGrid->ForceRefresh();
+};

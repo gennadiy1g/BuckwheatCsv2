@@ -254,10 +254,12 @@ void MainFrame::onSeparatorDialog(wxCommandEvent &event) {
 };
 
 CsvView *MainFrame::currentView() {
+  CsvView *pCsvView{};
   auto pView = wxDocManager::GetDocumentManager()->GetCurrentView();
-  wxASSERT(pView);
-  auto pCsvView = dynamic_cast<CsvView *>(pView);
-  wxASSERT(pCsvView);
+  if (pView) {
+    pCsvView = dynamic_cast<CsvView *>(pView);
+    wxASSERT(pCsvView);
+  }
   return pCsvView;
 };
 
@@ -309,7 +311,15 @@ void MainFrame::onDonate(wxCommandEvent &event) {
   wxLaunchDefaultBrowser(ss.str(), wxBROWSER_NOBUSYCURSOR);
 };
 
-void MainFrame::onMaximize(wxMaximizeEvent &event) { currentView()->forceRefresh(); };
+void MainFrame::onMaximize(wxMaximizeEvent &event) {
+  auto pCsvView = currentView();
+  if (pCsvView) {
+    pCsvView->forceRefresh();
+  }
+
+  // In general, it is recommended to skip all non-command events to allow the default handling to take place
+  event.Skip(true);
+};
 
 StatusBar *MainFrame::statusBar() {
   auto pTopFrame = dynamic_cast<wxFrame *>(wxTheApp->GetTopWindow());

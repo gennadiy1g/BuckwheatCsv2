@@ -29,7 +29,7 @@ public:
   CsvGridTable *gridTable();
   void goToCol(int col);
   void goToRow(int row);
-  void forceRefresh() { mpGrid->ForceRefresh(); };
+  void forceRefresh();
 
 private:
   wxInfoBar *mInfoBar{};
