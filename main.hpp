@@ -72,6 +72,7 @@ private:
   void onAutoSizeColLabelSize(wxCommandEvent &event);
   void onAbout(wxCommandEvent &event);
   void onDonate(wxCommandEvent &event);
+  void onMaximize(wxMaximizeEvent& event);
 
   class MFGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
   private:

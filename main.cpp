@@ -194,6 +194,7 @@ MainFrame::MainFrame(wxDocManager *manager, wxFrame *parent, wxWindowID id, cons
   Bind(wxEVT_MENU, &MainFrame::onAutoSizeColLabelSize, this, ID_AUTOSIZE_COL_LABEL_SIZE);
   Bind(wxEVT_MENU, &MainFrame::onAbout, this, wxID_ABOUT);
   Bind(wxEVT_MENU, &MainFrame::onDonate, this, wxID_DONATE);
+  Bind(wxEVT_MAXIMIZE, &MainFrame::onMaximize, this);
 
   SetDropTarget(new DnDFile());
 
@@ -306,6 +307,10 @@ void MainFrame::onDonate(wxCommandEvent &event) {
     ss << static_cast<char>(i + 1 - arr[i]);
   }
   wxLaunchDefaultBrowser(ss.str(), wxBROWSER_NOBUSYCURSOR);
+};
+
+void MainFrame::onMaximize(wxMaximizeEvent &event){
+
 };
 
 StatusBar *MainFrame::statusBar() {
