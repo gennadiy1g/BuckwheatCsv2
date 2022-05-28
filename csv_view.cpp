@@ -252,7 +252,9 @@ CsvGridTable *CsvView::gridTable() {
 
 void CsvView::goToCol(int col) {
   wxASSERT(col < mpGrid->GetNumberCols());
-  mpGrid->GoToCell(mpGrid->GetGridCursorRow(), col);
+  if (mpGrid->GetNumberRows()) {
+    mpGrid->GoToCell(mpGrid->GetGridCursorRow(), col);
+  }
   mpGrid->SelectCol(col);
 
   auto sizeBefore = mpGrid->GetColSize(col);
