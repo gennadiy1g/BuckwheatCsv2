@@ -65,7 +65,7 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
 };
 
 bool CsvView::OnClose(bool deleteWindow) {
-  mpGrid->SetTable(mpCsvGridTable, true); // Very important!
+  mpGrid->SetTable(mpCsvGridTable, true /* Very important! */, wxGrid::wxGridSelectNone);
 
   if (!wxView::OnClose(deleteWindow)) {
     return false;
@@ -223,7 +223,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   wxASSERT(numLines);
   mpCsvGridTable->setNumberRows(numLines, percent);
-  mpGrid->SetTable(mpCsvGridTable);
+  mpGrid->SetTable(mpCsvGridTable, false, wxGrid::wxGridSelectNone);
 
   if (mIsActive) {
     mpGrid->ForceRefresh();
