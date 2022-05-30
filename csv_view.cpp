@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <sstream>
 
 #include <wx/app.h>
@@ -253,7 +254,8 @@ CsvGridTable *CsvView::gridTable() {
 void CsvView::goToCol(int col) {
   wxASSERT(col < mpGrid->GetNumberCols());
   if (mpGrid->GetNumberRows()) {
-    mpGrid->GoToCell(mpGrid->GetGridCursorRow(), col);
+    // If grid cursor doesn't have any valid position, row and column are set to -1
+    mpGrid->GoToCell(std::max(mpGrid->GetGridCursorRow(), 0), col);
   }
   mpGrid->SelectCol(col);
 
@@ -269,6 +271,7 @@ void CsvView::goToCol(int col) {
 void CsvView::goToRow(int row) {
   wxASSERT(row >= 1 && row <= mpGrid->GetNumberRows());
   --row;
-  mpGrid->GoToCell(row, mpGrid->GetGridCursorCol());
+  // If grid cursor doesn't have any valid position, row and column are set to -1
+  mpGrid->GoToCell(row, std::max(mpGrid->GetGridCursorCol(), 0));
   mpGrid->SelectRow(row);
 };
