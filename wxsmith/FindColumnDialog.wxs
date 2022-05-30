@@ -20,7 +20,7 @@
 				<border>5</border>
 			</object>
 			<object class="sizeritem">
-				<object class="wxListView" name="ID_LISTVIEW1" subclass="wxColumnsListView" variable="ListView" member="yes">
+				<object class="wxListView" name="ID_LISTVIEW1" subclass="ColumnsListView" variable="ListView" member="yes">
 					<size>400,400</size>
 					<style>wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL</style>
 					<handler function="OnListViewItemActivated" entry="EVT_LIST_ITEM_ACTIVATED" />

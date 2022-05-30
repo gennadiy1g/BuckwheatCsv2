@@ -32,7 +32,7 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	SearchCtrl = new wxSearchCtrl(this, ID_SEARCHCTRL1, wxEmptyString, wxDefaultPosition, wxSize(400,29), wxTE_PROCESS_ENTER, wxDefaultValidator, _T("ID_SEARCHCTRL1"));
 	SearchCtrl->ShowCancelButton(true);
 	BoxSizerMain->Add(SearchCtrl, 0, wxALL|wxEXPAND, 5);
-	ListView = new wxColumnsListView(this, ID_LISTVIEW1, wxDefaultPosition, wxSize(400,400), wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL, wxDefaultValidator, _T("ID_LISTVIEW1"));
+	ListView = new ColumnsListView(this, ID_LISTVIEW1, wxDefaultPosition, wxSize(400,400), wxLC_REPORT|wxLC_SINGLE_SEL|wxLC_VIRTUAL, wxDefaultValidator, _T("ID_LISTVIEW1"));
 	BoxSizerMain->Add(ListView, 1, wxALL|wxEXPAND, 5);
 	StdDialogButtonSizer = new wxStdDialogButtonSizer();
 	StdDialogButtonSizer->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
@@ -64,7 +64,7 @@ FindColumnDialog::~FindColumnDialog()
 	//*)
 }
 
-long wxColumnsListView::countItems(const wxString &str) {
+long ColumnsListView::countItems(const wxString &str) {
   if (str.IsEmpty()) {
     return mpGridTable->GetNumberCols();
   }
@@ -81,7 +81,7 @@ long wxColumnsListView::countItems(const wxString &str) {
   return mColumnNumber.size();
 };
 
-wxString wxColumnsListView::OnGetItemText(long item, long column) const {
+wxString ColumnsListView::OnGetItemText(long item, long column) const {
   if (GetItemCount() == mpGridTable->GetNumberCols()) {
     if (column) {
       return mpGridTable->GetColLabelValue(item);
@@ -99,7 +99,7 @@ wxString wxColumnsListView::OnGetItemText(long item, long column) const {
   }
 };
 
-long wxColumnsListView::GetFirstSelected() const {
+long ColumnsListView::GetFirstSelected() const {
   if (GetItemCount() == mpGridTable->GetNumberCols()) {
     return wxListView::GetFirstSelected();
   } else {

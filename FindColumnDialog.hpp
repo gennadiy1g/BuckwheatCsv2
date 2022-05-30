@@ -14,7 +14,7 @@
 #include <wx/grid.h>
 #include <wx/string.h>
 
-class wxColumnsListView;
+class ColumnsListView;
 
 class FindColumnDialog: public wxDialog
 {
@@ -24,7 +24,7 @@ class FindColumnDialog: public wxDialog
 		virtual ~FindColumnDialog();
 
 		//(*Declarations(FindColumnDialog)
-		wxColumnsListView* ListView;
+		ColumnsListView* ListView;
 		wxSearchCtrl* SearchCtrl;
 		wxTimer Timer;
 		//*)
@@ -52,13 +52,13 @@ class FindColumnDialog: public wxDialog
 		DECLARE_EVENT_TABLE()
 };
 
-class wxColumnsListView : public wxListView {
+class ColumnsListView : public wxListView {
 public:
-  wxColumnsListView(wxWindow *parent, wxWindowID winid = wxID_ANY, const wxPoint &pos = wxDefaultPosition,
+  ColumnsListView(wxWindow *parent, wxWindowID winid = wxID_ANY, const wxPoint &pos = wxDefaultPosition,
                     const wxSize &size = wxDefaultSize, long style = wxLC_REPORT,
                     const wxValidator &validator = wxDefaultValidator, const wxString &name = wxListCtrlNameStr)
       : wxListView(parent, winid, pos, size, style, validator, name){};
-  virtual ~wxColumnsListView(){};
+  virtual ~ColumnsListView(){};
   void gridTable(wxGridTableBase *pGridTable) { mpGridTable = pGridTable; };
   // The same return type as parameter type in void wxListCtrl::SetItemCount(long count)
   long countItems(const wxString &str);
