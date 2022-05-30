@@ -71,14 +71,14 @@ long ColumnsListView::countItems(const wxString &str) {
 
   // Find all columns with names that contain str
   std::wstring stdStr = str.ToStdWstring();
-  mColumnNumber.clear();
+  mColumnNumbers.clear();
   for (int i = 0; i < mpGridTable->GetNumberCols(); ++i) {
     if (boost::icontains(mpGridTable->GetColLabelValue(i).ToStdWstring(), stdStr)) {
-      mColumnNumber.push_back(i);
+      mColumnNumbers.push_back(i);
     }
   }
 
-  return mColumnNumber.size();
+  return mColumnNumbers.size();
 };
 
 wxString ColumnsListView::OnGetItemText(long item, long column) const {
@@ -89,8 +89,8 @@ wxString ColumnsListView::OnGetItemText(long item, long column) const {
       return std::to_wstring(item + 1);
     }
   } else {
-    wxASSERT(static_cast<decltype(mColumnNumber)::size_type>(item) < mColumnNumber.size());
-    auto columnNumber = mColumnNumber.at(item);
+    wxASSERT(static_cast<decltype(mColumnNumbers)::size_type>(item) < mColumnNumbers.size());
+    auto columnNumber = mColumnNumbers.at(item);
     if (column) {
       return mpGridTable->GetColLabelValue(columnNumber);
     } else {
@@ -103,7 +103,7 @@ long ColumnsListView::GetFirstSelected() const {
   if (GetItemCount() == mpGridTable->GetNumberCols()) {
     return wxListView::GetFirstSelected();
   } else {
-    return mColumnNumber.at(wxListView::GetFirstSelected());
+    return mColumnNumbers.at(wxListView::GetFirstSelected());
   }
 };
 

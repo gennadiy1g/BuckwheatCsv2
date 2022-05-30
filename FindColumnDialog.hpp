@@ -66,7 +66,7 @@ public:
 
 protected:
   virtual wxString OnGetItemText(long item, long column) const override;
-  std::vector<int> mColumnNumber;
+  std::vector<int> mColumnNumbers;
 
 private:
   wxGridTableBase *mpGridTable{};
