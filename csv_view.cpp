@@ -257,7 +257,6 @@ void CsvView::goToCol(int col) {
     // If grid cursor doesn't have any valid position, row and column are set to -1
     mpGrid->GoToCell(std::max(mpGrid->GetGridCursorRow(), 0), col);
   }
-  mpGrid->SelectCol(col);
 
   auto sizeBefore = mpGrid->GetColSize(col);
   wxGridUpdateLocker updateLocker(mpGrid);
@@ -273,5 +272,4 @@ void CsvView::goToRow(int row) {
   --row;
   // If grid cursor doesn't have any valid position, row and column are set to -1
   mpGrid->GoToCell(row, std::max(mpGrid->GetGridCursorCol(), 0));
-  mpGrid->SelectRow(row);
 };
