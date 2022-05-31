@@ -49,7 +49,8 @@ class FindColumnDialog: public wxDialog
 		void OnListViewItemActivated(wxListEvent& event);
 		//*)
 
-		void onButtonOK(wxCommandEvent& event);
+		void onButtonOK(wxCommandEvent &event);
+		void updateListAndButtonOK(const wxString &str);
 
 		wxButton *mButtonOK{};
 

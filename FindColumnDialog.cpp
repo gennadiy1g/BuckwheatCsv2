@@ -117,19 +117,15 @@ long ColumnsListView::GetFirstSelected() const {
 int FindColumnDialog::selectedCol() const { return ListView->GetFirstSelected(); };
 
 void FindColumnDialog::OnSearchCtrlSearchClicked(wxCommandEvent &event) {
-  ListView->SetItemCount(ListView->countItems(SearchCtrl->GetValue()));
-  ListView->Refresh();
-  mButtonOK->Enable(ListView->itemsCount());
+  updateListAndButtonOK(SearchCtrl->GetValue());
 }
 
-void FindColumnDialog::OnSearchCtrlCancelClicked(wxCommandEvent &event) {
-  ListView->SetItemCount(ListView->countItems(""));
-  ListView->Refresh();
-  mButtonOK->Enable(ListView->itemsCount());
-}
+void FindColumnDialog::OnSearchCtrlCancelClicked(wxCommandEvent &event) { updateListAndButtonOK(wxEmptyString); }
 
-void FindColumnDialog::OnTimerTrigger(wxTimerEvent &event) {
-  ListView->SetItemCount(ListView->countItems(SearchCtrl->GetValue()));
+void FindColumnDialog::OnTimerTrigger(wxTimerEvent &event) { updateListAndButtonOK(SearchCtrl->GetValue()); }
+
+void FindColumnDialog::updateListAndButtonOK(const wxString &str) {
+  ListView->SetItemCount(ListView->countItems(str));
   ListView->Refresh();
   mButtonOK->Enable(ListView->itemsCount());
 }
