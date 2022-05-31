@@ -132,7 +132,7 @@ void FindColumnDialog::updateListAndButtonOK(const wxString &str) {
 
   auto buttonOK = dynamic_cast<wxButton *>(FindWindowById(wxID_OK));
   wxASSERT(buttonOK);
-  buttonOK->Enable(ListView->GetItemCount());
+  buttonOK->Enable(itemCount);
 }
 
 void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
