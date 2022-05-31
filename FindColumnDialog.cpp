@@ -134,6 +134,8 @@ void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
 void FindColumnDialog::OnListViewItemActivated(wxListEvent &event) { EndModal(wxID_OK); }
 
 void FindColumnDialog::onButtonOK(wxCommandEvent &event) {
-  /* */
-  event.Skip();
+  if (ListView->itemsCount()) {
+    event.Skip();
+  } else {
+  }
 };
