@@ -6,6 +6,7 @@
 
 //(*InternalHeaders(FindColumnDialog)
 #include <wx/button.h>
+#include <wx/debug.h>
 #include <wx/intl.h>
 #include <wx/string.h>
 //*)
@@ -52,15 +53,10 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&FindColumnDialog::OnTimerTrigger);
 	//*)
 
-  mButtonOK = dynamic_cast<wxButton *>(FindWindowById(wxID_OK));
-  wxASSERT(mButtonOK);
-
-	ListView->gridTable(pGridTable);
-	ListView->InsertColumn(ListView->GetColumnCount(), "#", wxLIST_FORMAT_RIGHT);
-	ListView->InsertColumn(ListView->GetColumnCount(), "Name", wxLIST_FORMAT_LEFT, 300);
-	ListView->SetItemCount(ListView->countItems(wxEmptyString));
-  ListView->Refresh();
-  mButtonOK->Enable(ListView->GetItemCount());
+  ListView->gridTable(pGridTable);
+  ListView->InsertColumn(ListView->GetColumnCount(), "#", wxLIST_FORMAT_RIGHT);
+  ListView->InsertColumn(ListView->GetColumnCount(), "Name", wxLIST_FORMAT_LEFT, 300);
+  updateListAndButtonOK(wxEmptyString);
 
   Bind(wxEVT_COMMAND_BUTTON_CLICKED, &FindColumnDialog::onButtonOK, this, wxID_OK);
 }
@@ -129,9 +125,16 @@ void FindColumnDialog::OnSearchCtrlCancelClicked(wxCommandEvent &event) { update
 void FindColumnDialog::OnTimerTrigger(wxTimerEvent &event) { updateListAndButtonOK(SearchCtrl->GetValue()); }
 
 void FindColumnDialog::updateListAndButtonOK(const wxString &str) {
-  ListView->SetItemCount(ListView->countItems(str));
+  auto count = ListView->countItems(str);
+  ListView->SetItemCount(count);
   ListView->Refresh();
-  mButtonOK->Enable(ListView->GetItemCount());
+  if (count > 0) {
+    ListView->Select(0);
+  }
+
+  auto buttonOK = dynamic_cast<wxButton *>(FindWindowById(wxID_OK));
+  wxASSERT(buttonOK);
+  buttonOK->Enable(ListView->GetItemCount());
 }
 
 void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
@@ -143,9 +146,6 @@ void FindColumnDialog::OnListViewItemActivated(wxListEvent &event) { EndModal(wx
 
 void FindColumnDialog::onButtonOK(wxCommandEvent &event) {
   wxASSERT(ListView->GetItemCount());
-  if (ListView->GetFirstSelected() == -1) {
-    ListView->Select(0);
-  } else {
-    event.Skip();
-  }
+  wxASSERT(ListView->GetFirstSelected() != -1);
+  event.Skip();
 };
