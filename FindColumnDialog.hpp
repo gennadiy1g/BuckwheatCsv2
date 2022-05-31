@@ -49,6 +49,8 @@ class FindColumnDialog: public wxDialog
 		void OnListViewItemActivated(wxListEvent& event);
 		//*)
 
+		void onButtonOK(wxCommandEvent& event);
+
 		DECLARE_EVENT_TABLE()
 };
 
