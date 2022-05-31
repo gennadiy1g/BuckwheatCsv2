@@ -123,10 +123,10 @@ void FindColumnDialog::OnSearchCtrlCancelClicked(wxCommandEvent &event) { update
 void FindColumnDialog::OnTimerTrigger(wxTimerEvent &event) { updateListAndButtonOK(SearchCtrl->GetValue()); }
 
 void FindColumnDialog::updateListAndButtonOK(const wxString &str) {
-  auto count = ListView->countItems(str);
-  ListView->SetItemCount(count);
+  auto itemCount = ListView->countItems(str);
+  ListView->SetItemCount(itemCount);
   ListView->Refresh();
-  if (count > 0) {
+  if (itemCount > 0) {
     ListView->Select(0);
   }
 
