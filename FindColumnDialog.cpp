@@ -115,7 +115,7 @@ long ColumnsListView::GetFirstSelected() const {
   }
 };
 
-int FindColumnDialog::selectedCol() const { return ListView->GetFirstSelected(); };
+long FindColumnDialog::selectedCol() const { return ListView->GetFirstSelected(); };
 
 void FindColumnDialog::OnSearchCtrlSearchClicked(wxCommandEvent &event) {
   updateListAndButtonOK(SearchCtrl->GetValue());

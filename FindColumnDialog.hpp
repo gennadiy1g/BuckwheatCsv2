@@ -29,7 +29,7 @@ class FindColumnDialog: public wxDialog
 		wxTimer Timer;
 		//*)
 
-		int selectedCol() const;
+		long selectedCol() const;
 
     protected:
 
