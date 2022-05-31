@@ -51,6 +51,8 @@ class FindColumnDialog: public wxDialog
 
 		void onButtonOK(wxCommandEvent& event);
 
+		wxButton *mButtonOK{};
+
 		DECLARE_EVENT_TABLE()
 };
 

@@ -6,6 +6,7 @@
 
 //(*InternalHeaders(FindColumnDialog)
 #include <wx/button.h>
+#include <wx/debug.h>
 #include <wx/intl.h>
 #include <wx/string.h>
 //*)
@@ -56,6 +57,9 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	ListView->InsertColumn(ListView->GetColumnCount(), "#", wxLIST_FORMAT_RIGHT);
 	ListView->InsertColumn(ListView->GetColumnCount(), "Name", wxLIST_FORMAT_LEFT, 300);
 	ListView->SetItemCount(ListView->countItems(""));
+
+  mButtonOK = dynamic_cast<wxButton *>(FindWindowById(wxID_OK));
+  wxASSERT(mButtonOK);
 
   Bind(wxEVT_COMMAND_BUTTON_CLICKED, &FindColumnDialog::onButtonOK, this, wxID_OK);
 }
