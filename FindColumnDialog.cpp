@@ -53,11 +53,11 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&FindColumnDialog::OnTimerTrigger);
 	//*)
 
+
 	ListView->gridTable(pGridTable);
 	ListView->InsertColumn(ListView->GetColumnCount(), "#", wxLIST_FORMAT_RIGHT);
 	ListView->InsertColumn(ListView->GetColumnCount(), "Name", wxLIST_FORMAT_LEFT, 300);
 	ListView->SetItemCount(ListView->countItems(""));
-
   mButtonOK = dynamic_cast<wxButton *>(FindWindowById(wxID_OK));
   wxASSERT(mButtonOK);
 
@@ -72,19 +72,19 @@ FindColumnDialog::~FindColumnDialog()
 
 long ColumnsListView::countItems(const wxString &str) {
   if (str.IsEmpty()) {
-    return mpGridTable->GetNumberCols();
-  }
-
-  // Find all columns with names that contain str
-  std::wstring stdStr = str.ToStdWstring();
-  mColumnNumbers.clear();
-  for (int i = 0; i < mpGridTable->GetNumberCols(); ++i) {
-    if (boost::icontains(mpGridTable->GetColLabelValue(i).ToStdWstring(), stdStr)) {
-      mColumnNumbers.push_back(i);
+    mItemsCount = mpGridTable->GetNumberCols();
+  } else {
+    // Find all columns with names that contain str
+    std::wstring stdStr = str.ToStdWstring();
+    mColumnNumbers.clear();
+    for (int i = 0; i < mpGridTable->GetNumberCols(); ++i) {
+      if (boost::icontains(mpGridTable->GetColLabelValue(i).ToStdWstring(), stdStr)) {
+        mColumnNumbers.push_back(i);
+      }
     }
+    mItemsCount = mColumnNumbers.size();
   }
-
-  return mColumnNumbers.size();
+  return mItemsCount;
 };
 
 wxString ColumnsListView::OnGetItemText(long item, long column) const {
