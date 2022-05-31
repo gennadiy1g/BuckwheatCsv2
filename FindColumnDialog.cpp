@@ -61,7 +61,7 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	ListView->InsertColumn(ListView->GetColumnCount(), "Name", wxLIST_FORMAT_LEFT, 300);
 	ListView->SetItemCount(ListView->countItems(wxEmptyString));
   ListView->Refresh();
-  mButtonOK->Enable(ListView->itemsCount());
+  mButtonOK->Enable(ListView->GetItemCount());
 
   Bind(wxEVT_COMMAND_BUTTON_CLICKED, &FindColumnDialog::onButtonOK, this, wxID_OK);
 }
@@ -74,7 +74,7 @@ FindColumnDialog::~FindColumnDialog()
 
 long ColumnsListView::countItems(const wxString &str) {
   if (str.IsEmpty()) {
-    mItemsCount = mpGridTable->GetNumberCols();
+    return mpGridTable->GetNumberCols();
   } else {
     // Find all columns with names that contain str
     std::wstring stdStr = str.ToStdWstring();
@@ -84,9 +84,8 @@ long ColumnsListView::countItems(const wxString &str) {
         mColumnNumbers.push_back(i);
       }
     }
-    mItemsCount = mColumnNumbers.size();
+    return mColumnNumbers.size();
   }
-  return mItemsCount;
 };
 
 wxString ColumnsListView::OnGetItemText(long item, long column) const {
@@ -133,7 +132,7 @@ void FindColumnDialog::OnTimerTrigger(wxTimerEvent &event) { updateListAndButton
 void FindColumnDialog::updateListAndButtonOK(const wxString &str) {
   ListView->SetItemCount(ListView->countItems(str));
   ListView->Refresh();
-  mButtonOK->Enable(ListView->itemsCount());
+  mButtonOK->Enable(ListView->GetItemCount());
 }
 
 void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
@@ -144,7 +143,7 @@ void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
 void FindColumnDialog::OnListViewItemActivated(wxListEvent &event) { EndModal(wxID_OK); }
 
 void FindColumnDialog::onButtonOK(wxCommandEvent &event) {
-  if (ListView->itemsCount()) {
+  if (ListView->GetItemCount()) {
     event.Skip();
   } else {
   }

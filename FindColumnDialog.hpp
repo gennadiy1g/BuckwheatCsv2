@@ -67,7 +67,6 @@ public:
   void gridTable(wxGridTableBase *pGridTable) { mpGridTable = pGridTable; };
   // The same return type as parameter type in void wxListCtrl::SetItemCount(long count)
   long countItems(const wxString &str);
-  long itemsCount() { return mItemsCount; };
   long GetFirstSelected() const;
 
 protected:
@@ -76,7 +75,6 @@ protected:
 
 private:
   wxGridTableBase *mpGridTable{};
-  long mItemsCount{};
 };
 
 #endif
