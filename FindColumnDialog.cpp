@@ -143,10 +143,8 @@ void FindColumnDialog::OnListViewItemActivated(wxListEvent &event) { EndModal(wx
 
 void FindColumnDialog::onButtonOK(wxCommandEvent &event) {
   wxASSERT(ListView->GetItemCount());
-  auto firstSelected = ListView->GetFirstSelected();
-  if (firstSelected == -1) {
+  if (ListView->GetFirstSelected() == -1) {
     ListView->Select(0);
-    ListView->SetFocus();
   } else {
     event.Skip();
   }
