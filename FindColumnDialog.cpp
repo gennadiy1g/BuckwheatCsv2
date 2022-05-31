@@ -57,8 +57,6 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
   ListView->InsertColumn(ListView->GetColumnCount(), "#", wxLIST_FORMAT_RIGHT);
   ListView->InsertColumn(ListView->GetColumnCount(), "Name", wxLIST_FORMAT_LEFT, 300);
   updateListAndButtonOK(wxEmptyString);
-
-  Bind(wxEVT_COMMAND_BUTTON_CLICKED, &FindColumnDialog::onButtonOK, this, wxID_OK);
 }
 
 FindColumnDialog::~FindColumnDialog()
@@ -143,9 +141,3 @@ void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
 }
 
 void FindColumnDialog::OnListViewItemActivated(wxListEvent &event) { EndModal(wxID_OK); }
-
-void FindColumnDialog::onButtonOK(wxCommandEvent &event) {
-  wxASSERT(ListView->GetItemCount());
-  wxASSERT(ListView->GetFirstSelected() != -1);
-  event.Skip();
-};
