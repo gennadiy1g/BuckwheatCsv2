@@ -59,8 +59,8 @@ class FindColumnDialog: public wxDialog
 class ColumnsListView : public wxListView {
 public:
   ColumnsListView(wxWindow *parent, wxWindowID winid = wxID_ANY, const wxPoint &pos = wxDefaultPosition,
-                    const wxSize &size = wxDefaultSize, long style = wxLC_REPORT,
-                    const wxValidator &validator = wxDefaultValidator, const wxString &name = wxListCtrlNameStr)
+                  const wxSize &size = wxDefaultSize, long style = wxLC_REPORT,
+                  const wxValidator &validator = wxDefaultValidator, const wxString &name = wxListCtrlNameStr)
       : wxListView(parent, winid, pos, size, style, validator, name){};
   virtual ~ColumnsListView(){};
   void gridTable(wxGridTableBase *pGridTable) { mpGridTable = pGridTable; };
