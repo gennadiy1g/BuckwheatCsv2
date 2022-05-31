@@ -108,10 +108,15 @@ wxString ColumnsListView::OnGetItemText(long item, long column) const {
 };
 
 long ColumnsListView::GetFirstSelected() const {
-  if (GetItemCount() == mpGridTable->GetNumberCols()) {
-    return wxListView::GetFirstSelected();
+  auto firstSelected = wxListView::GetFirstSelected();
+  if (firstSelected == -1) {
+    return firstSelected;
   } else {
-    return mColumnNumbers.at(wxListView::GetFirstSelected());
+    if (GetItemCount() == mpGridTable->GetNumberCols()) {
+      return firstSelected;
+    } else {
+      return mColumnNumbers.at(firstSelected);
+    }
   }
 };
 
