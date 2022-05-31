@@ -6,7 +6,6 @@
 
 //(*InternalHeaders(FindColumnDialog)
 #include <wx/button.h>
-#include <wx/debug.h>
 #include <wx/intl.h>
 #include <wx/string.h>
 //*)
@@ -143,8 +142,12 @@ void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
 void FindColumnDialog::OnListViewItemActivated(wxListEvent &event) { EndModal(wxID_OK); }
 
 void FindColumnDialog::onButtonOK(wxCommandEvent &event) {
-  if (ListView->GetItemCount()) {
-    event.Skip();
+  wxASSERT(ListView->GetItemCount());
+  auto firstSelected = ListView->GetFirstSelected();
+  if (firstSelected == -1) {
+    ListView->Select(0);
+    ListView->SetFocus();
   } else {
+    event.Skip();
   }
 };
