@@ -53,13 +53,14 @@ FindColumnDialog::FindColumnDialog(wxWindow* parent, wxGridTableBase* pGridTable
 	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&FindColumnDialog::OnTimerTrigger);
 	//*)
 
+  mButtonOK = dynamic_cast<wxButton *>(FindWindowById(wxID_OK));
+  wxASSERT(mButtonOK);
 
 	ListView->gridTable(pGridTable);
 	ListView->InsertColumn(ListView->GetColumnCount(), "#", wxLIST_FORMAT_RIGHT);
 	ListView->InsertColumn(ListView->GetColumnCount(), "Name", wxLIST_FORMAT_LEFT, 300);
 	ListView->SetItemCount(ListView->countItems(""));
-  mButtonOK = dynamic_cast<wxButton *>(FindWindowById(wxID_OK));
-  wxASSERT(mButtonOK);
+  mButtonOK->Enable(ListView->itemsCount());
 
   Bind(wxEVT_COMMAND_BUTTON_CLICKED, &FindColumnDialog::onButtonOK, this, wxID_OK);
 }
@@ -118,16 +119,19 @@ int FindColumnDialog::selectedCol() const { return ListView->GetFirstSelected();
 void FindColumnDialog::OnSearchCtrlSearchClicked(wxCommandEvent &event) {
   ListView->SetItemCount(ListView->countItems(SearchCtrl->GetValue()));
   ListView->Refresh();
+  mButtonOK->Enable(ListView->itemsCount());
 }
 
 void FindColumnDialog::OnSearchCtrlCancelClicked(wxCommandEvent &event) {
   ListView->SetItemCount(ListView->countItems(""));
   ListView->Refresh();
+  mButtonOK->Enable(ListView->itemsCount());
 }
 
 void FindColumnDialog::OnTimerTrigger(wxTimerEvent &event) {
   ListView->SetItemCount(ListView->countItems(SearchCtrl->GetValue()));
   ListView->Refresh();
+  mButtonOK->Enable(ListView->itemsCount());
 }
 
 void FindColumnDialog::OnSearchCtrlText(wxCommandEvent &event) {
