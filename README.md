@@ -24,7 +24,9 @@ This program is useful if:
 * Download zip file of the latest release from [https://github.com/gennadiy1g/BuckwheatCsv2/releases](https://github.com/gennadiy1g/BuckwheatCsv2/releases).
 * Unzip into a folder of your choice.
 * On Windows: Open Windows Explorer and navigate to the folder containing ***`BuckwheatCsv.exe`***. Double click on ***`BuckwheatCsv.exe`***.
-* On Linux: Open terminal and change the shell's current working directory to the folder containing ***`BuckwheatCsv`***. Add read and execute permissions for all by typing ***`chmod a+rx ./BuckwheatCsv`*** and pressing Enter. This needs to be done only once. Then start the program by typing ***`./BuckwheatCsv`*** and pressing Enter.
+* On Linux: Open terminal and change the shell's current working directory to the folder containing ***`BuckwheatCsv`***.
+  * Add read and execute permissions for all by typing ***`chmod a+rx ./BuckwheatCsv`*** and pressing Enter. This step needs to be done only once.
+  * Then start the program by typing ***`./BuckwheatCsv`*** and pressing Enter.
 * After Buckwheat CSV started, click File->Open ..., or drag and drop a CSV file onto Buckwheat CSV's window.
 
 ## Credit and licenses for embedded code
