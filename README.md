@@ -21,7 +21,7 @@ This program is useful if:
 
 ## Getting started
 
-* Download zip file of the latest release from [https://github.com/gennadiy1g/BuckwheatCsv/releases](https://github.com/gennadiy1g/BuckwheatCsv/releases).
+* Download zip file of the latest release from [https://github.com/gennadiy1g/BuckwheatCsv2/releases](https://github.com/gennadiy1g/BuckwheatCsv2/releases).
 * Unzip into a folder of your choice.
 * On Windows: Open Windows Explorer and navigate to the folder containing ***`BuckwheatCsv.exe`***. Double click on ***`BuckwheatCsv.exe`***.
 * On Linux: Open terminal and change the shell's current working directory to the folder containing ***`BuckwheatCsv`***. Type ***`./BuckwheatCsv`*** and press Enter.
