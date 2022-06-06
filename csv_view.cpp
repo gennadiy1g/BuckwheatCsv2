@@ -226,7 +226,10 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   mpGrid->SetTable(mpCsvGridTable, false, wxGrid::wxGridSelectNone);
 
   if (mIsActive) {
-    mpGrid->ForceRefresh();
+    if (!mGridRefreshed) {
+      mpGrid->ForceRefresh();
+      mGridRefreshed = true;
+    }
     showStatus();
   }
 };
