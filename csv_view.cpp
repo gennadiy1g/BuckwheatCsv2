@@ -221,11 +221,18 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
 
+  wxGridSizesInfo colSizes{};
+  if (mIsActive) {
+    colSizes = mpGrid->GetColSizes();
+  }
+
   wxASSERT(numLines);
   mpCsvGridTable->setNumberRows(numLines, percent);
   mpGrid->SetTable(mpCsvGridTable, false, wxGrid::wxGridSelectNone);
 
   if (mIsActive) {
+    mpGrid->SetColSizes(colSizes);
+
     if (!mGridRefreshed) {
       mpGrid->ForceRefresh();
       mGridRefreshed = true;
