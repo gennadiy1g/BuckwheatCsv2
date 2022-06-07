@@ -240,7 +240,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   if (mIsActive) {
     mpGrid->SetColSizes(colSizes);
 
-    if ((cellCoords != wxGridNoCellCoords) && (cellCoords != mpGrid->GetGridCursorCoords())) {
+    if (cellCoords != wxGridNoCellCoords) {
       mpGrid->GoToCell(cellCoords);
       wxLogDebug("GoToCell: r=%d, c=%d", cellCoords.GetRow(), cellCoords.GetCol());
     }
