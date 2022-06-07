@@ -222,8 +222,10 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   BOOST_LOG_SEV(gLogger, trivial::trace) << "numLines=" << numLines << ", percent=" << percent;
 
   wxGridSizesInfo colSizes{};
+  wxGridCellCoords cellCoords{};
   if (mIsActive) {
     colSizes = mpGrid->GetColSizes();
+    cellCoords = mpGrid->GetGridCursorCoords();
   }
 
   wxASSERT(numLines);
@@ -232,6 +234,10 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   if (mIsActive) {
     mpGrid->SetColSizes(colSizes);
+
+    if ((cellCoords != wxGridNoCellCoords) && (cellCoords != mpGrid->GetGridCursorCoords())) {
+      mpGrid->GoToCell(cellCoords);
+    }
 
     if (!mGridRefreshed) {
       mpGrid->ForceRefresh();
