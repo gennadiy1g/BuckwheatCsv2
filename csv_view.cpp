@@ -57,6 +57,10 @@ bool CsvView::OnCreate(wxDocument *doc, long flags) {
   vSizer->Add(mpGauge, wxSizerFlags(0).Expand());
   pChildFrame->SetSizerAndFit(vSizer);
 
+#ifndef NDEBUG
+  wxLog::SetActiveTarget(new wxLogWindow(NULL, "Log"));
+#endif
+
   Bind(wxEVT_THREAD, &CsvView::OnThreadEvent, this);
   pChildFrame->Show();
 
@@ -226,6 +230,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   if (mIsActive) {
     colSizes = mpGrid->GetColSizes();
     cellCoords = mpGrid->GetGridCursorCoords();
+    wxLogDebug("GetGridCursorCoords: r=%d, c=%d", cellCoords.GetRow(), cellCoords.GetCol());
   }
 
   wxASSERT(numLines);
@@ -237,6 +242,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
     if ((cellCoords != wxGridNoCellCoords) && (cellCoords != mpGrid->GetGridCursorCoords())) {
       mpGrid->GoToCell(cellCoords);
+      wxLogDebug("GoToCell: r=%d, c=%d", cellCoords.GetRow(), cellCoords.GetCol());
     }
 
     if (!mGridRefreshed) {
