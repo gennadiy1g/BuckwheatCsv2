@@ -235,6 +235,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   wxASSERT(numLines);
   mpCsvGridTable->setNumberRows(numLines, percent);
+  wxGridUpdateLocker updateLocker(mpGrid);
   mpGrid->SetTable(mpCsvGridTable, false, wxGrid::wxGridSelectNone);
 
   if (mIsActive) {
