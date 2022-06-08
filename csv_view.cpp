@@ -227,10 +227,14 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
 
   wxGridSizesInfo colSizes{};
   wxGridCellCoords cellCoords{};
+  int ffvRow{}, ffvCol{};
   if (mIsActive) {
     colSizes = mpGrid->GetColSizes();
     cellCoords = mpGrid->GetGridCursorCoords();
-    wxLogDebug("GetGridCursorCoords: r=%d, c=%d", cellCoords.GetRow(), cellCoords.GetCol());
+    ffvRow = mpGrid->GetFirstFullyVisibleRow();
+    ffvCol = mpGrid->GetFirstFullyVisibleColumn();
+    wxLogDebug("GetGridCursorCoords: r=%d, c=%d GetFirstFullyVisible: r=%d, c=%d", cellCoords.GetRow(),
+               cellCoords.GetCol(), ffvRow, ffvCol);
   }
 
   wxASSERT(numLines);
@@ -241,9 +245,11 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   if (mIsActive) {
     mpGrid->SetColSizes(colSizes);
 
+    mpGrid->MakeCellVisible(ffvRow, ffvCol);
+
     if (cellCoords != wxGridNoCellCoords) {
-      mpGrid->GoToCell(cellCoords);
-      wxLogDebug("GoToCell: r=%d, c=%d", cellCoords.GetRow(), cellCoords.GetCol());
+      mpGrid->SetGridCursor(cellCoords);
+      wxLogDebug("SetGridCursor: r=%d, c=%d", cellCoords.GetRow(), cellCoords.GetCol());
     }
 
     showStatus();
