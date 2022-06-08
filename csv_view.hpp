@@ -39,7 +39,6 @@ private:
   bool mIsActive{false};
   static inline std::unique_ptr<std::locale> mpsThousandsSep{};
   CsvDocument *mpCsvDocument{};
-  bool mGridRefreshed{false};
 
   wxDECLARE_DYNAMIC_CLASS(CsvView);
 };

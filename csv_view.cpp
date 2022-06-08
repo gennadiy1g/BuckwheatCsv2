@@ -246,10 +246,6 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
       wxLogDebug("GoToCell: r=%d, c=%d", cellCoords.GetRow(), cellCoords.GetCol());
     }
 
-    if (!mGridRefreshed) {
-      mpGrid->ForceRefresh();
-      mGridRefreshed = true;
-    }
     showStatus();
   }
 };
