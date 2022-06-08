@@ -199,7 +199,7 @@ void CsvView::showStatus() {
   }
 };
 
-void CsvView::clearStatus() {
+void CsvView::clearStatus() const {
   auto pStatusBar = MainFrame::statusBar();
 
   BOOST_LOG_FUNCTION();
@@ -256,7 +256,7 @@ void CsvView::OnThreadEvent(const wxThreadEvent &event) {
   }
 };
 
-void CsvView::defaultColSize() {
+void CsvView::defaultColSize() const {
   auto defaultWidth = mpGrid->GetDefaultColSize();
   wxGridUpdateLocker updateLocker(mpGrid);
   for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
@@ -264,19 +264,19 @@ void CsvView::defaultColSize() {
   }
 };
 
-void CsvView::autoSizeColLabelSize() {
+void CsvView::autoSizeColLabelSize() const {
   wxGridUpdateLocker updateLocker(mpGrid);
   for (int i = 0; i < mpGrid->GetNumberCols(); ++i) {
     mpGrid->AutoSizeColLabelSize(i);
   }
 };
 
-CsvGridTable *CsvView::gridTable() {
+CsvGridTable *CsvView::gridTable() const {
   wxASSERT(mpCsvGridTable);
   return mpCsvGridTable;
 };
 
-void CsvView::goToCol(int col) {
+void CsvView::goToCol(int col) const {
   wxASSERT(col < mpGrid->GetNumberCols());
   if (mpGrid->GetNumberRows()) {
     // If grid cursor doesn't have any valid position, row and column are set to -1
@@ -293,7 +293,7 @@ void CsvView::goToCol(int col) {
   }
 };
 
-void CsvView::goToRow(int row) {
+void CsvView::goToRow(int row) const {
   wxASSERT(row >= 1 && row <= mpGrid->GetNumberRows());
   --row;
   // If grid cursor doesn't have any valid position, row and column are set to -1

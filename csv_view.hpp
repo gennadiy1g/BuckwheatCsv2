@@ -23,12 +23,12 @@ public:
   virtual void OnUpdate(wxView *sender, wxObject *hint = 0) override;
   void OnThreadEvent(const wxThreadEvent &event);
   void showStatus();
-  void clearStatus();
-  void defaultColSize();
-  void autoSizeColLabelSize();
-  CsvGridTable *gridTable();
-  void goToCol(int col);
-  void goToRow(int row);
+  void clearStatus() const;
+  void defaultColSize() const;
+  void autoSizeColLabelSize() const;
+  CsvGridTable *gridTable() const;
+  void goToCol(int col) const;
+  void goToRow(int row) const;
 
 private:
   wxInfoBar *mInfoBar{};
