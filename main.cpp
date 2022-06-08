@@ -224,7 +224,7 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
   if (name == "x") {
     int x{-1}, y{-1};
     wxTheApp->GetTopWindow()->GetPosition(&x, &y);
-    wxASSERT(value == x);
+    wxASSERT(value == x); // TODO: fails on windows when the window is maximized 
     if (!value && !y) {
       value = 1;
     }
