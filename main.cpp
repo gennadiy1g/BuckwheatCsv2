@@ -210,7 +210,7 @@ void MainFrame::OnClose(wxCloseEvent &event) {
 bool MainFrame::MFGeometrySerializer::RestoreField(const wxString &name, int *value) {
   const auto pConfig = wxConfigBase::Get();
   const auto oldPath = pConfig->GetPath();
-  pConfig->SetPath(path);
+  pConfig->SetPath(ksmPath);
   const auto result = pConfig->Read(name, value);
   pConfig->SetPath(oldPath);
   return result;
@@ -232,7 +232,7 @@ bool MainFrame::MFGeometrySerializer::SaveField(const wxString &name, int value)
 
   const auto pConfig = wxConfigBase::Get();
   const auto oldPath = pConfig->GetPath();
-  pConfig->SetPath(path);
+  pConfig->SetPath(ksmPath);
   const auto result = pConfig->Write(name, value);
   pConfig->SetPath(oldPath);
   return result;

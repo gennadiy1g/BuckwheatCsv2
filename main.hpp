@@ -75,7 +75,7 @@ private:
 
   class MFGeometrySerializer : public wxTopLevelWindow::GeometrySerializer {
   private:
-    static inline const wxString path{"/Geometry"};
+    static inline const wxString ksmPath{"/Geometry"};
     virtual bool RestoreField(const wxString &name, int *value) override;
     virtual bool SaveField(const wxString &name, int value) const override;
   };
