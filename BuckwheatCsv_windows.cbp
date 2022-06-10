@@ -14,10 +14,10 @@
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib/mswu" />
+					<Add directory="$(#wx.lib)/gcc_lib/mswu" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib/mswu" />
+					<Add directory="$(#wx.lib)/gcc_lib/mswu" />
 				</ResourceCompiler>
 				<Linker>
 					<Add library="libwxmsw31u_richtext.a" />
@@ -42,7 +42,7 @@
 					<Add library="libboost_filesystem.a" />
 					<Add library="libboost_locale.a" />
 					<Add library="libboost_thread.a" />
-					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib" />
+					<Add directory="$(#wx.lib)/gcc_lib" />
 					<Add directory="C:/MinGW/lib" />
 				</Linker>
 			</Target>
@@ -55,10 +55,10 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-DNDEBUG" />
-					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib/mswu" />
+					<Add directory="$(#wx.lib)/gcc_lib/mswu" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib/mswu" />
+					<Add directory="$(#wx.lib)/gcc_lib/mswu" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
@@ -84,7 +84,7 @@
 					<Add library="libboost_filesystem.a" />
 					<Add library="libboost_locale.a" />
 					<Add library="libboost_thread.a" />
-					<Add directory="C:/wxWidgets-3.1.6/lib/gcc_lib" />
+					<Add directory="$(#wx.lib)/gcc_lib" />
 					<Add directory="C:/MinGW/lib" />
 				</Linker>
 			</Target>
@@ -96,10 +96,10 @@
 			<Add option="-D__WXMSW__" />
 			<Add option="-DwxUSE_UNICODE" />
 			<Add option="-Wall" />
-			<Add directory="C:/wxWidgets-3.1.6/include" />
+			<Add directory="$(#wx.include)" />
 		</Compiler>
 		<ResourceCompiler>
-			<Add directory="C:/wxWidgets-3.1.6/include" />
+			<Add directory="$(#wx.include)" />
 		</ResourceCompiler>
 		<Linker>
 			<Add option="-mthreads" />
