@@ -43,7 +43,7 @@
 					<Add library="libboost_locale.a" />
 					<Add library="libboost_thread.a" />
 					<Add directory="$(#wx.lib)/gcc_lib" />
-					<Add directory="C:/MinGW/lib" />
+					<Add directory="$(#mingw.lib)" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -85,7 +85,7 @@
 					<Add library="libboost_locale.a" />
 					<Add library="libboost_thread.a" />
 					<Add directory="$(#wx.lib)/gcc_lib" />
-					<Add directory="C:/MinGW/lib" />
+					<Add directory="$(#mingw.lib)" />
 				</Linker>
 			</Target>
 		</Build>
