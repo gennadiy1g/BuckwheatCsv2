@@ -1,0 +1,1 @@
+/home/gennadiy/Downloads/linuxdeploy/linuxdeploy-x86_64.AppImage --appdir AppDir --executable ./BuckwheatCsv --output appimage
