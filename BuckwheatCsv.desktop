@@ -1,9 +1,9 @@
 [Desktop Entry]
-Version=2.0.2
+Name=BuckwheatCsv
 Type=Application
-Name=Viewer for CSV files
-TryExec=BuckwheatCsv
+Comment=Viewer for CSV files
 Exec=BuckwheatCsv %F
-Icon=table_32x32.ico
+Icon=table_32x32
 MimeType=text/csv
-
+X-AppImage-Name=Viewer for CSV files
+X-AppImage-Version=2.0.2
