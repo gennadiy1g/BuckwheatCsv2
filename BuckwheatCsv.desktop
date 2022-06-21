@@ -2,8 +2,9 @@
 Name=BuckwheatCsv
 Type=Application
 Comment=Viewer for CSV files
+Categories=Utility
 Exec=BuckwheatCsv %F
 Icon=table_32x32
 MimeType=text/csv
-X-AppImage-Name=Viewer for CSV files
+X-AppImage-Name=BuckwheatCsv
 X-AppImage-Version=2.0.2
