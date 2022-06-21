@@ -7,4 +7,3 @@ Exec=BuckwheatCsv %F
 Icon=table_32x32
 MimeType=text/csv
 X-AppImage-Name=BuckwheatCsv
-X-AppImage-Version=2.0.2
