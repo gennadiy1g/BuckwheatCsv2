@@ -1,1 +1,1 @@
-/home/gennadiy/Downloads/linuxdeploy/linuxdeploy-x86_64.AppImage --appdir AppDir --executable ./BuckwheatCsv --output appimage
+/home/gennadiy/Downloads/linuxdeploy/linuxdeploy-x86_64.AppImage --appdir AppDir --executable ./BuckwheatCsv --icon-file ../../bitmaps/table_32x32.ico --output appimage
