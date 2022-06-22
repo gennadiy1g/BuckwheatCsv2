@@ -4,6 +4,6 @@ Type=Application
 Comment=Viewer for CSV files
 Categories=Utility
 Exec=BuckwheatCsv %F
-Icon=table_32x32
+Icon=table_2x
 MimeType=text/csv
 X-AppImage-Name=BuckwheatCsv

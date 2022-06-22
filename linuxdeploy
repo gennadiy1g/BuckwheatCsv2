@@ -1,5 +1,3 @@
-cd ./bin/Release
+rm -r ./bin/Release/AppDir
 
-rm -r ./AppDir
-
-/home/gennadiy/Downloads/linuxdeploy/linuxdeploy-x86_64.AppImage --appdir ./AppDir --executable ./BuckwheatCsv --icon-file ../../bitmaps/table_32x32.png --desktop-file ../../BuckwheatCsv.desktop --output appimage
+/home/gennadiy/Downloads/linuxdeploy/linuxdeploy-x86_64.AppImage --appdir ./bin/Release/AppDir --executable ./bin/Release/BuckwheatCsv --icon-file ./bitmaps/table_2x.png --desktop-file ./BuckwheatCsv.desktop --output appimage
